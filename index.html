@@ -5,32 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="The Chatbot Genius - AI Expert, Author, and Consultant">
     <title>The Chatbot Genius - Jay Tarzwell</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 120px 0 80px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: #f9c74f;
+            color: #1a1f71;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 3rem;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .book-card {
+            text-align: center;
+        }
+        
+        .book-cover {
+            width: 200px;
+            height: 300px;
+            margin: 0 auto 20px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <span class="logo">🤖</span>
-                <span class="brand-text">The Chatbot Genius</span>
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="books.html" class="nav-link">Books</a>
-                <a href="writings.html" class="nav-link">Writings</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://linkedin.com/in/jaysontarzwell" class="nav-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-content">
+                <div class="nav-brand">
+                    🤖 The Chatbot Genius
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="writings.html">Writings</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -38,129 +160,57 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Welcome to The Chatbot Genius</h1>
-                <p class="hero-subtitle">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</p>
-                <div class="hero-buttons">
-                    <a href="books.html" class="btn btn-primary">Explore My Books</a>
-                    <a href="writings.html" class="btn btn-secondary">Read AI Insights</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="floating-bot">🤖</div>
-                <div class="orbit orbit-1"></div>
-                <div class="orbit orbit-2"></div>
-                <div class="orbit orbit-3"></div>
+            <h1>Welcome to The Chatbot Genius</h1>
+            <p>AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</p>
+            <div>
+                <a href="books.html" class="btn btn-primary">Explore My Books</a>
+                <a href="writings.html" class="btn btn-secondary">Read AI Insights</a>
             </div>
         </div>
     </section>
 
     <!-- Introduction -->
-    <section class="intro">
+    <section class="section">
         <div class="container">
             <h2>Secure AI Solutions That Actually Work</h2>
-            <p class="lead">As an AI consultant and military veteran, I specialize in building bespoke AI applications with robust data privacy and security. From medical transcription tools to HR complaint management systems, I deliver practical AI solutions that protect sensitive data while driving real results.</p>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #666;">
+                As an AI consultant and military veteran, I specialize in building bespoke AI applications 
+                with robust data privacy and security. From medical transcription tools to HR complaint 
+                management systems, I deliver practical AI solutions that protect sensitive data while 
+                driving real results.
+            </p>
         </div>
     </section>
 
     <!-- Featured Books -->
-    <section class="featured-books">
+    <section class="section" style="background: #f8f9fa;">
         <div class="container">
             <h2>Featured Books</h2>
             <div class="books-grid">
                 <div class="book-card">
                     <div class="book-cover">
-                        <img src="images/chatbot-genius-cover-final.jpg" alt="Chatbot Genius">
+                        <img src="images/chatbot-genius-cover-final.jpg" alt="Chatbot Genius" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h3>Chatbot Genius</h3>
-                    <p>The 10-Hour Beginner's Guide to Using and Transforming Your Business</p>
-                    <a href="books.html#book1" class="btn btn-small">Learn More</a>
+                    <p>The 10-Hour Beginner's Guide</p>
+                    <a href="books.html#book1" class="btn btn-primary" style="font-size: 0.9rem; padding: 8px 20px;">Learn More</a>
                 </div>
                 <div class="book-card">
                     <div class="book-cover">
-                        <img src="images/maggie-christmas-elf-cover-new.jpg" alt="Maggie and the Christmas Elf">
+                        <img src="images/maggie-christmas-elf-cover-new.jpg" alt="Maggie and the Christmas Elf" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h3>Maggie and the Christmas Elf</h3>
-                    <p>A heartwarming Christmas story for the whole family</p>
-                    <a href="books.html#book2" class="btn btn-small">Learn More</a>
+                    <p>A heartwarming Christmas story</p>
+                    <a href="books.html#book2" class="btn btn-primary" style="font-size: 0.9rem; padding: 8px 20px;">Learn More</a>
                 </div>
                 <div class="book-card">
                     <div class="book-cover">
-                        <img src="images/last-algorithm-cover-new.jpg" alt="The Last Algorithm">
+                        <img src="images/last-algorithm-cover-new.jpg" alt="The Last Algorithm" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <h3>The Last Algorithm</h3>
-                    <p>A thought-provoking sci-fi novel about AI's future and humanity's destiny</p>
-                    <a href="books.html#book3" class="btn btn-small">Learn More</a>
+                    <p>AI's future and humanity's destiny</p>
+                    <a href="books.html#book3" class="btn btn-primary" style="font-size: 0.9rem; padding: 8px 20px;">Learn More</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recent Writings -->
-    <section class="recent-writings">
-        <div class="container">
-            <h2>Recent Writings on AI</h2>
-            <div class="writings-grid">
-                <article class="writing-card">
-                    <h3>The Evolution of Conversational AI</h3>
-                    <p class="date">January 2025</p>
-                    <p>Exploring how chatbots have transformed from simple rule-based systems to sophisticated AI assistants.</p>
-                    <a href="writings.html#article1" class="read-more">Read More →</a>
-                </article>
-                <article class="writing-card">
-                    <h3>Building Better Chatbots: A Guide</h3>
-                    <p class="date">December 2024</p>
-                    <p>Practical insights for developers and businesses looking to create effective conversational interfaces.</p>
-                    <a href="writings.html#article2" class="read-more">Read More →</a>
-                </article>
-                <article class="writing-card">
-                    <h3>The Ethics of AI Communication</h3>
-                    <p class="date">November 2024</p>
-                    <p>Examining the moral considerations in designing AI systems that interact with humans.</p>
-                    <a href="writings.html#article3" class="read-more">Read More →</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services">
-        <div class="container">
-            <h2>How I Can Help</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>AI Privacy & Security</h3>
-                    <p>Implementing robust data privacy solutions for AI systems handling sensitive PII, especially for medical and legal practices.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Bespoke App Development</h3>
-                    <p>Building custom AI applications on Replit, from medical transcription tools to HR complaint management systems.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Prompt Engineering</h3>
-                    <p>Designing high-impact prompts and AI workflows that deliver practical, measurable results for your business.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p class="contact-intro">Interested in my books, writings, or consulting services? Let's connect!</p>
-            <div class="contact-options">
-                <a href="mailto:jay@barkerhrs.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    jay@barkerhrs.com
-                </a>
-                <a href="https://linkedin.com/in/jaysontarzwell" class="contact-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    Connect on LinkedIn
-                </a>
             </div>
         </div>
     </section>
@@ -172,7 +222,5 @@
             <p>Building the future of conversational AI, one chatbot at a time.</p>
         </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
