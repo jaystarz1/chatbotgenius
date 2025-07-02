@@ -45,14 +45,44 @@
             outline-offset: 2px;
         }
         
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
         .navbar {
             background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
             color: white;
-            padding: 1rem 0;
-            position: fixed;
+            padding: 0;
+            position: sticky;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .container {
@@ -65,6 +95,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px;
         }
         
         .nav-brand {
@@ -82,6 +113,7 @@
             cursor: pointer;
             font-size: 1rem;
             border-radius: 4px;
+            margin: auto 0;
         }
         
         .mobile-menu-toggle:hover {
@@ -92,17 +124,28 @@
             display: flex;
             gap: 30px;
             list-style: none;
+            align-items: center;
+            height: 100%;
         }
         
-        .nav-links a {
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn) {
             color: white;
             text-decoration: none;
             padding: 5px 10px;
             border-radius: 4px;
             transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
         
-        .nav-links a:hover {
+        .nav-links a:not(.btn):hover {
             background: rgba(255, 255, 255, 0.1);
         }
         
@@ -114,14 +157,23 @@
         .hero {
             background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
             color: white;
-            padding: 120px 0 80px;
-            margin-top: 60px;
+            padding: 80px 0 80px;
             text-align: center;
         }
         
         .hero h1 {
             font-size: 3rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tagline-banner {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin: 0 auto 30px;
+            max-width: 800px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .hero h2 {
@@ -146,16 +198,14 @@
         }
         
         .btn-primary {
-            background: #f9c74f;
-            color: #1a1f71;
-            border: 2px solid #f9c74f;
-            font-weight: 600;
+            background: #ff8c42;
+            color: white;
+            border: 2px solid #ff8c42;
         }
         
         .btn-primary:hover {
-            background: #f7b71d;
-            border-color: #f7b71d;
-            color: #0a0f51;
+            background: #ff7329;
+            border-color: #ff7329;
         }
         
         .btn-secondary {
@@ -167,6 +217,18 @@
         .btn-secondary:hover {
             background: white;
             color: #1a1f71;
+        }
+        
+        /* Special button styles for hero section */
+        .hero .btn-primary {
+            background: #ff8c42;
+            color: white;
+            border: 2px solid #ff8c42;
+        }
+        
+        .hero .btn-primary:hover {
+            background: #ff7329;
+            border-color: #ff7329;
         }
         
         .section {
@@ -206,8 +268,108 @@
         .footer {
             background: #1a1f71;
             color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .footer-contact a {
+            color: white;
+            text-decoration: underline;
+            font-size: 1.1rem;
+        }
+        
+        .footer-contact a:hover {
+            opacity: 0.8;
+        }
+        
+        .footer-bottom {
             text-align: center;
-            padding: 30px 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+        
+        /* Insights Grid */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .insight-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .insight-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .insight-card h3 {
+            color: #1a1f71;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .insight-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .insight-link {
+            color: #4c5fd5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .insight-link:hover {
+            color: #1a1f71;
         }
         
         /* New styles for enhanced features */
@@ -219,21 +381,23 @@
         
         /* Pause button for rotating content */
         .rotation-controls {
-            margin-top: 10px;
+            margin-top: 15px;
         }
         
         .pause-btn {
-            background: transparent;
-            border: 1px solid white;
+            background: #ff8c42;
+            border: none;
             color: white;
-            padding: 5px 15px;
+            padding: 8px 20px;
             cursor: pointer;
-            border-radius: 4px;
+            border-radius: 5px;
             font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
         }
         
         .pause-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: #ff7329;
         }
         
         .stats-bar {
@@ -275,31 +439,17 @@
             opacity: 0.9;
         }
         
-        .contact-cta {
-            margin-top: 30px;
-        }
-        
-        .contact-cta a {
-            color: white;
-            text-decoration: underline;
-            font-weight: 600;
-        }
-        
-        .contact-cta a:hover {
-            opacity: 0.9;
-        }
         
         .btn-book {
-            background: #f9c74f;
-            color: #1a1f71;
+            background: #ff8c42;
+            color: white;
             font-weight: bold;
-            border: 2px solid #f9c74f;
+            border: 2px solid #ff8c42;
         }
         
         .btn-book:hover {
-            background: #f7b71d;
-            border-color: #f7b71d;
-            color: #0a0f51;
+            background: #ff7329;
+            border-color: #ff7329;
         }
         
         .whitepaper-section {
@@ -358,6 +508,49 @@
         
         /* Mobile responsive styles */
         @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-contact {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .banner-content {
+                font-size: 0.85rem;
+            }
+            
+            .banner-separator {
+                display: none;
+            }
+            
+            .banner-item {
+                width: 100%;
+                padding: 2px 0;
+            }
+            
+            .navbar {
+                position: sticky;
+                top: 0;
+            }
+            
+            .hero {
+                padding-top: 60px;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .insight-card {
+                aspect-ratio: auto;
+                min-height: 300px;
+            }
+            
             .mobile-menu-toggle {
                 display: block;
             }
@@ -373,6 +566,18 @@
                 padding: 20px;
                 gap: 10px;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                height: auto;
+            }
+            
+            .nav-links a:not(.btn) {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
             }
             
             .nav-links.show {
@@ -402,6 +607,25 @@
     <!-- Skip Navigation Link -->
     <a href="#main-content" class="skip-nav">Skip to main content</a>
 
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
@@ -430,42 +654,54 @@
         <section class="hero" aria-labelledby="hero-heading">
             <div class="container">
                 <h1 id="hero-heading">Welcome to The Chatbot Genius</h1>
+                <div class="tagline-banner">
                 <div class="tagline-rotation">
-                    <h2 id="rotating-tagline" aria-live="polite">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</h2>
-                </div>
+                        <h2 id="rotating-tagline" aria-live="polite">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</h2>
+                    </div>
                 <div class="rotation-controls">
-                    <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">Pause</button>
+                        <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">Pause</button>
                 </div>
+            </div>
                 
                 <!-- Stats Bar -->
                 <div class="stats-bar">
                     <p><span aria-hidden="true">📚</span> 3 Books Published • <span aria-hidden="true">🤖</span> Dozens of Custom GPTs & Apps Built • <span aria-hidden="true">👥</span> Hundreds Trained in AI Writing</p>
                 </div>
                 
-                <!-- Contact CTA -->
-                <div class="contact-cta">
-                    <p style="margin-bottom: 15px;">Ready to transform your ideas into organized content? Let's talk.</p>
-                    <p><span aria-hidden="true">📧</span> <a href="mailto:jay@barkerhrs.com">jay@barkerhrs.com</a></p>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="margin-top: 15px; background: white; color: #1a1f71; border: 2px solid white; font-weight: 600;" aria-label="Book a free 30-minute consultation - opens in new window">Book a Free 30-Minute Consultation</a>
-                </div>
                 
                 <div style="margin-top: 30px;">
-                    <a href="books.html" class="btn btn-primary" style="background: white; color: #1a1f71; border: 2px solid white;">Explore My Books</a>
+                    <a href="books.html" class="btn btn-primary">Explore My Books</a>
                     <a href="writings.html" class="btn btn-secondary">Read AI Insights</a>
                 </div>
                 
-                <!-- Latest Insights Placeholder -->
-                <div class="latest-insights">
-                    <h2 style="margin-bottom: 20px; color: white; font-size: 1.5rem;">Latest Insights</h2>
-                    <article class="insight-item">
-                        <h3 style="color: white;"><span aria-hidden="true">📝</span> [Article Title 1 - Placeholder]</h3>
-                        <p>Brief excerpt about AI writing techniques and transforming verbal content...</p>
+
+            </div>
+        </section>
+
+        <!-- Latest Insights Section -->
+        <section class="section" style="background: #f8f9fa;" aria-labelledby="insights-heading">
+            <div class="container">
+                <h2 id="insights-heading" style="text-align: center; font-size: 2.5rem; color: #1a1f71; margin-bottom: 3rem;">Latest Insights</h2>
+                <div class="insights-grid">
+                    <article class="insight-card">
+                        <div class="insight-icon">
+                            <span aria-hidden="true">📝</span>
+                        </div>
+                        <h3>[Article Title 1 - Placeholder]</h3>
+                        <p>Brief excerpt about AI writing techniques and transforming verbal content into polished documents using cutting-edge AI tools and methodologies.</p>
+                        <a href="#" class="insight-link">Read More →</a>
                     </article>
-                    <article class="insight-item">
-                        <h3 style="color: white;"><span aria-hidden="true">📝</span> [Article Title 2 - Placeholder]</h3>
-                        <p>How to organize scattered thoughts with AI and create structured documents...</p>
+                    <article class="insight-card">
+                        <div class="insight-icon">
+                            <span aria-hidden="true">📝</span>
+                        </div>
+                        <h3>[Article Title 2 - Placeholder]</h3>
+                        <p>How to organize scattered thoughts with AI and create structured documents that effectively communicate your ideas with clarity and impact.</p>
+                        <a href="#" class="insight-link">Read More →</a>
                     </article>
-                    <a href="writings.html" class="btn btn-secondary" style="margin-top: 20px;" aria-label="View all writings">View All Writings</a>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="writings.html" class="btn btn-primary">View All Writings</a>
                 </div>
             </div>
         </section>
@@ -483,19 +719,6 @@
             </div>
         </section>
 
-        <!-- Whitepaper Section -->
-        <section class="whitepaper-section" aria-labelledby="whitepaper-heading">
-            <div class="container">
-                <h2 id="whitepaper-heading" style="color: #1a1f71; margin-bottom: 20px; font-size: 2rem;">Free Resource for Legal Tech Professionals</h2>
-                <p style="color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Concerned about data security when implementing AI? Download my comprehensive whitepaper on maintaining compliance while leveraging AI tools.
-                </p>
-                <a href="https://docs.google.com/document/d/1o9S3M-_bwIcrG9KeLM5g0ctFCg-AxuxgubXD1UAvow8/edit" class="btn btn-primary" target="_blank" aria-label="Download Data Security in AI Development whitepaper - opens in new window">
-                    <span aria-hidden="true">📄</span> Download: Data Security in AI Development - A Legal Tech Whitepaper
-                </a>
-            </div>
-        </section>
-        
         <!-- Featured Book -->
         <section class="section" style="background: #f8f9fa;" aria-labelledby="featured-book-heading">
             <div class="container">
@@ -538,6 +761,19 @@
             </div>
         </section>
 
+        <!-- Whitepaper Section -->
+        <section class="whitepaper-section" aria-labelledby="whitepaper-heading">
+            <div class="container">
+                <h2 id="whitepaper-heading" style="color: #1a1f71; margin-bottom: 20px; font-size: 2rem;">Free Resource for Legal Tech Professionals</h2>
+                <p style="color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Concerned about data security when implementing AI? Download my comprehensive whitepaper on maintaining compliance while leveraging AI tools.
+                </p>
+                <a href="https://docs.google.com/document/d/1o9S3M-_bwIcrG9KeLM5g0ctFCg-AxuxgubXD1UAvow8/edit" class="btn btn-primary" target="_blank" aria-label="Download Data Security in AI Development whitepaper - opens in new window">
+                    <span aria-hidden="true">📄</span> Download: Data Security in AI Development - A Legal Tech Whitepaper
+                </a>
+            </div>
+        </section>
+
         <!-- Contact Section -->
         <section class="contact-section" id="contact" aria-labelledby="contact-heading">
             <div class="container">
@@ -573,9 +809,24 @@
     
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About The Chatbot Genius</h3>
+                <p>Building the future of conversational AI, one chatbot at a time. Specializing in secure, practical AI solutions that transform how businesses operate.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Ready to transform your ideas into organized content? Let's talk.</p>
+                <div class="footer-contact">
+                    <p style="margin: 0;"><span aria-hidden="true">📧</span> <a href="mailto:jay@barkerhrs.com">jay@barkerhrs.com</a></p>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" aria-label="Book a call - opens in new window">Book a Call</a>
+                </div>
+            </div>
+        </div>
         <div class="container">
-            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
-            <p>Building the future of conversational AI, one chatbot at a time.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            </div>
         </div>
     </footer>
     
