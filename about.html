@@ -5,175 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="About The Chatbot Genius - Jay Tarzwell">
     <title>About - The Chatbot Genius</title>
-    <link rel="stylesheet" href="style-new.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: #f9c74f;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 120px 0 60px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content {
+            padding: 80px 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+        
+        .headshot {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .bio h2 {
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+        
+        .bio p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .headshot {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <span class="logo">🤖</span>
-                <span class="brand-text">The Chatbot Genius</span>
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link active">About</a>
-                <a href="books.html" class="nav-link">Books</a>
-                <a href="writings.html" class="nav-link">Writings</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://linkedin.com/in/jaysontarzwell" class="nav-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-content">
+                <div class="nav-brand">
+                    🤖 The Chatbot Genius
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" style="color: #f9c74f;">About</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="writings.html">Writings</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
             <h1>About Jay Tarzwell</h1>
-            <p class="page-subtitle">The Chatbot Genius</p>
+            <p>AI Expert, Author, and Military Veteran</p>
         </div>
-    </section>
+    </div>
 
     <!-- About Content -->
     <section class="about-content">
         <div class="container">
             <div class="about-grid">
-                <div class="about-image">
-                    <img src="images/jay-tarzwell-photo-new.jpg" alt="Jay Tarzwell">
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/jaysontarzwell" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="mailto:jay@barkerhrs.com">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
+                <div>
+                    <img src="images/jay-tarzwell-headshot.jpg" alt="Jay Tarzwell" class="headshot">
                 </div>
-                
-                <div class="about-text">
-                    <h2>AI & Privacy Expert | Military Veteran | Author</h2>
-                    <p class="lead">As an AI consultant and military veteran, I build bespoke apps and design high-impact prompts, with a relentless discipline to ensure these tools deliver significant, practical results.</p>
+                <div class="bio">
+                    <h2>From Military Service to AI Innovation</h2>
+                    <p>I'm Jay Tarzwell, an AI consultant and author dedicated to making artificial intelligence accessible and practical for businesses of all sizes. With a background as a military veteran and years of experience in technology and business development, I bring a unique perspective to the world of AI and chatbots.</p>
                     
-                    <p>What does this look like in practice? It means dedicated, iterative development, like the 14 months I spent evolving a ChatGPT prompt into the webapp medictate.ai. This tool now supports physicians by transforming voice notes into formatted reports, enabling them to focus on patient care.</p>
+                    <p>My journey into AI began with a simple realization: most businesses need practical, secure AI solutions that actually work – not just flashy tech demos. This led me to specialize in building bespoke AI applications with robust data privacy, particularly for sensitive industries like healthcare and legal services.</p>
                     
-                    <p>My work frequently involves Personally Identifiable Information (PII) and other sensitive data, particularly in the medical and HR fields. This hands-on experience has driven me to make robust data privacy and information security foundational to my AI solutions. For clients, especially in legal and medical practices where privacy is paramount and often governed by strict jurisdictional rules, I specialize in understanding their unique privacy landscape and proactively implementing solutions to ensure compliance.</p>
+                    <p>As "The Chatbot Genius," I've helped numerous small and medium businesses transform their operations through intelligent automation. From developing medical transcription tools that protect patient privacy to creating HR complaint management systems that ensure confidentiality, my focus is always on delivering real value while maintaining the highest security standards.</p>
                     
-                    <p>My core strategy involves meticulous de-identification of PII, enabling data to be processed by commercially available AI models without compromising information security. To empower my clients and the broader community, I actively research and create resources, including publishing white papers on personal data security practices across the English-speaking world.</p>
-                    
-                    <div class="expertise-areas">
-                        <h3>Areas of Expertise</h3>
-                        <ul>
-                            <li>AI & Privacy Compliance for SMBs</li>
-                            <li>Generative AI Deployment & Custom Applications</li>
-                            <li>Data Privacy & Information Security</li>
-                            <li>Bespoke App Development on Replit</li>
-                            <li>Medical & HR AI Solutions</li>
-                            <li>PII De-identification Strategies</li>
-                            <li>Prompt Engineering & Optimization</li>
-                            <li>Secure AI Implementation for Sensitive Data</li>
-                        </ul>
-                    </div>
+                    <p>When I'm not consulting or writing about AI, you'll find me exploring new technologies, spending time with my family, or working on my next book. I believe that AI should enhance human capabilities, not replace them, and I'm passionate about helping others harness this powerful technology responsibly and effectively.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Journey Timeline -->
-    <section class="journey-timeline">
-        <div class="container">
-            <h2>My AI Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2015</div>
-                    <div class="timeline-content">
-                        <h3>First Steps in AI</h3>
-                        <p>Began exploring machine learning and natural language processing, fascinated by the potential of conversational interfaces.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2018</div>
-                    <div class="timeline-content">
-                        <h3>Published First Book</h3>
-                        <p>Released my first comprehensive guide on chatbot development, helping developers understand the fundamentals.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2020</div>
-                    <div class="timeline-content">
-                        <h3>Founded Consultancy</h3>
-                        <p>Started helping businesses implement conversational AI solutions, focusing on practical, ethical applications.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2023</div>
-                    <div class="timeline-content">
-                        <h3>The Chatbot Genius Brand</h3>
-                        <p>Launched "The Chatbot Genius" platform to share knowledge and insights about the future of AI communication.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Speaking & Media -->
-    <section class="speaking-media">
-        <div class="container">
-            <h2>Speaking & Media Appearances</h2>
-            <div class="media-grid">
-                <div class="media-item">
-                    <i class="fas fa-microphone"></i>
-                    <h3>Conference Speaking</h3>
-                    <p>Regular speaker at AI conferences worldwide, sharing insights on conversational AI trends and best practices.</p>
-                </div>
-                <div class="media-item">
-                    <i class="fas fa-podcast"></i>
-                    <h3>Podcast Guest</h3>
-                    <p>Featured on numerous tech and AI podcasts, discussing the future of human-AI interaction.</p>
-                </div>
-                <div class="media-item">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <h3>Workshops & Training</h3>
-                    <p>Conduct hands-on workshops helping teams build and deploy effective chatbot solutions.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="about-cta">
-        <div class="container">
-            <h2>Let's Build the Future Together</h2>
-            <p>Whether you're looking to understand AI better through my books, need guidance on your chatbot project, or want to bring AI insights to your audience, I'm here to help.</p>
-            <div class="cta-buttons">
-                <a href="books.html" class="btn btn-primary">Explore My Books</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Connect With Me</h2>
-            <p class="contact-intro">Have questions about AI, chatbots, or my work? Let's connect!</p>
-            <div class="contact-options">
-                <a href="mailto:jay@barkerhrs.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    jay@barkerhrs.com
-                </a>
-                <a href="https://linkedin.com/in/jaysontarzwell" class="contact-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    Connect on LinkedIn
-                </a>
             </div>
         </div>
     </section>
@@ -185,7 +182,5 @@
             <p>Building the future of conversational AI, one chatbot at a time.</p>
         </div>
     </footer>
-
-    <script src="script-new.js"></script>
 </body>
 </html>

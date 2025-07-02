@@ -3,192 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI Writings and Articles by The Chatbot Genius">
+    <meta name="description" content="Writings by The Chatbot Genius - AI Insights and Articles">
     <title>Writings - The Chatbot Genius</title>
-    <link rel="stylesheet" href="style-new.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: #f9c74f;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 120px 0 60px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .writings-section {
+            padding: 80px 0;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .article-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .article-card h3 {
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+        
+        .article-date {
+            color: #f9c74f;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .article-card p {
+            margin-bottom: 20px;
+        }
+        
+        .read-more {
+            color: #4c5fd5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .read-more:hover {
+            color: #1a1f71;
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <span class="logo">🤖</span>
-                <span class="brand-text">The Chatbot Genius</span>
-            </div>
-            <div class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="books.html" class="nav-link">Books</a>
-                <a href="writings.html" class="nav-link active">Writings</a>
-                <a href="projects.html" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://linkedin.com/in/jaysontarzwell" class="nav-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-content">
+                <div class="nav-brand">
+                    🤖 The Chatbot Genius
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="writings.html" style="color: #f9c74f;">Writings</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
     <!-- Page Header -->
-    <section class="page-header">
+    <div class="page-header">
         <div class="container">
-            <h1>AI Writings & Insights</h1>
-            <p class="page-subtitle">Exploring the Latest in Artificial Intelligence and Chatbot Technology</p>
+            <h1>Writings on AI</h1>
+            <p>Insights, Tutorials, and Thoughts on Artificial Intelligence</p>
         </div>
-    </section>
+    </div>
 
-    <!-- Filter Section -->
-    <section class="filter-section">
+    <!-- Writings Section -->
+    <section class="writings-section">
         <div class="container">
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All Articles</button>
-                <button class="filter-tab" data-filter="chatbots">Chatbots</button>
-                <button class="filter-tab" data-filter="ai-ethics">AI Ethics</button>
-                <button class="filter-tab" data-filter="technical">Technical Guides</button>
-                <button class="filter-tab" data-filter="business">Business & Strategy</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Articles Section -->
-    <section class="articles-section">
-        <div class="container">
+            <h2 style="text-align: center; color: #1a1f71; margin-bottom: 50px;">Recent Articles</h2>
+            
             <div class="articles-grid">
+                <article class="article-card">
+                    <h3>The Evolution of Conversational AI</h3>
+                    <p class="article-date">January 2025</p>
+                    <p>Exploring how chatbots have transformed from simple rule-based systems to sophisticated AI assistants capable of understanding context, emotion, and nuance in human communication.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
                 
-                <!-- Article 1 -->
-                <article class="article-card" data-category="chatbots technical" id="article1">
-                    <div class="article-image">
-                        <img src="article-1-thumb.jpg" alt="The Evolution of Conversational AI">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="category">Chatbots</span>
-                            <span class="date">January 2025</span>
-                            <span class="read-time">8 min read</span>
-                        </div>
-                        <h2>The Evolution of Conversational AI</h2>
-                        <p>From simple rule-based systems to sophisticated neural networks, conversational AI has undergone a remarkable transformation. This article explores the key milestones in chatbot development and what the future holds.</p>
-                        <a href="#" class="read-full">Read Full Article →</a>
-                    </div>
+                <article class="article-card">
+                    <h3>Building Better Chatbots: A Guide</h3>
+                    <p class="article-date">December 2024</p>
+                    <p>Practical insights for developers and businesses looking to create effective conversational interfaces. Learn the key principles that separate great chatbots from mediocre ones.</p>
+                    <a href="#" class="read-more">Read More →</a>
                 </article>
-
-                <!-- Article 2 -->
-                <article class="article-card" data-category="technical business" id="article2">
-                    <div class="article-image">
-                        <img src="article-2-thumb.jpg" alt="Building Better Chatbots">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="category">Technical Guide</span>
-                            <span class="date">December 2024</span>
-                            <span class="read-time">12 min read</span>
-                        </div>
-                        <h2>Building Better Chatbots: A Comprehensive Guide</h2>
-                        <p>Learn the essential principles and best practices for creating effective conversational interfaces. This guide covers everything from natural language understanding to user experience design.</p>
-                        <a href="#" class="read-full">Read Full Article →</a>
-                    </div>
+                
+                <article class="article-card">
+                    <h3>The Ethics of AI Communication</h3>
+                    <p class="article-date">November 2024</p>
+                    <p>Examining the moral considerations in designing AI systems that interact with humans. How do we ensure transparency, prevent manipulation, and maintain trust?</p>
+                    <a href="#" class="read-more">Read More →</a>
                 </article>
-
-                <!-- Article 3 -->
-                <article class="article-card" data-category="ai-ethics" id="article3">
-                    <div class="article-image">
-                        <img src="article-3-thumb.jpg" alt="Ethics of AI Communication">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="category">AI Ethics</span>
-                            <span class="date">November 2024</span>
-                            <span class="read-time">10 min read</span>
-                        </div>
-                        <h2>The Ethics of AI Communication</h2>
-                        <p>As AI systems become more sophisticated in their ability to communicate, we must consider the ethical implications. This article examines transparency, trust, and responsibility in AI design.</p>
-                        <a href="#" class="read-full">Read Full Article →</a>
-                    </div>
+                
+                <article class="article-card">
+                    <h3>Privacy-First AI: A Business Imperative</h3>
+                    <p class="article-date">October 2024</p>
+                    <p>Why data privacy should be at the core of any AI implementation, especially for businesses handling sensitive information. Real-world strategies and case studies.</p>
+                    <a href="#" class="read-more">Read More →</a>
                 </article>
-
-                <!-- Article 4 -->
-                <article class="article-card" data-category="business">
-                    <div class="article-image">
-                        <img src="article-4-thumb.jpg" alt="ROI of Chatbot Implementation">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="category">Business Strategy</span>
-                            <span class="date">October 2024</span>
-                            <span class="read-time">6 min read</span>
-                        </div>
-                        <h2>Measuring the ROI of Chatbot Implementation</h2>
-                        <p>How do you quantify the value of conversational AI? This article provides frameworks and metrics for measuring the return on investment in chatbot technology.</p>
-                        <a href="#" class="read-full">Read Full Article →</a>
-                    </div>
+                
+                <article class="article-card">
+                    <h3>Prompt Engineering for Business Success</h3>
+                    <p class="article-date">September 2024</p>
+                    <p>Master the art of crafting effective prompts that deliver consistent, high-quality results. Tips and techniques for business professionals.</p>
+                    <a href="#" class="read-more">Read More →</a>
                 </article>
-
-                <!-- Article 5 -->
-                <article class="article-card" data-category="chatbots ai-ethics">
-                    <div class="article-image">
-                        <img src="article-5-thumb.jpg" alt="Personality in Chatbots">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="category">Chatbot Design</span>
-                            <span class="date">September 2024</span>
-                            <span class="read-time">7 min read</span>
-                        </div>
-                        <h2>Should Chatbots Have Personality?</h2>
-                        <p>The debate over anthropomorphism in AI continues. This article explores the benefits and risks of giving chatbots human-like personalities and behaviors.</p>
-                        <a href="#" class="read-full">Read Full Article →</a>
-                    </div>
+                
+                <article class="article-card">
+                    <h3>AI in Healthcare: Opportunities and Challenges</h3>
+                    <p class="article-date">August 2024</p>
+                    <p>How artificial intelligence is revolutionizing healthcare while navigating complex privacy regulations and ethical considerations.</p>
+                    <a href="#" class="read-more">Read More →</a>
                 </article>
-
-                <!-- Article 6 -->
-                <article class="article-card" data-category="technical">
-                    <div class="article-image">
-                        <img src="article-6-thumb.jpg" alt="NLP Fundamentals">
-                    </div>
-                    <div class="article-content">
-                        <div class="article-meta">
-                            <span class="category">Technical</span>
-                            <span class="date">August 2024</span>
-                            <span class="read-time">15 min read</span>
-                        </div>
-                        <h2>Natural Language Processing Fundamentals for Chatbots</h2>
-                        <p>A deep dive into the NLP techniques that power modern conversational AI, from tokenization to transformer models. Perfect for developers and technical enthusiasts.</p>
-                        <a href="#" class="read-full">Read Full Article →</a>
-                    </div>
-                </article>
-
-            </div>
-
-            <!-- Load More Button -->
-            <div class="load-more-container">
-                <button class="btn btn-secondary">Load More Articles</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Publications -->
-    <section class="featured-publications">
-        <div class="container">
-            <h2>Featured In</h2>
-            <div class="publications-grid">
-                <div class="publication">
-                    <h3>Tech Journal</h3>
-                    <p>"The Future of Customer Service AI" - March 2024</p>
-                </div>
-                <div class="publication">
-                    <h3>AI Weekly</h3>
-                    <p>"Interview: Building Ethical Chatbots" - February 2024</p>
-                </div>
-                <div class="publication">
-                    <h3>Business Innovation</h3>
-                    <p>"How AI is Transforming Communication" - January 2024</p>
-                </div>
             </div>
         </div>
     </section>
@@ -200,7 +226,5 @@
             <p>Building the future of conversational AI, one chatbot at a time.</p>
         </div>
     </footer>
-
-    <script src="script-new.js"></script>
 </body>
 </html>
