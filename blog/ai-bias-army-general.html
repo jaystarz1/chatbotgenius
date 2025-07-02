@@ -232,6 +232,40 @@
             background: #4c5fd5;
         }
         
+        .blog-nav {
+            background: #f8f9fa;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .blog-nav-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4c5fd5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-to-blog:hover {
+            color: #1a1f71;
+        }
+        
+        .blog-nav-separator {
+            color: #ccc;
+        }
+        
+        .current-post {
+            color: #666;
+        }
+        
         .footer {
             background: #1a1f71;
             color: white;
@@ -280,6 +314,19 @@
             <h1>What Does an Army General Look Like? Demonstrated Bias in Generative AI</h1>
             <div class="article-meta">
                 By Jay Tarzwell CD | July 24, 2024
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Navigation -->
+    <div class="blog-nav">
+        <div class="article-container">
+            <div class="blog-nav-content">
+                <a href="../blog.html" class="back-to-blog">
+                    <span>←</span> Back to Blog
+                </a>
+                <span class="blog-nav-separator">|</span>
+                <span class="current-post">AI Bias in Image Generation</span>
             </div>
         </div>
     </div>
@@ -335,7 +382,8 @@
             </div>
 
             <div class="image-placeholder">
-                [AI-generated general images grid will be inserted here]
+                <img src="../images/generals-1.jpeg" alt="Grid of AI-generated military general images showing bias" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                <p style="font-size: 0.9rem; color: #666; text-align: center; font-style: italic;">The first 15 AI-generated images when asked to "create a picture of an army general"</p>
             </div>
 
             <h2>What This Reveals About AI Bias</h2>
@@ -360,7 +408,7 @@
             <p>While there are some duplicate images in this screen capture from Google Images, there was no shortage of images of female African American generals. I used this image to demonstrate they do exist.</p>
 
             <div class="image-placeholder">
-                [Google Images screenshot of female African American generals will be inserted here]
+                <img src="../images/generals-2.jpeg" alt="Google Images showing female African American generals" style="width: 100%; border-radius: 10px;">
                 <p style="font-size: 0.9rem; margin-top: 10px;">(Screencap: Author under fair use for educational purposes)</p>
             </div>
 

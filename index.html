@@ -323,15 +323,10 @@
         
         .insight-card {
             background: white;
-            padding: 40px 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            aspect-ratio: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
         
         .insight-card:hover {
@@ -339,9 +334,14 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .insight-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .insight-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .insight-content {
+            padding: 25px;
         }
         
         .insight-card h3 {
@@ -354,7 +354,6 @@
             color: #666;
             line-height: 1.6;
             margin-bottom: 20px;
-            flex-grow: 1;
         }
         
         .insight-link {
@@ -541,11 +540,6 @@
                 gap: 20px;
             }
             
-            .insight-card {
-                aspect-ratio: auto;
-                min-height: 300px;
-            }
-            
             .mobile-menu-toggle {
                 display: block;
             }
@@ -668,20 +662,20 @@
                 <h2 id="insights-heading" style="text-align: center; font-size: 2.5rem; color: #1a1f71; margin-bottom: 3rem;">Latest Insights</h2>
                 <div class="insights-grid">
                     <article class="insight-card">
-                        <div class="insight-icon">
-                            <span aria-hidden="true">🎖️</span>
+                        <img src="images/generals-1.jpeg" alt="Grid of AI-generated military general images" class="insight-image">
+                        <div class="insight-content">
+                            <h3>AI Bias in Image Generation</h3>
+                            <p>What does an army general look like? An experiment with ChatGPT 4 reveals striking biases in AI image generation and highlights the critical need for diversity in AI development.</p>
+                            <a href="blog/ai-bias-army-general.html" class="insight-link">Read More →</a>
                         </div>
-                        <h3>AI Bias in Image Generation</h3>
-                        <p>What does an army general look like? An experiment with ChatGPT 4 reveals striking biases in AI image generation and highlights the critical need for diversity in AI development.</p>
-                        <a href="blog/ai-bias-army-general.html" class="insight-link">Read More →</a>
                     </article>
                     <article class="insight-card">
-                        <div class="insight-icon">
-                            <span aria-hidden="true">🏥</span>
+                        <img src="images/doctor-1.jpeg" alt="Medical professional using dictation technology" class="insight-image">
+                        <div class="insight-content">
+                            <h3>AI in Healthcare: A Personal Story</h3>
+                            <p>How I built a Custom GPT that transformed my brother's medical dictation workflow from a daily frustration into a seamless process, saving time and eliminating stress.</p>
+                            <a href="blog/medical-dictation-tool.html" class="insight-link">Read More →</a>
                         </div>
-                        <h3>AI in Healthcare: A Personal Story</h3>
-                        <p>How I built a Custom GPT that transformed my brother's medical dictation workflow from a daily frustration into a seamless process, saving time and eliminating stress.</p>
-                        <a href="blog/medical-dictation-tool.html" class="insight-link">Read More →</a>
                     </article>
                 </div>
                 <div style="text-align: center; margin-top: 50px;">

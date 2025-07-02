@@ -210,6 +210,40 @@
             color: #ff6f00;
         }
         
+        .blog-nav {
+            background: #f8f9fa;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .blog-nav-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4c5fd5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-to-blog:hover {
+            color: #1a1f71;
+        }
+        
+        .blog-nav-separator {
+            color: #ccc;
+        }
+        
+        .current-post {
+            color: #666;
+        }
+        
         .footer {
             background: #1a1f71;
             color: white;
@@ -262,6 +296,19 @@
         </div>
     </div>
 
+    <!-- Blog Navigation -->
+    <div class="blog-nav">
+        <div class="article-container">
+            <div class="blog-nav-content">
+                <a href="../blog.html" class="back-to-blog">
+                    <span>←</span> Back to Blog
+                </a>
+                <span class="blog-nav-separator">|</span>
+                <span class="current-post">AI in Healthcare: A Personal Story</span>
+            </div>
+        </div>
+    </div>
+
     <!-- Article Content -->
     <article class="article-content">
         <div class="article-container">
@@ -303,7 +350,7 @@
             </ol>
 
             <div style="text-align: center; margin: 30px 0;">
-                <img src="../images/doctor-1.jpg" alt="Medical professional using the dictation tool" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                <img src="../images/doctor-1.jpeg" alt="Medical professional using the dictation tool" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
             </div>
 
             <h2>Client Feedback</h2>
