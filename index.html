@@ -136,6 +136,100 @@
             padding: 30px 0;
         }
         
+        /* New styles for enhanced features */
+        .tagline-rotation {
+            height: 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .stats-bar {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 0;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+        
+        .stats-bar p {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .latest-insights {
+            margin-top: 30px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .insight-item {
+            text-align: left;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        
+        .insight-item h4 {
+            margin-bottom: 5px;
+            color: #f9c74f;
+        }
+        
+        .insight-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        
+        .contact-cta {
+            margin-top: 30px;
+        }
+        
+        .contact-cta a {
+            color: #f9c74f;
+            text-decoration: underline;
+        }
+        
+        .btn-book {
+            background: #f9c74f;
+            color: #1a1f71;
+            font-weight: bold;
+        }
+        
+        .whitepaper-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .contact-section {
+            background: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact-section ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 30px auto;
+            font-size: 1.1rem;
+        }
+        
+        .contact-section li {
+            margin: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .contact-section li:before {
+            content: "•";
+            color: #4c5fd5;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+        
         /* Mobile responsive styles */
         @media (max-width: 768px) {
             .nav-links {
@@ -176,6 +270,7 @@
                     <li><a href="writings.html">Writings</a></li>
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="padding: 8px 20px; border-radius: 5px;" target="_blank">Book a Call</a></li>
                 </ul>
             </div>
         </div>
@@ -185,10 +280,39 @@
     <section class="hero">
         <div class="container">
             <h1>Welcome to The Chatbot Genius</h1>
-            <p>AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</p>
-            <div>
+            <div class="tagline-rotation">
+                <p id="rotating-tagline">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</p>
+            </div>
+            
+            <!-- Stats Bar -->
+            <div class="stats-bar">
+                <p>📚 3 Books Published • 🤖 Dozens of Custom GPTs & Apps Built • 👥 Hundreds Trained in AI Writing</p>
+            </div>
+            
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <p style="margin-bottom: 15px;">Ready to transform your ideas into organized content? Let's talk.</p>
+                <p>📧 <a href="mailto:jay@barkerhrs.com">jay@barkerhrs.com</a></p>
+                <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="margin-top: 15px;">Book a Free 30-Minute Consultation</a>
+            </div>
+            
+            <div style="margin-top: 30px;">
                 <a href="books.html" class="btn btn-primary">Explore My Books</a>
                 <a href="writings.html" class="btn btn-secondary">Read AI Insights</a>
+            </div>
+            
+            <!-- Latest Insights Placeholder -->
+            <div class="latest-insights">
+                <h3 style="margin-bottom: 20px; color: #f9c74f;">━━━ Latest Insights ━━━</h3>
+                <div class="insight-item">
+                    <h4>📝 [Article Title 1 - Placeholder]</h4>
+                    <p>Brief excerpt about AI writing techniques and transforming verbal content...</p>
+                </div>
+                <div class="insight-item">
+                    <h4>📝 [Article Title 2 - Placeholder]</h4>
+                    <p>How to organize scattered thoughts with AI and create structured documents...</p>
+                </div>
+                <a href="writings.html" class="btn btn-secondary" style="margin-top: 20px;">→ View All Writings</a>
             </div>
         </div>
     </section>
@@ -206,6 +330,19 @@
         </div>
     </section>
 
+    <!-- Whitepaper Section -->
+    <section class="whitepaper-section">
+        <div class="container">
+            <h3 style="color: #1a1f71; margin-bottom: 20px;">Free Resource for Legal Tech Professionals</h3>
+            <p style="color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Concerned about data security when implementing AI? Download my comprehensive whitepaper on maintaining compliance while leveraging AI tools.
+            </p>
+            <a href="https://docs.google.com/document/d/1o9S3M-_bwIcrG9KeLM5g0ctFCg-AxuxgubXD1UAvow8/edit" class="btn btn-primary" target="_blank">
+                📄 Download: Data Security in AI Development - A Legal Tech Whitepaper
+            </a>
+        </div>
+    </section>
+    
     <!-- Featured Book -->
     <section class="section" style="background: #f8f9fa;">
         <div class="container">
@@ -248,6 +385,38 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 style="color: #1a1f71; margin-bottom: 20px;">━━━ Let's Work Together ━━━</h2>
+            <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">Transform your verbal ideas into polished written content with AI</p>
+            
+            <p style="font-size: 1.1rem; margin-bottom: 10px;">📧 <a href="mailto:jay@barkerhrs.com" style="color: #4c5fd5;">jay@barkerhrs.com</a></p>
+            <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;">
+                📅 Book Your Free 30-Minute Consultation
+            </a>
+            
+            <div style="margin-top: 40px;">
+                <h3 style="color: #1a1f71; margin-bottom: 20px;">I specialize in:</h3>
+                <ul>
+                    <li>Converting rambling thoughts into structured documents</li>
+                    <li>Turning meeting recordings into actionable reports</li>
+                    <li>Organizing scattered notes into coherent content</li>
+                    <li>Building custom AI tools for content transformation</li>
+                </ul>
+            </div>
+            
+            <p style="margin-top: 30px; font-style: italic; color: #666;">
+                Not sure if AI can help your specific situation?<br>
+                Book a free consultation and let's explore the possibilities.
+            </p>
+            
+            <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-secondary" target="_blank" style="margin-top: 20px; background: #4c5fd5; color: white; border: none;">
+                Schedule Your Call →
+            </a>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -255,5 +424,35 @@
             <p>Building the future of conversational AI, one chatbot at a time.</p>
         </div>
     </footer>
+    
+    <script>
+        // Rotating taglines
+        const taglines = [
+            "AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs",
+            "Transform Your Business with AI in 10 Hours",
+            "Author • AI Expert • Innovation Catalyst",
+            "Making AI Simple, Practical, and Profitable",
+            "Expert in Verbal-to-Written AI • Transforming Ideas into Organized Content"
+        ];
+        
+        let currentIndex = 0;
+        const taglineElement = document.getElementById('rotating-tagline');
+        
+        function rotateTagline() {
+            currentIndex = (currentIndex + 1) % taglines.length;
+            taglineElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                taglineElement.textContent = taglines[currentIndex];
+                taglineElement.style.opacity = '1';
+            }, 500);
+        }
+        
+        // Add transition style
+        taglineElement.style.transition = 'opacity 0.5s ease-in-out';
+        
+        // Rotate every 4 seconds
+        setInterval(rotateTagline, 4000);
+    </script>
 </body>
 </html>
