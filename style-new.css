@@ -6,10 +6,10 @@
 }
 
 :root {
-    --primary-dark: #2c3e50;
-    --primary-blue: #3498db;
-    --accent-red: #e74c3c;
-    --accent-orange: #f39c12;
+    --primary-dark: #1a1f71;  /* Deep indigo from Van Gogh night sky */
+    --primary-blue: #4c5fd5;  /* Bright indigo/periwinkle */
+    --accent-gold: #f9c74f;   /* Golden yellow from Van Gogh stars */
+    --accent-orange: #f39c12; /* Warm orange accent */
     --text-dark: #333;
     --text-light: #666;
     --bg-light: #f8f9fa;
@@ -140,12 +140,12 @@ body {
 }
 
 .btn-primary {
-    background: var(--accent-red);
+    background: var(--primary-blue);
     color: white;
 }
 
 .btn-primary:hover {
-    background: #c0392b;
+    background: var(--primary-dark);
     transform: translateY(-2px);
 }
 
@@ -310,7 +310,7 @@ h2 {
 }
 
 .date {
-    color: var(--accent-orange);
+    color: var(--primary-blue);
     font-size: 0.9rem;
     margin-bottom: 15px;
 }
@@ -496,7 +496,7 @@ h2 {
 }
 
 .project-meta i {
-    color: var(--accent-orange);
+    color: var(--accent-gold);
     margin-right: 5px;
 }
 
@@ -697,7 +697,7 @@ h2 {
 }
 
 .book-meta i {
-    color: var(--accent-orange);
+    color: var(--accent-gold);
     margin-right: 5px;
 }
 
@@ -898,8 +898,8 @@ blockquote cite {
 }
 
 .category {
-    background: var(--accent-orange);
-    color: white;
+    background: var(--accent-gold);
+    color: var(--primary-dark);
     padding: 3px 10px;
     border-radius: 15px;
     font-weight: 600;
