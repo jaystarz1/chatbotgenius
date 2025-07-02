@@ -83,17 +83,26 @@
             background: #f8f9fa;
         }
         
+        .book-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
         .book-grid {
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 60px;
             align-items: start;
-            max-width: 1000px;
-            margin: 0 auto;
+            margin-bottom: 50px;
         }
         
         .book-info {
             max-width: 600px;
+        }
+        
+        .book-reviews {
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .book-cover {
@@ -198,6 +207,10 @@
             .purchase-links {
                 justify-content: center;
             }
+            
+            .book-reviews > div > div {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -232,50 +245,56 @@
     <!-- Book 1 -->
     <section class="book-section" id="book1">
         <div class="container">
-            <div class="book-grid">
-                <div class="book-cover">
-                    <img src="images/Cover - chatbot-genius-cover-10 Hour Beginners guide to transforming your work and life.jpg" alt="Chatbot Genius">
+            <div class="book-container">
+                <div class="book-grid">
+                    <div class="book-cover">
+                        <img src="images/Cover - chatbot-genius-cover-10 Hour Beginners guide to transforming your work and life.jpg" alt="Chatbot Genius">
+                    </div>
+                    <div class="book-info">
+                        <h2>Chatbot Genius: The 10-Hour Beginner's Guide to Using and Transforming Your Business</h2>
+                        <p class="book-tagline">Unlock the Power of Chatbots in Just 10 Hours!</p>
+                        
+                        <div class="book-meta">
+                            <span>📅 Published: June 2023</span>
+                            <span>📖 163 Pages</span>
+                            <span>🏷️ AI, Chatbots, Business Technology</span>
+                        </div>
+                        
+                        <div class="book-description">
+                            <p>From Zero to Chatbot Hero: Transform your business and personal productivity with AI in just 10 hours! This comprehensive guide takes you from complete beginner to confident chatbot user, with practical exercises and real-world applications.</p>
+                            <p>Whether you're a business owner looking to automate customer service, a professional seeking to boost productivity, or simply curious about AI technology, this book provides everything you need to master chatbots quickly and effectively.</p>
+                        </div>
+                        
+                        <h3>Available At:</h3>
+                        <div class="purchase-links">
+                            <a href="https://www.amazon.com/dp/B0DB3GS284" class="btn btn-amazon" target="_blank">
+                                📚 Amazon.com
+                            </a>
+                            <a href="https://www.amazon.ca/Chatbot-Genius-10-Hour-Beginners-Transforming-ebook/dp/B0DB3GS284" class="btn btn-amazon" target="_blank">
+                                📚 Amazon.ca
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="book-info">
-                    <h2>Chatbot Genius: The 10-Hour Beginner's Guide to Using and Transforming Your Business</h2>
-                    <p class="book-tagline">Unlock the Power of Chatbots in Just 10 Hours!</p>
-                    
-                    <div class="book-meta">
-                        <span>📅 Published: June 2023</span>
-                        <span>📖 163 Pages</span>
-                        <span>🏷️ AI, Chatbots, Business Technology</span>
-                    </div>
-                    
-                    <div class="book-description">
-                        <p>From Zero to Chatbot Hero: Transform your business and personal productivity with AI in just 10 hours! This comprehensive guide takes you from complete beginner to confident chatbot user, with practical exercises and real-world applications.</p>
-                        <p>Whether you're a business owner looking to automate customer service, a professional seeking to boost productivity, or simply curious about AI technology, this book provides everything you need to master chatbots quickly and effectively.</p>
-                    </div>
-                    
-                    <!-- Reader Reviews -->
-                    <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #e0e0e0;">
-                        <h3 style="color: #1a1f71; margin-bottom: 25px; font-size: 1.4rem;">What Readers Are Saying</h3>
+                
+                <!-- Reader Reviews -->
+                <div class="book-reviews">
+                    <div style="padding-top: 30px; border-top: 2px solid #e0e0e0;">
+                        <h3 style="color: #1a1f71; margin-bottom: 25px; font-size: 1.4rem; text-align: center;">What Readers Are Saying</h3>
                         
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"This product was clearly and concisely written. Easy to read and understand. I was able to follow examples and put into practice the ideas and examples and within an hour or so was using chat AI confidently. Great tool to get you started and helpful tips n tricks!"</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Verified Purchase (Canada)</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"This product was clearly and concisely written. Easy to read and understand. I was able to follow examples and put into practice the ideas and examples and within an hour or so was using chat AI confidently. Great tool to get you started and helpful tips n tricks!"</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Verified Purchase (Canada)</p>
+                            </div>
+                            
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"A brilliant introduction to understanding AI and how to use it to enhance or improve your own knowledge etc. impressed"</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Elizabeth D. (UK)</p>
+                            </div>
                         </div>
-                        
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"A brilliant introduction to understanding AI and how to use it to enhance or improve your own knowledge etc. impressed"</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Elizabeth D. (UK)</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Available At:</h3>
-                    <div class="purchase-links">
-                        <a href="https://www.amazon.com/dp/B0DB3GS284" class="btn btn-amazon" target="_blank">
-                            📚 Amazon.com
-                        </a>
-                        <a href="https://www.amazon.ca/Chatbot-Genius-10-Hour-Beginners-Transforming-ebook/dp/B0DB3GS284" class="btn btn-amazon" target="_blank">
-                            📚 Amazon.ca
-                        </a>
                     </div>
                 </div>
             </div>
@@ -285,56 +304,62 @@
     <!-- Book 2 -->
     <section class="book-section" id="book2">
         <div class="container">
-            <div class="book-grid">
-                <div class="book-cover">
-                    <img src="images/maggie-christmas-elf-cover-new.jpg" alt="Maggie and the Christmas Elf">
+            <div class="book-container">
+                <div class="book-grid">
+                    <div class="book-cover">
+                        <img src="images/maggie-christmas-elf-cover-new.jpg" alt="Maggie and the Christmas Elf">
+                    </div>
+                    <div class="book-info">
+                        <h2>Maggie and the Christmas Elf</h2>
+                        <p class="book-tagline">A heartwarming Christmas story for the whole family</p>
+                        
+                        <div class="book-meta">
+                            <span>📅 Published: 2021</span>
+                            <span>📖 Children's Book</span>
+                            <span>🏷️ Christmas, Family, Children's Literature</span>
+                        </div>
+                        
+                        <div class="book-description">
+                            <p>A truly unique and entertaining Christmas story that will delight young ones and the entire family. When young Maggie writes her letter to Santa asking for a real elf, she gets more than she bargained for when Liam the Elf arrives on Christmas Eve.</p>
+                            <p>This touching story was years in the making - with the main parts developed in 2004 and the ending finally figured out in 2018. Illustrated beautifully by Natia Gogiashvili, it's a story close to my heart, dedicated to our son Liam.</p>
+                        </div>
+                        
+                        <h3>Available At:</h3>
+                        <div class="purchase-links">
+                            <a href="https://www.amazon.com/Maggie-Christmas-Elf-Jay-Tarzwell/dp/B09M7GRGZB" class="btn btn-amazon" target="_blank">
+                                📚 Amazon.com
+                            </a>
+                            <a href="https://www.amazon.ca/dp/B09M7GRGZB" class="btn btn-amazon" target="_blank">
+                                📚 Amazon.ca
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="book-info">
-                    <h2>Maggie and the Christmas Elf</h2>
-                    <p class="book-tagline">A heartwarming Christmas story for the whole family</p>
-                    
-                    <div class="book-meta">
-                        <span>📅 Published: 2021</span>
-                        <span>📖 Children's Book</span>
-                        <span>🏷️ Christmas, Family, Children's Literature</span>
-                    </div>
-                    
-                    <div class="book-description">
-                        <p>A truly unique and entertaining Christmas story that will delight young ones and the entire family. When young Maggie writes her letter to Santa asking for a real elf, she gets more than she bargained for when Liam the Elf arrives on Christmas Eve.</p>
-                        <p>This touching story was years in the making - with the main parts developed in 2004 and the ending finally figured out in 2018. Illustrated beautifully by Natia Gogiashvili, it's a story close to my heart, dedicated to our son Liam.</p>
-                    </div>
-                    
-                    <!-- Reader Reviews -->
-                    <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #e0e0e0;">
-                        <h3 style="color: #1a1f71; margin-bottom: 25px; font-size: 1.4rem;">What Readers Are Saying</h3>
+                
+                <!-- Reader Reviews -->
+                <div class="book-reviews">
+                    <div style="padding-top: 30px; border-top: 2px solid #e0e0e0;">
+                        <h3 style="color: #1a1f71; margin-bottom: 25px; font-size: 1.4rem; text-align: center;">What Readers Are Saying</h3>
                         
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"Canadian author Jay Tarzwell and illustrator Natia Gogiashvili have joined in delivering a truly unique and entertaining new Christmas story... Genuine Christmas magic beams from this little book. This is definitely a read aloud story that will engage the entire family. Recommended."</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Grady H. (USA)</p>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px;">
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6; font-size: 0.95rem;">"Genuine Christmas magic beams from this little book. This is definitely a read aloud story that will engage the entire family. Recommended."</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Grady H. (USA)</p>
+                            </div>
+                            
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6; font-size: 0.95rem;">"The children connected with this story and loved the bright and clear pictures. It's definitely worth a read, your child will be delighted."</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Elizabeth (Canada)</p>
+                            </div>
+                            
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6; font-size: 0.95rem;">"Such a beautiful and touching story. I recommend this wonderful book to all the parents young and old"</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Francine H. (Canada)</p>
+                            </div>
                         </div>
-                        
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"This is a wonderful children's Christmas Story. I run a child Day Care, and I love to tell the children stories during the day... The children connected with this story and loved the bright and clear pictures. It's definitely worth a read, your child will be delighted hearing about the little elf who visits Maggie in her home."</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Elizabeth (Canada)</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"Such a beautiful and touching story. I recommend this wonderful book to all the parents young and old"</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Francine H. (Canada)</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Available At:</h3>
-                    <div class="purchase-links">
-                        <a href="https://www.amazon.com/Maggie-Christmas-Elf-Jay-Tarzwell/dp/B09M7GRGZB" class="btn btn-amazon" target="_blank">
-                            📚 Amazon.com
-                        </a>
-                        <a href="https://www.amazon.ca/dp/B09M7GRGZB" class="btn btn-amazon" target="_blank">
-                            📚 Amazon.ca
-                        </a>
                     </div>
                 </div>
             </div>
@@ -344,56 +369,62 @@
     <!-- Book 3 -->
     <section class="book-section" id="book3">
         <div class="container">
-            <div class="book-grid">
-                <div class="book-cover">
-                    <img src="images/last-algorithm-cover-new.jpg" alt="The Last Algorithm">
+            <div class="book-container">
+                <div class="book-grid">
+                    <div class="book-cover">
+                        <img src="images/last-algorithm-cover-new.jpg" alt="The Last Algorithm">
+                    </div>
+                    <div class="book-info">
+                        <h2>The Last Algorithm</h2>
+                        <p class="book-tagline">A Thought-Provoking Journey into AI's Future and Humanity's Destiny</p>
+                        
+                        <div class="book-meta">
+                            <span>📅 Published: August 2023</span>
+                            <span>📖 Science Fiction / Technology</span>
+                            <span>🏷️ AI, Future, Sci-Fi, Philosophy</span>
+                        </div>
+                        
+                        <div class="book-description">
+                            <p>In a world where artificial intelligence has evolved beyond human comprehension, "The Last Algorithm" explores the profound questions about consciousness, humanity, and our place in a rapidly changing technological landscape.</p>
+                            <p>This thought-provoking novel combines cutting-edge AI concepts with philosophical exploration, offering readers a glimpse into a possible future where the line between human and artificial intelligence becomes increasingly blurred. A must-read for anyone interested in the intersection of technology and humanity.</p>
+                        </div>
+                        
+                        <h3>Available At:</h3>
+                        <div class="purchase-links">
+                            <a href="https://www.amazon.com/dp/B0FB46WG8R" class="btn btn-amazon" target="_blank">
+                                📚 Amazon.com
+                            </a>
+                            <a href="https://www.amazon.ca/Last-Algorithm-Jay-Tarzwell-ebook/dp/B0FB46WG8R" class="btn btn-amazon" target="_blank">
+                                📚 Amazon.ca
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="book-info">
-                    <h2>The Last Algorithm</h2>
-                    <p class="book-tagline">A Thought-Provoking Journey into AI's Future and Humanity's Destiny</p>
-                    
-                    <div class="book-meta">
-                        <span>📅 Published: August 2023</span>
-                        <span>📖 Science Fiction / Technology</span>
-                        <span>🏷️ AI, Future, Sci-Fi, Philosophy</span>
-                    </div>
-                    
-                    <div class="book-description">
-                        <p>In a world where artificial intelligence has evolved beyond human comprehension, "The Last Algorithm" explores the profound questions about consciousness, humanity, and our place in a rapidly changing technological landscape.</p>
-                        <p>This thought-provoking novel combines cutting-edge AI concepts with philosophical exploration, offering readers a glimpse into a possible future where the line between human and artificial intelligence becomes increasingly blurred. A must-read for anyone interested in the intersection of technology and humanity.</p>
-                    </div>
-                    
-                    <!-- Reader Reviews -->
-                    <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #e0e0e0;">
-                        <h3 style="color: #1a1f71; margin-bottom: 25px; font-size: 1.4rem;">What Readers Are Saying</h3>
+                
+                <!-- Reader Reviews -->
+                <div class="book-reviews">
+                    <div style="padding-top: 30px; border-top: 2px solid #e0e0e0;">
+                        <h3 style="color: #1a1f71; margin-bottom: 25px; font-size: 1.4rem; text-align: center;">What Readers Are Saying</h3>
                         
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"The Last Algorithm isn't just another book about artificial intelligence—it's a mind-bending blend of fiction and non-fiction... It's original, thought-provoking, and unlike anything I've read before."</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Elizabeth</p>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px;">
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6; font-size: 0.95rem;">"The Last Algorithm isn't just another book about artificial intelligence—it's a mind-bending blend of fiction and non-fiction... It's original, thought-provoking, and unlike anything I've read before."</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Elizabeth</p>
+                            </div>
+                            
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6; font-size: 0.95rem;">"I was prepared to be reading through a heavy topic. Was pleasantly surprised by the way the story has been written... It is definitely a great read."</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Sheena C.</p>
+                            </div>
+                            
+                            <div style="padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
+                                <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
+                                <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6; font-size: 0.95rem;">"I enjoyed the pace of this book. It has a snappy, articulate tempo that makes it an easy read... Readers will find the originality refreshing."</p>
+                                <p style="text-align: right; color: #666; font-weight: bold;">– Tom M.</p>
+                            </div>
                         </div>
-                        
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"I was prepared to be reading through a heavy topic. Was pleasantly surprised by the way the story has been written... It is definitely a great read."</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Sheena C.</p>
-                        </div>
-                        
-                        <div style="margin-bottom: 20px; padding: 18px 20px; background: #f8f9fa; border-left: 4px solid #f9c74f; border-radius: 5px;">
-                            <div style="color: #f9c74f; margin-bottom: 8px;">★★★★★</div>
-                            <p style="font-style: italic; margin-bottom: 8px; line-height: 1.6;">"I enjoyed the pace of this book. It has a snappy, articulate tempo that makes it an easy read... Readers will find the originality refreshing."</p>
-                            <p style="text-align: right; color: #666; font-weight: bold;">– Tom M.</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Available At:</h3>
-                    <div class="purchase-links">
-                        <a href="https://www.amazon.com/dp/B0FB46WG8R" class="btn btn-amazon" target="_blank">
-                            📚 Amazon.com
-                        </a>
-                        <a href="https://www.amazon.ca/Last-Algorithm-Jay-Tarzwell-ebook/dp/B0FB46WG8R" class="btn btn-amazon" target="_blank">
-                            📚 Amazon.ca
-                        </a>
                     </div>
                 </div>
             </div>
