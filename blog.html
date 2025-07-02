@@ -86,15 +86,26 @@
         }
         
         .article-card {
-            background: #f8f9fa;
-            padding: 30px;
+            background: white;
             border-radius: 10px;
-            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .article-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 25px;
         }
         
         .article-card h3 {
@@ -110,6 +121,7 @@
         
         .article-card p {
             margin-bottom: 20px;
+            line-height: 1.6;
         }
         
         .read-more {
@@ -175,17 +187,23 @@
             
             <div class="articles-grid">
                 <article class="article-card">
-                    <h3>What Does an Army General Look Like? Demonstrated Bias in Generative AI</h3>
-                    <p class="article-date">July 2024</p>
-                    <p>An experiment using ChatGPT 4 that highlights bias in advanced AI models. Exploring how AI's image generation reveals deep-seated biases and the importance of diversity in AI development.</p>
-                    <a href="blog/ai-bias-army-general.html" class="read-more">Read More →</a>
+                    <img src="images/generals-1.jpeg" alt="Grid of AI-generated military general images" class="article-image">
+                    <div class="article-content">
+                        <h3>What Does an Army General Look Like? Demonstrated Bias in Generative AI</h3>
+                        <p class="article-date">July 2024</p>
+                        <p>An experiment using ChatGPT 4 that highlights bias in advanced AI models. Exploring how AI's image generation reveals deep-seated biases and the importance of diversity in AI development.</p>
+                        <a href="blog/ai-bias-army-general.html" class="read-more">Read More →</a>
+                    </div>
                 </article>
                 
                 <article class="article-card">
-                    <h3>The Personal Medical Dictation Tool I Built for My Brother</h3>
-                    <p class="article-date">March 2024</p>
-                    <p>How a Custom GPT transformed a Nuclear Medicine specialist's most frustrating task into a seamless workflow, demonstrating AI's potential to improve professional lives.</p>
-                    <a href="blog/medical-dictation-tool.html" class="read-more">Read More →</a>
+                    <img src="images/doctor-1.jpeg" alt="Medical professional using dictation technology" class="article-image">
+                    <div class="article-content">
+                        <h3>The Personal Medical Dictation Tool I Built for My Brother</h3>
+                        <p class="article-date">March 2024</p>
+                        <p>How a Custom GPT transformed a Nuclear Medicine specialist's most frustrating task into a seamless workflow, demonstrating AI's potential to improve professional lives.</p>
+                        <a href="blog/medical-dictation-tool.html" class="read-more">Read More →</a>
+                    </div>
                 </article>
             </div>
         </div>
