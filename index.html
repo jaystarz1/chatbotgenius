@@ -167,13 +167,9 @@
         }
         
         .tagline-banner {
-            background: rgba(255, 255, 255, 0.15);
             padding: 20px 30px;
-            border-radius: 10px;
             margin: 0 auto 30px;
             max-width: 800px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .hero h2 {
@@ -380,20 +376,20 @@
         }
         
         /* Pause button for rotating content */
-        .rotation-controls {
-            margin-top: 15px;
-        }
         
         .pause-btn {
             background: #ff8c42;
             border: none;
             color: white;
-            padding: 8px 20px;
+            padding: 4px 12px;
             cursor: pointer;
-            border-radius: 5px;
-            font-size: 0.9rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
             font-weight: 600;
             transition: background 0.3s ease;
+            margin-left: 15px;
+            display: inline-block;
+            vertical-align: middle;
         }
         
         .pause-btn:hover {
@@ -655,23 +651,10 @@
             <div class="container">
                 <h1 id="hero-heading">Welcome to The Chatbot Genius</h1>
                 <div class="tagline-banner">
-                <div class="tagline-rotation">
-                        <h2 id="rotating-tagline" aria-live="polite">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</h2>
+                    <div class="tagline-rotation" style="display: inline-block;">
+                        <h2 id="rotating-tagline" aria-live="polite" style="display: inline;">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</h2>
+                        <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">❚❚</button>
                     </div>
-                <div class="rotation-controls">
-                        <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">Pause</button>
-                </div>
-            </div>
-                
-                <!-- Stats Bar -->
-                <div class="stats-bar">
-                    <p><span aria-hidden="true">📚</span> 3 Books Published • <span aria-hidden="true">🤖</span> Dozens of Custom GPTs & Apps Built • <span aria-hidden="true">👥</span> Hundreds Trained in AI Writing</p>
-                </div>
-                
-                
-                <div style="margin-top: 30px;">
-                    <a href="books.html" class="btn btn-primary">Explore My Books</a>
-                    <a href="writings.html" class="btn btn-secondary">Read AI Insights</a>
                 </div>
                 
 
@@ -877,7 +860,7 @@
         // Pause/Play functionality
         pauseBtn.addEventListener('click', function() {
             isPaused = !isPaused;
-            this.textContent = isPaused ? 'Play' : 'Pause';
+            this.textContent = isPaused ? '▶' : '❚❚';
             this.setAttribute('aria-label', isPaused ? 'Play tagline rotation' : 'Pause tagline rotation');
         });
         
