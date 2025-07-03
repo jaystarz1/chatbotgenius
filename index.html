@@ -778,6 +778,7 @@
                 <ul class="nav-links" id="nav-links">
                     <li><a href="/" aria-current="page">Home</a></li>
                     <li><a href="about.html">About</a></li>
+                    <li><a href="ai-news.html">AI News</a></li>
                     <li><a href="books.html">Books</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1111,6 +1112,15 @@
                 });
                 
                 feedContainer.innerHTML = newsHTML || '<p class="news-error">No news items available</p>';
+                
+                // Add "View All" link at the bottom
+                feedContainer.innerHTML += `
+                    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                        <a href="/ai-news.html" style="color: #4c5fd5; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                            View All AI News →
+                        </a>
+                    </div>
+                `;
                 
             } catch (error) {
                 console.error('Error loading RSS feed:', error);
