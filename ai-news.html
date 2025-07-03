@@ -313,7 +313,7 @@
         }
         
         .filter-btn.active {
-            background: #4c5fd5;
+            background: #e67e22;
             color: white;
         }
         
@@ -804,11 +804,9 @@
             categoryFilters.innerHTML = categories.map(cat => {
                 const count = cat === 'all' ? displayItems.length : displayItems.filter(item => item.category === cat).length;
                 const displayName = cat === 'all' ? 'All' : cat;
-                const categoryClass = cat === 'all' ? '' : `category-${cat.toLowerCase()}`;
                 return `<button class="filter-btn ${cat === 'all' ? 'active' : ''}" 
                         data-category="${cat}" 
-                        onclick="filterArticles('${cat}')"
-                        style="${cat !== 'all' ? `background-color: var(--${categoryClass}-bg, #f0f0f0);` : ''}">
+                        onclick="filterArticles('${cat}')">
                     ${displayName} (${count})
                 </button>`;
             }).join('');
