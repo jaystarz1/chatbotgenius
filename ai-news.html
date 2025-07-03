@@ -343,14 +343,15 @@
         .mobile-category-button {
             display: none;
             position: fixed;
-            bottom: 20px;
+            bottom: 80px; /* Moved higher to avoid bottom interference */
             right: 20px;
-            background: #1a1f71;
+            background: #ff8c42; /* Orange background to match site buttons */
             color: white;
             border: none;
             border-radius: 50px;
-            padding: 15px 25px;
+            padding: 20px 30px; /* Bigger padding */
             font-weight: 600;
+            font-size: 1.1rem; /* Larger text */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             cursor: pointer;
             z-index: 1000;
@@ -358,7 +359,7 @@
         }
         
         .mobile-category-button:hover {
-            background: #4c5fd5;
+            background: #ff7329; /* Darker orange on hover */
             transform: scale(1.05);
         }
         
@@ -416,12 +417,17 @@
         .mobile-category-close {
             width: 100%;
             padding: 12px;
-            background: #1a1f71;
+            background: #ff8c42; /* Orange to match theme */
             color: white;
             border: none;
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .mobile-category-close:hover {
+            background: #ff7329;
         }
         
         .category-dropdown select {
@@ -997,6 +1003,12 @@
                     card.classList.add('hidden');
                 }
             });
+            
+            // Scroll to top of news section
+            const newsSection = document.querySelector('.news-section');
+            if (newsSection) {
+                newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
             
             // Close panel after selection on mobile
             closeCategoryPanel();
