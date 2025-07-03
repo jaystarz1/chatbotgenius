@@ -32,7 +32,8 @@ jobs:
           'https://www.google.ca/alerts/feeds/04066946017456136967/4217792680075237154',
           'https://www.google.ca/alerts/feeds/04066946017456136967/13089354697454058042',
           'https://www.google.ca/alerts/feeds/04066946017456136967/13089354697454058988',
-          'https://www.google.ca/alerts/feeds/04066946017456136967/1942817214412033827'
+          'https://www.google.ca/alerts/feeds/04066946017456136967/1942817214412033827',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/8120264801281996652'
         ];
         
         function fetchRSS(url) {
@@ -125,7 +126,8 @@ jobs:
               'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT'],
               'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy'],
               'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA'],
-              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study']
+              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study'],
+              'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'compliance', 'regulatory', 'law', 'copyright', 'patent', 'intellectual property', 'GDPR', 'terms of service', 'contract']
             };
             
             // Function to categorize an article
