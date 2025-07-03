@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Chatbot Genius - AI News &amp; Insights</title>
+    <link>https://thechatbotgenius.com/ai-news.html</link>
+    <description>Latest AI news, insights, and analysis curated by Jay Tarzwell, The Chatbot Genius</description>
+    <language>en-us</language>
+    <copyright>Copyright 2025 Jay Tarzwell</copyright>
+    <managingEditor>jay@barkerhrs.com (Jay Tarzwell)</managingEditor>
+    <webMaster>jay@barkerhrs.com (Jay Tarzwell)</webMaster>
+    <lastBuildDate>Thu, 03 Jul 2025 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://thechatbotgenius.com/feed.xml" rel="self" type="application/rss+xml" />
+    
+    <!-- 
+    This RSS feed aggregates content from multiple Google Alerts feeds.
+    The feed is automatically updated when the AI News page fetches new articles.
+    Categories include: Business, HR, Jobs, Tech, Microsoft, Meta, OpenAI, 
+    NVIDIA, YCombinator, ML, Ethics, Privacy, Security, Policy, Legal, 
+    Healthcare, Education, and Stocks.
+    -->
+    
+    <!-- Static placeholder entries - these will be dynamically updated -->
+    <item>
+      <title>AI News Feed Active</title>
+      <link>https://thechatbotgenius.com/ai-news.html</link>
+      <description>
+        <![CDATA[
+        The AI News feed is now active and aggregating content from 17 different 
+        AI-related news sources. Visit the AI News page for the latest articles 
+        on artificial intelligence, machine learning, and technology trends.
+        ]]>
+      </description>
+      <author>jay@barkerhrs.com (Jay Tarzwell)</author>
+      <guid isPermaLink="true">https://thechatbotgenius.com/ai-news.html#feed-active</guid>
+      <pubDate>Thu, 03 Jul 2025 12:00:00 GMT</pubDate>
+      <category>General</category>
+    </item>
+    
+  </channel>
+</rss>
