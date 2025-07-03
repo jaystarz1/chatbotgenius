@@ -640,42 +640,64 @@
         <section class="news-section">
             <div class="container">
                 <!-- Daily AI Digest -->
-                <div id="daily-digest" style="background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+                <div id="daily-digest" style="background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%); padding: 30px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
                         <h2 style="color: #f9c74f; margin: 0; font-size: 2em;">📊 Daily AI Digest</h2>
-                        <p style="opacity: 0.9; margin: 0; font-size: 0.95rem;">As of 9:00 AM EST, Thursday, January 2, 2025</p>
+                        <p style="color: rgba(255, 255, 255, 0.9); margin: 0; font-size: 0.95rem;">As of 9:00 AM EST</p>
                     </div>
                     
-                    <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2;">AI Giants Race to Transform Industries</h3>
+                    <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2; text-align: center;">AI Giants Race to Transform Industries</h3>
                     
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start;">
-                        <!-- Left Column - Text Content -->
-                        <div>
-                            <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                                <h4 style="color: #f9c74f; margin-bottom: 15px;">🔍 Key Trends</h4>
-                                <ul style="list-style: none; padding: 0;">
-                                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> Major tech companies are accelerating AI integration across consumer and enterprise products</li>
-                                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> Open-source models are closing the performance gap with proprietary systems</li>
-                                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> Healthcare AI shows breakthrough potential in early disease detection</li>
-                                    <li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> Regulatory frameworks are tightening globally for high-risk AI applications</li>
-                                </ul>
-                            </div>
-                            
-                            <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                                <h4 style="color: #f9c74f; margin-bottom: 10px;">🏆 Top Story</h4>
-                                <p style="line-height: 1.6;">OpenAI's GPT-5 development announcement signals a new era in AI capabilities, with advanced reasoning and multimodal understanding that could revolutionize how businesses operate. The model's improvements in logical reasoning and cross-modal understanding represent a significant leap forward.</p>
-                            </div>
-                            
-                            <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px;">
-                                <h4 style="color: #f9c74f; margin-bottom: 10px;">🔮 Today's Outlook</h4>
-                                <p style="line-height: 1.6;">Expect continued announcements from major tech players as the AI arms race intensifies, with particular focus on practical enterprise applications and addressing regulatory concerns.</p>
-                            </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                        <!-- Top Left - Key Trends -->
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); min-height: 250px;">
+                            <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                                <span>🔍</span> Key Trends
+                            </h4>
+                            <ul style="list-style: none; padding: 0; margin: 0;">
+                                <li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5;">
+                                    <span style="position: absolute; left: 0; color: #f9c74f;">▸</span>
+                                    Major tech companies are accelerating AI integration across consumer and enterprise products
+                                </li>
+                                <li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5;">
+                                    <span style="position: absolute; left: 0; color: #f9c74f;">▸</span>
+                                    Open-source models are closing the performance gap with proprietary systems
+                                </li>
+                                <li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5;">
+                                    <span style="position: absolute; left: 0; color: #f9c74f;">▸</span>
+                                    Healthcare AI shows breakthrough potential in early disease detection
+                                </li>
+                                <li style="color: #333; margin-bottom: 0; padding-left: 20px; position: relative; line-height: 1.5;">
+                                    <span style="position: absolute; left: 0; color: #f9c74f;">▸</span>
+                                    Regulatory frameworks are tightening globally for high-risk AI applications
+                                </li>
+                            </ul>
                         </div>
                         
-                        <!-- Right Column - Chart -->
-                        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
-                            <img src="https://quickchart.io/chart?c=%7B%22type%22%3A%22bar%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22OpenAI%22%2C%22Microsoft%22%2C%22NVIDIA%22%2C%22Ethics%22%2C%22Meta%22%2C%22Healthcare%22%2C%22YCombinator%22%2C%22Education%22%2C%22Security%22%2C%22Policy%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22Article%20Count%22%2C%22data%22%3A%5B1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%5D%2C%22backgroundColor%22%3A%22%234c5fd5%22%2C%22borderColor%22%3A%22%231a1f71%22%2C%22borderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22legend%22%3A%7B%22display%22%3Afalse%7D%2C%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22AI%20News%20Distribution%20by%20Category%22%2C%22font%22%3A%7B%22size%22%3A16%7D%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22beginAtZero%22%3Atrue%2C%22ticks%22%3A%7B%22stepSize%22%3A1%7D%7D%7D%7D%7D&width=600&height=400&backgroundColor=white" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
-                            <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9em; text-align: center;">Analyzed 10 articles from the past 24 hours</p>
+                        <!-- Top Right - Chart -->
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+                            <img src="https://quickchart.io/chart?c=%7B%22type%22%3A%22bar%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22OpenAI%22%2C%22Microsoft%22%2C%22NVIDIA%22%2C%22Ethics%22%2C%22Meta%22%2C%22Healthcare%22%2C%22YCombinator%22%2C%22Education%22%2C%22Security%22%2C%22Policy%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22Article%20Count%22%2C%22data%22%3A%5B1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%5D%2C%22backgroundColor%22%3A%22%234c5fd5%22%2C%22borderColor%22%3A%22%231a1f71%22%2C%22borderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22legend%22%3A%7B%22display%22%3Afalse%7D%2C%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22AI%20News%20Distribution%20by%20Category%22%2C%22font%22%3A%7B%22size%22%3A16%7D%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22beginAtZero%22%3Atrue%2C%22ticks%22%3A%7B%22stepSize%22%3A1%7D%7D%7D%7D%7D&width=500&height=300&backgroundColor=white" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 8px;">
+                            <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;">Analyzed 10 articles from the past 24 hours</p>
+                        </div>
+                        
+                        <!-- Bottom Left - Top Story -->
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                            <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                                <span>🏆</span> Top Story
+                            </h4>
+                            <p style="color: #333; line-height: 1.6; margin: 0;">
+                                OpenAI's GPT-5 development announcement signals a new era in AI capabilities, with advanced reasoning and multimodal understanding that could revolutionize how businesses operate. The model's improvements in logical reasoning and cross-modal understanding represent a significant leap forward.
+                            </p>
+                        </div>
+                        
+                        <!-- Bottom Right - Today's Outlook -->
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                            <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                                <span>🔮</span> Today's Outlook
+                            </h4>
+                            <p style="color: #333; line-height: 1.6; margin: 0;">
+                                Expect continued announcements from major tech players as the AI arms race intensifies, with particular focus on practical enterprise applications and addressing regulatory concerns.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -686,7 +708,16 @@
                     @media (max-width: 768px) {
                         #daily-digest > div:last-child {
                             grid-template-columns: 1fr;
-                            gap: 20px;
+                            gap: 15px;
+                        }
+                        
+                        #daily-digest {
+                            padding: 20px;
+                        }
+                        
+                        #daily-digest h3 {
+                            font-size: 1.5em;
+                            margin-bottom: 20px;
                         }
                     }
                 </style>

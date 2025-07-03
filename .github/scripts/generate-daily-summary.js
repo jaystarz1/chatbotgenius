@@ -75,7 +75,7 @@ function generateCategoryChart(categoryCount) {
         }
     };
     
-    const chartUrl = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chartConfig))}&width=600&height=400&backgroundColor=white`;
+    const chartUrl = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chartConfig))}&width=500&height=300&backgroundColor=white`;
     return chartUrl;
 }
 
@@ -146,42 +146,47 @@ function updateAINewsPage(summary, chartUrl, articleCount, date) {
     let htmlContent = fs.readFileSync(aiNewsPath, 'utf8');
     
     // Create the daily digest HTML
-    const dateStr = new Date(date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const dailyDigestHtml = `
     <!-- Daily AI Digest -->
-    <div id="daily-digest" style="background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+    <div id="daily-digest" style="background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%); padding: 30px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
             <h2 style="color: #f9c74f; margin: 0; font-size: 2em;">📊 Daily AI Digest</h2>
-            <p style="opacity: 0.9; margin: 0; font-size: 0.95rem;">As of 9:00 AM EST, ${dateStr}</p>
+            <p style="color: rgba(255, 255, 255, 0.9); margin: 0; font-size: 0.95rem;">As of 9:00 AM EST</p>
         </div>
         
-        <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2;">${summary.headline}</h3>
+        <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2; text-align: center;">${summary.headline}</h3>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start;">
-            <!-- Left Column - Text Content -->
-            <div>
-                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h4 style="color: #f9c74f; margin-bottom: 15px;">🔍 Key Trends</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        ${summary.keyTrends.map(trend => `<li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> ${trend}</li>`).join('')}
-                    </ul>
-                </div>
-                
-                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                    <h4 style="color: #f9c74f; margin-bottom: 10px;">🏆 Top Story</h4>
-                    <p style="line-height: 1.6;">${summary.topStory}</p>
-                </div>
-                
-                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px;">
-                    <h4 style="color: #f9c74f; margin-bottom: 10px;">🔮 Today's Outlook</h4>
-                    <p style="line-height: 1.6;">${summary.outlook}</p>
-                </div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+            <!-- Top Left - Key Trends -->
+            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); min-height: 250px;">
+                <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                    <span>🔍</span> Key Trends
+                </h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    ${summary.keyTrends.map(trend => `<li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> ${trend}</li>`).join('')}
+                </ul>
             </div>
             
-            <!-- Right Column - Chart -->
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
-                <img src="${chartUrl}" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
-                <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9em; text-align: center;">Analyzed ${articleCount} articles from the past 24 hours</p>
+            <!-- Top Right - Chart -->
+            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+                <img src="${chartUrl}" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 8px;">
+                <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;">Analyzed ${articleCount} articles from the past 24 hours</p>
+            </div>
+            
+            <!-- Bottom Left - Top Story -->
+            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                    <span>🏆</span> Top Story
+                </h4>
+                <p style="color: #333; line-height: 1.6; margin: 0;">${summary.topStory}</p>
+            </div>
+            
+            <!-- Bottom Right - Today's Outlook -->
+            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
+                    <span>🔮</span> Today's Outlook
+                </h4>
+                <p style="color: #333; line-height: 1.6; margin: 0;">${summary.outlook}</p>
             </div>
         </div>
     </div>
@@ -192,7 +197,16 @@ function updateAINewsPage(summary, chartUrl, articleCount, date) {
         @media (max-width: 768px) {
             #daily-digest > div:last-child {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 15px;
+            }
+            
+            #daily-digest {
+                padding: 20px;
+            }
+            
+            #daily-digest h3 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
             }
         }
     </style>`;
