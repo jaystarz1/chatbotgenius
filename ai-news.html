@@ -262,6 +262,64 @@
             font-weight: 500;
         }
         
+        /* Category Badges */
+        .category-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        /* Category Colors */
+        .category-business { background: #2c3e50; }
+        .category-hr { background: #27ae60; }
+        .category-tech { background: #8e44ad; }
+        .category-ml { background: #e67e22; }
+        .category-ethics { background: #c0392b; }
+        .category-healthcare { background: #e74c3c; }
+        .category-education { background: #16a085; }
+        .category-general { background: #7f8c8d; }
+        
+        /* Category Filter Buttons */
+        .category-filters {
+            text-align: center;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f0f0f0;
+            color: #333;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .filter-btn.active {
+            background: #4c5fd5;
+            color: white;
+        }
+        
+        .news-card.hidden {
+            display: none;
+        }
+        
         .news-loading {
             text-align: center;
             padding: 100px 20px;
@@ -510,6 +568,9 @@
                 <div class="news-stats" id="news-stats">
                     Loading latest AI news...
                 </div>
+                <div class="category-filters" id="category-filters">
+                    <!-- Filter buttons will be inserted here -->
+                </div>
                 <div class="news-grid" id="news-grid">
                     <div class="news-loading">
                         <p>Fetching articles from multiple sources...</p>
@@ -570,10 +631,72 @@
             }
         });
 
+        // Category definitions
+        const categoryKeywords = {
+            'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger'],
+            'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid'],
+            'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure', 'cybersecurity', 'data'],
+            'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT'],
+            'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy'],
+            'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA'],
+            'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study']
+        };
+
+        // Function to categorize an article
+        function categorizeArticle(title, excerpt) {
+            const text = (title + ' ' + excerpt).toLowerCase();
+            let bestCategory = 'General';
+            let highestScore = 0;
+
+            for (const [category, keywords] of Object.entries(categoryKeywords)) {
+                let score = 0;
+                for (const keyword of keywords) {
+                    if (text.includes(keyword.toLowerCase())) {
+                        score++;
+                    }
+                }
+                if (score > highestScore) {
+                    highestScore = score;
+                    bestCategory = category;
+                }
+            }
+
+            return bestCategory;
+        }
+
+        // Current filter state
+        let currentFilter = 'all';
+
+        // Function to filter articles
+        function filterArticles(category) {
+            currentFilter = category;
+            const cards = document.querySelectorAll('.news-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update button states
+            buttons.forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // Show/hide cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
         // RSS Feed Functionality for Multiple Feeds
         async function loadAllNewsFeeds() {
             const newsGrid = document.getElementById('news-grid');
             const newsStats = document.getElementById('news-stats');
+            const categoryFilters = document.getElementById('category-filters');
             
             // All RSS feed URLs
             const rssFeeds = [
@@ -593,6 +716,7 @@
             
             let allNewsItems = [];
             let successfulFeeds = 0;
+            const categoryCounts = {};
             
             // Fetch each feed
             for (const feedUrl of rssFeeds) {
@@ -632,11 +756,16 @@
                             const sourceMatch = content.match(/- ([^<]+)$/);
                             const source = sourceMatch ? sourceMatch[1] : "AI News";
                             
+                            // Categorize the article
+                            const category = categorizeArticle(title, excerpt);
+                            categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+                            
                             allNewsItems.push({
                                 title: title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
                                 link,
                                 excerpt,
                                 source,
+                                category,
                                 date: new Date(published),
                                 dateString: new Date(published).toLocaleDateString('en-US', {
                                     month: 'short',
@@ -667,11 +796,26 @@
             // Update stats
             newsStats.textContent = `Showing ${displayItems.length} latest articles from ${successfulFeeds} sources`;
             
+            // Generate filter buttons
+            const categories = ['all', ...Object.keys(categoryKeywords), 'General'];
+            categoryFilters.innerHTML = categories.map(cat => {
+                const count = cat === 'all' ? displayItems.length : displayItems.filter(item => item.category === cat).length;
+                const displayName = cat === 'all' ? 'All' : cat;
+                const categoryClass = cat === 'all' ? '' : `category-${cat.toLowerCase()}`;
+                return `<button class="filter-btn ${cat === 'all' ? 'active' : ''}" 
+                        data-category="${cat}" 
+                        onclick="filterArticles('${cat}')"
+                        style="${cat !== 'all' ? `background-color: var(--${categoryClass}-bg, #f0f0f0);` : ''}">
+                    ${displayName} (${count})
+                </button>`;
+            }).join('');
+            
             // Generate HTML for news cards
             if (displayItems.length > 0) {
                 newsGrid.innerHTML = displayItems.map(item => `
-                    <article class="news-card">
+                    <article class="news-card" data-category="${item.category}">
                         <div class="news-card-content">
+                            <span class="category-badge category-${item.category.toLowerCase()}">${item.category}</span>
                             <h3><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
                             <p class="news-card-excerpt">${item.excerpt}</p>
                             <div class="news-card-meta">

@@ -117,6 +117,39 @@ jobs:
               console.log('Homepage news feed updated successfully!');
             }
             
+            // Category definitions
+            const categoryKeywords = {
+              'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger'],
+              'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid'],
+              'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure', 'cybersecurity', 'data'],
+              'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT'],
+              'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy'],
+              'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA'],
+              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study']
+            };
+            
+            // Function to categorize an article
+            function categorizeArticle(title, excerpt) {
+              const text = (title + ' ' + excerpt).toLowerCase();
+              let bestCategory = 'General';
+              let highestScore = 0;
+              
+              for (const [category, keywords] of Object.entries(categoryKeywords)) {
+                let score = 0;
+                for (const keyword of keywords) {
+                  if (text.includes(keyword.toLowerCase())) {
+                    score++;
+                  }
+                }
+                if (score > highestScore) {
+                  highestScore = score;
+                  bestCategory = category;
+                }
+              }
+              
+              return bestCategory;
+            }
+            
             // Now update AI News page with all feeds
             let allNewsItems = [];
             
@@ -144,11 +177,15 @@ jobs:
                   const sourceMatch = content.match(/- ([^<]+)$/);
                   const source = sourceMatch ? sourceMatch[1] : 'AI News';
                   
+                  // Categorize the article
+                  const category = categorizeArticle(title, cleanContent);
+                  
                   allNewsItems.push({
                     title: title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
                     link,
                     excerpt: cleanContent,
                     source,
+                    category,
                     date: new Date(published),
                     dateString: new Date(published).toLocaleDateString('en-US', {
                       month: 'short',
@@ -169,10 +206,11 @@ jobs:
             uniqueItems.sort((a, b) => b.date - a.date);
             const displayItems = uniqueItems.slice(0, 100);
             
-            // Generate AI News page HTML
+            // Generate AI News page HTML with categories
             const aiNewsHTML = displayItems.map(item => `
-                    <article class="news-card">
+                    <article class="news-card" data-category="${item.category}">
                         <div class="news-card-content">
+                            <span class="category-badge category-${item.category.toLowerCase()}">${item.category}</span>
                             <h3><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
                             <p class="news-card-excerpt">${item.excerpt}</p>
                             <div class="news-card-meta">
