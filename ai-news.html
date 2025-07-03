@@ -471,6 +471,29 @@
         
         /* Mobile responsive styles */
         @media (max-width: 768px) {
+            /* Sticky category dropdown on mobile */
+            .category-dropdown {
+                position: sticky;
+                top: 0;
+                background: white;
+                z-index: 999;
+                padding: 15px 20px;
+                margin: -15px -20px 30px -20px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
+            /* Ensure dropdown container takes full width when sticky */
+            .category-dropdown select {
+                max-width: 400px;
+                margin: 0 auto;
+                display: block;
+            }
+            
+            /* Add some padding to the container when sticky */
+            .news-section .container {
+                padding-top: 20px;
+            }
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
