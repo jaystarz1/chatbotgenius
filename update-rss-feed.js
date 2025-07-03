@@ -35,11 +35,11 @@ function generateRSSFeed(articles) {
   <channel>
     <title>The Chatbot Genius - AI News &amp; Insights</title>
     <link>https://thechatbotgenius.com/ai-news.html</link>
-    <description>Latest AI news, insights, and analysis curated by Jay Tarzwell, The Chatbot Genius</description>
+    <description>Latest AI news, insights, and analysis curated by Danny Jones, The Chatbot Genius</description>
     <language>en-us</language>
-    <copyright>Copyright 2025 Jay Tarzwell</copyright>
-    <managingEditor>jay@barkerhrs.com (Jay Tarzwell)</managingEditor>
-    <webMaster>jay@barkerhrs.com (Jay Tarzwell)</webMaster>
+    <copyright>Copyright 2025 Danny Jones</copyright>
+    <managingEditor>dannyjones1884@gmail.com (Danny Jones)</managingEditor>
+    <webMaster>dannyjones1884@gmail.com (Danny Jones)</webMaster>
     <lastBuildDate>${formatRSSDate(new Date())}</lastBuildDate>
     <atom:link href="https://thechatbotgenius.com/feed.xml" rel="self" type="application/rss+xml" />`;
 
@@ -50,7 +50,7 @@ function generateRSSFeed(articles) {
       <description>
         <![CDATA[${article.excerpt}]]>
       </description>
-      <author>jay@barkerhrs.com (Jay Tarzwell)</author>
+      <author>dannyjones1884@gmail.com (Danny Jones)</author>
       <guid isPermaLink="true">${escapeXml(article.link)}</guid>
       <pubDate>${formatRSSDate(article.date)}</pubDate>
       <category>${escapeXml(article.category)}</category>

@@ -176,11 +176,11 @@ async function updateRssFeed() {
   <channel>
     <title>The Chatbot Genius - AI News &amp; Insights</title>
     <link>https://thechatbotgenius.com/ai-news.html</link>
-    <description>Latest AI news curated from multiple sources by Jay Tarzwell, The Chatbot Genius</description>
+    <description>Latest AI news curated from multiple sources by Danny Jones, The Chatbot Genius</description>
     <language>en-us</language>
-    <copyright>Copyright 2025 Jay Tarzwell</copyright>
-    <managingEditor>jay@barkerhrs.com (Jay Tarzwell)</managingEditor>
-    <webMaster>jay@barkerhrs.com (Jay Tarzwell)</webMaster>
+    <copyright>Copyright 2025 Danny Jones</copyright>
+    <managingEditor>dannyjones1884@gmail.com (Danny Jones)</managingEditor>
+    <webMaster>dannyjones1884@gmail.com (Danny Jones)</webMaster>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="https://thechatbotgenius.com/feed.xml" rel="self" type="application/rss+xml" />
     <generator>The Chatbot Genius RSS Generator</generator>
@@ -189,7 +189,7 @@ ${topArticles.map(article => `    <item>
       <title>${escapeXml(article.title)}</title>
       <link>${escapeXml(article.link)}</link>
       <description><![CDATA[${article.excerpt}]]></description>
-      <author>jay@barkerhrs.com (via ${escapeXml(article.source)})</author>
+      <author>dannyjones1884@gmail.com (via ${escapeXml(article.source)})</author>
       <guid isPermaLink="true">${escapeXml(article.guid)}</guid>
       <pubDate>${article.published.toUTCString()}</pubDate>
       <category>${escapeXml(article.category)}</category>
