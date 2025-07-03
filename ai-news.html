@@ -363,6 +363,24 @@
             transform: scale(1.05);
         }
         
+        /* Mobile Category Backdrop */
+        .mobile-category-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .mobile-category-backdrop.show {
+            opacity: 1;
+        }
+        
         /* Mobile Category Panel */
         .mobile-category-panel {
             display: none;
@@ -378,6 +396,8 @@
             z-index: 999;
             transform: translateY(100%);
             transition: transform 0.3s ease;
+            max-height: 70vh; /* Limit height */
+            overflow-y: auto; /* Allow scrolling if needed */
         }
         
         .mobile-category-panel.show {
@@ -642,9 +662,13 @@
                 display: block;
             }
             
-            /* Enable mobile panel on mobile */
+            /* Enable mobile panel and backdrop on mobile */
             .mobile-category-panel {
-                display: block;
+                display: none; /* Initially hidden but available */
+            }
+            
+            .mobile-category-backdrop {
+                display: none; /* Initially hidden but available */
             }
             
             /* Hide desktop filters */
@@ -867,6 +891,8 @@
         <span id="current-category-label">All Categories</span> ▼
     </button>
     
+    <div class="mobile-category-backdrop" id="mobile-category-backdrop" onclick="closeCategoryPanel()"></div>
+    
     <div class="mobile-category-panel" id="mobile-category-panel">
         <h3>Select Category</h3>
         <div class="mobile-category-grid" id="mobile-category-grid">
@@ -1017,17 +1043,30 @@
         // Mobile category panel functions
         function openCategoryPanel() {
             const panel = document.getElementById('mobile-category-panel');
-            if (panel) {
+            const backdrop = document.getElementById('mobile-category-backdrop');
+            if (panel && backdrop) {
+                // Show backdrop
+                backdrop.style.display = 'block';
+                backdrop.offsetHeight; // Force reflow
+                backdrop.classList.add('show');
+                
+                // Show panel
                 panel.style.display = 'block';
-                setTimeout(() => panel.classList.add('show'), 10);
+                panel.offsetHeight; // Force reflow
+                panel.classList.add('show');
             }
         }
         
         function closeCategoryPanel() {
             const panel = document.getElementById('mobile-category-panel');
-            if (panel) {
+            const backdrop = document.getElementById('mobile-category-backdrop');
+            if (panel && backdrop) {
                 panel.classList.remove('show');
-                setTimeout(() => panel.style.display = 'none', 300);
+                backdrop.classList.remove('show');
+                setTimeout(() => {
+                    panel.style.display = 'none';
+                    backdrop.style.display = 'none';
+                }, 300);
             }
         }
         
@@ -1036,6 +1075,15 @@
             const mobileButton = document.getElementById('mobile-category-button');
             if (mobileButton) {
                 mobileButton.addEventListener('click', openCategoryPanel);
+            }
+        });
+        
+        // Also add initialization after news feeds load
+        window.addEventListener('load', function() {
+            const mobileButton = document.getElementById('mobile-category-button');
+            if (mobileButton && !mobileButton.hasAttribute('data-initialized')) {
+                mobileButton.setAttribute('data-initialized', 'true');
+                mobileButton.onclick = openCategoryPanel;
             }
         });
 
