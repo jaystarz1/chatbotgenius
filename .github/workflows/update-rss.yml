@@ -33,7 +33,18 @@ jobs:
           'https://www.google.ca/alerts/feeds/04066946017456136967/13089354697454058042',
           'https://www.google.ca/alerts/feeds/04066946017456136967/13089354697454058988',
           'https://www.google.ca/alerts/feeds/04066946017456136967/1942817214412033827',
-          'https://www.google.ca/alerts/feeds/04066946017456136967/8120264801281996652'
+          'https://www.google.ca/alerts/feeds/04066946017456136967/8120264801281996652',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/11062023876626914074',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/2711366426680219224',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/3311723711538288468',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/759091706708141296',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/5779438660767372325',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/12857769517673299701',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/8173930679921090367',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/10149064895149665631',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/10667153709229080869',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/11084050275073569809',
+          'https://www.google.ca/alerts/feeds/04066946017456136967/3381636154839232159'
         ];
         
         function fetchRSS(url) {
@@ -120,14 +131,14 @@ jobs:
             
             // Category definitions
             const categoryKeywords = {
-              'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger'],
-              'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid'],
-              'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure', 'cybersecurity', 'data'],
-              'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT'],
-              'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy'],
-              'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA'],
-              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study'],
-              'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'compliance', 'regulatory', 'law', 'copyright', 'patent', 'intellectual property', 'GDPR', 'terms of service', 'contract']
+              'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger', 'Y Combinator', 'YC', 'stock', 'shares', 'trading', 'finance', 'venture', 'funding'],
+              'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid', 'job', 'career', 'employment', 'interview', 'salary', 'benefits'],
+              'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure', 'cybersecurity', 'data', 'Microsoft', 'Meta', 'OpenAI', 'NVIDIA', 'Google', 'Amazon', 'Apple'],
+              'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT', 'AI model', 'artificial intelligence'],
+              'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy', 'security', 'data protection', 'GDPR', 'compliance'],
+              'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA', 'pharmaceutical', 'biotech'],
+              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study', 'degree', 'certification'],
+              'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'compliance', 'regulatory', 'law', 'copyright', 'patent', 'intellectual property', 'terms', 'contract', 'regulation', 'policy', 'legislation', 'judicial']
             };
             
             // Function to categorize an article
