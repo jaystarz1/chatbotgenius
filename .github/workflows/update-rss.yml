@@ -1,0 +1,121 @@
+name: Update RSS Feed
+
+on:
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-feed:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Fetch and update RSS feed
+      run: |
+        node - <<'EOF'
+        const fs = require('fs');
+        const https = require('https');
+        
+        // RSS feed URL
+        const rssFeedUrl = 'https://www.google.ca/alerts/feeds/04066946017456136967/4823471870123205';
+        
+        function fetchRSS(url) {
+          return new Promise((resolve, reject) => {
+            https.get(url, (res) => {
+              let data = '';
+              res.on('data', (chunk) => data += chunk);
+              res.on('end', () => resolve(data));
+            }).on('error', reject);
+          });
+        }
+        
+        async function updateNewsFeed() {
+          try {
+            const rssData = await fetchRSS(rssFeedUrl);
+            
+            // Parse RSS XML
+            const items = rssData.match(/<entry>[\s\S]*?<\/entry>/g) || [];
+            const newsItems = [];
+            
+            items.slice(0, 5).forEach(item => {
+              const title = (item.match(/<title[^>]*>(.*?)<\/title>/s) || ['', ''])[1];
+              const link = (item.match(/<link[^>]*href="([^"]*)"/) || ['', ''])[1];
+              const content = (item.match(/<content[^>]*>(.*?)<\/content>/s) || ['', ''])[1];
+              const published = (item.match(/<published>(.*?)<\/published>/) || ['', ''])[1];
+              
+              // Clean HTML from content
+              const cleanContent = content
+                .replace(/<[^>]*>/g, '')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>')
+                .replace(/&amp;/g, '&')
+                .replace(/&quot;/g, '"')
+                .substring(0, 150) + '...';
+              
+              newsItems.push({
+                title: title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
+                link,
+                excerpt: cleanContent,
+                date: new Date(published).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric'
+                })
+              });
+            });
+            
+            // Generate news HTML
+            const newsHTML = newsItems.map(item => `
+                        <article class="news-item">
+                            <h4><a href="${item.link}" target="_blank" rel="noopener noreferrer">${item.title}</a></h4>
+                            <p>${item.excerpt}</p>
+                            <div class="news-meta">
+                                <span class="news-date">${item.date}</span>
+                            </div>
+                        </article>`).join('');
+            
+            // Read current index.html
+            let indexContent = fs.readFileSync('index.html', 'utf8');
+            
+            // Update the news feed section
+            const startMarker = '<div id="news-feed" class="news-feed">';
+            const endMarker = '</div>\n            </div>\n        </aside>';
+            
+            const startIndex = indexContent.indexOf(startMarker);
+            const endIndex = indexContent.indexOf(endMarker, startIndex);
+            
+            if (startIndex !== -1 && endIndex !== -1) {
+              const newContent = 
+                indexContent.substring(0, startIndex + startMarker.length) +
+                '\n' + (newsHTML || '                    <p class="news-error">No news items available</p>') + '\n                ' +
+                indexContent.substring(endIndex);
+              
+              fs.writeFileSync('index.html', newContent);
+              console.log('News feed updated successfully!');
+            } else {
+              console.error('Could not find news feed markers in index.html');
+            }
+            
+          } catch (error) {
+            console.error('Error updating feed:', error);
+          }
+        }
+        
+        updateNewsFeed();
+        EOF
+        
+    - name: Commit and push if changed
+      run: |
+        git config --global user.name 'GitHub Actions Bot'
+        git config --global user.email 'actions@github.com'
+        git add index.html
+        git diff --staged --quiet || (git commit -m "Auto-update RSS feed" && git push)

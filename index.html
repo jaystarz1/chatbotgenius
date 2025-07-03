@@ -91,6 +91,124 @@
             padding: 0 20px;
         }
         
+        /* Main Content Wrapper for Sidebar Layout */
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .main-content {
+            flex: 1;
+            max-width: 1200px;
+        }
+        
+        /* News Sidebar Styles */
+        .news-sidebar {
+            width: 350px;
+            flex-shrink: 0;
+            margin-top: 80px;
+        }
+        
+        .news-sidebar-inner {
+            position: sticky;
+            top: 90px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-height: calc(100vh - 110px);
+            overflow-y: auto;
+        }
+        
+        .news-sidebar h3 {
+            color: #1a1f71;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .news-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .news-item h4 {
+            color: #1a1f71;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .news-item h4 a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .news-item h4 a:hover {
+            color: #4c5fd5;
+        }
+        
+        .news-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .news-source {
+            font-style: italic;
+        }
+        
+        .news-loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+        
+        .news-error {
+            background: #fee;
+            color: #c00;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        /* Custom scrollbar for sidebar */
+        .news-sidebar-inner::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .news-sidebar-inner::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .news-sidebar-inner::-webkit-scrollbar-thumb {
+            background: #4c5fd5;
+            border-radius: 3px;
+        }
+        
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -501,6 +619,22 @@
         }
         
         /* Mobile responsive styles */
+        @media (max-width: 1200px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .news-sidebar {
+                width: 100%;
+                margin-top: 40px;
+            }
+            
+            .news-sidebar-inner {
+                position: static;
+                max-height: none;
+            }
+        }
+        
         @media (max-width: 768px) {
             .footer-content {
                 grid-template-columns: 1fr;
@@ -638,149 +772,164 @@
     </nav>
 
     <!-- Hero Section -->
-    <main id="main-content">
-        <section class="hero" aria-labelledby="hero-heading">
-            <div class="container">
-                <h1 id="hero-heading">Welcome to The Chatbot Genius</h1>
-                <div class="tagline-banner">
-                    <div class="tagline-rotation">
-                        <h2 id="rotating-tagline" aria-live="polite">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</h2>
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+            <h1 id="hero-heading">Welcome to The Chatbot Genius</h1>
+            <div class="tagline-banner">
+                <div class="tagline-rotation">
+                    <h2 id="rotating-tagline" aria-live="polite">AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs</h2>
+                </div>
+                <div style="text-align: center; margin-top: 10px;">
+                    <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">❚❚</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content with Sidebar -->
+    <div class="content-wrapper">
+        <main id="main-content" class="main-content">
+            <!-- Latest Insights Section -->
+            <section class="section" style="background: #f8f9fa;" aria-labelledby="insights-heading">
+                <div class="container">
+                    <h2 id="insights-heading" style="text-align: center; font-size: 2.5rem; color: #1a1f71; margin-bottom: 3rem;">Latest Insights</h2>
+                    <div class="insights-grid">
+                        <article class="insight-card">
+                            <img src="images/generals-1.jpeg" alt="Grid of AI-generated military general images" class="insight-image">
+                            <div class="insight-content">
+                                <h3>AI Bias in Image Generation</h3>
+                                <p>What does an army general look like? An experiment with ChatGPT 4 reveals striking biases in AI image generation and highlights the critical need for diversity in AI development.</p>
+                                <a href="blog/ai-bias-army-general.html" class="insight-link">Read More →</a>
+                            </div>
+                        </article>
+                        <article class="insight-card">
+                            <img src="images/doctor-1.jpeg" alt="Medical professional using dictation technology" class="insight-image">
+                            <div class="insight-content">
+                                <h3>AI in Healthcare: A Personal Story</h3>
+                                <p>How I built a Custom GPT that transformed my brother's medical dictation workflow from a daily frustration into a seamless process, saving time and eliminating stress.</p>
+                                <a href="blog/medical-dictation-tool.html" class="insight-link">Read More →</a>
+                            </div>
+                        </article>
                     </div>
-                    <div style="text-align: center; margin-top: 10px;">
-                        <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">❚❚</button>
+                    <div style="text-align: center; margin-top: 50px;">
+                        <a href="blog.html" class="btn btn-primary">View All Blog Posts</a>
                     </div>
                 </div>
-                
+            </section>
 
-            </div>
-        </section>
-
-        <!-- Latest Insights Section -->
-        <section class="section" style="background: #f8f9fa;" aria-labelledby="insights-heading">
-            <div class="container">
-                <h2 id="insights-heading" style="text-align: center; font-size: 2.5rem; color: #1a1f71; margin-bottom: 3rem;">Latest Insights</h2>
-                <div class="insights-grid">
-                    <article class="insight-card">
-                        <img src="images/generals-1.jpeg" alt="Grid of AI-generated military general images" class="insight-image">
-                        <div class="insight-content">
-                            <h3>AI Bias in Image Generation</h3>
-                            <p>What does an army general look like? An experiment with ChatGPT 4 reveals striking biases in AI image generation and highlights the critical need for diversity in AI development.</p>
-                            <a href="blog/ai-bias-army-general.html" class="insight-link">Read More →</a>
-                        </div>
-                    </article>
-                    <article class="insight-card">
-                        <img src="images/doctor-1.jpeg" alt="Medical professional using dictation technology" class="insight-image">
-                        <div class="insight-content">
-                            <h3>AI in Healthcare: A Personal Story</h3>
-                            <p>How I built a Custom GPT that transformed my brother's medical dictation workflow from a daily frustration into a seamless process, saving time and eliminating stress.</p>
-                            <a href="blog/medical-dictation-tool.html" class="insight-link">Read More →</a>
-                        </div>
-                    </article>
+            <!-- Introduction -->
+            <section class="section" aria-labelledby="intro-heading">
+                <div class="container">
+                    <h2 id="intro-heading">Secure AI Solutions That Actually Work</h2>
+                    <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #666;">
+                        As an AI consultant and military veteran, I specialize in building bespoke AI applications 
+                        with robust data privacy and security. From medical transcription tools to HR complaint 
+                        management systems, I deliver practical AI solutions that protect sensitive data while 
+                        driving real results.
+                    </p>
                 </div>
-                <div style="text-align: center; margin-top: 50px;">
-                    <a href="blog.html" class="btn btn-primary">View All Blog Posts</a>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Introduction -->
-        <section class="section" aria-labelledby="intro-heading">
-            <div class="container">
-                <h2 id="intro-heading">Secure AI Solutions That Actually Work</h2>
-                <p style="text-align: center; max-width: 800px; margin: 0 auto; font-size: 1.1rem; color: #666;">
-                    As an AI consultant and military veteran, I specialize in building bespoke AI applications 
-                    with robust data privacy and security. From medical transcription tools to HR complaint 
-                    management systems, I deliver practical AI solutions that protect sensitive data while 
-                    driving real results.
-                </p>
-            </div>
-        </section>
-
-        <!-- Featured Book -->
-        <section class="section" style="background: #f8f9fa;" aria-labelledby="featured-book-heading">
-            <div class="container">
-                <h2 id="featured-book-heading">Featured Book</h2>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;" class="book-featured-grid">
-                    <!-- Book Column -->
-                    <div style="text-align: center;">
-                        <img src="images/last-algorithm-cover-new.jpg" alt="The Last Algorithm book cover showing futuristic AI imagery" style="width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 5px;">
-                        <h3 style="margin-top: 20px; color: #1a1f71; font-size: 1.8rem;">The Last Algorithm</h3>
-                        <p style="color: #4c5fd5; font-style: italic; font-size: 1.1rem; margin-bottom: 25px;">A Thought-Provoking Journey into AI's Future and Humanity's Destiny</p>
+            <!-- Featured Book -->
+            <section class="section" style="background: #f8f9fa;" aria-labelledby="featured-book-heading">
+                <div class="container">
+                    <h2 id="featured-book-heading">Featured Book</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;" class="book-featured-grid">
+                        <!-- Book Column -->
+                        <div style="text-align: center;">
+                            <img src="images/last-algorithm-cover-new.jpg" alt="The Last Algorithm book cover showing futuristic AI imagery" style="width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 5px;">
+                            <h3 style="margin-top: 20px; color: #1a1f71; font-size: 1.8rem;">The Last Algorithm</h3>
+                            <p style="color: #4c5fd5; font-style: italic; font-size: 1.1rem; margin-bottom: 25px;">A Thought-Provoking Journey into AI's Future and Humanity's Destiny</p>
+                            <div>
+                                <a href="books.html#book3" class="btn btn-primary" style="margin-right: 10px;">Learn More</a>
+                                <a href="https://www.amazon.com/dp/B0FB46WG8R" class="btn btn-primary" target="_blank" aria-label="Buy The Last Algorithm on Amazon - opens in new window">Buy on Amazon</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Reviews Column -->
                         <div>
-                            <a href="books.html#book3" class="btn btn-primary" style="margin-right: 10px;">Learn More</a>
-                            <a href="https://www.amazon.com/dp/B0FB46WG8R" class="btn btn-primary" target="_blank" aria-label="Buy The Last Algorithm on Amazon - opens in new window">Buy on Amazon</a>
+                            <h3 style="color: #1a1f71; margin-bottom: 25px;">What Readers Are Saying</h3>
+                            
+                            <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                                <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"The Last Algorithm isn't just another book about artificial intelligence—it's a mind-bending blend of fiction and non-fiction... It's original, thought-provoking, and unlike anything I've read before."</blockquote>
+                                <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– Elizabeth</cite>
+                            </article>
+                            
+                            <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                                <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"I was prepared to be reading through a heavy topic. Was pleasantly surprised by the way the story has been written... It is definitely a great read."</blockquote>
+                                <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– Sheena C.</cite>
+                            </article>
+                            
+                            <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                                <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"I enjoyed the pace of this book. It has a snappy, articulate tempo that makes it an easy read... Readers will find the originality refreshing."</blockquote>
+                                <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– Tom M.</cite>
+                            </article>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Whitepaper Section -->
+            <section class="whitepaper-section" style="background: white;" aria-labelledby="whitepaper-heading">
+                <div class="container">
+                    <h2 id="whitepaper-heading" style="color: #1a1f71; margin-bottom: 20px; font-size: 2rem;">Understanding Data Security Regulations</h2>
+                    <p style="color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                        Concerned about data security when implementing AI? Download my comprehensive whitepaper on maintaining compliance while leveraging AI tools.
+                    </p>
+                    <a href="https://docs.google.com/document/d/1o9S3M-_bwIcrG9KeLM5g0ctFCg-AxuxgubXD1UAvow8/edit" class="btn btn-primary" target="_blank" aria-label="Download Data Security in AI Development whitepaper - opens in new window">
+                        <span aria-hidden="true">📄</span> Download: Data Security in AI Development - A Legal Tech Whitepaper
+                    </a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section" id="contact" style="background: #f8f9fa;" aria-labelledby="contact-heading">
+                <div class="container">
+                    <h2 id="contact-heading" style="color: #1a1f71; margin-bottom: 20px;">Let's Work Together</h2>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">Transform your verbal ideas into polished written content with AI</p>
+                    
+                    <p style="font-size: 1.1rem; margin-bottom: 10px;"><span aria-hidden="true">📧</span> <a href="mailto:jay@barkerhrs.com" style="color: #4c5fd5;">jay@barkerhrs.com</a></p>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;" aria-label="Book your free 30-minute consultation - opens in new window">
+                        <span aria-hidden="true">📅</span> Book Your Free 30-Minute Consultation
+                    </a>
+                    
+                    <div style="margin-top: 40px; text-align: center;">
+                        <h3 style="color: #1a1f71; margin-bottom: 20px;">I specialize in:</h3>
+                        <p style="margin-bottom: 15px;">Converting rambling thoughts into structured documents</p>
+                        <p style="margin-bottom: 15px;">Turning meeting recordings into actionable reports</p>
+                        <p style="margin-bottom: 15px;">Organizing scattered notes into coherent content</p>
+                        <p style="margin-bottom: 15px;">Building custom AI tools for content transformation</p>
                     </div>
                     
-                    <!-- Reviews Column -->
-                    <div>
-                        <h3 style="color: #1a1f71; margin-bottom: 25px;">What Readers Are Saying</h3>
-                        
-                        <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                            <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                            <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"The Last Algorithm isn't just another book about artificial intelligence—it's a mind-bending blend of fiction and non-fiction... It's original, thought-provoking, and unlike anything I've read before."</blockquote>
-                            <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– Elizabeth</cite>
-                        </article>
-                        
-                        <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                            <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                            <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"I was prepared to be reading through a heavy topic. Was pleasantly surprised by the way the story has been written... It is definitely a great read."</blockquote>
-                            <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– Sheena C.</cite>
-                        </article>
-                        
-                        <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                            <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                            <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"I enjoyed the pace of this book. It has a snappy, articulate tempo that makes it an easy read... Readers will find the originality refreshing."</blockquote>
-                            <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– Tom M.</cite>
-                        </article>
+                    <p style="margin-top: 30px; font-style: italic; color: #666;">
+                        Not sure if AI can help your specific situation?<br>
+                        Book a free consultation and let's explore the possibilities.
+                    </p>
+                    
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-secondary" target="_blank" style="margin-top: 20px; background: #4c5fd5; color: white; border: none;" aria-label="Schedule your call - opens in new window">
+                        Schedule Your Call <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- News Sidebar -->
+        <aside class="news-sidebar" aria-labelledby="news-heading">
+            <div class="news-sidebar-inner">
+                <h3 id="news-heading">
+                    <span aria-hidden="true">📰</span> Latest AI News
+                </h3>
+                <div id="news-feed" class="news-feed">
+                    <div class="news-loading">
+                        <p>Loading latest AI news...</p>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Whitepaper Section -->
-        <section class="whitepaper-section" style="background: white;" aria-labelledby="whitepaper-heading">
-            <div class="container">
-                <h2 id="whitepaper-heading" style="color: #1a1f71; margin-bottom: 20px; font-size: 2rem;">Understanding Data Security Regulations</h2>
-                <p style="color: #666; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    Concerned about data security when implementing AI? Download my comprehensive whitepaper on maintaining compliance while leveraging AI tools.
-                </p>
-                <a href="https://docs.google.com/document/d/1o9S3M-_bwIcrG9KeLM5g0ctFCg-AxuxgubXD1UAvow8/edit" class="btn btn-primary" target="_blank" aria-label="Download Data Security in AI Development whitepaper - opens in new window">
-                    <span aria-hidden="true">📄</span> Download: Data Security in AI Development - A Legal Tech Whitepaper
-                </a>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section" id="contact" style="background: #f8f9fa;" aria-labelledby="contact-heading">
-            <div class="container">
-                <h2 id="contact-heading" style="color: #1a1f71; margin-bottom: 20px;">Let's Work Together</h2>
-                <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">Transform your verbal ideas into polished written content with AI</p>
-                
-                <p style="font-size: 1.1rem; margin-bottom: 10px;"><span aria-hidden="true">📧</span> <a href="mailto:jay@barkerhrs.com" style="color: #4c5fd5;">jay@barkerhrs.com</a></p>
-                <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;" aria-label="Book your free 30-minute consultation - opens in new window">
-                    <span aria-hidden="true">📅</span> Book Your Free 30-Minute Consultation
-                </a>
-                
-                <div style="margin-top: 40px; text-align: center;">
-                    <h3 style="color: #1a1f71; margin-bottom: 20px;">I specialize in:</h3>
-                    <p style="margin-bottom: 15px;">Converting rambling thoughts into structured documents</p>
-                    <p style="margin-bottom: 15px;">Turning meeting recordings into actionable reports</p>
-                    <p style="margin-bottom: 15px;">Organizing scattered notes into coherent content</p>
-                    <p style="margin-bottom: 15px;">Building custom AI tools for content transformation</p>
-                </div>
-                
-                <p style="margin-top: 30px; font-style: italic; color: #666;">
-                    Not sure if AI can help your specific situation?<br>
-                    Book a free consultation and let's explore the possibilities.
-                </p>
-                
-                <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-secondary" target="_blank" style="margin-top: 20px; background: #4c5fd5; color: white; border: none;" aria-label="Schedule your call - opens in new window">
-                    Schedule Your Call <span aria-hidden="true">→</span>
-                </a>
-            </div>
-        </section>
-    </main>
+        </aside>
+    </div>
     
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
@@ -872,6 +1021,73 @@
                 mobileMenuToggle.focus();
             }
         });
+
+        // RSS Feed Functionality
+        async function loadNewsFeed() {
+            const feedContainer = document.getElementById('news-feed');
+            const rssFeedUrl = 'https://www.google.ca/alerts/feeds/04066946017456136967/4823471870123205';
+            
+            // Using a CORS proxy to fetch RSS feed
+            const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rssFeedUrl);
+            
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+                
+                const items = xmlDoc.querySelectorAll("entry");
+                let newsHTML = '';
+                
+                // Process first 5 items
+                Array.from(items).slice(0, 5).forEach(item => {
+                    const title = item.querySelector("title")?.textContent || "No title";
+                    const link = item.querySelector("link")?.getAttribute("href") || "#";
+                    const content = item.querySelector("content")?.textContent || "";
+                    const published = item.querySelector("published")?.textContent || "";
+                    
+                    // Extract clean text from HTML content
+                    const tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = content;
+                    const excerpt = tempDiv.textContent.substring(0, 150) + "...";
+                    
+                    // Format date
+                    const date = new Date(published);
+                    const formattedDate = date.toLocaleDateString('en-US', { 
+                        month: 'short', 
+                        day: 'numeric',
+                        year: 'numeric'
+                    });
+                    
+                    newsHTML += `
+                        <article class="news-item">
+                            <h4><a href="${link}" target="_blank" rel="noopener noreferrer">${title}</a></h4>
+                            <p>${excerpt}</p>
+                            <div class="news-meta">
+                                <span class="news-date">${formattedDate}</span>
+                            </div>
+                        </article>
+                    `;
+                });
+                
+                feedContainer.innerHTML = newsHTML || '<p class="news-error">No news items available</p>';
+                
+            } catch (error) {
+                console.error('Error loading RSS feed:', error);
+                feedContainer.innerHTML = `
+                    <div class="news-error">
+                        <p>Unable to load news feed at the moment.</p>
+                        <p><small>Please check back later.</small></p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Load news feed on page load
+        loadNewsFeed();
+        
+        // Refresh news feed every 30 minutes
+        setInterval(loadNewsFeed, 30 * 60 * 1000);
     </script>
 </body>
 </html>
