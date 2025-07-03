@@ -102,7 +102,7 @@ Create a professional summary with:
 1. A compelling headline (max 10 words)
 2. 3-4 key trends or insights (1-2 sentences each)
 3. Most significant development of the day (2-3 sentences)
-4. Brief outlook for tomorrow (1-2 sentences)
+4. Brief outlook for today (1-2 sentences)
 
 Format the response as JSON with keys: headline, keyTrends (array), topStory, outlook`;
 
@@ -146,37 +146,56 @@ function updateAINewsPage(summary, chartUrl, articleCount, date) {
     let htmlContent = fs.readFileSync(aiNewsPath, 'utf8');
     
     // Create the daily digest HTML
+    const dateStr = new Date(date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const dailyDigestHtml = `
     <!-- Daily AI Digest -->
     <div id="daily-digest" style="background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-        <h2 style="color: #f9c74f; margin-bottom: 10px; font-size: 2em;">📊 Daily AI Digest</h2>
-        <p style="opacity: 0.9; margin-bottom: 20px;">${new Date(date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-        
-        <h3 style="color: white; font-size: 1.8em; margin-bottom: 20px; line-height: 1.2;">${summary.headline}</h3>
-        
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-            <h4 style="color: #f9c74f; margin-bottom: 15px;">🔍 Key Trends</h4>
-            <ul style="list-style: none; padding: 0;">
-                ${summary.keyTrends.map(trend => `<li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> ${trend}</li>`).join('')}
-            </ul>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+            <h2 style="color: #f9c74f; margin: 0; font-size: 2em;">📊 Daily AI Digest</h2>
+            <p style="opacity: 0.9; margin: 0; font-size: 0.95rem;">As of 9:00 AM EST, ${dateStr}</p>
         </div>
         
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-            <h4 style="color: #f9c74f; margin-bottom: 10px;">🏆 Top Story</h4>
-            <p style="line-height: 1.6;">${summary.topStory}</p>
-        </div>
+        <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2;">${summary.headline}</h3>
         
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-            <h4 style="color: #f9c74f; margin-bottom: 10px;">🔮 Tomorrow's Outlook</h4>
-            <p style="line-height: 1.6;">${summary.outlook}</p>
-        </div>
-        
-        <div style="text-align: center; margin-top: 20px;">
-            <img src="${chartUrl}" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
-            <p style="margin-top: 10px; opacity: 0.8; font-size: 0.9em;">Analyzed ${articleCount} articles from the past 24 hours</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start;">
+            <!-- Left Column - Text Content -->
+            <div>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4 style="color: #f9c74f; margin-bottom: 15px;">🔍 Key Trends</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        ${summary.keyTrends.map(trend => `<li style="margin-bottom: 10px; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> ${trend}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+                    <h4 style="color: #f9c74f; margin-bottom: 10px;">🏆 Top Story</h4>
+                    <p style="line-height: 1.6;">${summary.topStory}</p>
+                </div>
+                
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px;">
+                    <h4 style="color: #f9c74f; margin-bottom: 10px;">🔮 Today's Outlook</h4>
+                    <p style="line-height: 1.6;">${summary.outlook}</p>
+                </div>
+            </div>
+            
+            <!-- Right Column - Chart -->
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
+                <img src="${chartUrl}" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);">
+                <p style="margin-top: 15px; opacity: 0.8; font-size: 0.9em; text-align: center;">Analyzed ${articleCount} articles from the past 24 hours</p>
+            </div>
         </div>
     </div>
-    <!-- End Daily AI Digest -->`;
+    <!-- End Daily AI Digest -->
+    
+    <style>
+        /* Mobile responsive for daily digest */
+        @media (max-width: 768px) {
+            #daily-digest > div:last-child {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>`;
     
     // Find the main container after the search box and insert the digest
     const searchBoxEndPattern = /<\/div>\s*<!-- End Search and Filter -->/;
