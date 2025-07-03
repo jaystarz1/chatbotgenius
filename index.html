@@ -1044,13 +1044,37 @@
             const rssFeedUrl = 'https://www.google.ca/alerts/feeds/04066946017456136967/4823471870123205';
             
             // Using a CORS proxy to fetch RSS feed
-            const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(rssFeedUrl);
+            // Try multiple proxies in case one fails
+            const proxies = [
+                'https://corsproxy.io/?',
+                'https://api.allorigins.win/raw?url=',
+                'https://cors-anywhere.herokuapp.com/'
+            ];
+            
+            let data = null;
+            let error = null;
+            
+            // Try each proxy until one works
+            for (const proxy of proxies) {
+                try {
+                    const response = await fetch(proxy + encodeURIComponent(rssFeedUrl));
+                    if (response.ok) {
+                        data = await response.text();
+                        break;
+                    }
+                } catch (e) {
+                    error = e;
+                    continue;
+                }
+            }
+            
+            if (!data) {
+                throw error || new Error('All proxies failed');
+            }
             
             try {
-                const response = await fetch(proxyUrl);
-                const data = await response.json();
                 const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(data.contents, "text/xml");
+                const xmlDoc = parser.parseFromString(data, "text/xml");
                 
                 const items = xmlDoc.querySelectorAll("entry");
                 let newsHTML = '';
