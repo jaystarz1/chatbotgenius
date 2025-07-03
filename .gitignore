@@ -1,42 +1,25 @@
-# Ignore macOS system files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Environment variables
+.env
+.env.local
+.env.*.local
 
-# Ignore editor files
-*.swp
-*.swo
-*~
+# API Keys
+*.key
+api-keys.json
+
+# Node
+node_modules/
+
+# OS files
+.DS_Store
+
+# IDE
 .vscode/
 .idea/
 
-# Ignore logs and databases
+# Logs
 *.log
-*.sql
-*.sqlite
 
-# Ignore compiled files
-*.com
-*.class
-*.dll
-*.exe
-*.o
-*.so
-
-# Ignore package files
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
-
-# Ignore node_modules if you add any JavaScript later
-node_modules/
-package-lock.json
+# GitHub Actions artifacts
+article-database.json
+daily-summaries.json
