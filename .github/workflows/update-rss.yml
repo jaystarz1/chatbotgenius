@@ -129,16 +129,26 @@ jobs:
               console.log('Homepage news feed updated successfully!');
             }
             
-            // Category definitions
+            // Category definitions - All 17 specific categories
             const categoryKeywords = {
-              'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger', 'Y Combinator', 'YC', 'stock', 'shares', 'trading', 'finance', 'venture', 'funding'],
-              'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid', 'job', 'career', 'employment', 'interview', 'salary', 'benefits'],
-              'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure', 'cybersecurity', 'data', 'Microsoft', 'Meta', 'OpenAI', 'NVIDIA', 'Google', 'Amazon', 'Apple'],
-              'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT', 'AI model', 'artificial intelligence'],
-              'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy', 'security', 'data protection', 'GDPR', 'compliance'],
-              'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA', 'pharmaceutical', 'biotech'],
-              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study', 'degree', 'certification'],
-              'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'compliance', 'regulatory', 'law', 'copyright', 'patent', 'intellectual property', 'terms', 'contract', 'regulation', 'policy', 'legislation', 'judicial']
+              'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger'],
+              'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid'],
+              'Jobs': ['job', 'career', 'employment', 'position', 'opening', 'vacancy', 'hire', 'recruiting', 'candidate', 'interview', 'salary', 'benefits'],
+              'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure'],
+              'Microsoft': ['Microsoft', 'Azure', 'Windows', 'Office', 'Teams', 'Copilot', 'Bing', 'Surface', 'Xbox', 'Satya Nadella'],
+              'Meta': ['Meta', 'Facebook', 'Instagram', 'WhatsApp', 'Oculus', 'Reality Labs', 'Zuckerberg', 'Threads', 'Metaverse'],
+              'OpenAI': ['OpenAI', 'ChatGPT', 'GPT-4', 'GPT-5', 'Sam Altman', 'DALL-E', 'Codex', 'Whisper', 'Sora'],
+              'NVIDIA': ['NVIDIA', 'GeForce', 'CUDA', 'Jensen Huang', 'RTX', 'GPU', 'graphics card', 'tensor cores', 'AI chip'],
+              'YCombinator': ['Y Combinator', 'YC', 'startup accelerator', 'Paul Graham', 'Demo Day', 'batch', 'incubator', 'Hacker News'],
+              'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training'],
+              'Ethics': ['bias', 'ethical', 'ethics', 'fairness', 'transparency', 'accountability', 'responsible AI', 'AI ethics'],
+              'Privacy': ['privacy', 'data protection', 'GDPR', 'personal data', 'surveillance', 'encryption', 'data breach', 'confidential'],
+              'Security': ['security', 'cybersecurity', 'vulnerability', 'hack', 'breach', 'malware', 'phishing', 'threat', 'exploit'],
+              'Policy': ['policy', 'regulation', 'governance', 'legislation', 'government', 'regulatory', 'compliance', 'framework'],
+              'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'law', 'copyright', 'patent'],
+              'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine'],
+              'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher'],
+              'Stocks': ['stock', 'shares', 'trading', 'investment', 'market cap', 'IPO', 'nasdaq', 'NYSE', 'portfolio']
             };
             
             // Function to categorize an article
@@ -147,7 +157,21 @@ jobs:
               let bestCategory = 'General';
               let highestScore = 0;
               
+              // Check company-specific categories first with higher weight
+              const companyCategories = ['Microsoft', 'Meta', 'OpenAI', 'NVIDIA', 'YCombinator'];
+              for (const category of companyCategories) {
+                const keywords = categoryKeywords[category];
+                for (const keyword of keywords) {
+                  if (text.includes(keyword.toLowerCase())) {
+                    return category; // Immediate return for company matches
+                  }
+                }
+              }
+              
+              // Then check other categories
               for (const [category, keywords] of Object.entries(categoryKeywords)) {
+                if (companyCategories.includes(category)) continue; // Skip already checked
+                
                 let score = 0;
                 for (const keyword of keywords) {
                   if (text.includes(keyword.toLowerCase())) {

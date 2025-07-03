@@ -274,16 +274,26 @@
             color: white;
         }
         
-        /* Category Colors */
+        /* Category Colors - All 17 categories */
         .category-business { background: #2c3e50; }
         .category-hr { background: #27ae60; }
+        .category-jobs { background: #16a085; }
         .category-tech { background: #8e44ad; }
+        .category-microsoft { background: #0078d4; }
+        .category-meta { background: #1877f2; }
+        .category-openai { background: #412991; }
+        .category-nvidia { background: #76b900; }
+        .category-ycombinator { background: #ff6600; }
         .category-ml { background: #e67e22; }
         .category-ethics { background: #c0392b; }
+        .category-privacy { background: #9b59b6; }
+        .category-security { background: #34495e; }
+        .category-policy { background: #d35400; }
+        .category-legal { background: #7f8c8d; }
         .category-healthcare { background: #e74c3c; }
-        .category-education { background: #16a085; }
-        .category-legal { background: #34495e; }
-        .category-general { background: #7f8c8d; }
+        .category-education { background: #3498db; }
+        .category-stocks { background: #f39c12; }
+        .category-general { background: #95a5a6; }
         
         /* Category Filter Buttons */
         .category-filters {
@@ -349,28 +359,6 @@
         .category-dropdown select:focus {
             outline: none;
             border-color: #e67e22;
-        }
-        
-        /* Category Hub Link */
-        .category-hub-link {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .category-hub-link a {
-            color: #4c5fd5;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-        }
-        
-        .category-hub-link a:hover {
-            color: #1a1f71;
         }
         
         .news-loading {
@@ -656,14 +644,6 @@
                     <!-- Filter buttons will be inserted here -->
                 </div>
                 
-                <!-- Category Hub Link -->
-                <div class="category-hub-link">
-                    <a href="#coming-soon">
-                        <span aria-hidden="true">📊</span> Browse by Topic Categories
-                        <span aria-hidden="true">→</span>
-                    </a>
-                </div>
-                
                 <div class="news-grid" id="news-grid">
                     <div class="news-loading">
                         <p>Fetching articles from multiple sources...</p>
@@ -724,16 +704,26 @@
             }
         });
 
-        // Category definitions - Updated to handle new feeds
+        // Category definitions - All 17 specific categories
         const categoryKeywords = {
-            'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger', 'Y Combinator', 'YC', 'stock', 'shares', 'trading', 'finance', 'venture', 'funding'],
-            'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid', 'job', 'career', 'employment', 'interview', 'salary', 'benefits'],
-            'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure', 'cybersecurity', 'data', 'Microsoft', 'Meta', 'OpenAI', 'NVIDIA', 'Google', 'Amazon', 'Apple'],
-            'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training', 'GPT', 'Claude', 'Gemini', 'ChatGPT', 'AI model', 'artificial intelligence'],
-            'Ethics': ['bias', 'ethical', 'privacy', 'safety', 'regulation', 'governance', 'responsible', 'fairness', 'transparency', 'accountability', 'trust', 'policy', 'security', 'data protection', 'GDPR', 'compliance'],
-            'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine', 'treatment', 'therapy', 'FDA', 'pharmaceutical', 'biotech'],
-            'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher', 'curriculum', 'academic', 'research', 'study', 'degree', 'certification'],
-            'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'compliance', 'regulatory', 'law', 'copyright', 'patent', 'intellectual property', 'terms', 'contract', 'regulation', 'policy', 'legislation', 'judicial']
+            'Business': ['ROI', 'revenue', 'profit', 'enterprise', 'CEO', 'startup', 'investment', 'market', 'business', 'company', 'corporate', 'executive', 'IPO', 'acquisition', 'merger'],
+            'HR': ['hiring', 'recruitment', 'employee', 'workplace', 'talent', 'workforce', 'HR', 'human resources', 'staff', 'personnel', 'culture', 'remote work', 'hybrid'],
+            'Jobs': ['job', 'career', 'employment', 'position', 'opening', 'vacancy', 'hire', 'recruiting', 'candidate', 'interview', 'salary', 'benefits'],
+            'Tech': ['API', 'coding', 'software', 'hardware', 'cloud', 'developer', 'programming', 'tech', 'technology', 'platform', 'infrastructure'],
+            'Microsoft': ['Microsoft', 'Azure', 'Windows', 'Office', 'Teams', 'Copilot', 'Bing', 'Surface', 'Xbox', 'Satya Nadella'],
+            'Meta': ['Meta', 'Facebook', 'Instagram', 'WhatsApp', 'Oculus', 'Reality Labs', 'Zuckerberg', 'Threads', 'Metaverse'],
+            'OpenAI': ['OpenAI', 'ChatGPT', 'GPT-4', 'GPT-5', 'Sam Altman', 'DALL-E', 'Codex', 'Whisper', 'Sora'],
+            'NVIDIA': ['NVIDIA', 'GeForce', 'CUDA', 'Jensen Huang', 'RTX', 'GPU', 'graphics card', 'tensor cores', 'AI chip'],
+            'YCombinator': ['Y Combinator', 'YC', 'startup accelerator', 'Paul Graham', 'Demo Day', 'batch', 'incubator', 'Hacker News'],
+            'ML': ['machine learning', 'neural', 'deep learning', 'LLM', 'transformer', 'dataset', 'algorithm', 'model', 'training'],
+            'Ethics': ['bias', 'ethical', 'ethics', 'fairness', 'transparency', 'accountability', 'responsible AI', 'AI ethics'],
+            'Privacy': ['privacy', 'data protection', 'GDPR', 'personal data', 'surveillance', 'encryption', 'data breach', 'confidential'],
+            'Security': ['security', 'cybersecurity', 'vulnerability', 'hack', 'breach', 'malware', 'phishing', 'threat', 'exploit'],
+            'Policy': ['policy', 'regulation', 'governance', 'legislation', 'government', 'regulatory', 'compliance', 'framework'],
+            'Legal': ['legal', 'lawsuit', 'court', 'lawyer', 'attorney', 'litigation', 'law', 'copyright', 'patent'],
+            'Healthcare': ['medical', 'patient', 'diagnosis', 'healthcare', 'clinical', 'doctor', 'hospital', 'health', 'medicine'],
+            'Education': ['student', 'learning', 'education', 'training', 'course', 'university', 'school', 'teacher'],
+            'Stocks': ['stock', 'shares', 'trading', 'investment', 'market cap', 'IPO', 'nasdaq', 'NYSE', 'portfolio']
         };
 
         // Function to categorize an article
@@ -742,7 +732,21 @@
             let bestCategory = 'General';
             let highestScore = 0;
 
+            // Check company-specific categories first with higher weight
+            const companyCategories = ['Microsoft', 'Meta', 'OpenAI', 'NVIDIA', 'YCombinator'];
+            for (const category of companyCategories) {
+                const keywords = categoryKeywords[category];
+                for (const keyword of keywords) {
+                    if (text.includes(keyword.toLowerCase())) {
+                        return category; // Immediate return for company matches
+                    }
+                }
+            }
+
+            // Then check other categories
             for (const [category, keywords] of Object.entries(categoryKeywords)) {
+                if (companyCategories.includes(category)) continue; // Skip already checked
+                
                 let score = 0;
                 for (const keyword of keywords) {
                     if (text.includes(keyword.toLowerCase())) {
@@ -799,7 +803,7 @@
             const categoryFilters = document.getElementById('category-filters');
             const categoryDropdown = document.getElementById('category-select');
             
-            // All RSS feed URLs - Updated with new feeds
+            // All RSS feed URLs - 17 feeds
             const rssFeeds = [
                 'https://www.google.ca/alerts/feeds/04066946017456136967/4823471870123205',
                 'https://www.google.ca/alerts/feeds/04066946017456136967/4217792680075237154',
@@ -903,7 +907,7 @@
             // Sort by date (newest first)
             uniqueItems.sort((a, b) => b.date - a.date);
             
-            // Take first 200 items (increased from 100)
+            // Take first 200 items
             const displayItems = uniqueItems.slice(0, 200);
             
             // Update stats
@@ -913,6 +917,7 @@
             const categories = ['all', ...Object.keys(categoryKeywords), 'General'];
             categoryFilters.innerHTML = categories.map(cat => {
                 const count = cat === 'all' ? displayItems.length : displayItems.filter(item => item.category === cat).length;
+                if (count === 0 && cat !== 'all') return ''; // Don't show empty categories
                 const displayName = cat === 'all' ? 'All' : cat;
                 return `<button class="filter-btn ${cat === 'all' ? 'active' : ''}" 
                         data-category="${cat}" 
@@ -924,9 +929,10 @@
             // Generate dropdown options for mobile
             const dropdownOptions = categories.map(cat => {
                 const count = cat === 'all' ? displayItems.length : displayItems.filter(item => item.category === cat).length;
+                if (count === 0 && cat !== 'all') return ''; // Don't show empty categories
                 const displayName = cat === 'all' ? 'All Categories' : cat;
                 return `<option value="${cat}">${displayName} (${count})</option>`;
-            }).join('');
+            }).filter(opt => opt).join('');
             categoryDropdown.innerHTML = dropdownOptions;
             
             // Generate HTML for news cards
