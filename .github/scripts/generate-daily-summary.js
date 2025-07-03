@@ -156,24 +156,24 @@ function updateAINewsPage(summary, chartUrl, articleCount, date) {
         
         <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2; text-align: center;">${summary.headline}</h3>
         
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-            <!-- Top Left - Key Trends -->
-            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); min-height: 250px;">
+        <div class="digest-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+            <!-- Key Trends Card -->
+            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                 <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
                     <span>🔍</span> Key Trends
                 </h4>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    ${summary.keyTrends.map(trend => `<li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> ${trend}</li>`).join('')}
+                    ${summary.keyTrends.map((trend, i) => `<li style="color: #333; margin-bottom: ${i === summary.keyTrends.length - 1 ? '0' : '12px'}; padding-left: 20px; position: relative; line-height: 1.5;"><span style="position: absolute; left: 0; color: #f9c74f;">▸</span> ${trend}</li>`).join('')}
                 </ul>
             </div>
             
-            <!-- Top Right - Chart -->
-            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+            <!-- Chart Card -->
+            <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <img src="${chartUrl}" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 8px;">
                 <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;">Analyzed ${articleCount} articles from the past 24 hours</p>
             </div>
             
-            <!-- Bottom Left - Top Story -->
+            <!-- Top Story Card -->
             <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                 <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
                     <span>🏆</span> Top Story
@@ -181,7 +181,7 @@ function updateAINewsPage(summary, chartUrl, articleCount, date) {
                 <p style="color: #333; line-height: 1.6; margin: 0;">${summary.topStory}</p>
             </div>
             
-            <!-- Bottom Right - Today's Outlook -->
+            <!-- Today's Outlook Card -->
             <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                 <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
                     <span>🔮</span> Today's Outlook
@@ -195,18 +195,22 @@ function updateAINewsPage(summary, chartUrl, articleCount, date) {
     <style>
         /* Mobile responsive for daily digest */
         @media (max-width: 768px) {
-            #daily-digest > div:last-child {
-                grid-template-columns: 1fr;
-                gap: 15px;
+            #daily-digest {
+                padding: 20px 15px;
             }
             
-            #daily-digest {
-                padding: 20px;
+            #daily-digest h2 {
+                font-size: 1.5em;
             }
             
             #daily-digest h3 {
-                font-size: 1.5em;
+                font-size: 1.3em;
                 margin-bottom: 20px;
+            }
+            
+            .digest-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
             }
         }
     </style>`;

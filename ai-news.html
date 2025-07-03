@@ -648,9 +648,9 @@
                     
                     <h3 style="color: white; font-size: 1.8em; margin-bottom: 25px; line-height: 1.2; text-align: center;">AI Giants Race to Transform Industries</h3>
                     
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-                        <!-- Top Left - Key Trends -->
-                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); min-height: 250px;">
+                    <div class="digest-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <!-- Key Trends Card -->
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                             <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
                                 <span>🔍</span> Key Trends
                             </h4>
@@ -674,13 +674,13 @@
                             </ul>
                         </div>
                         
-                        <!-- Top Right - Chart -->
-                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px;">
+                        <!-- Chart Card -->
+                        <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); display: flex; flex-direction: column; align-items: center; justify-content: center;">
                             <img src="https://quickchart.io/chart?c=%7B%22type%22%3A%22bar%22%2C%22data%22%3A%7B%22labels%22%3A%5B%22OpenAI%22%2C%22Microsoft%22%2C%22NVIDIA%22%2C%22Ethics%22%2C%22Meta%22%2C%22Healthcare%22%2C%22YCombinator%22%2C%22Education%22%2C%22Security%22%2C%22Policy%22%5D%2C%22datasets%22%3A%5B%7B%22label%22%3A%22Article%20Count%22%2C%22data%22%3A%5B1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%5D%2C%22backgroundColor%22%3A%22%234c5fd5%22%2C%22borderColor%22%3A%22%231a1f71%22%2C%22borderWidth%22%3A2%7D%5D%7D%2C%22options%22%3A%7B%22plugins%22%3A%7B%22legend%22%3A%7B%22display%22%3Afalse%7D%2C%22title%22%3A%7B%22display%22%3Atrue%2C%22text%22%3A%22AI%20News%20Distribution%20by%20Category%22%2C%22font%22%3A%7B%22size%22%3A16%7D%7D%7D%2C%22scales%22%3A%7B%22y%22%3A%7B%22beginAtZero%22%3Atrue%2C%22ticks%22%3A%7B%22stepSize%22%3A1%7D%7D%7D%7D%7D&width=500&height=300&backgroundColor=white" alt="Category Distribution Chart" style="max-width: 100%; height: auto; border-radius: 8px;">
                             <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;">Analyzed 10 articles from the past 24 hours</p>
                         </div>
                         
-                        <!-- Bottom Left - Top Story -->
+                        <!-- Top Story Card -->
                         <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                             <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
                                 <span>🏆</span> Top Story
@@ -690,7 +690,7 @@
                             </p>
                         </div>
                         
-                        <!-- Bottom Right - Today's Outlook -->
+                        <!-- Today's Outlook Card -->
                         <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                             <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
                                 <span>🔮</span> Today's Outlook
@@ -706,18 +706,22 @@
                 <style>
                     /* Mobile responsive for daily digest */
                     @media (max-width: 768px) {
-                        #daily-digest > div:last-child {
-                            grid-template-columns: 1fr;
-                            gap: 15px;
+                        #daily-digest {
+                            padding: 20px 15px;
                         }
                         
-                        #daily-digest {
-                            padding: 20px;
+                        #daily-digest h2 {
+                            font-size: 1.5em;
                         }
                         
                         #daily-digest h3 {
-                            font-size: 1.5em;
+                            font-size: 1.3em;
                             margin-bottom: 20px;
+                        }
+                        
+                        .digest-grid {
+                            grid-template-columns: 1fr !important;
+                            gap: 15px !important;
                         }
                     }
                 </style>
