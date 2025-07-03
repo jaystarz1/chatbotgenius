@@ -36,46 +36,66 @@ function getYesterdaysArticles(articles) {
 
 // Function to generate chart URL using QuickChart.io
 function generateCategoryChart(categoryCount) {
-    const categories = Object.keys(categoryCount).sort((a, b) => categoryCount[b] - categoryCount[a]);
-    const values = categories.map(cat => categoryCount[cat]);
+    // Sort categories by count and take top 6 for better visibility
+    const sortedCategories = Object.entries(categoryCount)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 6);
+    
+    const categories = sortedCategories.map(([cat, _]) => cat);
+    const values = sortedCategories.map(([_, count]) => count);
+    
+    // Calculate total for "Other" category
+    const totalArticles = Object.values(categoryCount).reduce((a, b) => a + b, 0);
+    const topSixTotal = values.reduce((a, b) => a + b, 0);
+    const otherCount = totalArticles - topSixTotal;
+    
+    if (otherCount > 0) {
+        categories.push('Other');
+        values.push(otherCount);
+    }
     
     const chartConfig = {
-        type: 'bar',
+        type: 'doughnut',
         data: {
-            labels: categories.slice(0, 10), // Top 10 categories
+            labels: categories,
             datasets: [{
-                label: 'Article Count',
-                data: values.slice(0, 10),
-                backgroundColor: '#4c5fd5',
-                borderColor: '#1a1f71',
-                borderWidth: 2
+                data: values,
+                backgroundColor: [
+                    '#1a1f71', // Deep Indigo
+                    '#4c5fd5', // Bright Indigo  
+                    '#f9c74f', // Golden Yellow
+                    '#f8961e', // Orange
+                    '#f3722c', // Red Orange
+                    '#90be6d', // Green
+                    '#577590'  // Gray Blue for "Other"
+                ],
+                borderWidth: 2,
+                borderColor: '#fff'
             }]
         },
         options: {
             plugins: {
                 legend: {
-                    display: false
+                    position: 'bottom',
+                    labels: {
+                        padding: 10,
+                        font: {
+                            size: 11
+                        }
+                    }
                 },
                 title: {
                     display: true,
-                    text: 'AI News Distribution by Category',
+                    text: 'AI News by Category',
                     font: {
                         size: 16
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
                     }
                 }
             }
         }
     };
     
-    const chartUrl = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chartConfig))}&width=500&height=300&backgroundColor=white`;
+    const chartUrl = `https://quickchart.io/chart?c=${encodeURIComponent(JSON.stringify(chartConfig))}&width=400&height=300&backgroundColor=white`;
     return chartUrl;
 }
 
