@@ -94,7 +94,7 @@
         /* Main Content Wrapper for Sidebar Layout */
         .content-wrapper {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
@@ -107,9 +107,10 @@
         
         /* News Sidebar Styles */
         .news-sidebar {
-            width: 350px;
+            width: 380px;
             flex-shrink: 0;
-            margin-top: 80px;
+            margin-top: 0;
+            padding-top: 20px;
         }
         
         .news-sidebar-inner {
@@ -117,29 +118,34 @@
             top: 90px;
             background: #f8f9fa;
             border-radius: 10px;
-            padding: 25px;
+            padding: 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             max-height: calc(100vh - 110px);
-            overflow-y: auto;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .news-sidebar h3 {
             color: #1a1f71;
             font-size: 1.5rem;
-            margin-bottom: 20px;
+            margin: 0;
+            padding: 20px 25px;
             display: flex;
             align-items: center;
             gap: 10px;
-            position: sticky;
-            top: 0;
             background: #f8f9fa;
-            padding: 25px 25px 15px;
-            margin: -25px -25px 20px;
             border-radius: 10px 10px 0 0;
-            z-index: 10;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        
+        .news-feed {
+            overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding: 20px 25px;
+            flex: 1;
         }
         
         .news-item {
@@ -205,16 +211,16 @@
             text-align: center;
         }
         
-        /* Custom scrollbar for sidebar */
-        .news-sidebar-inner::-webkit-scrollbar {
+        /* Custom scrollbar for news feed */
+        .news-feed::-webkit-scrollbar {
             width: 6px;
         }
         
-        .news-sidebar-inner::-webkit-scrollbar-track {
+        .news-feed::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
         
-        .news-sidebar-inner::-webkit-scrollbar-thumb {
+        .news-feed::-webkit-scrollbar-thumb {
             background: #4c5fd5;
             border-radius: 3px;
         }
