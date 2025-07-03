@@ -338,13 +338,13 @@
             position: fixed;
             bottom: 40px;
             right: 40px;
-            background: #1a1f71;
+            background: #ff8c42; /* Orange to match theme */
             color: white;
             border: none;
             border-radius: 50%;
             width: 60px;
             height: 60px;
-            font-size: 24px;
+            font-size: 36px; /* Bigger arrow */
             cursor: pointer;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
@@ -356,7 +356,7 @@
         }
         
         .return-to-top:hover {
-            background: #4c5fd5;
+            background: #ff7329; /* Darker orange on hover */
             transform: translateY(0) scale(1.1);
         }
         
@@ -959,10 +959,24 @@
         
         // Return to Top Button functionality
         function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // Scroll to category filters area
+            const categoryFilters = document.getElementById('category-filters');
+            if (categoryFilters) {
+                const offset = 100; // Offset to account for fixed header
+                const elementPosition = categoryFilters.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Fallback to top if filters not found
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
         }
         
         // Show/hide return to top button based on scroll position
