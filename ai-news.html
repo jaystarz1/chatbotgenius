@@ -332,12 +332,17 @@
             display: none;
         }
         
+        /* Sticky Category Wrapper */
+        .sticky-category-wrapper {
+            position: relative;
+            z-index: 998;
+        }
+        
         /* Mobile Dropdown for Categories */
         .category-dropdown {
             display: none;
             width: 100%;
-            max-width: 400px;
-            margin: 0 auto 30px;
+            text-align: center;
         }
         
         .category-dropdown select {
@@ -471,29 +476,6 @@
         
         /* Mobile responsive styles */
         @media (max-width: 768px) {
-            /* Sticky category dropdown on mobile */
-            .category-dropdown {
-                position: sticky;
-                top: 0;
-                background: white;
-                z-index: 999;
-                padding: 15px 20px;
-                margin: -15px -20px 30px -20px;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                border-bottom: 1px solid #e0e0e0;
-            }
-            
-            /* Ensure dropdown container takes full width when sticky */
-            .category-dropdown select {
-                max-width: 400px;
-                margin: 0 auto;
-                display: block;
-            }
-            
-            /* Add some padding to the container when sticky */
-            .news-section .container {
-                padding-top: 20px;
-            }
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
@@ -575,8 +557,31 @@
                 display: none;
             }
             
+            /* Sticky wrapper on mobile */
+            .sticky-category-wrapper {
+                position: sticky;
+                top: 0;
+                background: white;
+                z-index: 998;
+                margin: 0 -20px 30px -20px;
+                padding: 0;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                border-bottom: 1px solid #e0e0e0;
+            }
+            
             /* Show dropdown on mobile */
             .category-dropdown {
+                display: block;
+                padding: 15px 20px;
+                margin: 0;
+                background: white;
+            }
+            
+            /* Style the select element */
+            .category-dropdown select {
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
                 display: block;
             }
         }
@@ -748,15 +753,18 @@
                         }
                     }
                 </style>
-                <div class="news-stats" id="news-stats">
-                    Loading latest AI news...
+                
+                <!-- Sticky Category Wrapper for Mobile -->
+                <div class="sticky-category-wrapper">
+                    <div class="category-dropdown" id="category-dropdown">
+                        <select id="category-select" onchange="filterArticles(this.value)">
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <!-- Mobile Dropdown -->
-                <div class="category-dropdown" id="category-dropdown">
-                    <select id="category-select" onchange="filterArticles(this.value)">
-                        <option value="all">All Categories</option>
-                    </select>
+                <div class="news-stats" id="news-stats">
+                    Loading latest AI news...
                 </div>
                 
                 <!-- Desktop Filter Buttons -->
