@@ -1030,10 +1030,18 @@
                 }
             });
             
-            // Scroll to top of news section
-            const newsSection = document.querySelector('.news-section');
-            if (newsSection) {
-                newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Scroll to first visible article
+            const firstVisibleCard = document.querySelector('.news-card:not(.hidden)');
+            if (firstVisibleCard) {
+                // Get the offset to account for any fixed headers
+                const offset = 100; // Adjust this value based on your header height
+                const elementPosition = firstVisibleCard.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
             
             // Close panel after selection on mobile
