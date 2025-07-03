@@ -2,8 +2,8 @@ name: Update RSS Feed
 
 on:
   schedule:
-    # Run every 6 hours
-    - cron: '0 */6 * * *'
+    # Run every 2 hours
+    - cron: '0 */2 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
             const items = rssData.match(/<entry>[\s\S]*?<\/entry>/g) || [];
             const newsItems = [];
             
-            items.slice(0, 5).forEach(item => {
+            items.slice(0, 20).forEach(item => {
               const title = (item.match(/<title[^>]*>(.*?)<\/title>/s) || ['', ''])[1];
               const link = (item.match(/<link[^>]*href="([^"]*)"/) || ['', ''])[1];
               const content = (item.match(/<content[^>]*>(.*?)<\/content>/s) || ['', ''])[1];

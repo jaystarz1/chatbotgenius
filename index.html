@@ -121,6 +121,8 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             max-height: calc(100vh - 110px);
             overflow-y: auto;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
         
         .news-sidebar h3 {
@@ -130,6 +132,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            position: sticky;
+            top: 0;
+            background: #f8f9fa;
+            padding: 25px 25px 15px;
+            margin: -25px -25px 20px;
+            border-radius: 10px 10px 0 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
         .news-item {
@@ -1039,8 +1049,8 @@
                 const items = xmlDoc.querySelectorAll("entry");
                 let newsHTML = '';
                 
-                // Process first 5 items
-                Array.from(items).slice(0, 5).forEach(item => {
+                // Process first 20 items
+                Array.from(items).slice(0, 20).forEach(item => {
                     const title = item.querySelector("title")?.textContent || "No title";
                     const link = item.querySelector("link")?.getAttribute("href") || "#";
                     const content = item.querySelector("content")?.textContent || "";
@@ -1086,8 +1096,8 @@
         // Load news feed on page load
         loadNewsFeed();
         
-        // Refresh news feed every 30 minutes
-        setInterval(loadNewsFeed, 30 * 60 * 1000);
+        // Refresh news feed every 2 hours
+        setInterval(loadNewsFeed, 2 * 60 * 60 * 1000);
     </script>
 </body>
 </html>
