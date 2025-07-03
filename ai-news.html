@@ -332,6 +332,46 @@
             display: none;
         }
         
+        /* Return to Top Button - Desktop Only */
+        .return-to-top {
+            display: none;
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #1a1f71;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 997;
+            opacity: 0;
+            transform: translateY(100px);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .return-to-top:hover {
+            background: #4c5fd5;
+            transform: translateY(0) scale(1.1);
+        }
+        
+        .return-to-top.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hide on mobile to avoid conflicts with category button */
+        @media (max-width: 768px) {
+            .return-to-top {
+                display: none !important;
+            }
+        }
+        
         /* Mobile Dropdown for Categories - Fixed floating approach */
         .category-dropdown {
             display: none;
@@ -901,6 +941,11 @@
         <button class="mobile-category-close" onclick="closeCategoryPanel()">Close</button>
     </div>
     
+    <!-- Return to Top Button (Desktop Only) -->
+    <button class="return-to-top" id="return-to-top" title="Return to top" onclick="scrollToTop()">
+        ↑
+    </button>
+    
     <script>
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -910,6 +955,32 @@
             const isExpanded = this.getAttribute('aria-expanded') === 'true';
             this.setAttribute('aria-expanded', !isExpanded);
             navLinks.classList.toggle('show');
+        });
+        
+        // Return to Top Button functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Show/hide return to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            const returnToTopButton = document.getElementById('return-to-top');
+            if (returnToTopButton) {
+                if (window.pageYOffset > 800) {
+                    returnToTopButton.style.display = 'flex';
+                    returnToTopButton.classList.add('show');
+                } else {
+                    returnToTopButton.classList.remove('show');
+                    setTimeout(() => {
+                        if (!returnToTopButton.classList.contains('show')) {
+                            returnToTopButton.style.display = 'none';
+                        }
+                    }, 300);
+                }
+            }
         });
         
         // Close mobile menu when clicking outside
