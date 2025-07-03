@@ -100,11 +100,46 @@ function escapeXml(unsafe) {
     });
 }
 
+// Function to load existing article database
+function loadArticleDatabase() {
+    const dbPath = path.join(__dirname, '..', '..', 'article-database.json');
+    try {
+        if (fs.existsSync(dbPath)) {
+            const data = fs.readFileSync(dbPath, 'utf8');
+            return JSON.parse(data);
+        }
+    } catch (error) {
+        console.error('Error loading article database:', error);
+    }
+    return { articles: [] };
+}
+
+// Function to save article database
+function saveArticleDatabase(database) {
+    const dbPath = path.join(__dirname, '..', '..', 'article-database.json');
+    fs.writeFileSync(dbPath, JSON.stringify(database, null, 2));
+}
+
+// Function to clean old articles (keep only 8 days)
+function cleanOldArticles(articles) {
+    const eightDaysAgo = new Date();
+    eightDaysAgo.setDate(eightDaysAgo.getDate() - 8);
+    
+    return articles.filter(article => {
+        const articleDate = new Date(article.fetchedDate);
+        return articleDate > eightDaysAgo;
+    });
+}
+
 // Main function
 async function updateRssFeed() {
     console.log('Starting RSS feed update...');
     const allArticles = [];
     let successfulFeeds = 0;
+
+    // Load existing database
+    const database = loadArticleDatabase();
+    const existingUrls = new Set(database.articles.map(a => a.link));
 
     // Fetch all feeds
     for (const feedUrl of RSS_FEEDS) {
@@ -136,15 +171,27 @@ async function updateRssFeed() {
                     // Categorize
                     const category = categorizeArticle(title, cleanContent);
                     
-                    allArticles.push({
+                    const article = {
                         title: title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
                         link,
                         excerpt,
+                        fullContent: cleanContent,
                         source,
                         category,
                         published: new Date(published),
+                        fetchedDate: new Date().toISOString(),
                         guid: link
-                    });
+                    };
+                    
+                    allArticles.push(article);
+                    
+                    // Add to database if new
+                    if (!existingUrls.has(link)) {
+                        database.articles.push({
+                            ...article,
+                            published: article.published.toISOString()
+                        });
+                    }
                 }
                 
                 successfulFeeds++;
@@ -157,7 +204,14 @@ async function updateRssFeed() {
 
     console.log(`Fetched ${allArticles.length} articles from ${successfulFeeds} feeds`);
 
-    // Remove duplicates by title
+    // Clean old articles from database
+    database.articles = cleanOldArticles(database.articles);
+    
+    // Save updated database
+    saveArticleDatabase(database);
+    console.log(`Database updated with ${database.articles.length} articles (8-day rolling window)`);
+
+    // Remove duplicates by title for RSS feed
     const uniqueArticles = Array.from(
         new Map(allArticles.map(item => [item.title, item])).values()
     );
@@ -165,7 +219,7 @@ async function updateRssFeed() {
     // Sort by date (newest first)
     uniqueArticles.sort((a, b) => b.published - a.published);
 
-    // Take top 100 articles
+    // Take top 100 articles for RSS
     const topArticles = uniqueArticles.slice(0, 100);
 
     console.log(`Publishing ${topArticles.length} unique articles to RSS feed`);
@@ -176,11 +230,11 @@ async function updateRssFeed() {
   <channel>
     <title>The Chatbot Genius - AI News &amp; Insights</title>
     <link>https://thechatbotgenius.com/ai-news.html</link>
-    <description>Latest AI news curated from multiple sources by Danny Jones, The Chatbot Genius</description>
+    <description>Latest AI news curated from multiple sources by Jay Tarzwell, The Chatbot Genius</description>
     <language>en-us</language>
-    <copyright>Copyright 2025 Danny Jones</copyright>
-    <managingEditor>dannyjones1884@gmail.com (Danny Jones)</managingEditor>
-    <webMaster>dannyjones1884@gmail.com (Danny Jones)</webMaster>
+    <copyright>Copyright 2025 Jay Tarzwell</copyright>
+    <managingEditor>jay@thechatbotgenius.com (Jay Tarzwell)</managingEditor>
+    <webMaster>jay@thechatbotgenius.com (Jay Tarzwell)</webMaster>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="https://thechatbotgenius.com/feed.xml" rel="self" type="application/rss+xml" />
     <generator>The Chatbot Genius RSS Generator</generator>
@@ -189,7 +243,7 @@ ${topArticles.map(article => `    <item>
       <title>${escapeXml(article.title)}</title>
       <link>${escapeXml(article.link)}</link>
       <description><![CDATA[${article.excerpt}]]></description>
-      <author>dannyjones1884@gmail.com (via ${escapeXml(article.source)})</author>
+      <author>jay@thechatbotgenius.com (via ${escapeXml(article.source)})</author>
       <guid isPermaLink="true">${escapeXml(article.guid)}</guid>
       <pubDate>${article.published.toUTCString()}</pubDate>
       <category>${escapeXml(article.category)}</category>

@@ -4,10 +4,14 @@
   "description": "Automated RSS feed updater for The Chatbot Genius AI News",
   "private": true,
   "scripts": {
-    "update-rss": "node .github/scripts/update-rss.js"
+    "update-rss": "node .github/scripts/update-rss.js",
+    "daily-summary": "node .github/scripts/generate-daily-summary.js",
+    "weekly-report": "node .github/scripts/generate-weekly-report.js",
+    "update-nav": "node update-navigation.js"
   },
   "dependencies": {
     "node-fetch": "^2.7.0",
-    "xml2js": "^0.6.2"
+    "xml2js": "^0.6.2",
+    "dotenv": "^16.3.1"
   }
 }

@@ -1,9 +1,13 @@
-name: Update RSS Feed
+name: AI Content Automation
 
 on:
   schedule:
-    # Run every 3 hours
+    # RSS Update - Every 3 hours
     - cron: '0 */3 * * *'
+    # Daily Summary - 9 AM EST (2 PM UTC)
+    - cron: '0 14 * * *'
+    # Weekly Report - Sundays at 10 AM EST (3 PM UTC)
+    - cron: '0 15 * * 0'
   workflow_dispatch: # Allow manual trigger
   push:
     branches:
@@ -11,7 +15,7 @@ on:
       - master
 
 jobs:
-  update-feed:
+  update-content:
     runs-on: ubuntu-latest
     
     steps:
@@ -27,14 +31,45 @@ jobs:
     
     - name: Install dependencies
       run: |
-        npm install xml2js node-fetch@2
+        npm install xml2js node-fetch@2 dotenv
+    
+    - name: Create .env file
+      run: |
+        echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" > .env
+    
+    - name: Determine which script to run
+      id: determine-script
+      run: |
+        # Get current hour and day of week
+        HOUR=$(date -u +%H)
+        DAY=$(date -u +%u)
+        
+        # Check if it's Sunday 3 PM UTC (weekly report)
+        if [ "$DAY" = "7" ] && [ "$HOUR" = "15" ]; then
+          echo "script=weekly" >> $GITHUB_OUTPUT
+        # Check if it's 2 PM UTC (daily summary)
+        elif [ "$HOUR" = "14" ]; then
+          echo "script=daily" >> $GITHUB_OUTPUT
+        # Otherwise, run RSS update
+        else
+          echo "script=rss" >> $GITHUB_OUTPUT
+        fi
     
     - name: Update RSS Feed
+      if: steps.determine-script.outputs.script == 'rss'
       run: node .github/scripts/update-rss.js
+    
+    - name: Generate Daily Summary
+      if: steps.determine-script.outputs.script == 'daily'
+      run: node .github/scripts/generate-daily-summary.js
+    
+    - name: Generate Weekly Report
+      if: steps.determine-script.outputs.script == 'weekly'
+      run: node .github/scripts/generate-weekly-report.js
     
     - name: Commit and push if changed
       run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
-        git add feed.xml
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update RSS feed" && git push)
+        git add -A
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update: ${{ steps.determine-script.outputs.script }} content" && git push)
