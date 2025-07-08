@@ -826,7 +826,7 @@
                             <div id="chart-container" style="width: 100%; max-width: 350px; height: 300px; position: relative;">
                                 <canvas id="digest-chart" style="width: 100%; height: 100%;"></canvas>
                             </div>
-                            <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;" id="chart-caption">Analyzed 100 articles from the past 24 hours</p>
+                            <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;" id="chart-caption">Refreshes every three hours</p>
                         </div>
                         
                         <!-- Most Interesting Story Card -->
@@ -1600,9 +1600,8 @@
             // Update chart with real data
             updateDigestChart(topCategories);
             
-            // Update chart caption with actual count
-            document.getElementById('chart-caption').textContent = 
-                `Analyzed ${newsItems.length} articles from the past 24 hours`;
+            // Update chart caption
+            document.getElementById('chart-caption').textContent = 'Refreshes every three hours';
         }
         
         // Update chart with real category data
