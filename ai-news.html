@@ -1,4 +1,546 @@
-30min" class="btn btn-book" style="padding: 8px 20px; border-radius: 5px;" target="_blank" aria-label="Book a consultation call - opens in new window">Book a Call</a></li>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI News - The Chatbot Genius | Latest AI and Technology News">
+    <title>AI News - The Chatbot Genius</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R76R0B7J9B');
+    </script>
+    
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        /* Skip Navigation Link - Accessibility */
+        .skip-nav {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #1a1f71;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 9999;
+        }
+        
+        .skip-nav:focus {
+            top: 0;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        /* Mobile Menu Button */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin: auto 0;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn) {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: bold;
+            border: 2px solid #ff8c42;
+        }
+        
+        .btn-book:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 80px 0 50px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #f9c74f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* News Section */
+        .news-section {
+            padding: 40px 0;
+            min-height: 600px;
+        }
+        
+        .news-stats {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid #e0e0e0;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .filter-btn:hover {
+            border-color: #4c5fd5;
+            color: #4c5fd5;
+            transform: translateY(-1px);
+        }
+        
+        .filter-btn.active {
+            background: #4c5fd5;
+            color: white;
+            border-color: #4c5fd5;
+        }
+        
+        /* News Grid */
+        #news-grid {
+            min-height: 400px;
+            position: relative;
+        }
+        
+        /* Mobile Category Button */
+        .mobile-category-button {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4c5fd5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .mobile-category-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .mobile-category-backdrop.show {
+            opacity: 1;
+        }
+        
+        .mobile-category-panel {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .mobile-category-panel.show {
+            transform: translateY(0);
+        }
+        
+        .mobile-category-panel h3 {
+            margin-bottom: 20px;
+            color: #1a1f71;
+            text-align: center;
+        }
+        
+        .mobile-category-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .mobile-category-item {
+            background: #f5f5f5;
+            border: 2px solid transparent;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .mobile-category-item:hover {
+            border-color: #4c5fd5;
+        }
+        
+        .mobile-category-item.active {
+            background: #4c5fd5;
+            color: white;
+        }
+        
+        .mobile-category-close {
+            width: 100%;
+            background: #f5f5f5;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        /* Return to Top Button */
+        .return-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4c5fd5;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 100;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .return-to-top.show {
+            opacity: 1;
+        }
+        
+        .return-to-top:hover {
+            transform: translateY(-3px);
+            background: #1a1f71;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1f71;
+            color: white;
+            padding: 50px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: #f9c74f;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .footer-contact a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+        
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner-content {
+                font-size: 0.85rem;
+            }
+            
+            .banner-separator {
+                display: none;
+            }
+            
+            .banner-item {
+                width: 100%;
+                padding: 2px 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1f71;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                height: auto;
+            }
+            
+            .nav-links a:not(.btn) {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .category-filters {
+                display: none;
+            }
+            
+            .mobile-category-button {
+                display: block;
+            }
+            
+            .return-to-top {
+                display: none !important;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
+    
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <span aria-hidden="true">🤖</span> The Chatbot Genius
+                </div>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+                    Menu
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="ai-news.html" aria-current="page">AI News</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="/#contact">Contact</a></li>
+                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="padding: 8px 20px; border-radius: 5px;" target="_blank" aria-label="Book a consultation call - opens in new window">Book a Call</a></li>
                 </ul>
             </div>
         </div>
