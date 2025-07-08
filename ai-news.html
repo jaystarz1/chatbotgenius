@@ -1558,9 +1558,19 @@
                 const storyContent = document.getElementById('top-story-content');
                 // Create a complete sentence from the excerpt
                 let storyText = selectedStory.excerpt;
-                // Ensure it ends with proper punctuation
-                if (!storyText.match(/[.!?]$/)) {
-                    storyText = storyText.replace(/\.\.\.?$/, '') + '.';
+                
+                // Remove any trailing ellipsis
+                storyText = storyText.replace(/\.\.\.\s*$/, '');
+                
+                // If the text doesn't end with proper punctuation, add a period
+                if (!storyText.match(/[.!?]\s*$/)) {
+                    storyText = storyText.trim() + '.';
+                }
+                
+                // If the excerpt seems cut off (ends with incomplete word or phrase), try to complete it
+                if (storyText.length < 100 && selectedStory.title) {
+                    // Use the title to provide more context
+                    storyText = `${selectedStory.title}: ${storyText}`;
                 }
                 
                 storyContent.innerHTML = `
