@@ -829,23 +829,23 @@
                             <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;" id="chart-caption">Analyzed 100 articles from the past 24 hours</p>
                         </div>
                         
-                        <!-- Top Story Card -->
+                        <!-- Most Interesting Story Card -->
                         <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                             <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
-                                <span>🏆</span> Top Story
+                                <span>🏆</span> Most Interesting Story
                             </h4>
                             <p style="color: #333; line-height: 1.6; margin: 0;" id="top-story-content">
-                                Loading today's top story...
+                                Loading story...
                             </p>
                         </div>
                         
-                        <!-- Today's Outlook Card -->
+                        <!-- Outlook Card -->
                         <div style="background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
                             <h4 style="color: #1a1f71; margin-bottom: 15px; font-size: 1.2em; display: flex; align-items: center; gap: 8px;">
-                                <span>🔮</span> Today's Outlook
+                                <span>🔮</span> Outlook
                             </h4>
                             <p style="color: #333; line-height: 1.6; margin: 0;" id="outlook-content">
-                                Loading today's outlook...
+                                Loading outlook...
                             </p>
                         </div>
                     </div>
@@ -1250,7 +1250,7 @@
                             const category = categorizeArticle(title, excerpt);
                             categoryCounts[category] = (categoryCounts[category] || 0) + 1;
                             
-                            allNewsItems.push({
+                                        allNewsItems.push({
                                 title: title.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>'),
                                 link,
                                 excerpt,
@@ -1282,6 +1282,9 @@
             
             // Take first 200 items
             const displayItems = uniqueItems.slice(0, 200);
+            
+            // Store for digest generation
+            allCurrentNewsItems = displayItems;
             
             // Update stats
             newsStats.textContent = `Showing ${displayItems.length} latest articles from ${successfulFeeds} sources`;
@@ -1339,13 +1342,24 @@
             }
         }
         
-        // Daily Digest Content Generator
-        function generateDailyDigest() {
-            // Get current date and day of year
-            const today = new Date();
-            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+        // Store all news items globally for digest generation
+        let allCurrentNewsItems = [];
+        
+        // Paywalled sources to exclude
+        const paywalledDomains = [
+            'wsj.com', 'ft.com', 'economist.com', 'bloomberg.com', 
+            'barrons.com', 'thetimes.co.uk', 'telegraph.co.uk'
+        ];
+        
+        // Dynamic Daily Digest Generator
+        function generateDynamicDigest(newsItems) {
+            if (!newsItems || newsItems.length === 0) {
+                console.log('No news items available for digest generation');
+                return;
+            }
             
             // Update time
+            const today = new Date();
             const timeString = today.toLocaleTimeString('en-US', { 
                 hour: 'numeric', 
                 minute: '2-digit', 
@@ -1353,117 +1367,118 @@
             });
             document.getElementById('digest-time').textContent = `As of ${timeString}`;
             
-            // Content pools for rotation
-            const headlines = [
-                "AI Breakthroughs Reshape Enterprise Software Landscape",
-                "Open Source AI Models Challenge Tech Giants' Dominance",
-                "Healthcare AI Makes Significant Strides in Diagnostics",
-                "New AI Regulations Spark Industry-Wide Compliance Rush",
-                "AI Automation Transforms Traditional Industries",
-                "Multimodal AI Systems Show Unprecedented Capabilities",
-                "Enterprise AI Adoption Accelerates Across Sectors",
-                "AI Safety Research Gains Momentum Globally",
-                "Natural Language AI Reaches New Performance Milestones",
-                "AI Infrastructure Investments Hit Record Highs"
-            ];
+            // Count categories from actual articles
+            const categoryCounts = {};
+            newsItems.forEach(item => {
+                categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
+            });
             
-            const trendSets = [
-                [
-                    "Enterprise AI adoption reaches critical mass with 78% of Fortune 500 companies implementing AI solutions",
-                    "Open-source LLMs achieve performance parity with proprietary models in specialized domains",
-                    "AI-powered drug discovery reduces development time by 40% in clinical trials",
-                    "New EU AI Act provisions come into effect, reshaping global compliance strategies"
-                ],
-                [
-                    "Generative AI transforms creative industries with advanced multimodal capabilities",
-                    "Edge AI computing reduces latency by 90% for real-time applications",
-                    "AI cybersecurity tools prevent 95% of sophisticated phishing attempts",
-                    "Sustainable AI initiatives reduce model training costs by 60%"
-                ],
-                [
-                    "Conversational AI achieves human-level performance in customer service benchmarks",
-                    "AI-driven supply chain optimization saves enterprises millions in logistics costs",
-                    "Medical AI diagnostics outperform specialists in early cancer detection",
-                    "Quantum-AI hybrid systems show promise for complex problem solving"
-                ],
-                [
-                    "AI code generation tools boost developer productivity by 55%",
-                    "Autonomous AI agents handle 80% of routine business processes",
-                    "Privacy-preserving AI techniques gain traction in sensitive industries",
-                    "AI education platforms personalize learning for millions of students"
-                ],
-                [
-                    "Real-time AI translation breaks down language barriers in global business",
-                    "AI-powered climate models improve weather prediction accuracy by 30%",
-                    "Robotic process automation with AI reduces operational costs by 45%",
-                    "AI governance frameworks become mandatory for public sector deployments"
-                ]
-            ];
+            // Get top 5 categories
+            const topCategories = Object.entries(categoryCounts)
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 5);
             
-            const topStories = [
-                "OpenAI's latest model demonstrates unprecedented reasoning capabilities, solving complex mathematical proofs and scientific problems that stumped previous systems. Industry experts predict this breakthrough will accelerate AI adoption in research and education sectors.",
-                "Microsoft integrates advanced AI across its entire Office suite, enabling users to generate presentations, analyze data, and draft documents with natural language commands. Early adopters report 70% time savings on routine tasks.",
-                "Google's medical AI achieves 98% accuracy in detecting rare diseases from routine scans, potentially saving thousands of lives through early intervention. Healthcare providers rush to implement the technology.",
-                "Amazon's new AI logistics system optimizes delivery routes in real-time, reducing carbon emissions by 25% while improving delivery speeds. The system processes millions of variables to create efficient routing.",
-                "Meta's multimodal AI can now understand and generate content across text, images, video, and audio simultaneously, opening new possibilities for content creation and accessibility tools.",
-                "NVIDIA's latest AI chip architecture delivers 10x performance improvement for large language models, making enterprise AI deployment more cost-effective and environmentally sustainable.",
-                "Anthropic's breakthrough in AI alignment ensures models follow human values more reliably, addressing key safety concerns that have slowed enterprise adoption.",
-                "Tesla's autonomous driving AI achieves Level 4 automation in controlled environments, bringing fully self-driving vehicles closer to mainstream reality.",
-                "IBM's quantum-AI hybrid system solves optimization problems 1000x faster than classical computers, revolutionizing logistics and financial modeling.",
-                "Apple's on-device AI processes sensitive data without cloud connectivity, setting new standards for privacy-preserving artificial intelligence."
-            ];
+            // Generate dynamic headline based on top category
+            const topCategory = topCategories[0][0];
+            const headlines = {
+                'OpenAI': 'OpenAI Developments Dominate AI Landscape',
+                'Microsoft': 'Microsoft Leads Enterprise AI Revolution',
+                'Google': 'Google Pushes Boundaries in AI Research',
+                'Meta': 'Meta Advances Multimodal AI Capabilities',
+                'Business': 'Business AI Adoption Reaches New Heights',
+                'Healthcare': 'Healthcare AI Shows Breakthrough Progress',
+                'Tech': 'Technical Innovations Drive AI Forward',
+                'Ethics': 'AI Ethics Takes Center Stage in Development',
+                'Security': 'Security Concerns Shape AI Implementation',
+                'Policy': 'Policy Frameworks Evolve for AI Governance',
+                'General': 'AI Innovation Continues Across Industries'
+            };
+            document.getElementById('digest-headline').textContent = 
+                headlines[topCategory] || 'AI Development Accelerates Globally';
             
-            const outlooks = [
-                "Watch for major announcements from tech giants as they compete to integrate AI into consumer products. Regulatory discussions will intensify as governments seek to balance innovation with safety concerns.",
-                "Enterprise AI adoption will accelerate as ROI becomes clearer. Expect significant investments in AI infrastructure and training programs as companies race to stay competitive.",
-                "Open-source AI communities will release models that rival commercial offerings, democratizing access to advanced AI capabilities for smaller organizations and researchers.",
-                "Healthcare AI applications will expand rapidly following successful pilots. Privacy and security will be paramount as sensitive medical data is processed by AI systems.",
-                "AI safety and alignment research will gain prominence as models become more powerful. Industry collaboration on safety standards will shape the future of AI development.",
-                "The AI talent war will intensify with companies offering unprecedented packages to attract top researchers and engineers. Educational institutions will expand AI programs to meet demand.",
-                "Sustainable AI will become a key focus as the environmental impact of large-scale model training comes under scrutiny. Efficiency improvements will be crucial for continued growth.",
-                "AI regulation will vary significantly by region, creating challenges for global deployment. Companies will need flexible strategies to navigate different regulatory landscapes.",
-                "Small and medium businesses will increasingly adopt AI tools as costs decrease and user-friendly platforms emerge. This democratization will transform traditional industries.",
-                "AI-powered automation will reshape the job market, creating new roles while transforming existing ones. Reskilling programs will be essential for workforce adaptation."
-            ];
-            
-            // Chart data variations
-            const chartDataSets = [
-                { labels: ['OpenAI', 'Microsoft', 'Healthcare', 'Ethics', 'Business'], data: [32, 24, 18, 14, 12], colors: ['#f9c74f', '#43aa8b', '#f8961e', '#90be6d', '#277da1'] },
-                { labels: ['Enterprise', 'Research', 'Security', 'Education', 'Finance'], data: [28, 22, 20, 18, 12], colors: ['#277da1', '#43aa8b', '#f9c74f', '#f8961e', '#90be6d'] },
-                { labels: ['Google', 'Meta', 'Startups', 'Open Source', 'Policy'], data: [26, 23, 21, 18, 12], colors: ['#43aa8b', '#277da1', '#f8961e', '#90be6d', '#f9c74f'] },
-                { labels: ['Healthcare', 'Finance', 'Retail', 'Manufacturing', 'Legal'], data: [30, 25, 20, 15, 10], colors: ['#f8961e', '#f9c74f', '#43aa8b', '#277da1', '#90be6d'] },
-                { labels: ['LLMs', 'Computer Vision', 'Robotics', 'NLP', 'MLOps'], data: [35, 22, 18, 15, 10], colors: ['#90be6d', '#f9c74f', '#277da1', '#43aa8b', '#f8961e'] }
-            ];
-            
-            // Select content based on day of year for daily rotation
-            const headlineIndex = dayOfYear % headlines.length;
-            const trendSetIndex = dayOfYear % trendSets.length;
-            const topStoryIndex = dayOfYear % topStories.length;
-            const outlookIndex = dayOfYear % outlooks.length;
-            const chartDataIndex = dayOfYear % chartDataSets.length;
-            
-            // Update headline
-            document.getElementById('digest-headline').textContent = headlines[headlineIndex];
-            
-            // Update trends
+            // Extract key trends from each top category
             const trendsList = document.getElementById('key-trends-list');
-            trendsList.innerHTML = trendSets[trendSetIndex].map(trend => `
-                <li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5;">
+            const trends = [];
+            
+            topCategories.forEach(([category, count]) => {
+                // Find the most recent article in this category
+                const categoryArticles = newsItems.filter(item => item.category === category);
+                if (categoryArticles.length > 0) {
+                    const article = categoryArticles[0];
+                    // Create a trend summary from the article
+                    const trendText = `${category}: ${article.title.substring(0, 80)}${article.title.length > 80 ? '...' : ''}`;
+                    trends.push(trendText);
+                }
+            });
+            
+            // Update trends list
+            trendsList.innerHTML = trends.slice(0, 5).map(trend => `
+                <li style="color: #333; margin-bottom: 12px; padding-left: 20px; position: relative; line-height: 1.5; font-size: 0.95rem;">
                     <span style="position: absolute; left: 0; color: #f9c74f;">▸</span>
                     ${trend}
                 </li>
             `).join('');
             
-            // Update top story
-            document.getElementById('top-story-content').textContent = topStories[topStoryIndex];
+            // Find most interesting story (non-paywalled, recent, from major category)
+            const interestingStories = newsItems.filter(item => {
+                // Check if URL contains paywalled domain
+                const isPaywalled = paywalledDomains.some(domain => item.link.includes(domain));
+                return !isPaywalled;
+            });
             
-            // Update outlook
-            document.getElementById('outlook-content').textContent = outlooks[outlookIndex];
+            if (interestingStories.length > 0) {
+                // Pick a story from top categories, preferring longer excerpts
+                const topCategoryNames = topCategories.map(([cat]) => cat);
+                const priorityStories = interestingStories.filter(item => 
+                    topCategoryNames.includes(item.category)
+                );
+                
+                const selectedStory = priorityStories.length > 0 ? priorityStories[0] : interestingStories[0];
+                
+                const storyContent = document.getElementById('top-story-content');
+                storyContent.innerHTML = `
+                    ${selectedStory.excerpt}
+                    <br><br>
+                    <a href="${selectedStory.link}" target="_blank" rel="noopener noreferrer" 
+                       style="color: #4c5fd5; text-decoration: none; font-weight: 600;">
+                        Read Full Story →
+                    </a>
+                `;
+            }
             
-            // Update chart
-            const chartData = chartDataSets[chartDataIndex];
+            // Generate outlook based on trends
+            const outlookTexts = {
+                'OpenAI': 'Expect continued innovations from OpenAI as competition intensifies in the generative AI space.',
+                'Microsoft': 'Microsoft\'s enterprise AI integration will likely accelerate, setting new standards for business productivity.',
+                'Healthcare': 'Healthcare AI applications show promise for revolutionary improvements in patient care and diagnostics.',
+                'Business': 'Business adoption of AI tools will continue to grow as ROI becomes increasingly clear.',
+                'Tech': 'Technical advancements in AI infrastructure will enable more sophisticated applications.',
+                'Security': 'Security and privacy concerns will drive development of more robust AI governance frameworks.',
+                'General': 'The AI landscape continues to evolve rapidly with implications across all sectors.'
+            };
+            
+            document.getElementById('outlook-content').textContent = 
+                outlookTexts[topCategory] || outlookTexts['General'];
+            
+            // Update chart with real data
+            updateDigestChart(topCategories);
+            
+            // Update chart caption with actual count
+            document.getElementById('chart-caption').textContent = 
+                `Analyzed ${newsItems.length} articles from the past 24 hours`;
+        }
+        
+        // Update chart with real category data
+        function updateDigestChart(topCategories) {
             const canvas = document.getElementById('digest-chart');
             const ctx = canvas.getContext('2d');
+            
+            // Chart data from actual categories
+            const chartData = {
+                labels: topCategories.map(([cat]) => cat),
+                data: topCategories.map(([, count]) => count),
+                colors: ['#f9c74f', '#43aa8b', '#f8961e', '#90be6d', '#277da1']
+            };
             
             // Set canvas size with proper scaling for retina displays
             const scale = window.devicePixelRatio || 1;
@@ -1475,7 +1490,7 @@
             const width = canvas.offsetWidth;
             const height = canvas.offsetHeight;
             const centerX = width / 2;
-            const centerY = height / 2 - 15; // Move up to make room for legend
+            const centerY = height / 2 - 15;
             const radius = Math.min(centerX, centerY) - 50;
             const innerRadius = radius * 0.6;
             
@@ -1488,7 +1503,7 @@
             ctx.textAlign = 'center';
             ctx.fillText('Top 5 AI News Categories', centerX, 25);
             
-            let currentAngle = -Math.PI / 2; // Start at top
+            let currentAngle = -Math.PI / 2;
             const total = chartData.data.reduce((a, b) => a + b, 0);
             
             // Draw segments
@@ -1504,7 +1519,7 @@
                 ctx.fillStyle = chartData.colors[index];
                 ctx.fill();
                 
-                // Draw white border between segments
+                // Draw white border
                 ctx.strokeStyle = '#fff';
                 ctx.lineWidth = 2;
                 ctx.stroke();
@@ -1523,10 +1538,10 @@
                 currentAngle += sliceAngle;
             });
             
-            // Draw legend below chart
+            // Draw legend
             const legendStartY = centerY + radius + 25;
             const legendItemHeight = 20;
-            const legendColumns = Math.ceil(chartData.labels.length / 3); // Max 3 items per row
+            const legendColumns = Math.ceil(chartData.labels.length / 3);
             const legendItemsPerColumn = Math.ceil(chartData.labels.length / legendColumns);
             const columnWidth = width / legendColumns;
             
@@ -1546,32 +1561,22 @@
                 ctx.textAlign = 'left';
                 ctx.fillText(label, legendX + 18, legendY + 2);
             });
-            
-            // Update chart caption
-            const articleCount = 80 + (dayOfYear % 40); // Varies between 80-120
-            document.getElementById('chart-caption').textContent = `Analyzed ${articleCount} articles from the past 24 hours`;
         }
         
-        // Load daily digest on page load
-        generateDailyDigest();
+        // Load news feeds and generate digest
+        async function loadAndGenerateDigest() {
+            await loadAllNewsFeeds();
+            // Generate digest after news items are loaded
+            setTimeout(() => {
+                generateDynamicDigest(allCurrentNewsItems);
+            }, 500);
+        }
         
-        // Load news feeds on page load
-        loadAllNewsFeeds();
+        // Initial load
+        loadAndGenerateDigest();
         
-        // Refresh every 2 hours
-        setInterval(loadAllNewsFeeds, 2 * 60 * 60 * 1000);
-        
-        // Regenerate digest at midnight
-        const now = new Date();
-        const midnight = new Date(now);
-        midnight.setHours(24, 0, 0, 0);
-        const msToMidnight = midnight.getTime() - now.getTime();
-        
-        setTimeout(() => {
-            generateDailyDigest();
-            // Then refresh daily
-            setInterval(generateDailyDigest, 24 * 60 * 60 * 1000);
-        }, msToMidnight);
+        // Refresh every 3 hours
+        setInterval(loadAndGenerateDigest, 3 * 60 * 60 * 1000);
     </script>
 </body>
 </html>
