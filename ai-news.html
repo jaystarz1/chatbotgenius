@@ -1353,30 +1353,38 @@
         
         // Dynamic Daily Digest Generator
         function generateDynamicDigest(newsItems) {
-            if (!newsItems || newsItems.length === 0) {
-                console.log('No news items available for digest generation');
-                return;
-            }
-            
-            // Update time
-            const today = new Date();
-            const timeString = today.toLocaleTimeString('en-US', { 
-                hour: 'numeric', 
-                minute: '2-digit', 
-                timeZoneName: 'short' 
-            });
-            document.getElementById('digest-time').textContent = `As of ${timeString}`;
-            
-            // Count categories from actual articles
-            const categoryCounts = {};
-            newsItems.forEach(item => {
-                categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
-            });
-            
-            // Get top 5 categories
-            const topCategories = Object.entries(categoryCounts)
-                .sort((a, b) => b[1] - a[1])
-                .slice(0, 5);
+            try {
+                if (!newsItems || newsItems.length === 0) {
+                    console.log('No news items available for digest generation');
+                    return;
+                }
+                
+                console.log('Generating digest with', newsItems.length, 'items');
+                
+                // Update time
+                const today = new Date();
+                const timeString = today.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit', 
+                    timeZoneName: 'short' 
+                });
+                document.getElementById('digest-time').textContent = `As of ${timeString}`;
+                
+                // Count categories from actual articles
+                const categoryCounts = {};
+                newsItems.forEach(item => {
+                    categoryCounts[item.category] = (categoryCounts[item.category] || 0) + 1;
+                });
+                
+                // Get top 5 categories
+                const topCategories = Object.entries(categoryCounts)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5);
+                
+                if (topCategories.length === 0) {
+                    console.log('No categories found');
+                    return;
+                }
             
             // Generate dynamic headline based on top category
             const topCategory = topCategories[0][0];
@@ -1396,19 +1404,27 @@
             document.getElementById('digest-headline').textContent = 
                 headlines[topCategory] || 'AI Development Accelerates Globally';
             
-            // Extract key trends from each top category through analysis
-            const trendsList = document.getElementById('key-trends-list');
-            const trends = [];
-            
-            topCategories.forEach(([category, count]) => {
-                // Get all articles in this category
-                const categoryArticles = newsItems.filter(item => item.category === category);
-                if (categoryArticles.length > 0) {
-                    // Analyze common themes by looking at titles and excerpts
-                    const allText = categoryArticles.map(a => a.title.toLowerCase() + ' ' + a.excerpt.toLowerCase()).join(' ');
+                // Extract key trends from each top category through analysis
+                const trendsList = document.getElementById('key-trends-list');
+                const trends = [];
+                
+                // Limit analysis to prevent hanging
+                const maxArticlesPerCategory = 10;
+                
+                topCategories.forEach(([category, count]) => {
+                    // Get limited articles in this category
+                    const categoryArticles = newsItems
+                        .filter(item => item.category === category)
+                        .slice(0, maxArticlesPerCategory);
                     
-                    // Create trend analysis based on category and common themes
-                    let trendText = '';
+                    if (categoryArticles.length > 0) {
+                        // Analyze common themes by looking at titles only (faster)
+                        const allText = categoryArticles
+                            .map(a => a.title.toLowerCase())
+                            .join(' ');
+                        
+                        // Create trend analysis based on category and common themes
+                        let trendText = '';
                     
                     switch(category) {
                         case 'Microsoft':
@@ -1654,11 +1670,20 @@
             
             outlookContent.textContent = outlookText;
             
-            // Update chart with real data
-            updateDigestChart(topCategories);
-            
-            // Update chart caption
-            document.getElementById('chart-caption').textContent = 'Refreshes every three hours';
+                // Update chart with real data
+                updateDigestChart(topCategories);
+                
+                // Update chart caption
+                document.getElementById('chart-caption').textContent = 'Refreshes every three hours';
+                
+            } catch (error) {
+                console.error('Error generating digest:', error);
+                // Set fallback content
+                document.getElementById('digest-headline').textContent = 'AI News Digest';
+                document.getElementById('key-trends-list').innerHTML = '<li>Loading trends...</li>';
+                document.getElementById('top-story-content').textContent = 'Loading stories...';
+                document.getElementById('outlook-content').textContent = 'Analysis pending...';
+            }
         }
         
         // Update chart with real category data
@@ -1758,11 +1783,15 @@
         
         // Load news feeds and generate digest
         async function loadAndGenerateDigest() {
-            await loadAllNewsFeeds();
-            // Generate digest after news items are loaded
-            setTimeout(() => {
-                generateDynamicDigest(allCurrentNewsItems);
-            }, 500);
+            try {
+                await loadAllNewsFeeds();
+                // Generate digest after news items are loaded
+                setTimeout(() => {
+                    generateDynamicDigest(allCurrentNewsItems);
+                }, 1000); // Increased delay
+            } catch (error) {
+                console.error('Error in load and generate digest:', error);
+            }
         }
         
         // Initial load
