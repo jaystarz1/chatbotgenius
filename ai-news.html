@@ -1606,16 +1606,16 @@
             let outlookText = '';
             
             // Start with the dominant trend
-            const topCategory = topCategories[0][0];
+            const topCategoryName = topCategories[0][0];
             const topCount = topCategories[0][1];
             const totalArticles = newsItems.length;
             const dominance = Math.round((topCount / totalArticles) * 100);
             
             // Analyze the trend distribution
             if (dominance > 20) {
-                outlookText = `With ${topCategory} dominating ${dominance}% of AI news coverage, we're seeing clear market consolidation around `;
+                outlookText = `With ${topCategoryName} dominating ${dominance}% of AI news coverage, we're seeing clear market consolidation around `;
                 
-                switch(topCategory) {
+                switch(topCategoryName) {
                     case 'Microsoft':
                         outlookText += 'enterprise AI solutions. Expect accelerated adoption of AI-powered productivity tools across organizations, with particular focus on workflow automation and collaborative intelligence. ';
                         break;
