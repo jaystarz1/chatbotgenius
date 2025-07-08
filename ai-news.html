@@ -1465,15 +1465,28 @@
             const canvas = document.getElementById('digest-chart');
             const ctx = canvas.getContext('2d');
             
-            // Clear canvas
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
+            // Set canvas size with proper scaling for retina displays
+            const scale = window.devicePixelRatio || 1;
+            canvas.width = canvas.offsetWidth * scale;
+            canvas.height = canvas.offsetHeight * scale;
+            ctx.scale(scale, scale);
             
-            // Simple donut chart implementation
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const radius = Math.min(centerX, centerY) - 40;
+            // Chart dimensions
+            const width = canvas.offsetWidth;
+            const height = canvas.offsetHeight;
+            const centerX = width / 2;
+            const centerY = height / 2 - 15; // Move up to make room for legend
+            const radius = Math.min(centerX, centerY) - 50;
             const innerRadius = radius * 0.6;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw title
+            ctx.fillStyle = '#1a1f71';
+            ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('Top 5 AI News Categories', centerX, 25);
             
             let currentAngle = -Math.PI / 2; // Start at top
             const total = chartData.data.reduce((a, b) => a + b, 0);
@@ -1491,12 +1504,18 @@
                 ctx.fillStyle = chartData.colors[index];
                 ctx.fill();
                 
+                // Draw white border between segments
+                ctx.strokeStyle = '#fff';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
                 // Draw value in segment
                 const textAngle = currentAngle + sliceAngle / 2;
-                const textX = centerX + Math.cos(textAngle) * (radius - 20);
-                const textY = centerY + Math.sin(textAngle) * (radius - 20);
-                ctx.fillStyle = '#333';
-                ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+                const textRadius = (radius + innerRadius) / 2;
+                const textX = centerX + Math.cos(textAngle) * textRadius;
+                const textY = centerY + Math.sin(textAngle) * textRadius;
+                ctx.fillStyle = '#000';
+                ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(value.toString(), textX, textY);
@@ -1504,28 +1523,28 @@
                 currentAngle += sliceAngle;
             });
             
-            // Draw title
-            ctx.fillStyle = '#1a1f71';
-            ctx.font = 'bold 16px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('Top 5 AI News Categories', centerX, 20);
-            
-            // Draw legend
-            const legendY = canvas.height - 30;
-            const legendItemWidth = canvas.width / chartData.labels.length;
+            // Draw legend below chart
+            const legendStartY = centerY + radius + 25;
+            const legendItemHeight = 20;
+            const legendColumns = Math.ceil(chartData.labels.length / 3); // Max 3 items per row
+            const legendItemsPerColumn = Math.ceil(chartData.labels.length / legendColumns);
+            const columnWidth = width / legendColumns;
             
             chartData.labels.forEach((label, index) => {
-                const legendX = legendItemWidth * index + legendItemWidth / 2;
+                const row = index % legendItemsPerColumn;
+                const col = Math.floor(index / legendItemsPerColumn);
+                const legendX = col * columnWidth + 20;
+                const legendY = legendStartY + row * legendItemHeight;
                 
                 // Color box
                 ctx.fillStyle = chartData.colors[index];
-                ctx.fillRect(legendX - 40, legendY - 8, 12, 12);
+                ctx.fillRect(legendX, legendY - 6, 12, 12);
                 
                 // Label
                 ctx.fillStyle = '#333';
                 ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
                 ctx.textAlign = 'left';
-                ctx.fillText(label, legendX - 25, legendY);
+                ctx.fillText(label, legendX + 18, legendY + 2);
             });
             
             // Update chart caption
