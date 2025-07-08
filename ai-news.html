@@ -1583,19 +1583,76 @@
                 `;
             }
             
-            // Generate outlook based on trends
-            const outlookTexts = {
-                'OpenAI': 'Expect continued innovations from OpenAI as competition intensifies in the generative AI space.',
-                'Microsoft': 'Microsoft\'s enterprise AI integration will likely accelerate, setting new standards for business productivity.',
-                'Healthcare': 'Healthcare AI applications show promise for revolutionary improvements in patient care and diagnostics.',
-                'Business': 'Business adoption of AI tools will continue to grow as ROI becomes increasingly clear.',
-                'Tech': 'Technical advancements in AI infrastructure will enable more sophisticated applications.',
-                'Security': 'Security and privacy concerns will drive development of more robust AI governance frameworks.',
-                'General': 'The AI landscape continues to evolve rapidly with implications across all sectors.'
-            };
+            // Generate outlook based on trends and categories
+            const outlookContent = document.getElementById('outlook-content');
             
-            document.getElementById('outlook-content').textContent = 
-                outlookTexts[topCategory] || outlookTexts['General'];
+            // Build outlook based on actual trends and top categories
+            let outlookText = '';
+            
+            // Start with the dominant trend
+            const topCategory = topCategories[0][0];
+            const topCount = topCategories[0][1];
+            const totalArticles = newsItems.length;
+            const dominance = Math.round((topCount / totalArticles) * 100);
+            
+            // Analyze the trend distribution
+            if (dominance > 20) {
+                outlookText = `With ${topCategory} dominating ${dominance}% of AI news coverage, we're seeing clear market consolidation around `;
+                
+                switch(topCategory) {
+                    case 'Microsoft':
+                        outlookText += 'enterprise AI solutions. Expect accelerated adoption of AI-powered productivity tools across organizations, with particular focus on workflow automation and collaborative intelligence. ';
+                        break;
+                    case 'OpenAI':
+                        outlookText += 'advanced language models and their applications. The competition for AI supremacy will intensify as companies race to match these capabilities. ';
+                        break;
+                    case 'Healthcare':
+                        outlookText += 'medical AI applications. Regulatory approvals and clinical validations will likely accelerate, bringing AI diagnostics to mainstream healthcare. ';
+                        break;
+                    case 'Business':
+                        outlookText += 'commercial AI implementation. ROI demonstrations will drive budget allocations, making AI a standard business tool rather than an experiment. ';
+                        break;
+                    default:
+                        outlookText += 'this sector\'s innovations. Industry leaders will need to adapt quickly to maintain competitive advantages. ';
+                }
+            } else {
+                outlookText = 'The AI landscape shows diverse development across multiple sectors with no single dominant force. ';
+            }
+            
+            // Add insights about secondary trends
+            if (topCategories.length > 2) {
+                const secondCategory = topCategories[1][0];
+                const thirdCategory = topCategories[2][0];
+                
+                outlookText += `The simultaneous growth in ${secondCategory} and ${thirdCategory} suggests `;
+                
+                // Analyze combinations
+                if ((secondCategory === 'Ethics' || thirdCategory === 'Ethics') && 
+                    (secondCategory === 'Policy' || thirdCategory === 'Policy')) {
+                    outlookText += 'increasing regulatory attention on AI development. Companies should prepare for new compliance requirements and ethical guidelines in the coming months. ';
+                } else if ((secondCategory === 'Tech' || thirdCategory === 'Tech') && 
+                          (secondCategory === 'Business' || thirdCategory === 'Business')) {
+                    outlookText += 'a maturing market where technical innovations are rapidly translating into business value. Investment in AI infrastructure will be crucial for maintaining competitiveness. ';
+                } else if (secondCategory === 'Security' || thirdCategory === 'Security') {
+                    outlookText += 'growing awareness of AI-related risks. Organizations will need to balance innovation with robust security measures to protect against emerging threats. ';
+                } else {
+                    outlookText += 'broad-based AI adoption across industries. Organizations that haven\'t started their AI journey risk being left behind as the technology becomes standard. ';
+                }
+            }
+            
+            // Add forward-looking statement based on overall trends
+            const ethicsCount = categoryCounts['Ethics'] || 0;
+            const policyCount = categoryCounts['Policy'] || 0;
+            const securityCount = categoryCounts['Security'] || 0;
+            const riskAwareness = ethicsCount + policyCount + securityCount;
+            
+            if (riskAwareness > totalArticles * 0.2) {
+                outlookText += 'The significant focus on governance and safety indicates a maturing industry that\'s moving beyond pure innovation to responsible deployment.';
+            } else {
+                outlookText += 'As AI capabilities expand rapidly, watch for increased discussions around governance and ethical frameworks in the near future.';
+            }
+            
+            outlookContent.textContent = outlookText;
             
             // Update chart with real data
             updateDigestChart(topCategories);
