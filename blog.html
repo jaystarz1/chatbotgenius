@@ -362,7 +362,7 @@
     </footer>
     
     <!-- Load blog posts data -->
-    <script src="/blog-posts-data.js"></script>
+    <script src="/blog-posts-data.js?v=2"></script>
     
     <script>
         // Mobile menu toggle
@@ -396,9 +396,14 @@
         function loadBlogPosts() {
             const container = document.getElementById('blog-posts-container');
             
+            // Debug log
+            console.log('Loading blog posts...');
+            console.log('blogPostsData:', typeof blogPostsData !== 'undefined' ? blogPostsData : 'undefined');
+            
             // Check if blogPostsData exists
             if (typeof blogPostsData === 'undefined') {
                 container.innerHTML = '<p style="text-align: center; color: #666;">No blog posts found.</p>';
+                console.error('blogPostsData is undefined');
                 return;
             }
             

@@ -22,7 +22,7 @@ const blogPostsData = [
         title: "What Does an Army General Look Like? Demonstrated Bias in Generative AI",
         excerpt: "An experiment using ChatGPT 4 that highlights bias in advanced AI models. Exploring how AI's image generation reveals deep-seated biases and the importance of diversity in AI development.",
         date: "July 2024",
-        image: "images/generals-1.jpeg",
+        image: "/images/generals-1.jpeg",
         imageAlt: "Grid of AI-generated military general images",
         url: "blog/ai-bias-army-general.html",
         sortDate: new Date("2024-07-01")
@@ -31,7 +31,7 @@ const blogPostsData = [
         title: "The Personal Medical Dictation Tool I Built for My Brother",
         excerpt: "How a Custom GPT transformed a Nuclear Medicine specialist's most frustrating task into a seamless workflow, demonstrating AI's potential to improve professional lives.",
         date: "March 2024",
-        image: "images/doctor-1.jpeg",
+        image: "/images/doctor-1.jpeg",
         imageAlt: "Medical professional using dictation technology",
         url: "blog/medical-dictation-tool.html",
         sortDate: new Date("2024-03-01")
