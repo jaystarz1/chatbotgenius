@@ -820,23 +820,11 @@
             <section class="section" style="background: #f8f9fa;" aria-labelledby="insights-heading">
                 <div class="container">
                     <h2 id="insights-heading" style="text-align: center; font-size: 2.5rem; color: #1a1f71; margin-bottom: 3rem;">Latest Insights</h2>
-                    <div class="insights-grid">
-                        <article class="insight-card">
-                            <img src="images/generals-1.jpeg" alt="Grid of AI-generated military general images" class="insight-image">
-                            <div class="insight-content">
-                                <h3>AI Bias in Image Generation</h3>
-                                <p>What does an army general look like? An experiment with ChatGPT 4 reveals striking biases in AI image generation and highlights the critical need for diversity in AI development.</p>
-                                <a href="blog/ai-bias-army-general.html" class="insight-link">Read More →</a>
-                            </div>
-                        </article>
-                        <article class="insight-card">
-                            <img src="images/doctor-1.jpeg" alt="Medical professional using dictation technology" class="insight-image">
-                            <div class="insight-content">
-                                <h3>AI in Healthcare: A Personal Story</h3>
-                                <p>How I built a Custom GPT that transformed my brother's medical dictation workflow from a daily frustration into a seamless process, saving time and eliminating stress.</p>
-                                <a href="blog/medical-dictation-tool.html" class="insight-link">Read More →</a>
-                            </div>
-                        </article>
+                    <div class="insights-grid" id="latest-insights-grid">
+                        <!-- Blog posts will be dynamically loaded here -->
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                            <p>Loading latest blog posts...</p>
+                        </div>
                     </div>
                     <div style="text-align: center; margin-top: 50px;">
                         <a href="blog.html" class="btn btn-primary">View All Blog Posts</a>
@@ -981,6 +969,8 @@
         </div>
     </footer>
     
+    <!-- Load blog posts data -->
+    <script src="blog-posts-data.js"></script>
     <script>
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
@@ -1148,6 +1138,43 @@
         
         // Refresh news feed every 2 hours
         setInterval(loadNewsFeed, 2 * 60 * 60 * 1000);
+        
+        // Function to load latest blog posts
+        function loadLatestBlogPosts() {
+            const container = document.getElementById('latest-insights-grid');
+            
+            // Sort posts by date (newest first)
+            const sortedPosts = blogPostsData.sort((a, b) => b.sortDate - a.sortDate);
+            
+            // Take the two most recent posts
+            const latestPosts = sortedPosts.slice(0, 2);
+            
+            // Generate HTML for the posts
+            let postsHTML = '';
+            latestPosts.forEach(post => {
+                // Shorten title for homepage display if needed
+                const displayTitle = post.title.length > 50 ? 
+                    post.title.substring(0, 47) + '...' : 
+                    post.title;
+                
+                postsHTML += `
+                    <article class="insight-card">
+                        <img src="${post.image}" alt="${post.imageAlt}" class="insight-image">
+                        <div class="insight-content">
+                            <h3>${displayTitle}</h3>
+                            <p>${post.excerpt}</p>
+                            <a href="${post.url}" class="insight-link">Read More →</a>
+                        </div>
+                    </article>
+                `;
+            });
+            
+            // Update the container with the posts
+            container.innerHTML = postsHTML;
+        }
+        
+        // Load blog posts on page load
+        loadLatestBlogPosts();
     </script>
 </body>
 </html>
