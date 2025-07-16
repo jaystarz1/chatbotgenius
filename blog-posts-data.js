@@ -1,6 +1,15 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "No, AI Doesn't Make You Stupid",
+        excerpt: "AI enhances human intelligence rather than diminishing it. Learn why AI tools amplify our cognitive abilities and make us more capable, not less.",
+        date: "July 2025",
+        image: "blog/images/no-ai-doesnt-make-you-stupid.svg",
+        imageAlt: "AI enhancing human cognitive abilities",
+        url: "blog/no-ai-doesnt-make-you-stupid.html",
+        sortDate: new Date("2025-07-16")
+    },
+    {
         title: "How I Built and Manage My Entire Website Using Claude Desktop and MCP Servers",
         excerpt: "Discover how I built a fully functional website in 6 hours using Claude Desktop and MCP servers, with no coding experience.",
         date: "July 2025",
