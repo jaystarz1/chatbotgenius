@@ -1,0 +1,54 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3949ab;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5c6bc0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Graph background -->
+  <rect x="650" y="150" width="500" height="300" fill="rgba(255,255,255,0.1)" rx="5"/>
+  
+  <!-- Graph line -->
+  <polyline points="700,400 800,350 900,280 1000,200 1100,180" 
+            fill="none" stroke="#4caf50" stroke-width="4"/>
+  
+  <!-- Graph points -->
+  <circle cx="700" cy="400" r="8" fill="#4caf50" stroke="white" stroke-width="2"/>
+  <circle cx="800" cy="350" r="8" fill="#4caf50" stroke="white" stroke-width="2"/>
+  <circle cx="900" cy="280" r="8" fill="#4caf50" stroke="white" stroke-width="2"/>
+  <circle cx="1000" cy="200" r="8" fill="#4caf50" stroke="white" stroke-width="2"/>
+  <circle cx="1100" cy="180" r="8" fill="#4caf50" stroke="white" stroke-width="2"/>
+  
+  <!-- +400% text -->
+  <text x="900" y="100" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="#4caf50">+400%</text>
+  
+  <!-- Human icon -->
+  <circle cx="200" cy="300" r="40" fill="white"/>
+  <rect x="160" y="350" width="80" height="120" fill="white" rx="5"/>
+  
+  <!-- Plus sign -->
+  <text x="300" y="350" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="white">+</text>
+  
+  <!-- AI/Robot icon -->
+  <rect x="400" y="280" width="80" height="80" fill="#64b5f6" rx="5"/>
+  <rect x="415" y="300" width="15" height="15" fill="white"/>
+  <rect x="450" y="300" width="15" height="15" fill="white"/>
+  <rect x="420" y="330" width="40" height="10" fill="white" rx="2"/>
+  <rect x="380" y="370" width="120" height="100" fill="#64b5f6" rx="5"/>
+  
+  <!-- Title -->
+  <text x="50" y="100" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="white">The AI Jobs Paradox:</text>
+  <text x="50" y="160" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">Why CEOs Are Wrong</text>
+  
+  <!-- Subtitle -->
+  <text x="50" y="520" font-family="Arial, sans-serif" font-size="28" fill="#b3e5fc">AI Creates Jobs &amp; Boosts Productivity</text>
+  
+  <!-- Decorative line -->
+  <line x1="50" y1="180" x2="550" y2="180" stroke="#4caf50" stroke-width="3"/>
+</svg>
