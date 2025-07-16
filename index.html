@@ -490,8 +490,10 @@
         
         .insight-card h3 {
             color: #1a1f71;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 15px;
+            line-height: 1.4;
+            min-height: 3.6em; /* Ensures consistent card height */
         }
         
         .insight-card p {
@@ -1152,16 +1154,11 @@
             // Generate HTML for the posts
             let postsHTML = '';
             latestPosts.forEach(post => {
-                // Shorten title for homepage display if needed
-                const displayTitle = post.title.length > 50 ? 
-                    post.title.substring(0, 47) + '...' : 
-                    post.title;
-                
                 postsHTML += `
                     <article class="insight-card">
                         <img src="${post.image}" alt="${post.imageAlt}" class="insight-image">
                         <div class="insight-content">
-                            <h3>${displayTitle}</h3>
+                            <h3>${post.title}</h3>
                             <p>${post.excerpt}</p>
                             <a href="${post.url}" class="insight-link">Read More →</a>
                         </div>
