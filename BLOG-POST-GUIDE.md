@@ -2,6 +2,44 @@
 
 This guide explains how to create and manage blog posts for The Chatbot Genius website.
 
+## Automated Blog Creation (Claude Desktop)
+
+The website now supports fully automated blog post creation through Claude Desktop. Simply tell Claude what to write about, and the entire process is handled automatically.
+
+### How It Works
+
+1. **Give Claude a topic or link** in the chat
+2. Claude automatically:
+   - Researches the topic (if needed)
+   - Writes 800-1000 word article
+   - Creates TL;DR at the top
+   - Generates SEO metadata
+   - Creates HTML file with consistent header
+   - Generates SVG header image
+   - Updates blog-posts-data.js
+   - Commits and pushes to GitHub
+   - Blog post goes live automatically
+
+### Usage Examples
+
+**Automatic publishing:**
+- "Write about how AI is transforming customer service"
+- "Create a blog post about this article: [link]"
+- "Write about the benefits of MCP servers for automation"
+
+**With review before publishing:**
+- "Write about AI ethics in healthcare, let me see it first"
+- "Create a post about chatbot best practices, show me before publishing"
+
+### Content Standards
+- **Length**: 800-1000 words
+- **TL;DR**: Always at the top
+- **Tone**: Informative and upbeat
+- **Research**: Web search used as needed
+- **SEO**: Automatic optimization
+
+## Manual Creation Options
+
 ## Quick Start - Creating a New Blog Post
 
 ### Option 1: Using the Blog Post Creator (Recommended)
