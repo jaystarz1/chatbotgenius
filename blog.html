@@ -347,36 +347,8 @@
         <div class="container">
             <h2 style="text-align: center; color: #1a1f71; margin-bottom: 50px;">Recent Blog Posts</h2>
             
-            <div class="articles-grid">
-                <article class="article-card">
-                    <img src="blog/images/ai-jobs-paradox-header.svg" alt="AI and humans working together in modern workplace" class="article-image">
-                    <div class="article-content">
-                        <h3>The AI Jobs Paradox: Why CEOs Are Wrong About AI Replacing Workers</h3>
-                        <p class="article-date">July 2025</p>
-                        <p>While tech executives compete to make the most dramatic predictions about job losses, comprehensive data reveals AI is actually creating more jobs and boosting productivity by 400%.</p>
-                        <a href="blog/ai-jobs-paradox-ceos-wrong.html" class="read-more">Read More →</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="images/generals-1.jpeg" alt="Grid of AI-generated military general images" class="article-image">
-                    <div class="article-content">
-                        <h3>What Does an Army General Look Like? Demonstrated Bias in Generative AI</h3>
-                        <p class="article-date">July 2024</p>
-                        <p>An experiment using ChatGPT 4 that highlights bias in advanced AI models. Exploring how AI's image generation reveals deep-seated biases and the importance of diversity in AI development.</p>
-                        <a href="blog/ai-bias-army-general.html" class="read-more">Read More →</a>
-                    </div>
-                </article>
-                
-                <article class="article-card">
-                    <img src="images/doctor-1.jpeg" alt="Medical professional using dictation technology" class="article-image">
-                    <div class="article-content">
-                        <h3>The Personal Medical Dictation Tool I Built for My Brother</h3>
-                        <p class="article-date">March 2024</p>
-                        <p>How a Custom GPT transformed a Nuclear Medicine specialist's most frustrating task into a seamless workflow, demonstrating AI's potential to improve professional lives.</p>
-                        <a href="blog/medical-dictation-tool.html" class="read-more">Read More →</a>
-                    </div>
-                </article>
+            <div class="articles-grid" id="blog-posts-container">
+                <!-- Blog posts will be dynamically loaded here -->
             </div>
         </div>
     </section>
@@ -388,6 +360,9 @@
             <p>Building the future of conversational AI, one chatbot at a time.</p>
         </div>
     </footer>
+    
+    <!-- Load blog posts data -->
+    <script src="/blog-posts-data.js"></script>
     
     <script>
         // Mobile menu toggle
@@ -416,6 +391,39 @@
                 mobileMenuToggle.focus();
             }
         });
+        
+        // Load blog posts dynamically
+        function loadBlogPosts() {
+            const container = document.getElementById('blog-posts-container');
+            
+            // Check if blogPostsData exists
+            if (typeof blogPostsData === 'undefined') {
+                container.innerHTML = '<p style="text-align: center; color: #666;">No blog posts found.</p>';
+                return;
+            }
+            
+            // Sort posts by sortDate in descending order (newest first)
+            const sortedPosts = [...blogPostsData].sort((a, b) => b.sortDate - a.sortDate);
+            
+            // Generate HTML for each post
+            sortedPosts.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'article-card';
+                article.innerHTML = `
+                    <img src="${post.image}" alt="${post.imageAlt}" class="article-image">
+                    <div class="article-content">
+                        <h3>${post.title}</h3>
+                        <p class="article-date">${post.date}</p>
+                        <p>${post.excerpt}</p>
+                        <a href="${post.url}" class="read-more">Read More →</a>
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        }
+        
+        // Load posts when page is ready
+        document.addEventListener('DOMContentLoaded', loadBlogPosts);
     </script>
 </body>
 </html>

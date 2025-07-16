@@ -1,6 +1,15 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "How I Built and Manage My Entire Website Using Claude Desktop and MCP Servers",
+        excerpt: "Discover how I built a fully functional website in 6 hours using Claude Desktop and MCP servers, with no coding experience.",
+        date: "July 2025",
+        image: "blog/images/claude-desktop-mcp-header.svg",
+        imageAlt: "Claude Desktop and MCP servers powering website development",
+        url: "blog/claude-desktop-mcp-website-experiment.html",
+        sortDate: new Date("2025-07-16")
+    },
+    {
         title: "The AI Jobs Paradox: Why CEOs Are Wrong About AI Replacing Workers",
         excerpt: "While tech executives compete to make the most dramatic predictions about job losses, comprehensive data reveals AI is actually creating more jobs and boosting productivity by 400%.",
         date: "July 2025",
