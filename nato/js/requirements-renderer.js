@@ -154,7 +154,7 @@ window.RequirementsRenderer = function({ phase, annexCRequirements, aiCallChains
                                                 'bg-gray-200 text-gray-800'
                                             }`
                                         },
-                                            getProcessIcon(subprocess.type)
+                                            React.createElement(getProcessIcon(subprocess.type), { className: 'w-4 h-4' })
                                         ),
                                         React.createElement('div', { className: 'flex-1' },
                                             React.createElement('h6', { className: 'font-medium text-gray-800 mb-1' }, 

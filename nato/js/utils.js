@@ -150,10 +150,11 @@ window.getSupportingDataForRequirement = function(phase, reqId) {
 
 // Helper to get process icon based on type
 window.getProcessIcon = function(type) {
+    const { AlertTriangle, Activity, Cpu } = window.lucideIcons;
     switch (type) {
-        case 'decision': return 'AlertTriangle';
-        case 'process': return 'Activity';
-        default: return 'Cpu';
+        case 'decision': return AlertTriangle;
+        case 'process': return Activity;
+        default: return Cpu;
     }
 };
 
