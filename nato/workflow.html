@@ -4,376 +4,496 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NATO M&S Workflow - Interactive Visualization</title>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f3f4f6;
+            color: #374151;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+        .info-banner {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            border: 1px solid #93c5fd;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px auto;
+            max-width: 800px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .phase-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .phase-card:hover {
+            border-color: #d1d5db;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .phase-card.expanded {
+            border-color: #3b82f6;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .phase-header {
+            padding: 24px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .phase-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+        .phase-content {
+            flex: 1;
+        }
+        .phase-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .phase-description {
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+        .io-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 16px;
+            align-items: center;
+        }
+        .io-box {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid;
+        }
+        .input-box {
+            background: #eff6ff;
+            border-color: #93c5fd;
+        }
+        .output-box {
+            background: #f0fdf4;
+            border-color: #86efac;
+        }
+        .arrow {
+            color: #9ca3af;
+            font-size: 1.25rem;
+        }
+        .expanded-content {
+            border-top: 1px solid #e5e7eb;
+            background: #f9fafb;
+            padding: 24px;
+        }
+        .section {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .subprocess {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .subprocess-number {
+            width: 24px;
+            height: 24px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .cli-command {
+            background: #1f2937;
+            color: #10b981;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .feature-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 16px;
+        }
+        .chevron {
+            width: 20px;
+            height: 20px;
+            color: #9ca3af;
+        }
+        .code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
         }
     </style>
 </head>
 <body>
-    <div id="nato-root"></div>
-    
-    <script type="text/babel">
-        const { useState, useRef, useEffect } = React;
-        
-        const InteractiveWorkflow = () => {
-            const [expandedPhase, setExpandedPhase] = useState(null);
-            const phaseRefs = useRef({});
+    <div class="container">
+        <div class="header">
+            <h1 class="title">RFP-ACT-SACT-25-64: AI Support to NATO M&S Lifecycle</h1>
+            <p class="subtitle">Full automation design implementing NATO Annex C requirements to systematically determine AI capabilities and limits</p>
+            
+            <div class="info-banner">
+                <div class="info-grid">
+                    <div>
+                        <p style="margin: 0 0 8px 0; color: #1e40af;"><strong>RFP Context:</strong> NATO problem domain and statement will be provided <strong>1 October 2025</strong> per RFP Phase 2 requirements.</p>
+                        <p style="margin: 0; color: #1e40af;"><strong>Full Automation Design:</strong> Each phase implements complete AI automation with zero human intervention.</p>
+                    </div>
+                    <div>
+                        <p style="margin: 0 0 8px 0; color: #3730a3;"><strong>Annex C Compliance:</strong> Phases 1-7 directly implement NATO's M&S lifecycle tasks.</p>
+                        <p style="margin: 0; color: #3730a3;"><strong>AI Failure Analysis:</strong> When automation fails, we capture exactly where and why.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 14px; color: #6b7280; margin-top: 16px;">Click any phase to expand details</p>
+        </div>
 
-            const phases = [
-                {
-                    id: 0,
-                    name: "Scenario Handoff (NATO Input Reception)",
-                    primaryInput: { file: "nato_input.{any}", description: "Raw scenario file from HQ SACT" },
-                    primaryOutput: { file: "nato_scenario.json", description: "Raw scenario passed through for Phase 1 processing" },
-                    color: "bg-gray-400",
-                    description: "Simple handoff point - receive NATO scenario and pass to Phase 1",
-                    subProcesses: [
-                        { name: "Receive File", description: "Accept scenario file from HQ SACT in any format" },
-                        { name: "Stage for Processing", description: "Make file available to Phase 1 without modification" }
-                    ]
-                },
-                {
-                    id: 1,
-                    name: "Problem Definition & Requirements Analysis",
-                    primaryInput: { file: "nato_scenario.json", description: "Raw NATO scenario from Phase 0 handoff" },
-                    primaryOutput: { file: "requirements.json", description: "Complete problem definition with objectives, constraints, stakeholders, and NATO performance measures (KPI/MoE/MoP)" },
-                    color: "bg-green-500",
-                    description: "AI automation of Annex C Phase 1: complete problem definition including file processing, objectives identification, and performance measures",
-                    subProcesses: [
-                        { name: "File Validation & Format Processing", description: "Check file integrity, detect format (PDF/Word/JSON), convert to processable text" },
-                        { name: "Document Structure Analysis", description: "Parse document structure, identify sections" },
-                        { name: "Objectives Identification (Task 1.1)", description: "NLP extraction of simulation objectives from mission statements" },
-                        { name: "Requirements & Constraints Analysis (Task 1.2)", description: "Extract key requirements, operational constraints, stakeholder roles" },
-                        { name: "Performance Measures Establishment (Task 1.3)", description: "Extract and classify KPIs, MoEs, MoPs" },
-                        { name: "Entity & Stakeholder Mapping", description: "Map identified entities to NATO ontology IDs" }
-                    ]
-                },
-                {
-                    id: 2,
-                    name: "Conceptual Model Development",
-                    primaryInput: { file: "requirements.json", description: "NATO requirements from Phase 1" },
-                    primaryOutput: { file: "concept_model.json", description: "Abstract system representation with entities, processes, interactions" },
-                    color: "bg-purple-500",
-                    description: "AI automation of Annex C Phase 2: abstract system representation, entity identification",
-                    subProcesses: [
-                        { name: "Ontology Lookup", description: "Pull canonical definitions from local ontology.db" },
-                        { name: "LLM Draft Entities/Processes", description: "Generate JSON blocks for entities with attributes" },
-                        { name: "Scope & Assumption Engine", description: "Insert spatial/temporal bounds and explicit simplifications" },
-                        { name: "Consistency Checker", description: "Detect duplicate IDs, orphan processes, circular dependencies" }
-                    ]
-                },
-                {
-                    id: 3,
-                    name: "Model Design",
-                    primaryInput: { file: "concept_model.json", description: "Abstract conceptual model from Phase 2" },
-                    primaryOutput: { file: "design_spec.json", description: "Structured design with modeling techniques, input parameters, algorithms" },
-                    color: "bg-yellow-500",
-                    description: "AI automation of Annex C Phase 3: structured design translation, modeling technique selection",
-                    subProcesses: [
-                        { name: "Heuristic Rulebank", description: "IF entity-count > 500 THEN suggest agent-based; ELSE discrete-event" },
-                        { name: "ML Classifier", description: "XGBoost model outputs probability per design type" },
-                        { name: "Data-Schema Synthesizer", description: "Auto-create class/property tables for entities" },
-                        { name: "Parameter Seed Generator", description: "Default numerical values from doctrine CSV" }
-                    ]
-                },
-                {
-                    id: 4,
-                    name: "Model Implementation",
-                    primaryInput: { file: "design_spec.json", description: "Technical design specification from Phase 3" },
-                    primaryOutput: { file: "sim_build/ directory", description: "Complete executable simulation with integrated data sources" },
-                    color: "bg-red-500",
-                    description: "AI automation of Annex C Phase 4: model development, data integration, performance optimization",
-                    subProcesses: [
-                        { name: "Template Loader", description: "Load skeleton SimPy/Mesa project with Jinja placeholders" },
-                        { name: "Code-LLM Fill-In", description: "Fill entity classes, event handlers, parameters into template" },
-                        { name: "Dependency Resolver", description: "Scan code, build requirements.txt (versions pinned)" },
-                        { name: "Unit-Scaffold Writer", description: "Generate pytest cases for each public method" },
-                        { name: "Auto-Build Runner", description: "pip install, mypy, flake8, pytest; produce build_report.json" }
-                    ]
-                },
-                {
-                    id: 5,
-                    name: "Verification & Validation (V&V)",
-                    primaryInput: { file: "sim_build/ directory", description: "Complete simulation implementation from Phase 4" },
-                    primaryOutput: { file: "vv_report.json", description: "Verification and validation results with confidence assessments" },
-                    color: "bg-indigo-500",
-                    description: "AI automation of Annex C Phase 5: verification (correct build) and validation (real-world accuracy)",
-                    subProcesses: [
-                        { name: "Unit Tests", description: "Execute scaffold; must be 100% pass" },
-                        { name: "Smoke Scenario Run", description: "60-second miniature sim; abort if crashes" },
-                        { name: "Statistical Fit", description: "Compare output metrics to baseline via KS-test/χ²" },
-                        { name: "Face-Validity Heuristics", description: "Quick plausibility checks (e.g., casualties not negative)" }
-                    ]
-                },
-                {
-                    id: 6,
-                    name: "Experimentation & Analysis",
-                    primaryInput: { file: "sim_build/ + requirements.json", description: "Validated simulation + NATO requirements" },
-                    primaryOutput: { file: "analysis_results/ directory", description: "NATO doctrinal scenarios, experimental results, analytical insights" },
-                    color: "bg-teal-500",
-                    description: "AI automation of Annex C Phase 6: NATO doctrinal scenario development, experimental design",
-                    subProcesses: [
-                        { name: "NATO Doctrine Parser", description: "Extract Blue/Red/Green force doctrine from NATO database" },
-                        { name: "Force Structure Generator", description: "Generate NATO-compliant force layouts" },
-                        { name: "DoE Planner", description: "Generate Latin-Hypercube sample of key parameters" },
-                        { name: "Parallel Runner", description: "Spawn N worker procs; each runs sim + dumps run-level CSV" },
-                        { name: "KPI Extractor", description: "Post-process logs into runs.csv with KPI columns" },
-                        { name: "ML Post-analysis", description: "Random forest/SHAP to rank parameter importance" }
-                    ]
-                },
-                {
-                    id: 7,
-                    name: "Maintenance & Evolution",
-                    primaryInput: { file: "analysis_results/ + prior run_meta.json", description: "Current analysis results + historical baselines" },
-                    primaryOutput: { file: "maintenance_actions.json", description: "Model update recommendations based on new data, technologies" },
-                    color: "bg-gray-500",
-                    description: "AI automation of Annex C Phase 7: model updates based on new data, technologies, or requirements",
-                    subProcesses: [
-                        { name: "Baseline Compare", description: "Load historical KPI means; compute z-scores for new run" },
-                        { name: "Drift Detector", description: "Two-sample tests; flag if p < 0.05 on > 30% of KPIs" },
-                        { name: "Version Recommender", description: "Suggest 'retune params' vs 'regen design' vs 'full rebuild'" },
-                        { name: "Auto-Patch Draft", description: "If retune, output updated design_spec.json" }
-                    ]
-                }
-            ];
+        <!-- Global Features -->
+        <div style="background: linear-gradient(135deg, #f9fafb 0%, #eff6ff 100%); border: 1px solid #e5e7eb; border-radius: 8px; padding: 24px; margin-bottom: 32px;">
+            <h3 class="section-title">⚙️ AI Automation Architecture Principles</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4 style="margin: 0 0 8px 0;">NATO Annex C Implementation</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6b7280;">Direct implementation of all seven NATO M&S lifecycle phases per RFP Annex C requirements.</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="margin: 0 0 8px 0;">Full Automation Design Philosophy</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6b7280;">Zero human intervention design to systematically determine what AI can and cannot do.</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="margin: 0 0 8px 0;">RFP-Compliant Architecture</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6b7280;">Modular pipeline designed for HQ SACT scenario input (1 October 2025).</p>
+                </div>
+                <div class="feature-card">
+                    <h4 style="margin: 0 0 8px 0;">Empirical AI Boundary Testing</h4>
+                    <p style="margin: 0; font-size: 14px; color: #6b7280;">Contract-based module integration with comprehensive logging.</p>
+                </div>
+            </div>
+        </div>
 
-            const handlePhaseClick = (phaseId) => {
-                setExpandedPhase(expandedPhase === phaseId ? null : phaseId);
-            };
+        <!-- Phases -->
+        <div id="phases-container"></div>
 
-            useEffect(() => {
-                if (expandedPhase !== null && phaseRefs.current[expandedPhase]) {
-                    phaseRefs.current[expandedPhase].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, [expandedPhase]);
+        <!-- Footer -->
+        <div style="text-align: center; padding: 32px 0; border-top: 1px solid #e5e7eb; margin-top: 48px;">
+            <p style="margin: 0; font-size: 14px; color: #6b7280;">NATO M&S Lifecycle Automation • RFP-ACT-SACT-25-64 • Interactive Workflow Visualization</p>
+            <p style="margin: 8px 0 0 0; font-size: 12px; color: #9ca3af;">This system demonstrates AI automation capabilities for NATO's Modeling & Simulation lifecycle requirements</p>
+        </div>
+    </div>
 
-            return (
-                <div className="max-w-7xl mx-auto p-6 bg-gray-50 min-h-screen">
-                    <div className="mb-8 text-center">
-                        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                            RFP-ACT-SACT-25-64: AI Support to NATO M&S Lifecycle
-                        </h1>
-                        <p className="text-gray-600">
-                            Full automation design implementing NATO Annex C requirements to systematically determine AI capabilities and limits
-                        </p>
-                        <div className="mt-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200 max-w-5xl mx-auto">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div className="text-left">
-                                    <p className="text-sm text-blue-800 leading-relaxed mb-2">
-                                        <strong>RFP Context:</strong> NATO problem domain and statement will be provided <strong>1 October 2025</strong> per RFP Phase 2 requirements.
-                                    </p>
-                                    <p className="text-sm text-blue-800 leading-relaxed">
-                                        <strong>Full Automation Design:</strong> Each phase implements complete AI automation with zero human intervention.
-                                    </p>
+    <script>
+        // Check authentication
+        if (sessionStorage.getItem('nato_authenticated') !== 'true') {
+            window.location.href = 'index.html';
+        }
+
+        const phases = [
+            {
+                id: 0,
+                name: "Scenario Handoff (NATO Input Reception)",
+                input: "nato_input.{any}",
+                inputDesc: "Raw scenario file from HQ SACT",
+                output: "nato_scenario.json", 
+                outputDesc: "Raw scenario passed through for Phase 1 processing",
+                color: "#9ca3af",
+                description: "Simple handoff point - receive NATO scenario and pass to Phase 1",
+                subprocesses: [
+                    { name: "Receive File", desc: "Accept scenario file from HQ SACT in any format" },
+                    { name: "Stage for Processing", desc: "Make file available to Phase 1 without modification" }
+                ]
+            },
+            {
+                id: 1,
+                name: "Problem Definition & Requirements Analysis",
+                input: "nato_scenario.json",
+                inputDesc: "Raw NATO scenario from Phase 0 handoff",
+                output: "requirements.json",
+                outputDesc: "Complete problem definition with objectives, constraints, stakeholders, and NATO performance measures (KPI/MoE/MoP)",
+                color: "#22c55e",
+                description: "AI automation of Annex C Phase 1: complete problem definition including file processing, objectives identification, and performance measures",
+                subprocesses: [
+                    { name: "File Validation & Format Processing", desc: "Check file integrity, detect format (PDF/Word/JSON), convert to processable text" },
+                    { name: "Document Structure Analysis", desc: "Parse document structure, identify sections" },
+                    { name: "Objectives Identification (Task 1.1)", desc: "NLP extraction of simulation objectives from mission statements" },
+                    { name: "Requirements & Constraints Analysis (Task 1.2)", desc: "Extract key requirements, operational constraints, stakeholder roles" },
+                    { name: "Performance Measures Establishment (Task 1.3)", desc: "Extract and classify KPIs, MoEs, MoPs" },
+                    { name: "Entity & Stakeholder Mapping", desc: "Map identified entities to NATO ontology IDs" }
+                ]
+            },
+            {
+                id: 2,
+                name: "Conceptual Model Development", 
+                input: "requirements.json",
+                inputDesc: "NATO requirements from Phase 1",
+                output: "concept_model.json",
+                outputDesc: "Abstract system representation with entities, processes, interactions",
+                color: "#a855f7",
+                description: "AI automation of Annex C Phase 2: abstract system representation, entity identification",
+                subprocesses: [
+                    { name: "Ontology Lookup", desc: "Pull canonical definitions from local ontology.db" },
+                    { name: "LLM Draft Entities/Processes", desc: "Generate JSON blocks for entities with attributes" },
+                    { name: "Scope & Assumption Engine", desc: "Insert spatial/temporal bounds and explicit simplifications" },
+                    { name: "Consistency Checker", desc: "Detect duplicate IDs, orphan processes, circular dependencies" }
+                ]
+            },
+            {
+                id: 3,
+                name: "Model Design",
+                input: "concept_model.json", 
+                inputDesc: "Abstract conceptual model from Phase 2",
+                output: "design_spec.json",
+                outputDesc: "Structured design with modeling techniques, input parameters, algorithms",
+                color: "#eab308",
+                description: "AI automation of Annex C Phase 3: structured design translation, modeling technique selection",
+                subprocesses: [
+                    { name: "Heuristic Rulebank", desc: "IF entity-count > 500 THEN suggest agent-based; ELSE discrete-event" },
+                    { name: "ML Classifier", desc: "XGBoost model outputs probability per design type" },
+                    { name: "Data-Schema Synthesizer", desc: "Auto-create class/property tables for entities" },
+                    { name: "Parameter Seed Generator", desc: "Default numerical values from doctrine CSV" }
+                ]
+            },
+            {
+                id: 4,
+                name: "Model Implementation",
+                input: "design_spec.json",
+                inputDesc: "Technical design specification from Phase 3", 
+                output: "sim_build/ directory",
+                outputDesc: "Complete executable simulation with integrated data sources",
+                color: "#ef4444",
+                description: "AI automation of Annex C Phase 4: model development, data integration, performance optimization",
+                subprocesses: [
+                    { name: "Template Loader", desc: "Load skeleton SimPy/Mesa project with Jinja placeholders" },
+                    { name: "Code-LLM Fill-In", desc: "Fill entity classes, event handlers, parameters into template" },
+                    { name: "Dependency Resolver", desc: "Scan code, build requirements.txt (versions pinned)" },
+                    { name: "Unit-Scaffold Writer", desc: "Generate pytest cases for each public method" },
+                    { name: "Auto-Build Runner", desc: "pip install, mypy, flake8, pytest; produce build_report.json" }
+                ]
+            },
+            {
+                id: 5,
+                name: "Verification & Validation (V&V)",
+                input: "sim_build/ directory",
+                inputDesc: "Complete simulation implementation from Phase 4",
+                output: "vv_report.json", 
+                outputDesc: "Verification and validation results with confidence assessments",
+                color: "#6366f1",
+                description: "AI automation of Annex C Phase 5: verification (correct build) and validation (real-world accuracy)",
+                subprocesses: [
+                    { name: "Unit Tests", desc: "Execute scaffold; must be 100% pass" },
+                    { name: "Smoke Scenario Run", desc: "60-second miniature sim; abort if crashes" },
+                    { name: "Statistical Fit", desc: "Compare output metrics to baseline via KS-test/χ²" },
+                    { name: "Face-Validity Heuristics", desc: "Quick plausibility checks (e.g., casualties not negative)" }
+                ]
+            },
+            {
+                id: 6,
+                name: "Experimentation & Analysis",
+                input: "sim_build/ + requirements.json",
+                inputDesc: "Validated simulation + NATO requirements",
+                output: "analysis_results/ directory",
+                outputDesc: "NATO doctrinal scenarios, experimental results, analytical insights", 
+                color: "#14b8a6",
+                description: "AI automation of Annex C Phase 6: NATO doctrinal scenario development, experimental design",
+                subprocesses: [
+                    { name: "NATO Doctrine Parser", desc: "Extract Blue/Red/Green force doctrine from NATO database" },
+                    { name: "Force Structure Generator", desc: "Generate NATO-compliant force layouts" },
+                    { name: "DoE Planner", desc: "Generate Latin-Hypercube sample of key parameters" },
+                    { name: "Parallel Runner", desc: "Spawn N worker procs; each runs sim + dumps run-level CSV" },
+                    { name: "KPI Extractor", desc: "Post-process logs into runs.csv with KPI columns" },
+                    { name: "ML Post-analysis", desc: "Random forest/SHAP to rank parameter importance" }
+                ]
+            },
+            {
+                id: 7,
+                name: "Maintenance & Evolution",
+                input: "analysis_results/ + prior run_meta.json",
+                inputDesc: "Current analysis results + historical baselines",
+                output: "maintenance_actions.json",
+                outputDesc: "Model update recommendations based on new data, technologies",
+                color: "#6b7280",
+                description: "AI automation of Annex C Phase 7: model updates based on new data, technologies, or requirements",
+                subprocesses: [
+                    { name: "Baseline Compare", desc: "Load historical KPI means; compute z-scores for new run" },
+                    { name: "Drift Detector", desc: "Two-sample tests; flag if p < 0.05 on > 30% of KPIs" },
+                    { name: "Version Recommender", desc: "Suggest 'retune params' vs 'regen design' vs 'full rebuild'" },
+                    { name: "Auto-Patch Draft", desc: "If retune, output updated design_spec.json" }
+                ]
+            }
+        ];
+
+        let expandedPhase = null;
+
+        function renderPhases() {
+            const container = document.getElementById('phases-container');
+            
+            phases.forEach(phase => {
+                const phaseDiv = document.createElement('div');
+                phaseDiv.className = `phase-card ${expandedPhase === phase.id ? 'expanded' : ''}`;
+                phaseDiv.onclick = () => togglePhase(phase.id);
+                
+                phaseDiv.innerHTML = `
+                    <div class="phase-header">
+                        <div class="phase-number" style="background: ${phase.color}">${phase.id}</div>
+                        <div class="phase-content">
+                            <h3 class="phase-title">${phase.name}</h3>
+                            <p class="phase-description">${phase.description}</p>
+                            <div class="io-grid">
+                                <div class="io-box input-box">
+                                    <div style="font-size: 12px; font-weight: 600; color: #1e40af; margin-bottom: 4px;">📄 Input:</div>
+                                    <div class="code">${phase.input}</div>
                                 </div>
-                                <div className="text-left">
-                                    <p className="text-sm text-indigo-800 leading-relaxed mb-2">
-                                        <strong>Annex C Compliance:</strong> Phases 1-7 directly implement NATO's M&S lifecycle tasks.
-                                    </p>
-                                    <p className="text-sm text-indigo-800 leading-relaxed">
-                                        <strong>AI Failure Analysis:</strong> When automation fails, we capture exactly where and why.
-                                    </p>
+                                <div class="arrow">→</div>
+                                <div class="io-box output-box">
+                                    <div style="font-size: 12px; font-weight: 600; color: #166534; margin-bottom: 4px;">📊 Output:</div>
+                                    <div class="code">${phase.output}</div>
                                 </div>
                             </div>
                         </div>
-                        <p className="text-sm text-gray-500 mt-4">Click any phase to expand details</p>
-                    </div>
-
-                    {/* Global Features */}
-                    <div className="mb-8 bg-gradient-to-r from-gray-50 to-blue-50 rounded-lg p-6 border border-gray-200">
-                        <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                            <Settings className="w-5 h-5" />
-                            AI Automation Architecture Principles
-                        </h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="bg-white p-4 rounded border border-gray-200">
-                                <h4 className="font-medium text-gray-800 mb-2">NATO Annex C Implementation</h4>
-                                <p className="text-sm text-gray-600">Direct implementation of all seven NATO M&S lifecycle phases per RFP Annex C requirements.</p>
-                            </div>
-                            <div className="bg-white p-4 rounded border border-gray-200">
-                                <h4 className="font-medium text-gray-800 mb-2">Full Automation Design Philosophy</h4>
-                                <p className="text-sm text-gray-600">Zero human intervention design to systematically determine what AI can and cannot do.</p>
-                            </div>
-                            <div className="bg-white p-4 rounded border border-gray-200">
-                                <h4 className="font-medium text-gray-800 mb-2">RFP-Compliant Architecture</h4>
-                                <p className="text-sm text-gray-600">Modular pipeline designed for HQ SACT scenario input (1 October 2025).</p>
-                            </div>
-                            <div className="bg-white p-4 rounded border border-gray-200">
-                                <h4 className="font-medium text-gray-800 mb-2">Empirical AI Boundary Testing</h4>
-                                <p className="text-sm text-gray-600">Contract-based module integration with comprehensive logging.</p>
-                            </div>
+                        <div class="chevron">
+                            ${expandedPhase === phase.id ? '▲' : '▼'}
                         </div>
                     </div>
                     
-                    {/* Phases Accordion */}
-                    <div className="space-y-6">
-                        {phases.map((phase) => (
-                            <div 
-                                key={phase.id} 
-                                ref={el => phaseRefs.current[phase.id] = el}
-                                className="scroll-mt-6"
-                            >
-                                <div 
-                                    className={`bg-white border-2 rounded-lg transition-all cursor-pointer
-                                        ${expandedPhase === phase.id ? 'border-blue-400 shadow-lg' : 'border-gray-200 hover:border-gray-300'}`}
-                                    onClick={() => handlePhaseClick(phase.id)}
-                                >
-                                    <div className="p-6">
-                                        <div className="flex items-start gap-4">
-                                            <div className={`w-14 h-14 ${phase.color} rounded-full flex items-center justify-center text-white font-bold text-xl flex-shrink-0`}>
-                                                {phase.id}
-                                            </div>
-                                            <div className="flex-1">
-                                                <div className="flex items-center gap-3 mb-2">
-                                                    <h3 className="text-xl font-semibold text-gray-800">{phase.name}</h3>
-                                                </div>
-                                                <p className="text-gray-600 mb-3">{phase.description}</p>
-                                                
-                                                {/* Input/Output Preview */}
-                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                                                    <div className="bg-blue-50 p-3 rounded-lg">
-                                                        <div className="flex items-center gap-2 mb-1">
-                                                            <FileText className="w-4 h-4" />
-                                                            <span className="text-sm font-medium text-blue-800">Input:</span>
-                                                        </div>
-                                                        <code className="text-xs block text-blue-700">{phase.primaryInput.file}</code>
-                                                    </div>
-                                                    
-                                                    <div className="flex items-center justify-center">
-                                                        <ArrowRight className="w-5 h-5 text-gray-400" />
-                                                    </div>
-                                                    
-                                                    <div className="bg-green-50 p-3 rounded-lg">
-                                                        <div className="flex items-center gap-2 mb-1">
-                                                            <FileText className="w-4 h-4" />
-                                                            <span className="text-sm font-medium text-green-800">Output:</span>
-                                                        </div>
-                                                        <code className="text-xs block text-green-700">{phase.primaryOutput.file}</code>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="flex-shrink-0">
-                                                {expandedPhase === phase.id ? (
-                                                    <ChevronUp className="w-5 h-5 text-gray-400" />
-                                                ) : (
-                                                    <ChevronDown className="w-5 h-5 text-gray-400" />
-                                                )}
-                                            </div>
-                                        </div>
+                    ${expandedPhase === phase.id ? `
+                        <div class="expanded-content">
+                            <div class="cli-command">
+                                <span style="color: #9ca3af;">$</span> python p${phase.id}_${phase.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}.py ${phase.input}
+                            </div>
+                            
+                            <div class="section">
+                                <div class="section-title">📋 Module Interface Specification</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                                    <div style="background: #eff6ff; border: 1px solid #93c5fd; padding: 12px; border-radius: 6px;">
+                                        <div style="font-weight: 600; color: #1e40af; margin-bottom: 8px;">📄 Primary Input</div>
+                                        <div class="code" style="margin-bottom: 8px;">${phase.input}</div>
+                                        <div style="font-size: 14px; color: #1e40af;">${phase.inputDesc}</div>
                                     </div>
-
-                                    {/* Expanded Content */}
-                                    {expandedPhase === phase.id && (
-                                        <div className="border-t border-gray-200 bg-gray-50 p-6 space-y-6">
-                                            {/* CLI Command Example */}
-                                            <div className="bg-gray-800 text-green-400 p-4 rounded-lg font-mono text-sm">
-                                                <span className="text-gray-400">$</span> python p{phase.id}_{phase.name.toLowerCase().replace(/ /g, '_')}.py {phase.primaryInput.file}
-                                            </div>
-
-                                            {/* Input/Output Specification */}
-                                            <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                                <h3 className="font-semibold mb-4 flex items-center gap-2">
-                                                    <FileText className="w-5 h-5" />
-                                                    Module Interface Specification
-                                                </h3>
-                                                
-                                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                                                        <h4 className="font-medium text-blue-900 mb-3 flex items-center gap-2">
-                                                            <FileText className="w-4 h-4" />
-                                                            Primary Input
-                                                        </h4>
-                                                        <code className="block text-sm bg-white px-3 py-2 rounded mb-2 border border-blue-200">
-                                                            {phase.primaryInput.file}
-                                                        </code>
-                                                        <p className="text-sm text-blue-800">{phase.primaryInput.description}</p>
-                                                    </div>
-                                                    
-                                                    <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                                                        <h4 className="font-medium text-green-900 mb-3 flex items-center gap-2">
-                                                            <FileText className="w-4 h-4" />
-                                                            Primary Output
-                                                        </h4>
-                                                        <code className="block text-sm bg-white px-3 py-2 rounded mb-2 border border-green-200">
-                                                            {phase.primaryOutput.file}
-                                                        </code>
-                                                        <p className="text-sm text-green-800">{phase.primaryOutput.description}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {/* Sub-processes */}
-                                            <div className="bg-white border border-gray-200 rounded-lg p-6">
-                                                <h3 className="font-semibold mb-4 flex items-center gap-2">
-                                                    <Settings className="w-5 h-5" />
-                                                    Internal Processes
-                                                </h3>
-                                                
-                                                <div className="space-y-4">
-                                                    {phase.subProcesses.map((subprocess, idx) => (
-                                                        <div key={idx} className="border border-gray-200 rounded-lg p-4 bg-gray-50">
-                                                            <div className="flex items-start gap-3">
-                                                                <div className="w-8 h-8 bg-blue-200 text-blue-800 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-medium">
-                                                                    {idx + 1}
-                                                                </div>
-                                                                <div className="flex-1">
-                                                                    <h6 className="font-medium text-gray-800 mb-1">{subprocess.name}</h6>
-                                                                    <p className="text-sm text-gray-600">{subprocess.description}</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            {/* NATO Annex C Compliance */}
-                                            {phase.id > 0 && (
-                                                <div className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-lg p-6">
-                                                    <h3 className="font-semibold mb-4 flex items-center gap-2 text-green-800">
-                                                        <FileCheck className="w-5 h-5" />
-                                                        NATO Annex C Phase {phase.id} Implementation
-                                                    </h3>
-                                                    <div className="bg-white rounded-lg p-4 border border-green-200">
-                                                        <p className="text-sm text-gray-700 mb-2">
-                                                            <strong>✅ Fully Compliant:</strong> All NATO Annex C Phase {phase.id} requirements are explicitly addressed through specific AI automation steps.
-                                                        </p>
-                                                        <p className="text-xs text-green-800">
-                                                            Each requirement has direct AI implementation with measurable outputs that NATO can evaluate for automation capability assessment.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    )}
+                                    <div style="background: #f0fdf4; border: 1px solid #86efac; padding: 12px; border-radius: 6px;">
+                                        <div style="font-weight: 600; color: #166534; margin-bottom: 8px;">📊 Primary Output</div>
+                                        <div class="code" style="margin-bottom: 8px;">${phase.output}</div>
+                                        <div style="font-size: 14px; color: #166534;">${phase.outputDesc}</div>
+                                    </div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                            
+                            <div class="section">
+                                <div class="section-title">⚙️ Internal Processes</div>
+                                ${phase.subprocesses.map((subprocess, idx) => `
+                                    <div class="subprocess">
+                                        <div class="subprocess-number">${idx + 1}</div>
+                                        <div>
+                                            <div style="font-weight: 600; margin-bottom: 4px;">${subprocess.name}</div>
+                                            <div style="font-size: 14px; color: #6b7280;">${subprocess.desc}</div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            ${phase.id > 0 ? `
+                                <div style="background: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%); border: 1px solid #86efac; border-radius: 6px; padding: 16px;">
+                                    <div style="font-weight: 600; color: #166534; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                        ✅ NATO Annex C Phase ${phase.id} Implementation
+                                    </div>
+                                    <div style="background: white; border-radius: 6px; padding: 12px; border: 1px solid #86efac;">
+                                        <p style="margin: 0 0 8px 0; font-size: 14px;">
+                                            <strong>✅ Fully Compliant:</strong> All NATO Annex C Phase ${phase.id} requirements are explicitly addressed through specific AI automation steps.
+                                        </p>
+                                        <p style="margin: 0; font-size: 12px; color: #166534;">
+                                            Each requirement has direct AI implementation with measurable outputs that NATO can evaluate for automation capability assessment.
+                                        </p>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                `;
+                
+                container.appendChild(phaseDiv);
+            });
+        }
 
-                    {/* Footer */}
-                    <div className="mt-12 text-center py-8 border-t border-gray-200">
-                        <p className="text-sm text-gray-500">
-                            NATO M&S Lifecycle Automation • RFP-ACT-SACT-25-64 • Interactive Workflow Visualization
-                        </p>
-                        <p className="text-xs text-gray-400 mt-2">
-                            This system demonstrates AI automation capabilities for NATO's Modeling & Simulation lifecycle requirements
-                        </p>
-                    </div>
-                </div>
-            );
-        };
+        function togglePhase(phaseId) {
+            expandedPhase = expandedPhase === phaseId ? null : phaseId;
+            document.getElementById('phases-container').innerHTML = '';
+            renderPhases();
+            
+            if (expandedPhase !== null) {
+                setTimeout(() => {
+                    const expandedCard = document.querySelector('.phase-card.expanded');
+                    if (expandedCard) {
+                        expandedCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }, 100);
+            }
+        }
 
-        // Render the application
-        ReactDOM.render(
-            React.createElement(InteractiveWorkflow),
-            document.getElementById('nato-root')
-        );
+        // Initialize
+        renderPhases();
     </script>
 </body>
 </html>
