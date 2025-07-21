@@ -5,7 +5,6 @@
 /Users/jaytarzwell/jaystarz1.github.io/nato/
 ├── index.html                     # Login page with authentication
 ├── workflow.html                  # Main workflow visualization
-├── test.html                      # Test page (bypasses auth)
 ├── js/
 │   ├── phases-data.js            # 8 phases configuration
 │   ├── ai-chains-data.js         # AI automation steps mapping
@@ -40,7 +39,6 @@
 ### ✅ Main Files (100% Complete)
 - [x] index.html - Authentication page
 - [x] workflow.html - Main application
-- [x] test.html - Test page for debugging
 
 ## Features Implemented
 
@@ -82,22 +80,17 @@
 
 ## Testing Instructions
 
-1. **Test with Authentication:**
-   ```
-   Open: /Users/jaytarzwell/jaystarz1.github.io/nato/index.html
-   Password: NATO2024
-   ```
+**Access the protected NATO workflow:**
+```
+Open: https://thechatbotgenius.com/nato/
+Password: NATO2024
+```
 
-2. **Test without Authentication:**
-   ```
-   Open: /Users/jaytarzwell/jaystarz1.github.io/nato/test.html
-   ```
-
-3. **Verify Features:**
-   - Click each phase to expand
-   - Check all NATO requirements sections
-   - Verify special phase details (1, 4, 6)
-   - Test responsive design
+**Verify Features:**
+- Click each phase to expand
+- Check all NATO requirements sections
+- Verify special phase details (1, 4, 6)
+- Test responsive design
 
 ## Deployment
 The site is ready for deployment. All files are modular and properly structured.
