@@ -337,7 +337,370 @@
                         }
                     }
                 }
-                // ... Add all other phases here
+                // Phases 2-7 from complete React component
+                ,
+                {
+                    id: 2,
+                    name: "Conceptual Model Development",
+                    cli: "p2_concept",
+                    primaryInput: {
+                        file: "requirements.json",
+                        description: "NATO requirements from Phase 1"
+                    },
+                    primaryOutput: {
+                        file: "concept_model.json",
+                        description: "Abstract system representation with entities, processes, interactions, assumptions, and scope"
+                    },
+                    color: "bg-purple-500",
+                    description: "AI automation of Annex C Phase 2: abstract system representation, entity identification, and scope definition",
+                    phaseExplanation: "This phase implements NATO Annex C Phase 2 by developing an abstract representation of the operational system, identifying key military entities and their interactions, and defining assumptions and scope. AI automation creates the conceptual blueprint that bridges operational requirements to executable simulation models.",
+                    subProcesses: [
+                        { 
+                            name: "Ontology Lookup", 
+                            type: "process", 
+                            description: "Pull canonical definitions (weapon types, unit hierarchies) from local ontology.db",
+                            transforms: "Entity IDs → Full entity definitions with properties",
+                            explanation: "The system looks up standard definitions for all the military units and equipment mentioned. For example, if 'tank platoon' was identified, it retrieves details like how many tanks that includes, their capabilities, and command structure."
+                        },
+                        { 
+                            name: "LLM Draft Entities/Processes", 
+                            type: "process",
+                            description: "Generate JSON blocks for entities with attributes and process flow edges",
+                            transforms: "Requirements → Entity objects + Process flows",
+                            explanation: "An AI model creates detailed descriptions of all entities in your scenario and maps out how they interact. It's like drawing a flowchart showing which units can engage which targets and under what conditions."
+                        },
+                        { 
+                            name: "Scope & Assumption Engine", 
+                            type: "process",
+                            description: "Insert spatial/temporal bounds and explicit simplifications list",
+                            transforms: "Raw model → Bounded model with assumptions",
+                            explanation: "This sets realistic boundaries for the simulation (like the geographic area and time period) and documents any simplifying assumptions. For instance, it might assume perfect communications or ignore weather effects to keep the model manageable."
+                        },
+                        { 
+                            name: "Consistency Checker", 
+                            type: "decision", 
+                            description: "Detect duplicate IDs, orphan processes, circular dependencies",
+                            transforms: "Model graph → Error report or Pass",
+                            explanation: "The system checks for logical errors in the model, such as units that are supposed to interact but can't reach each other, or circular command relationships. It's like proofreading to ensure the story makes sense."
+                        }
+                    ],
+                    dataFlow: {
+                        input: "requirements.json with objectives and KPIs",
+                        internal: "Ontology enrichment → Entity generation → Scope definition → Consistency check",
+                        output: "concept_model.json with complete abstract model"
+                    }
+                },
+                {
+                    id: 3,
+                    name: "Model Design",
+                    cli: "p3_design",
+                    primaryInput: {
+                        file: "concept_model.json",
+                        description: "Abstract conceptual model from Phase 2"
+                    },
+                    primaryOutput: {
+                        file: "design_spec.json",
+                        description: "Structured design with modeling techniques, input parameters, algorithms, and data structures"
+                    },
+                    color: "bg-yellow-500",
+                    description: "AI automation of Annex C Phase 3: structured design translation, modeling technique selection, and parameter definition",
+                    phaseExplanation: "This phase implements NATO Annex C Phase 3 by translating the conceptual model into a structured technical design, automatically selecting appropriate modeling techniques (discrete event, agent-based, system dynamics), and defining input parameters, algorithms, and data structures required for implementation.",
+                    subProcesses: [
+                        { 
+                            name: "Heuristic Rulebank", 
+                            type: "process", 
+                            description: "IF entity-count > 500 THEN suggest agent-based; ELSE discrete-event",
+                            transforms: "Model stats → Initial approach recommendation",
+                            explanation: "Simple rules help decide the simulation style. For scenarios with many individual entities (like tracking every vehicle), it suggests agent-based modeling. For simpler scenarios, it might recommend event-based simulation that's faster to run."
+                        },
+                        { 
+                            name: "ML Classifier", 
+                            type: "process", 
+                            description: "XGBoost model outputs probability per design type; boosts or overrides heuristic",
+                            explanation: "A machine learning model that has learned from thousands of previous simulations provides a second opinion on the best approach. It can override the simple rules if it recognizes patterns that suggest a different method would work better.",
+                            transforms: "Model features → Design type probabilities"
+                        },
+                        { 
+                            name: "Data-Schema Synthesizer", 
+                            type: "process",
+                            description: "Auto-create class/property tables for entities; writes to schema.yaml",
+                            transforms: "Entity definitions → Data schemas",
+                            explanation: "This creates the data templates for every type of entity in your simulation - defining what information needs to be tracked for each tank, soldier, or supply truck. It's like creating forms that will be filled out during simulation."
+                        },
+                        { 
+                            name: "Parameter Seed Generator", 
+                            type: "process",
+                            description: "Default numerical values (tick length, sensor ranges) from doctrine CSV",
+                            transforms: "Entity types → Initial parameter values",
+                            explanation: "The system fills in realistic starting values for all the numbers in your simulation, pulling from military manuals and doctrine. For example, it knows a tank's typical speed and how far its sensors can detect enemies."
+                        },
+                        { 
+                            name: "Design Review Gate", 
+                            type: "decision", 
+                            description: "Combine confidence + policy; set approach = high_fidelity if complex",
+                            transforms: "Design components → Final design decision",
+                            explanation: "A final check ensures the chosen approach can handle your scenario's complexity. If the scenario is particularly challenging or important, it may upgrade to a more detailed (but slower) simulation method for better accuracy."
+                        }
+                    ],
+                    dataFlow: {
+                        input: "concept_model.json with entities and processes",
+                        internal: "Heuristic rules → ML enhancement → Schema generation → Parameter defaults",
+                        output: "design_spec.json with simulation approach, schemas, initial parameters"
+                    }
+                },
+                {
+                    id: 4,
+                    name: "Model Implementation",
+                    cli: "p4_codegen",
+                    primaryInput: {
+                        file: "design_spec.json",
+                        description: "Technical design specification from Phase 3"
+                    },
+                    primaryOutput: {
+                        file: "sim_build/ directory",
+                        description: "Complete executable simulation with integrated data sources and optimized performance"
+                    },
+                    color: "bg-red-500",
+                    description: "AI automation of Annex C Phase 4: model development, data integration, and performance optimization",
+                    phaseExplanation: "This phase implements NATO Annex C Phase 4 by developing executable simulation models using programming languages, integrating necessary data sources and computational methods, and optimizing for performance and scalability. AI automation demonstrates the capability to translate design specifications into fully functional simulation software.",
+                    subProcesses: [
+                        { 
+                            name: "Template Loader", 
+                            type: "process", 
+                            description: "Load skeleton SimPy/Mesa project with Jinja placeholders",
+                            transforms: "Design type → Code template selection",
+                            explanation: "The system selects a pre-built code framework that matches your simulation type. Think of it like choosing the right blueprint before building a house - it provides the basic structure that will be customized for your specific needs."
+                        },
+                        { 
+                            name: "Code-LLM Fill-In", 
+                            type: "process",
+                            description: "Fill entity classes, event handlers, parameters into template",
+                            transforms: "Template + Design → Populated Python code",
+                            explanation: "An AI model writes the specific code for your scenario, filling in the template with logic for how units move, fight, and make decisions. It's like a very fast programmer writing custom software based on your requirements."
+                        },
+                        { 
+                            name: "Dependency Resolver", 
+                            type: "process",
+                            description: "Scan code, build requirements.txt (versions pinned)",
+                            transforms: "Import statements → Dependency list",
+                            explanation: "The system identifies all the software libraries needed to run your simulation and creates a list with specific versions. This ensures the simulation will run the same way on any computer, like a recipe listing exact ingredients."
+                        },
+                        { 
+                            name: "Unit-Scaffold Writer", 
+                            type: "process",
+                            description: "Generate pytest cases for each public method",
+                            transforms: "Code methods → Test functions",
+                            explanation: "Automated tests are created to verify each piece of code works correctly in isolation. It's like quality control checks at each step of an assembly line, catching errors before they can cause bigger problems."
+                        },
+                        { 
+                            name: "Auto-Build Runner", 
+                            type: "decision", 
+                            description: "pip install, mypy, flake8, pytest; produce build_report.json",
+                            transforms: "Code + Tests → Pass/Fail report",
+                            explanation: "The system attempts to build and run the simulation code, checking for syntax errors, type mismatches, and failed tests. If everything passes, you have working software; if not, it reports what needs fixing."
+                        },
+                        { 
+                            name: "Regenerate/SME", 
+                            type: "process", 
+                            description: "Try prompt variant once; if still fails, raise SME flag",
+                            transforms: "Failed code → Revised code or SME alert",
+                            explanation: "If the code doesn't work on the first try, the AI attempts one more time with adjusted instructions. If it still fails, it flags the issue for a human expert to review, preventing endless failed attempts."
+                        }
+                    ],
+                    dataFlow: {
+                        input: "design_spec.json with approach, schemas, parameters",
+                        internal: "Template selection → Code generation → Dependency resolution → Test creation → Build validation",
+                        output: "sim_build/ directory with executable simulation + build_report.json"
+                    }
+                },
+                {
+                    id: 5,
+                    name: "Verification & Validation (V&V)",
+                    cli: "p5_vv",
+                    primaryInput: {
+                        file: "sim_build/ directory",
+                        description: "Complete simulation implementation from Phase 4"
+                    },
+                    primaryOutput: {
+                        file: "vv_report.json",
+                        description: "Verification results (correct build) and validation results (real-world accuracy) with confidence assessments"
+                    },
+                    color: "bg-indigo-500",
+                    description: "AI automation of Annex C Phase 5: verification (correct build) and validation (real-world accuracy)",
+                    phaseExplanation: "This phase implements NATO Annex C Phase 5 through automated verification (ensuring models are built correctly via debugging, code reviews, unit testing) and validation (ensuring models accurately represent real-world systems by comparing outputs with empirical data). AI automation tests the limits of autonomous quality assurance in military simulation.",
+                    subProcesses: [
+                        { 
+                            name: "Unit Tests", 
+                            type: "process", 
+                            description: "Execute scaffold; must be 100% pass",
+                            transforms: "Test suite → Pass/Fail per test",
+                            explanation: "Every individual component of the simulation is tested in isolation to ensure it works as designed. It's like testing each part of a car engine separately before assembling them together."
+                        },
+                        { 
+                            name: "Smoke Scenario Run", 
+                            type: "process", 
+                            description: "60-second miniature sim; abort if crashes",
+                            transforms: "Simulation → Runtime stability check",
+                            explanation: "The system runs a quick, simplified version of your scenario to ensure the simulation doesn't crash or hang. It's like a test drive around the parking lot before taking a car on the highway."
+                        },
+                        { 
+                            name: "Statistical Fit", 
+                            type: "process", 
+                            description: "Compare output metrics to baseline via KS-test/χ²; score 0-1",
+                            transforms: "Sim outputs → Statistical comparison scores",
+                            explanation: "The simulation results are compared against known military data or doctrine to see if they fall within expected ranges. For example, checking if casualty rates or mission completion times match historical averages."
+                        },
+                        { 
+                            name: "Face-Validity Heuristics", 
+                            type: "process",
+                            description: "Quick plausibility checks (e.g., casualties not negative)",
+                            transforms: "Output values → Sanity check results",
+                            explanation: "Basic reality checks ensure the simulation isn't producing impossible results, like units moving faster than physically possible or negative casualties. These catch obvious errors that statistical tests might miss."
+                        },
+                        { 
+                            name: "Aggregate Validator", 
+                            type: "decision",
+                            description: "Combine results; set overall confidence, list issues[]",
+                            transforms: "All test results → Combined V&V score + issues",
+                            explanation: "All test results are combined into an overall assessment of how much you can trust this simulation. Any problems found are listed so they can be addressed before using the simulation for real analysis."
+                        }
+                    ],
+                    dataFlow: {
+                        input: "sim_build/ with model.py and tests",
+                        internal: "Unit testing → Runtime check → Statistical validation → Plausibility check → Aggregation",
+                        output: "vv_report.json with confidence score and issues list"
+                    }
+                },
+                {
+                    id: 6,
+                    name: "Experimentation & Analysis",
+                    cli: "p6_experiment",
+                    primaryInput: {
+                        file: "sim_build/ + requirements.json",
+                        description: "Validated simulation + NATO requirements"
+                    },
+                    primaryOutput: {
+                        file: "analysis_results/ directory",
+                        description: "NATO doctrinal scenarios, experimental results, and analytical insights"
+                    },
+                    color: "bg-teal-500",
+                    description: "AI automation of Annex C Phase 6: NATO doctrinal scenario development, experimental design, sensitivity analysis, and results interpretation",
+                    phaseExplanation: "This phase implements NATO Annex C Phase 6 by developing scenarios with proper Blue/Red/Green force structures per NATO doctrine, designing and conducting simulation experiments with sensitivity analysis, interpreting results to assess model effectiveness, and identifying areas for improvement. AI automation demonstrates autonomous capability for comprehensive operational analysis.",
+                    subProcesses: [
+                        { 
+                            name: "NATO Doctrine Parser", 
+                            type: "process", 
+                            description: "Extract Blue/Red/Green force doctrine from NATO database per Annex C 6.1 requirements",
+                            transforms: "Doctrine DB + Requirements → NATO force doctrine JSON",
+                            explanation: "Parses NATO doctrinal database to extract proper Blue (friendly/allied), Red (hostile/enemy), and Green/White (neutral/civilian) force structures, ensuring compliance with NATO standards for scenario development."
+                        },
+                        { 
+                            name: "Force Structure Generator", 
+                            type: "process", 
+                            description: "Generate NATO-compliant force layouts with proper Blue/Red/Green designations",
+                            transforms: "Force Doctrine → NATO Scenario Structure",
+                            explanation: "Creates detailed force structures following NATO doctrine, with appropriate command hierarchies, equipment allocations, and behavioral patterns for each force type as specified in NATO operational planning standards."
+                        },
+                        { 
+                            name: "DoE Planner", 
+                            type: "process", 
+                            description: "Generate Latin-Hypercube sample of key parameters respecting KPI ranges",
+                            transforms: "Parameter space → Experiment design matrix",
+                            explanation: "The system creates a smart plan for which parameter combinations to test, ensuring good coverage without running every possible combination. It's like efficiently sampling ice cream flavors without trying every possible mix."
+                        },
+                        { 
+                            name: "Parallel Runner", 
+                            type: "process", 
+                            description: "Spawn N worker procs; each runs sim + dumps run-level CSV",
+                            transforms: "Design matrix → Multiple simulation outputs",
+                            explanation: "Multiple simulations run simultaneously on different processors, each testing different scenarios or random variations. This dramatically speeds up the analysis, like having multiple labs running experiments at once."
+                        },
+                        { 
+                            name: "KPI Extractor", 
+                            type: "process",
+                            description: "Post-process logs into runs.csv with KPI columns",
+                            transforms: "Raw outputs → Structured KPI table",
+                            explanation: "The system extracts the important metrics from each simulation run and organizes them into a spreadsheet format. This makes it easy to compare how different scenarios performed against your success criteria."
+                        },
+                        { 
+                            name: "ML Post-analysis", 
+                            type: "process", 
+                            description: "Random forest/SHAP to rank parameter importance; cluster outcomes",
+                            transforms: "KPI data → Feature importance + clusters",
+                            explanation: "Machine learning algorithms analyze all the results to identify which factors most strongly influence success or failure. It can also group similar outcomes together to reveal distinct patterns or strategies that work."
+                        },
+                        { 
+                            name: "Chart Render", 
+                            type: "process", 
+                            description: "Matplotlib PNGs: KPI distributions, pareto fronts",
+                            transforms: "Data → Visualization files",
+                            explanation: "The system automatically creates graphs and charts showing how different parameters affect outcomes. These visual aids make it easy to see trends and trade-offs at a glance, like seeing which strategies minimize casualties while maximizing mission success."
+                        },
+                        { 
+                            name: "Insight Synthesizer", 
+                            type: "process", 
+                            description: "Summarize top 5 findings in analysis_report.json",
+                            transforms: "All results → Key insights document",
+                            explanation: "An AI reviews all the data and identifies the most important discoveries, writing a summary of actionable recommendations. It's like having an analyst write an executive summary highlighting what commanders need to know."
+                        }
+                    ],
+                    dataFlow: {
+                        input: "sim_build/ code + requirements.json KPIs",
+                        internal: "NATO doctrine parsing → Force structure generation → DoE planning → Parallel execution → KPI extraction → ML analysis → Visualization → Synthesis",
+                        output: "analysis_results/ with runs.csv, charts, and analysis_report.json"
+                    }
+                },
+                {
+                    id: 7,
+                    name: "Maintenance & Evolution",
+                    cli: "p7_maintenance",
+                    primaryInput: {
+                        file: "analysis_results/ + prior run_meta.json",
+                        description: "Current analysis results + historical baselines"
+                    },
+                    primaryOutput: {
+                        file: "maintenance_actions.json",
+                        description: "Model update recommendations based on new data, technologies, or requirements"
+                    },
+                    color: "bg-gray-500",
+                    description: "AI automation of Annex C Phase 7: model updates based on new data, technologies, or requirements",
+                    phaseExplanation: "This phase implements NATO Annex C Phase 7 by automatically updating models based on new data, technologies, or evolving requirements. AI automation monitors model performance over time, detects drift from baseline expectations, and recommends appropriate updates to maintain model relevance and accuracy in changing operational environments.",
+                    subProcesses: [
+                        { 
+                            name: "Baseline Compare", 
+                            type: "process",
+                            description: "Load historical KPI means; compute z-scores for new run",
+                            transforms: "Current + Historical → Deviation metrics",
+                            explanation: "The system compares your latest results against established baselines to measure how much things have changed. It's like comparing this year's performance against last year's to spot significant shifts or trends."
+                        },
+                        { 
+                            name: "Drift Detector", 
+                            type: "process", 
+                            description: "Two-sample tests; flag if p < 0.05 on > 30% of KPIs",
+                            transforms: "Deviations → Statistical significance flags",
+                            explanation: "Statistical tests determine whether observed changes are meaningful or just random variation. If too many metrics show significant changes, it suggests the simulation may need updating to reflect new realities."
+                        },
+                        { 
+                            name: "Version Recommender", 
+                            type: "process",
+                            description: "Suggest 'retune params' vs 'regen design' vs 'full rebuild'",
+                            transforms: "Drift analysis → Action recommendation",
+                            explanation: "Based on the type and severity of drift detected, the system recommends appropriate action: minor parameter tweaks for small changes, redesign for moderate issues, or complete rebuild for fundamental shifts."
+                        },
+                        { 
+                            name: "Auto-Patch Draft", 
+                            type: "process",
+                            description: "If retune, output updated design_spec.json with new param seeds",
+                            transforms: "Recommendation → Updated specifications",
+                            explanation: "For minor adjustments, the system can automatically generate updated configuration files with new parameter values. This allows quick fixes without rebuilding the entire simulation from scratch."
+                        }
+                    ],
+                    dataFlow: {
+                        input: "analysis_results/ + historical run_meta.json",
+                        internal: "Baseline comparison → Drift detection → Action recommendation → Patch generation",
+                        output: "maintenance_actions.json (+ optional updated_design_spec.json)"
+                    }
+                }
             ];
 
             const globalFeatures = [
