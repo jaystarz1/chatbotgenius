@@ -116,10 +116,18 @@
     </div>
 
     <script>
-        // Simple password verification
-        const correctPassword = 'natoworkflow2025';
+        // Secure password verification using SHA-256 hash
+        const correctPasswordHash = '560ad1bcf2d9c2c0f33b8f40c36aa3e54de96067a6911186a0a65279f559c369';
         let attempts = 0;
         const maxAttempts = 5;
+        
+        async function hashPassword(password) {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
         
         function checkAttempts() {
             const stored = localStorage.getItem('nato_attempts');
@@ -175,14 +183,17 @@
         if (checkAttempts()) {
             updateWarning();
             
-            document.getElementById('password-form').addEventListener('submit', function(e) {
+            document.getElementById('password-form').addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 const password = document.getElementById('password-input').value;
                 const errorDiv = document.getElementById('error-message');
                 const button = document.getElementById('login-button');
                 
-                if (password === correctPassword) {
+                // Hash the entered password and compare
+                const hashedInput = await hashPassword(password);
+                
+                if (hashedInput === correctPasswordHash) {
                     sessionStorage.setItem('nato_authenticated', 'true');
                     localStorage.removeItem('nato_attempts');
                     button.textContent = 'Access Granted - Redirecting...';
