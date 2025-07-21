@@ -43,7 +43,7 @@
 ## Features Implemented
 
 ### Authentication System
-- Simple password authentication (password: "NATO2024")
+- Simple password authentication (password: nato2025)
 - Session storage for auth state
 - Redirect to login if not authenticated
 
@@ -83,7 +83,7 @@
 **Access the protected NATO workflow:**
 ```
 Open: https://thechatbotgenius.com/nato/
-Password: NATO2024
+Password: nato2025
 ```
 
 **Verify Features:**

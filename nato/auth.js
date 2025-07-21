@@ -3,7 +3,7 @@
 
 class PasswordProtection {
     constructor() {
-        this.correctPasswordHash = 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3'; // "hello" - change this
+        this.correctPasswordHash = '76841a02c074a367b093fc09d25b0fbdc3b0b6540fac5fded384dc7044a97641'; // nato2025
         this.sessionKey = 'nato_auth_session';
         this.init();
     }
