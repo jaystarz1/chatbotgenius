@@ -1,0 +1,28 @@
+# Password protection for NATO subdomain
+AuthType Basic
+AuthName "NATO M&S Workflow - Restricted Access"
+AuthUserFile /Users/jaytarzwell/jaystarz1.github.io/nato/.htpasswd
+Require valid-user
+
+# Security headers
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+# Cache control for sensitive content
+<FilesMatch "\.(html|js)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</FilesMatch>
+
+# Block direct access to sensitive files
+<Files ".htpasswd">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Custom error pages
+ErrorDocument 401 /nato/unauthorized.html
+ErrorDocument 403 /nato/forbidden.html

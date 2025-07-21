@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forbidden - NATO M&S Workflow</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        .error-code {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">403</div>
+        <h1>Forbidden</h1>
+        <p>You do not have permission to access this resource.</p>
+        <p>This area contains sensitive NATO project information.</p>
+        <button onclick="window.location.href='/'" style="background: white; color: #dc2626; border: none; padding: 12px 24px; border-radius: 6px; margin-top: 20px; cursor: pointer; font-weight: 600;">
+            Return to Main Site
+        </button>
+    </div>
+</body>
+</html>
