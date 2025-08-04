@@ -1,21 +1,29 @@
-# The Chatbot Genius
+# The Chatbot Genius Website
 
-Welcome to The Chatbot Genius - Your expert resource for AI chatbot development, consulting, and innovation.
+## Overview
+Professional website for AI expertise and book showcase, now powered by Netlify with serverless API capabilities.
 
-## About
+## New Repository Information
+- **Repository**: chatbotgenius (renamed from jaystarz1.github.io)
+- **Local Path**: `/Users/jaytarzwell/chatbotgenius/`
+- **Hosting**: Netlify with custom domain
+- **API Endpoints**: Serverless functions for medical transcription
 
-This repository hosts the website for The Chatbot Genius, providing resources and services for AI and chatbot technology.
+## Quick Start
+```bash
+cd /Users/jaytarzwell/chatbotgenius
+git add .
+git commit -m "Your message"
+git push
+```
 
-## Technologies Used
+## API Endpoint
+- **Medical Transcription**: `https://thechatbotgenius.com/api/medical-transcription`
+- **Function Location**: `netlify/functions/medical-transcription.js`
+- **Integration**: ChatGPT Custom Actions ready
 
-- HTML5
-- CSS3
-- GitHub Pages
+## Documentation
+See `chatbot-genius-project-knowledge.md` for complete project documentation.
 
-## Custom Domain
-
-This site is hosted at [thechatbotgenius.com](https://thechatbotgenius.com)
-
-## License
-
-© 2025 The Chatbot Genius. All rights reserved.
+## Deployment
+Automatic deployment via Netlify when pushing to main branch.
