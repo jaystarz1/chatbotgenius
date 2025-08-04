@@ -265,6 +265,15 @@ class PETCTReportGenerator {
         return text.replace(/(?:on\s*)?image\s*([\w-]+)/gi, '(Image $1)');
     }
 
+    initializeEmptyFindings() {
+        return {
+            'Head/Neck': [],
+            'Chest': [],
+            'Abdomen/Pelvis': [],
+            'MSK/Integument': []
+        };
+    }
+
     hasPositiveFindings(text) {
         const positiveIndicators = [
             'uptake', 'activity', 'lesion', 'mass', 'nodule', 'lymph', 'SUVmax',
