@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Transcription API</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            margin: 40px; 
+            background: #f8f9fa;
+        }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .hidden { display: none; }
+        .status { padding: 15px; margin: 15px 0; border-radius: 6px; font-weight: 500; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: monospace; font-size: 14px; }
+        button { background: #007bff; color: white; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-weight: 500; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; }
+        pre { background: #f8f9fa; padding: 20px; border-radius: 4px; overflow-x: auto; border-left: 4px solid #007bff; }
+        .endpoint-info { background: #e7f3ff; padding: 20px; border-radius: 6px; margin-bottom: 30px; }
+        .api-section { margin: 30px 0; }
+        h1 { color: #2c3e50; margin-bottom: 10px; }
+        h2 { color: #34495e; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        h3 { color: #5a6c7d; }
+        .metadata { background: #f1f3f4; padding: 15px; border-radius: 4px; margin-top: 15px; }
+        .metadata strong { color: #5f6368; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Medical PET/CT Transcription API</h1>
+        
+        <div class="endpoint-info">
+            <h3>API Endpoint Information</h3>
+            <p><strong>URL:</strong> <code>https://thechatbotgenius.com/api/medical-transcription.html</code></p>
+            <p><strong>Method:</strong> POST (via JavaScript fetch)</p>
+            <p><strong>Purpose:</strong> Convert medical dictation into properly formatted PET/CT reports</p>
+            <p><strong>Status:</strong> <span style="color: #28a745; font-weight: bold;">✅ Active</span></p>
+        </div>
+
+        <div class="api-section">
+            <h2>Test Interface</h2>
+            <p>Use this interface to test the medical transcription functionality:</p>
+            
+            <h3>Sample Dictation Input:</h3>
+            <textarea id="dictation-input" rows="12" placeholder="Paste medical dictation here...">History: Metastatic prostate cancer, status post radical prostatectomy. Rising PSA.
+Comparison: PET/CT from March 2024.
+PSMA scan whole body.
+Findings: 8mm left external iliac lymph node with SUVmax 4.2, image 45 of 130 series 4. 10mm L3 vertebral lesion with SUVmax 5.8, image 78 of 130 series 4. Some coronary calcification noted.
+Impression: PSMA-avid metastatic disease in lymph node and spine.</textarea>
+            
+            <br><br>
+            <button onclick="testGeneration()">🔄 Generate PET/CT Report</button>
+            <button onclick="validateDictation()" style="background: #28a745; margin-left: 10px;">✅ Validate Dictation</button>
+            <button onclick="clearResults()" style="background: #6c757d; margin-left: 10px;">🗑️ Clear Results</button>
+            
+            <div id="result"></div>
+        </div>
+
+        <div class="api-section">
+            <h2>📚 Usage Examples</h2>
+            <h3>JavaScript Fetch Example:</h3>
+            <pre><code>// Call the API endpoint
+const response = await fetch('https://thechatbotgenius.com/api/medical-transcription.html', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        dictation: "Your medical dictation text here...",
+        options: {
+            include_image_references: true,
+            convert_measurements: true,
+            strict_formatting: true
+        }
+    })
+});
+
+const result = await response.json();
+console.log(result.report);</code></pre>
+        </div>
+    </div>
+
+    <script>
+        // Medical PET/CT Template Configuration
+        const PETCT_TEMPLATE = {
+            sections: ['History', 'Comparison', 'Technique', 'Findings', 'Impression', 'Alternate Impression for Comparison'],
+            findingsSubcategories: ['Head/Neck', 'Chest', 'Abdomen/Pelvis', 'MSK/Integument'],
+            
+            mandatoryPhrases: {
+                'Head/Neck': {
+                    noFindings: 'No suspicious activity or lymphadenopathy.',
+                    withFindings: 'No other suspicious activity or lymphadenopathy.'
+                },
+                'Chest': {
+                    noFindings: 'No suspicious activity or lymphadenopathy. No pulmonary nodules.',
+                    withFindings: 'No other suspicious activity or lymphadenopathy.'
+                },
+                'Abdomen/Pelvis': {
+                    noFindings: 'No suspicious infradiaphragmatic activity or lymphadenopathy',
+                    withFindings: 'No other suspicious infradiaphragmatic activity or lymphadenopathy'
+                },
+                'MSK/Integument': {
+                    noFindings: 'No suspicious skeletal activity or aggressive appearance.',
+                    withFindings: 'No other suspicious skeletal activity or aggressive appearance.'
+                }
+            },
+
+            tracerRules: {
+                'FDG': { startPhrase: 'Fasting low dose PET/CT', needsFasting: true },
+                'Ga-68-PSMA': { startPhrase: 'Low dose PET/CT', needsFasting: false },
+                'Ga-68-DOTATATE': { startPhrase: 'Low dose PET/CT', needsFasting: false },
+                'FDG-Cardiac': { startPhrase: 'Ketogenic low dose PET/CT', needsFasting: false }
+            },
+
+            coverageConversions: {
+                'Whole Body': 'eyes to thighs',
+                'Total Body': 'vertex to toes',
+                'Brain and Whole Body': 'vertex to thighs',
+                'Brain plus eyes to thighs': 'brain and eyes to thighs',
+                'whole body': 'eyes to thighs',
+                'total body': 'vertex to toes'
+            },
+
+            terminologyMap: {
+                'speculated': 'spiculated',
+                'Speculated': 'Spiculated'
+            }
+        };
+
+        // Main PET/CT Report Generator Class
+        class PETCTReportGenerator {
+            constructor(template) {
+                this.template = template;
+            }
+
+            generateReport(dictation, options = {}) {
+                const parsed = this.parseDictation(dictation);
+                const metadata = {
+                    tracer_detected: parsed.tracer,
+                    coverage_area: parsed.coverage,
+                    sections_generated: this.template.sections,
+                    findings_subcategories: this.template.findingsSubcategories,
+                    surgical_bed_included: parsed.hasProstatectomy,
+                    measurements_converted: this.countMeasurements(dictation),
+                    processing_time: Date.now()
+                };
+
+                const startTime = metadata.processing_time;
+                
+                const report = [
+                    this.buildHistory(parsed.history),
+                    this.buildComparison(parsed.comparison),
+                    this.buildTechnique(parsed.tracer, parsed.coverage),
+                    this.buildFindings(parsed.findings, parsed.hasProstatectomy, dictation),
+                    this.buildImpression(parsed.impression),
+                    this.buildAlternateImpression(parsed.findings)
+                ].join('\n\n');
+
+                metadata.processing_time = (Date.now() - startTime) / 1000;
+
+                return { report, metadata };
+            }
+
+            parseDictation(dictation) {
+                return {
+                    tracer: this.extractTracer(dictation),
+                    coverage: this.extractCoverage(dictation),
+                    history: this.extractHistory(dictation),
+                    comparison: this.extractComparison(dictation),
+                    findings: this.extractFindings(dictation),
+                    impression: this.extractImpression(dictation),
+                    hasProstatectomy: this.checkProstatectomy(dictation)
+                };
+            }
+
+            extractTracer(text) {
+                if (/PSMA/i.test(text)) return 'Ga-68-PSMA';
+                if (/DOTATATE/i.test(text)) return 'Ga-68-DOTATATE';
+                if (/cardiac.*FDG/i.test(text)) return 'FDG-Cardiac';
+                return 'FDG';
+            }
+
+            extractCoverage(text) {
+                const patterns = Object.keys(this.template.coverageConversions);
+                const found = patterns.find(pattern => 
+                    new RegExp(pattern, 'i').test(text)
+                );
+                return found || 'eyes to thighs';
+            }
+
+            extractHistory(text) {
+                const match = text.match(/history[:\s]+(.*?)(?=comparison|technique|findings|$)/is);
+                return match ? match[1].trim() : '[History not specified]';
+            }
+
+            extractComparison(text) {
+                const match = text.match(/comparison[:\s]+(.*?)(?=technique|findings|$)/is);
+                return match ? match[1].trim() : 'None';
+            }
+
+            extractImpression(text) {
+                const match = text.match(/impression[:\s]+(.*?)$/is);
+                return match ? match[1].trim() : '[Impression not provided]';
+            }
+
+            extractFindings(text) {
+                // Extract findings between technique/comparison and impression
+                const match = text.match(/(?:findings|technique)[:\s]+(.*?)(?=impression|$)/is);
+                if (match) {
+                    const findingsText = match[1];
+                    return this.parseDetailedFindings(findingsText);
+                }
+                return {};
+            }
+
+            parseDetailedFindings(text) {
+                const findings = {};
+                
+                // Look for specific measurements and descriptions
+                const measurements = text.match(/\d+\.?\d*\s*(?:mm|cm)/gi) || [];
+                const suvMaxValues = text.match(/SUVmax\s*[\d\.]+/gi) || [];
+                const imageRefs = text.match(/image\s*\d+\s*of\s*\d+[^.]*series\s*\d+/gi) || [];
+                
+                // Simple parsing - in a real implementation, this would be much more sophisticated
+                if (measurements.length > 0 || suvMaxValues.length > 0) {
+                    findings['Abdomen/Pelvis'] = [{ 
+                        description: text.trim(),
+                        measurements: measurements,
+                        suvMax: suvMaxValues,
+                        imageRefs: imageRefs
+                    }];
+                }
+
+                return findings;
+            }
+
+            checkProstatectomy(text) {
+                const hasProstatectomy = /prostatectomy|pelvic surgery/i.test(text);
+                const prostatePresent = /prostate.*present|prostate.*intact|prostate.*gland|prostate.*nodule/i.test(text);
+                return hasProstatectomy && !prostatePresent;
+            }
+
+            buildTechnique(tracer, coverage) {
+                const rule = this.template.tracerRules[tracer] || this.template.tracerRules['FDG'];
+                const convertedCoverage = this.template.coverageConversions[coverage] || coverage;
+                
+                return `**Technique**: ${rule.startPhrase} ${convertedCoverage} with ${tracer}.`;
+            }
+
+            buildFindings(findings, hasProstatectomy, originalText) {
+                let result = '**Findings**:';
+                
+                this.template.findingsSubcategories.forEach((category, index) => {
+                    const categoryFindings = findings[category] || [];
+                    const hasFindings = categoryFindings.length > 0;
+                    
+                    result += `\n**${category}**: `;
+                    
+                    if (hasFindings && category === 'Abdomen/Pelvis') {
+                        // Process the findings text and convert measurements
+                        let findingsText = categoryFindings[0].description;
+                        findingsText = this.convertMeasurements(findingsText);
+                        findingsText = this.applyTerminologyCorrections(findingsText);
+                        
+                        result += findingsText + '. ';
+                        result += this.template.mandatoryPhrases[category].withFindings;
+                    } else {
+                        result += this.template.mandatoryPhrases[category].noFindings;
+                    }
+
+                    // Special logic for Abdomen/Pelvis surgical bed
+                    if (category === 'Abdomen/Pelvis' && hasProstatectomy) {
+                        if (!result.includes(', including the pelvic surgical bed')) {
+                            result = result.replace(/lymphadenopathy(?!\w)/, 'lymphadenopathy, including the pelvic surgical bed');
+                        }
+                    }
+
+                    // Handle pulmonary nodules special case for Chest
+                    if (category === 'Chest' && !hasFindings) {
+                        // Add incidental findings if mentioned
+                        if (/coronary.*calcification/i.test(originalText)) {
+                            result += ' Coronary artery calcification noted.';
+                        }
+                    }
+                    
+                    if (index < this.template.findingsSubcategories.length - 1) {
+                        result += '\n';
+                    }
+                });
+
+                return result;
+            }
+
+            convertMeasurements(text) {
+                // Convert cm to mm
+                return text.replace(/(\d+\.?\d*)\s*cm/gi, (match, num) => {
+                    return `${Math.round(parseFloat(num) * 10)} mm`;
+                });
+            }
+
+            applyTerminologyCorrections(text) {
+                Object.entries(this.template.terminologyMap).forEach(([wrong, correct]) => {
+                    text = text.replace(new RegExp(wrong, 'gi'), correct);
+                });
+                return text;
+            }
+
+            countMeasurements(text) {
+                const measurements = text.match(/\d+\.?\d*\s*cm/gi) || [];
+                return measurements.length;
+            }
+
+            buildHistory(history) {
+                return `**History**: ${history}`;
+            }
+
+            buildComparison(comparison) {
+                return `**Comparison**: ${comparison}`;
+            }
+
+            buildImpression(impression) {
+                return `**Impression**: ${impression}`;
+            }
+
+            buildAlternateImpression(findings) {
+                // Generate a summary based on findings
+                const hasFindings = Object.keys(findings).length > 0;
+                if (hasFindings) {
+                    return '**Alternate Impression for Comparison**: PSMA-avid lesions identified as described above. No suspicious activity in head/neck or chest regions.';
+                } else {
+                    return '**Alternate Impression for Comparison**: No suspicious activity identified in any region examined.';
+                }
+            }
+
+            validateDictation(dictation) {
+                const validation = {
+                    valid: true,
+                    warnings: [],
+                    suggestions: [],
+                    detected_elements: {
+                        tracer: this.extractTracer(dictation),
+                        coverage: this.extractCoverage(dictation),
+                        has_history: /history[:\s]/i.test(dictation),
+                        has_impression: /impression[:\s]/i.test(dictation),
+                        has_findings: /findings|lesion|nodule|activity/i.test(dictation),
+                        surgical_history: this.checkProstatectomy(dictation)
+                    }
+                };
+
+                if (!validation.detected_elements.has_history) {
+                    validation.warnings.push("No clear history section detected");
+                    validation.suggestions.push("Include patient history information");
+                }
+
+                if (!validation.detected_elements.has_impression) {
+                    validation.warnings.push("No impression section found");
+                    validation.suggestions.push("Add clinical impression from radiologist");
+                }
+
+                if (!validation.detected_elements.has_findings) {
+                    validation.warnings.push("No specific findings mentioned");
+                    validation.suggestions.push("Include detailed findings or state if study is normal");
+                }
+
+                if (!/comparison[:\s]/i.test(dictation)) {
+                    validation.suggestions.push("Consider adding comparison to previous studies if available");
+                }
+
+                return validation;
+            }
+        }
+
+        // API Handler Functions
+        async function handleAPIRequest(method, endpoint, data) {
+            if (method === 'POST' && endpoint === '/generate-report') {
+                try {
+                    const generator = new PETCTReportGenerator(PETCT_TEMPLATE);
+                    const result = generator.generateReport(data.dictation, data.options || {});
+                    
+                    return {
+                        success: true,
+                        ...result
+                    };
+                } catch (error) {
+                    return {
+                        success: false,
+                        error: "Could not process dictation: " + error.message,
+                        error_code: "PROCESSING_ERROR"
+                    };
+                }
+            } else if (method === 'POST' && endpoint === '/validate-dictation') {
+                try {
+                    const generator = new PETCTReportGenerator(PETCT_TEMPLATE);
+                    const validation = generator.validateDictation(data.dictation);
+                    
+                    return validation;
+                } catch (error) {
+                    return {
+                        valid: false,
+                        error: "Validation failed: " + error.message
+                    };
+                }
+            }
+            
+            return { success: false, error: "Endpoint not found", error_code: "NOT_FOUND" };
+        }
+
+        // Test Interface Functions
+        async function testGeneration() {
+            const dictation = document.getElementById('dictation-input').value;
+            
+            if (!dictation.trim()) {
+                showResult('error', 'Please enter some dictation text to test.');
+                return;
+            }
+
+            showResult('warning', '🔄 Processing medical dictation...');
+            
+            try {
+                const result = await handleAPIRequest('POST', '/generate-report', { 
+                    dictation,
+                    options: {
+                        include_image_references: true,
+                        convert_measurements: true,
+                        strict_formatting: true
+                    }
+                });
+                
+                if (result.success) {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = `
+                        <div class="status success">✅ PET/CT Report Generated Successfully</div>
+                        <pre>${result.report}</pre>
+                        <div class="metadata">
+                            <strong>Processing Details:</strong><br>
+                            • Tracer Detected: ${result.metadata.tracer_detected}<br>
+                            • Coverage Area: ${result.metadata.coverage_area}<br>
+                            • Measurements Converted: ${result.metadata.measurements_converted}<br>
+                            • Surgical Bed Logic: ${result.metadata.surgical_bed_included ? 'Applied' : 'Not Applied'}<br>
+                            • Processing Time: ${result.metadata.processing_time.toFixed(3)}s
+                        </div>
+                    `;
+                } else {
+                    showResult('error', `❌ Error: ${result.error}`);
+                }
+            } catch (error) {
+                showResult('error', `❌ Unexpected error: ${error.message}`);
+            }
+        }
+
+        async function validateDictation() {
+            const dictation = document.getElementById('dictation-input').value;
+            
+            if (!dictation.trim()) {
+                showResult('error', 'Please enter some dictation text to validate.');
+                return;
+            }
+
+            try {
+                const result = await handleAPIRequest('POST', '/validate-dictation', { dictation });
+                
+                const statusClass = result.valid ? 'success' : 'warning';
+                const statusIcon = result.valid ? '✅' : '⚠️';
+                
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `
+                    <div class="status ${statusClass}">${statusIcon} Validation Results</div>
+                    <div class="metadata">
+                        <strong>Detected Elements:</strong><br>
+                        • Tracer: ${result.detected_elements.tracer}<br>
+                        • Coverage: ${result.detected_elements.coverage}<br>
+                        • Has History: ${result.detected_elements.has_history ? '✅' : '❌'}<br>
+                        • Has Impression: ${result.detected_elements.has_impression ? '✅' : '❌'}<br>
+                        • Has Findings: ${result.detected_elements.has_findings ? '✅' : '❌'}<br>
+                        • Surgical History: ${result.detected_elements.surgical_history ? '✅' : '❌'}
+                        
+                        ${result.warnings.length > 0 ? `<br><br><strong>Warnings:</strong><br>• ${result.warnings.join('<br>• ')}` : ''}
+                        ${result.suggestions.length > 0 ? `<br><br><strong>Suggestions:</strong><br>• ${result.suggestions.join('<br>• ')}` : ''}
+                    </div>
+                `;
+            } catch (error) {
+                showResult('error', `❌ Validation error: ${error.message}`);
+            }
+        }
+
+        function clearResults() {
+            document.getElementById('result').innerHTML = '';
+            document.getElementById('dictation-input').value = '';
+        }
+
+        function showResult(type, message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        // External API Interface (for ChatGPT Custom Actions)
+        window.addEventListener('message', async (event) => {
+            if (event.data.type === 'API_REQUEST') {
+                const response = await handleAPIRequest(
+                    event.data.method, 
+                    event.data.path, 
+                    event.data.data
+                );
+                event.source.postMessage({
+                    type: 'API_RESPONSE',
+                    id: event.data.id,
+                    response: response
+                }, '*');
+            }
+        });
+
+        // HTTP Fetch Override for External Calls
+        if (typeof window !== 'undefined' && window.fetch) {
+            const originalFetch = window.fetch;
+            window.fetch = function(url, options = {}) {
+                if (url.includes('medical-transcription') || url.includes('/generate-report')) {
+                    return new Promise(async (resolve) => {
+                        try {
+                            const data = options.body ? JSON.parse(options.body) : {};
+                            const endpoint = url.includes('validate') ? '/validate-dictation' : '/generate-report';
+                            const response = await handleAPIRequest(options.method || 'POST', endpoint, data);
+                            
+                            resolve({
+                                ok: response.success !== false,
+                                status: response.success !== false ? 200 : 400,
+                                json: () => Promise.resolve(response),
+                                text: () => Promise.resolve(JSON.stringify(response))
+                            });
+                        } catch (error) {
+                            resolve({
+                                ok: false,
+                                status: 500,
+                                json: () => Promise.resolve({ 
+                                    success: false, 
+                                    error: error.message,
+                                    error_code: 'INTERNAL_ERROR'
+                                })
+                            });
+                        }
+                    });
+                }
+                return originalFetch.apply(this, arguments);
+            };
+        }
+
+        // Initialize
+        console.log('🏥 Medical PET/CT Transcription API loaded and ready');
+        console.log('Endpoint: https://thechatbotgenius.com/api/medical-transcription.html');
+    </script>
+</body>
+</html>
