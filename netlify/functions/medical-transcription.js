@@ -142,7 +142,8 @@ function preProcessDictation(dictation) {
         return match;
     });
     
-    // "one point two centimeters" → "12 mm"
+    // Handle decimal measurements more comprehensively
+    // "three point five centimeter" → "35 mm"
     processed = processed.replace(/(\w+(?:-\w+)*)\s*point\s*(\w+(?:-\w+)*)\s+centimeters?/gi, (match, whole, decimal) => {
         const wholeNum = convertWordToNumber(whole);
         const decimalNum = convertWordToNumber(decimal);
@@ -154,11 +155,29 @@ function preProcessDictation(dictation) {
         return match;
     });
     
-    // Numeric cm to mm: "1.4 cm" → "14 mm"
+    // Handle numeric decimal measurements: "3.5 centimeter" → "35 mm"
+    processed = processed.replace(/(\d+)\s*point\s*(\d+)\s+centimeters?/gi, (match, whole, decimal) => {
+        const totalMm = parseInt(whole) * 10 + parseInt(decimal);
+        console.log(`Numeric decimal measurement: "${whole} point ${decimal} cm" → "${totalMm} mm"`);
+        return `${totalMm} mm`;
+    });
+    
+    // Numeric cm to mm: "1.4 cm" → "14 mm" 
     processed = processed.replace(/(\d+(?:\.\d+)?)\s*cm\b/gi, (match, num) => {
         const mmValue = Math.round(parseFloat(num) * 10);
         console.log(`Numeric cm conversion: "${num} cm" → "${mmValue} mm"`);
         return `${mmValue} mm`;
+    });
+    
+    // Fix "point" format that got partially converted: "three point 50 mm" → "35 mm"
+    processed = processed.replace(/(\w+(?:-\w+)*)\s*point\s*(\d+)\s*mm/gi, (match, word, number) => {
+        const wordNum = convertWordToNumber(word);
+        if (wordNum !== null) {
+            const totalMm = wordNum * 10 + parseInt(number);
+            console.log(`Fixed point format: "${word} point ${number} mm" → "${totalMm} mm"`);
+            return `${totalMm} mm`;
+        }
+        return match;
     });
     
     // **3. SUV CONVERSIONS**
@@ -274,8 +293,17 @@ function extractFindingsFromProcessedText(processed) {
         msk: 'No suspicious skeletal activity or aggressive appearance.'
     };
     
+    // Extract head/neck findings
+    const headNeckMatch = processed.match(/(?:in\s+the\s+head\s+and\s+neck[,:]?\s*|head\s+and\s+neck[,:]?\s*)(.*?)(?:in\s+the\s+chest|chest|$)/is);
+    if (headNeckMatch && headNeckMatch[1] && headNeckMatch[1].trim().length > 20) {
+        let headNeckText = headNeckMatch[1].trim();
+        headNeckText = headNeckText.charAt(0).toUpperCase() + headNeckText.slice(1);
+        if (!headNeckText.endsWith('.')) headNeckText += '.';
+        findings.headNeck = `${headNeckText} No other suspicious activity or lymphadenopathy.`;
+    }
+    
     // Extract chest findings and count nodules
-    const chestMatch = processed.match(/(?:in\s+the\s+chest[,:]?\s*)(.*?)(?:head\s+and\s+neck|abdomen|pelvis|bones|skeletal|impression|$)/is);
+    const chestMatch = processed.match(/(?:in\s+the\s+chest[,:]?\s*)(.*?)(?:in\s+the\s+abdomen|abdomen|pelvis|bones|skeletal|impression|$)/is);
     if (chestMatch && chestMatch[1] && chestMatch[1].trim().length > 10) {
         let chestText = chestMatch[1].trim();
         chestText = chestText.charAt(0).toUpperCase() + chestText.slice(1);
@@ -295,8 +323,23 @@ function extractFindingsFromProcessedText(processed) {
         }
     }
     
-    // Extract other regional findings...
-    // (Can be expanded for abdomen, head/neck, MSK as needed)
+    // Extract abdomen/pelvis findings
+    const abdomenMatch = processed.match(/(?:in\s+the\s+abdomen\s+and\s+pelvis[,:]?\s*|abdomen\s+and\s+pelvis[,:]?\s*)(.*?)(?:in\s+the\s+bones|bones|skeletal|impression|$)/is);
+    if (abdomenMatch && abdomenMatch[1] && abdomenMatch[1].trim().length > 20) {
+        let abdomenText = abdomenMatch[1].trim();
+        abdomenText = abdomenText.charAt(0).toUpperCase() + abdomenText.slice(1);
+        if (!abdomenText.endsWith('.')) abdomenText += '.';
+        findings.abdomen = `${abdomenText} No other suspicious infradiaphragmatic activity or lymphadenopathy.`;
+    }
+    
+    // Extract MSK/skeletal findings
+    const mskMatch = processed.match(/(?:in\s+the\s+bones[,:]?\s*|bones[,:]?\s*|skeletal[,:]?\s*)(.*?)(?:impression|$)/is);
+    if (mskMatch && mskMatch[1] && mskMatch[1].trim().length > 20) {
+        let mskText = mskMatch[1].trim();
+        mskText = mskText.charAt(0).toUpperCase() + mskText.slice(1);
+        if (!mskText.endsWith('.')) mskText += '.';
+        findings.msk = `${mskText} No other suspicious skeletal activity or aggressive appearance.`;
+    }
     
     return findings;
 }
@@ -368,8 +411,15 @@ ${MEDICAL_RULES}
 5. Ensure findings are categorized in the correct anatomical regions
 6. Apply correct mandatory medical phrases
 7. Fix any remaining issues
+8. **CRITICAL**: Ensure ALL findings from the dictation are included in their proper anatomical sections
 
-**CRITICAL:** If the dictation mentions specific findings (masses, nodules, lymph nodes), ensure they are ALL included in the final report with proper measurements and SUV values.
+**SPECIFIC FIXES NEEDED:**
+- Fix decimal measurements: "three point 50 mm" should be "35 mm", "one point 80 mm" should be "18 mm"
+- Include ALL dictated findings in proper sections (chest, abdomen/pelvis, skeletal)
+- Apply correct nodule logic based on actual count
+- Remove incomplete fragments like "In the."
+
+**CRITICAL:** If the dictation mentions specific findings (masses, nodules, lymph nodes, liver lesions, bone lesions), ensure they are ALL included in the final report with proper measurements and SUV values in the correct anatomical sections.
 
 **RETURN:** Only the corrected, complete medical report. Do not add explanations or markdown formatting.`
                 }]
