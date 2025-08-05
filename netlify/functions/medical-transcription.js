@@ -473,6 +473,11 @@ exports.handler = async (event, context) => {
     try {
         const { dictation, options = {} } = JSON.parse(event.body);
         console.log('Parsed dictation length:', dictation?.length || 0);
+        console.log('First 100 chars of original:', dictation?.substring(0, 100) || 'N/A');
+        
+        // **BYPASS OPTION: Test with options.bypass_preprocessing = true**
+        const bypassPreprocessing = options.bypass_preprocessing === true;
+        console.log('Bypass preprocessing requested:', bypassPreprocessing);
 
         if (!dictation || typeof dictation !== 'string') {
             return {
@@ -493,27 +498,37 @@ exports.handler = async (event, context) => {
         let errorDetails = null;
 
         try {
-            // **PHASE 1: Pre-Processing**
-            console.log('=== PHASE 1: PRE-PROCESSING START ===');
-            preProcessingResults = preProcessDictation(dictation);
-            console.log('Pre-processing completed. Results:', {
-                processedLength: preProcessingResults.processedDictation?.length || 0,
-                metadata: preProcessingResults.metadata,
-                preview: preProcessingResults.processedDictation?.substring(0, 150) || 'N/A'
-            });
-            
-            // **PHASE 2: OpenAI Assistant Processing**
-            console.log('=== PHASE 2: OPENAI ASSISTANT START ===');
-            finalReport = await processWithOpenAIAssistant(
-                preProcessingResults.processedDictation, 
-                { timeout: 15000 }
-            );
-            
-            processingMode = 'hybrid-openai-success';
-            assistantStatus = 'success';
-            console.log('=== HYBRID SUCCESS: OpenAI processing completed ===');
-            console.log('Final report length:', finalReport?.length || 0);
-            console.log('Final report preview:', finalReport?.substring(0, 150) || 'N/A');
+            if (bypassPreprocessing) {
+                // **BYPASS: Skip pre-processing entirely**
+                console.log('=== BYPASSING PRE-PROCESSING - DIRECT TO OPENAI ===');
+                finalReport = await processWithOpenAIAssistant(dictation, { timeout: 15000 });
+                processingMode = 'direct-openai-bypass';
+                assistantStatus = 'success';
+                console.log('=== BYPASS SUCCESS: Direct OpenAI processing completed ===');
+                console.log('Final report length:', finalReport?.length || 0);
+            } else {
+                // **PHASE 1: Pre-Processing**
+                console.log('=== PHASE 1: PRE-PROCESSING START ===');
+                preProcessingResults = preProcessDictation(dictation);
+                console.log('Pre-processing completed. Results:', {
+                    processedLength: preProcessingResults.processedDictation?.length || 0,
+                    metadata: preProcessingResults.metadata,
+                    preview: preProcessingResults.processedDictation?.substring(0, 150) || 'N/A'
+                });
+                
+                // **PHASE 2: OpenAI Assistant Processing**
+                console.log('=== PHASE 2: OPENAI ASSISTANT START ===');
+                finalReport = await processWithOpenAIAssistant(
+                    preProcessingResults.processedDictation, 
+                    { timeout: 15000 }
+                );
+                
+                processingMode = 'hybrid-openai-success';
+                assistantStatus = 'success';
+                console.log('=== HYBRID SUCCESS: OpenAI processing completed ===');
+                console.log('Final report length:', finalReport?.length || 0);
+                console.log('Final report preview:', finalReport?.substring(0, 150) || 'N/A');
+            }
             
         } catch (assistantError) {
             console.log('=== ASSISTANT ERROR OCCURRED ===');
@@ -553,11 +568,12 @@ exports.handler = async (event, context) => {
             errorDetails: errorDetails,
             // **DEBUG: Include debugging info in response**
             DEBUG_originalDictationLength: dictation.length,
-            DEBUG_processedDictationLength: preProcessingResults?.processedDictation?.length || 0,
-            DEBUG_processedDictationPreview: preProcessingResults?.processedDictation?.substring(0, 200) || 'Not available',
+            DEBUG_processedDictationLength: preProcessingResults?.processedDictation?.length || (bypassPreprocessing ? dictation.length : 0),
+            DEBUG_processedDictationPreview: preProcessingResults?.processedDictation?.substring(0, 200) || (bypassPreprocessing ? dictation.substring(0, 200) : 'Not available'),
             DEBUG_finalReportLength: finalReport?.length || 0,
             DEBUG_finalReportPreview: finalReport?.substring(0, 200) || 'Not available',
-            DEBUG_timestamp: new Date().toISOString()
+            DEBUG_timestamp: new Date().toISOString(),
+            DEBUG_bypassMode: bypassPreprocessing
         };
         
         console.log('Metadata built:', {
