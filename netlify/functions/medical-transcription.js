@@ -530,7 +530,13 @@ exports.handler = async (event, context) => {
             assistantStatus: assistantStatus,
             preProcessingApplied: preProcessingResults ? true : false,
             hybridProcessing: processingMode === 'hybrid-openai-success',
-            assistantId: 'asst_Qz1Vk53CjXqGDTiEVRxwwcR4'
+            assistantId: 'asst_Qz1Vk53CjXqGDTiEVRxwwcR4',
+            // **DEBUG: Include debugging info in response**
+            DEBUG_originalDictationLength: dictation.length,
+            DEBUG_processedDictationLength: preProcessingResults?.processedDictation?.length || 0,
+            DEBUG_processedDictationPreview: preProcessingResults?.processedDictation?.substring(0, 200) || 'Not available',
+            DEBUG_finalReportLength: finalReport?.length || 0,
+            DEBUG_finalReportPreview: finalReport?.substring(0, 200) || 'Not available'
         };
 
         return {
