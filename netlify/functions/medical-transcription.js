@@ -465,8 +465,14 @@ exports.handler = async (event, context) => {
         };
     }
 
+    console.log('=== FUNCTION START ===');
+    console.log('Event body:', event.body);
+    console.log('Environment check - OpenAI key exists:', !!process.env.OPENAI_API_KEY);
+    console.log('Environment check - Anthropic key exists:', !!process.env.ANTHROPIC_API_KEY);
+
     try {
         const { dictation, options = {} } = JSON.parse(event.body);
+        console.log('Parsed dictation length:', dictation?.length || 0);
 
         if (!dictation || typeof dictation !== 'string') {
             return {
@@ -484,14 +490,20 @@ exports.handler = async (event, context) => {
         let processingMode = 'fallback';
         let assistantStatus = 'not-attempted';
         let preProcessingResults = null;
+        let errorDetails = null;
 
         try {
             // **PHASE 1: Pre-Processing**
-            console.log('Starting hybrid processing: Phase 1 - Pre-processing...');
+            console.log('=== PHASE 1: PRE-PROCESSING START ===');
             preProcessingResults = preProcessDictation(dictation);
+            console.log('Pre-processing completed. Results:', {
+                processedLength: preProcessingResults.processedDictation?.length || 0,
+                metadata: preProcessingResults.metadata,
+                preview: preProcessingResults.processedDictation?.substring(0, 150) || 'N/A'
+            });
             
             // **PHASE 2: OpenAI Assistant Processing**
-            console.log('Phase 2 - OpenAI Assistant processing...');
+            console.log('=== PHASE 2: OPENAI ASSISTANT START ===');
             finalReport = await processWithOpenAIAssistant(
                 preProcessingResults.processedDictation, 
                 { timeout: 15000 }
@@ -499,25 +511,32 @@ exports.handler = async (event, context) => {
             
             processingMode = 'hybrid-openai-success';
             assistantStatus = 'success';
-            console.log('Hybrid OpenAI processing completed successfully');
+            console.log('=== HYBRID SUCCESS: OpenAI processing completed ===');
+            console.log('Final report length:', finalReport?.length || 0);
+            console.log('Final report preview:', finalReport?.substring(0, 150) || 'N/A');
             
         } catch (assistantError) {
-            console.log('OpenAI Assistant failed, using basic template:', assistantError.message);
+            console.log('=== ASSISTANT ERROR OCCURRED ===');
+            console.log('Error message:', assistantError.message);
+            console.log('Error stack:', assistantError.stack);
+            errorDetails = assistantError.message;
             
             if (preProcessingResults) {
+                console.log('Using preprocessing + basic template fallback');
                 finalReport = generateBasicTemplate(preProcessingResults.processedDictation);
                 processingMode = 'preprocessing-template';
                 assistantStatus = 'failed-used-template';
             } else {
-                // Complete fallback
+                console.log('Using emergency fallback (no preprocessing)');
                 finalReport = generateBasicTemplate(dictation);
                 processingMode = 'emergency-fallback';
                 assistantStatus = 'failed-used-basic';
             }
         }
 
+        console.log('=== BUILDING METADATA RESPONSE ===');
         const metadata = {
-            tracer_detected: preProcessingResults?.metadata?.tracer || 'FDG',
+            tracer_detected: preProcessingResults?.metadata?.tracerDetected || 'FDG',
             coverage_area: 'eyes to thighs',
             sections_generated: PETCT_TEMPLATE.sections,
             findings_subcategories: PETCT_TEMPLATE.findingsSubcategories,
@@ -531,13 +550,21 @@ exports.handler = async (event, context) => {
             preProcessingApplied: preProcessingResults ? true : false,
             hybridProcessing: processingMode === 'hybrid-openai-success',
             assistantId: 'asst_Qz1Vk53CjXqGDTiEVRxwwcR4',
+            errorDetails: errorDetails,
             // **DEBUG: Include debugging info in response**
             DEBUG_originalDictationLength: dictation.length,
             DEBUG_processedDictationLength: preProcessingResults?.processedDictation?.length || 0,
             DEBUG_processedDictationPreview: preProcessingResults?.processedDictation?.substring(0, 200) || 'Not available',
             DEBUG_finalReportLength: finalReport?.length || 0,
-            DEBUG_finalReportPreview: finalReport?.substring(0, 200) || 'Not available'
+            DEBUG_finalReportPreview: finalReport?.substring(0, 200) || 'Not available',
+            DEBUG_timestamp: new Date().toISOString()
         };
+        
+        console.log('Metadata built:', {
+            processingMode: metadata.processingMode,
+            assistantStatus: metadata.assistantStatus,
+            debugPreview: metadata.DEBUG_processedDictationPreview?.substring(0, 50) || 'N/A'
+        });
 
         return {
             statusCode: 200,
