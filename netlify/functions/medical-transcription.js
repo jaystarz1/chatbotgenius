@@ -380,7 +380,7 @@ class PETCTReportGenerator {
             }
             
             if (index < this.template.findingsSubcategories.length - 1) {
-                result += '\n';
+                result += '\n\n';  // Add blank line between subcategories
             }
         });
 
