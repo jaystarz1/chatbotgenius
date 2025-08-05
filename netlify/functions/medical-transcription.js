@@ -404,6 +404,11 @@ ${MEDICAL_RULES}
 7. Fix any remaining issues
 8. **CRITICAL**: Ensure ALL findings from the dictation are included in their proper anatomical sections
 
+**CRITICAL NODULE LOGIC:**
+- If >3 pulmonary nodules are described: Do NOT add "No other suspicious activity or lymphadenopathy" in chest section
+- If ≤3 pulmonary nodules: Add "No other suspicious activity or lymphadenopathy. No other pulmonary nodules."
+- Count nodules carefully from the dictation
+
 **SPECIFIC FIXES NEEDED:**
 - Fix decimal measurements: "three point 50 mm" should be "35 mm", "one point 80 mm" should be "18 mm"
 - Include ALL dictated findings in proper sections (chest, abdomen/pelvis, skeletal)
@@ -436,10 +441,13 @@ ${MEDICAL_RULES}
         
         // Post-processing cleanup to remove duplicates and fragments
         cleanedReport = cleanedReport
-            // Remove duplicate "No other suspicious activity" phrases
+            // Remove duplicate "No other suspicious activity" phrases (more aggressive)
             .replace(/(No (?:other )?suspicious (?:activity|infradiaphragmatic activity|skeletal activity)[^.]*\.)\s*\1/gi, '$1')
+            .replace(/(No (?:other )?suspicious (?:activity|infradiaphragmatic activity|skeletal activity)[^.]*\.)([^.]*?)\1/gi, '$1$2')
             // Remove standalone fragments like "My." or "In the."
-            .replace(/\b(My|In the|The)\./g, '')
+            .replace(/\b(My|In the|The)\.\s*/g, '')
+            // Remove duplicate mandatory phrases that appear on separate lines
+            .replace(/(No other suspicious [^.]*\.)\s*\n\s*\1/gi, '$1')
             // Clean up multiple spaces
             .replace(/\s+/g, ' ')
             // Clean up extra line breaks
