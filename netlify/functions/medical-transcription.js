@@ -1,7 +1,6 @@
-// Netlify Function for Medical PET/CT Transcription - FIXED VERSION
-// Handles natural language dictation with proper parsing
+// Netlify Function for Medical PET/CT Transcription - COMPLETE REWRITE
+// Properly formats casual dictation into professional medical reports
 
-// Enhanced PET/CT Template with exact medical rules
 const PETCT_TEMPLATE = {
     sections: ['History', 'Comparison', 'Technique', 'Findings', 'Impression', 'Alternate Impression for Comparison'],
     findingsSubcategories: ['Head/Neck', 'Chest', 'Abdomen/Pelvis', 'MSK/Integument'],
@@ -35,25 +34,16 @@ const PETCT_TEMPLATE = {
     },
 
     coverageConversions: {
-        'Whole Body': 'eyes to thighs',
-        'Total Body': 'vertex to toes',
-        'Brain and Whole Body': 'vertex to thighs',
-        'Brain plus eyes to thighs': 'brain and eyes to thighs',
         'whole body': 'eyes to thighs',
         'total body': 'vertex to toes',
-        'brain and whole body': 'vertex to thighs',
         'head to toe': 'vertex to toes',
         'head to toes': 'vertex to toes',
-        'eyes to toes': 'vertex to toes'
-    },
-
-    terminologyMap: {
-        'speculated': 'spiculated',
-        'Speculated': 'Spiculated'
+        'eyes to toes': 'vertex to toes',
+        'brain and whole body': 'vertex to thighs',
+        'brain plus eyes to thighs': 'brain and eyes to thighs'
     }
 };
 
-// Comprehensive PET/CT Report Generator - FIXED FOR NATURAL LANGUAGE
 class PETCTReportGenerator {
     constructor(template) {
         this.template = template;
@@ -79,7 +69,7 @@ class PETCTReportGenerator {
             this.buildTechnique(parsed.tracer, parsed.coverage),
             this.buildFindings(parsed, dictation),
             this.buildImpression(parsed.impression),
-            this.buildAlternateImpression(parsed, dictation)
+            this.buildAlternateImpression(parsed)
         ].join('\n\n');
 
         metadata.processing_time = (Date.now() - startTime) / 1000;
@@ -93,75 +83,90 @@ class PETCTReportGenerator {
             coverage: this.extractCoverage(dictation),
             history: this.extractHistory(dictation),
             comparison: this.extractComparison(dictation),
-            findings: this.categorizeNaturalFindings(dictation),
+            findings: this.categorizeFindings(dictation),
             impression: this.extractImpression(dictation),
             hasProstatectomy: this.checkProstatectomy(dictation)
         };
     }
 
     extractTracer(text) {
-        // Look for explicit tracer mentions in natural language
         if (/PSMA|Ga-?68-?PSMA/i.test(text)) return 'Ga-68-PSMA';
         if (/DOTATATE|Ga-?68-?DOTATATE/i.test(text)) return 'Ga-68-DOTATATE';
         if (/cardiac.*FDG|ketogenic.*FDG/i.test(text)) return 'FDG-Cardiac';
         if (/FDG\s*tracer|gave.*FDG|injected.*FDG|millicuries.*FDG/i.test(text)) return 'FDG';
-        
-        // Default fallback
         return 'FDG';
     }
 
     extractCoverage(text) {
-        // Look for natural language coverage descriptions
-        const patterns = {
-            'head to toe': 'vertex to toes',
-            'head to toes': 'vertex to toes',
-            'vertex to toe': 'vertex to toes',
-            'whole body': 'eyes to thighs',
-            'total body': 'vertex to toes',
-            'eyes to thighs': 'eyes to thighs',
-            'brain and whole body': 'vertex to thighs',
-            'brain plus eyes to thighs': 'brain and eyes to thighs'
-        };
-        
-        for (const [pattern, conversion] of Object.entries(patterns)) {
-            if (new RegExp(pattern, 'i').test(text)) {
+        const lowerText = text.toLowerCase();
+        for (const [pattern, conversion] of Object.entries(this.template.coverageConversions)) {
+            if (lowerText.includes(pattern)) {
                 return conversion;
             }
         }
-        
-        return 'eyes to thighs'; // default
+        return 'eyes to thighs';
     }
 
     extractHistory(text) {
-        // Look for natural language history patterns
-        const patterns = [
-            /(?:this is a?|we have a?)\s*(\d+[-\s]?year[-\s]?old.*?)(?:we compared|comparison|technique|so looking|in his|in her|in the)/is,
-            /history[:\s]+(.*?)(?:comparison|technique|findings|we compared|$)/is,
-            /^(.*?(?:cancer|carcinoma|disease|metastatic|diagnosed).*?)(?:we compared|comparison|his psa|her ca)/is
-        ];
+        // Extract age and gender
+        const ageGenderMatch = text.match(/(\d+)[-\s]?year[-\s]?old\s*(man|woman|male|female|boy|girl)/i);
+        let history = '';
         
-        for (const pattern of patterns) {
-            const match = text.match(pattern);
-            if (match && match[1].trim().length > 10) {
-                return this.cleanupText(match[1]);
+        if (ageGenderMatch) {
+            history = `${ageGenderMatch[1]}-year-old ${ageGenderMatch[2].toLowerCase()}`;
+        }
+        
+        // Extract cancer type
+        const cancerMatch = text.match(/(prostate|breast|lung|colon|rectal|pancreatic|liver|kidney|bladder|lymph|thyroid|brain|ovarian|cervical|testicular|melanoma|sarcoma)\s*cancer/i);
+        if (cancerMatch) {
+            history += ` with ${cancerMatch[0].toLowerCase()}`;
+        }
+        
+        // Extract surgical history
+        if (/prostate\s*(taken out|removed)|prostatectomy/i.test(text)) {
+            history += ', status post radical prostatectomy';
+            const yearMatch = text.match(/(?:in|back in)\s*(twenty\s*twenty[-\s]?\w+|\d{4})/i);
+            if (yearMatch) {
+                const year = this.convertYear(yearMatch[1]);
+                if (year) history += ` ${year}`;
             }
         }
         
-        return '[History not specified]';
+        if (/mastectomy/i.test(text)) {
+            const sideMatch = text.match(/(left|right|bilateral)\s*(?:side)?\s*mastectomy/i);
+            history += sideMatch ? `, status post ${sideMatch[1].toLowerCase()} mastectomy` : ', status post mastectomy';
+        }
+        
+        // Extract PSA or tumor markers
+        const psaMatch = text.match(/PSA\s*(?:is|was|went)?\s*(?:up to|from)?\s*([\d.]+)\s*(?:to\s*([\d.]+))?/i);
+        if (psaMatch) {
+            if (psaMatch[2]) {
+                history += `. Rising PSA from ${psaMatch[1]} to ${psaMatch[2]}`;
+            } else {
+                history += `. PSA ${psaMatch[1]}`;
+            }
+        }
+        
+        const caMatch = text.match(/CA\s*fifteen\s*three\s*(?:went|rose)?\s*from\s*([\d.]+)\s*to\s*([\d.]+)/i);
+        if (caMatch) {
+            history += `. CA 15-3 rising from ${caMatch[1]} to ${caMatch[2]}`;
+        }
+        
+        return history || '[History not specified]';
     }
 
     extractComparison(text) {
-        // Look for natural language comparison patterns
         const patterns = [
-            /(?:we compared.*?|compared to|comparison with)(.*?)(?:technique|he didn't|she didn't|findings|so looking|in his|in her)/is,
-            /comparison[:\s]+(.*?)(?:technique|findings|$)/is,
-            /(?:last|prior|previous)\s*(?:scan|pet|ct|study).*?from\s*(.*?)(?:\.|findings|technique|$)/is
+            /comparing?\s*(?:this)?\s*to\s*(?:his|her|their)?\s*(?:last|prior|previous)?\s*(.*?)(?:from|dated)?\s*([A-Za-z]+\s*(?:twenty\s*twenty[-\s]?\w+|\d{4}))/i,
+            /(?:last|prior|previous)\s*(PSMA|FDG|PET|CT|scan).*?from\s*([A-Za-z]+\s*(?:twenty\s*twenty[-\s]?\w+|\d{4}))/i
         ];
         
         for (const pattern of patterns) {
             const match = text.match(pattern);
-            if (match && match[1].trim().length > 5) {
-                return this.cleanupText(match[1]);
+            if (match) {
+                const scanType = match[1] ? match[1].trim() : 'PET/CT';
+                const date = this.convertDate(match[2]);
+                return `${scanType} from ${date}`.replace(/\s+/g, ' ');
             }
         }
         
@@ -169,154 +174,287 @@ class PETCTReportGenerator {
     }
 
     extractImpression(text) {
-        // Look for natural language impression patterns
         const patterns = [
-            /(?:my impression is|impression is that|i think|in conclusion)(.*?)(?:for comparison|alternate|$)/is,
-            /impression[:\s]+(.*?)(?:alternate|for comparison|$)/is
+            /(?:my\s*)?impression\s*is\s*(?:that\s*)?(.*?)(?:compared|$)/is,
+            /(?:so\s*)?(?:my\s*)?impression[:]\s*(.*?)(?:compared|$)/is
         ];
         
         for (const pattern of patterns) {
             const match = text.match(pattern);
-            if (match && match[1].trim().length > 10) {
-                return this.cleanupText(match[1]);
+            if (match && match[1]) {
+                let impression = match[1].trim();
+                // Clean up the impression
+                impression = impression.replace(/^that\s+/i, '');
+                impression = impression.charAt(0).toUpperCase() + impression.slice(1);
+                
+                // Add comparison if mentioned separately
+                const compMatch = text.match(/compared\s*to\s*[A-Za-z]+,?\s*(.*)/i);
+                if (compMatch) {
+                    impression += '. ' + compMatch[0].charAt(0).toUpperCase() + compMatch[0].slice(1);
+                }
+                
+                return impression;
             }
         }
         
         return '[Impression not provided]';
     }
 
-    categorizeNaturalFindings(dictation) {
-        const findings = this.initializeEmptyFindings();
-        
-        // Natural language patterns for each anatomical region
-        const regionPatterns = {
-            'Head/Neck': [
-                /(?:looking at|in) (?:his|her|the) head (?:and|&) neck[,:]?\s*(.*?)(?:in (?:his|her|the) chest|down in|moving to|chest:|$)/is,
-                /head(?:\s*and|\s*&)?\s*neck[:\s]+(.*?)(?:chest|abdomen|pelvis|msk|$)/is
-            ],
-            'Chest': [
-                /(?:in|looking at) (?:his|her|the) chest[,:]?\s*(.*?)(?:down in|in (?:his|her|the) (?:belly|abdomen)|abdomen|pelvis|$)/is,
-                /chest[:\s]+(.*?)(?:abdomen|pelvis|msk|bones|$)/is
-            ],
-            'Abdomen/Pelvis': [
-                /(?:down in|in) (?:his|her|the) (?:belly|abdomen)(?:\s*and\s*pelvis)?[,:]?\s*(.*?)(?:(?:his|her|the) bones|msk|skeletal|$)/is,
-                /abdomen(?:\s*and|\s*[/&])?\s*pelvis[:\s]+(.*?)(?:msk|bones|skeletal|$)/is
-            ],
-            'MSK/Integument': [
-                /(?:his|her|the) bones\s*(.*?)(?:my impression|impression|$)/is,
-                /(?:msk|skeletal|musculoskeletal)[:\s]+(.*?)(?:impression|$)/is
-            ]
+    categorizeFindings(dictation) {
+        const findings = {
+            'Head/Neck': [],
+            'Chest': [],
+            'Abdomen/Pelvis': [],
+            'MSK/Integument': []
         };
         
-        // Process each anatomical region
-        for (const [region, patterns] of Object.entries(regionPatterns)) {
-            for (const pattern of patterns) {
-                const match = dictation.match(pattern);
-                if (match && match[1]) {
-                    const regionText = match[1].trim();
-                    
-                    // Process the regional findings
-                    const processedFindings = this.processRegionalFindings(regionText, region);
-                    findings[region] = processedFindings;
-                    break; // Use first matching pattern
-                }
+        // Process dictation text with all conversions
+        let processedText = this.applyAllConversions(dictation);
+        
+        // Extract findings for each region
+        const regionPatterns = {
+            'Head/Neck': /(?:looking at|in)\s*(?:his|her|the)?\s*head\s*(?:and|&)?\s*neck[,:]?\s*(.*?)(?:in\s*(?:his|her|the)?\s*chest|chest:|down\s*in|$)/is,
+            'Chest': /(?:in|looking at)\s*(?:his|her|the)?\s*chest[,:]?\s*(.*?)(?:down\s*in|abdomen|pelvis|$)/is,
+            'Abdomen/Pelvis': /(?:down\s*in|in)\s*(?:his|her|the)?\s*(?:belly|abdomen)(?:\s*and\s*pelvis)?[,:]?\s*(.*?)(?:bones|skeletal|msk|$)/is,
+            'MSK/Integument': /(?:his|her|the)?\s*bones\s*(.*?)(?:impression|$)/is
+        };
+        
+        for (const [region, pattern] of Object.entries(regionPatterns)) {
+            const match = processedText.match(pattern);
+            if (match && match[1]) {
+                findings[region] = this.processRegionFindings(match[1], region);
             }
         }
         
         return findings;
     }
 
-    processRegionalFindings(text, region) {
+    processRegionFindings(text, region) {
         const findings = [];
         
-        // Convert measurements and fix terminology first
-        let processedText = this.convertMeasurements(text);
-        processedText = this.applyTerminologyCorrections(processedText);
-        processedText = this.convertSUVValues(processedText);
-        processedText = this.formatImageReferences(processedText);
+        // Clean up the text first
+        text = this.cleanMedicalText(text);
         
-        // Split into sentences for analysis
-        const sentences = processedText.split(/[.!?]+/).filter(s => s.trim().length > 5);
+        // Split into sentences
+        const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 5);
         
         sentences.forEach(sentence => {
-            const cleanSentence = sentence.trim();
-            
-            // Check if this is a positive or negative finding
-            const hasFindings = this.hasPositiveFindings(cleanSentence);
-            const isNodule = /nodule/i.test(cleanSentence);
-            
-            findings.push({
-                text: cleanSentence,
-                hasFindings: hasFindings,
-                isNodule: isNodule
-            });
+            const cleaned = sentence.trim();
+            if (cleaned) {
+                findings.push({
+                    text: cleaned,
+                    hasFindings: this.hasPositiveFindings(cleaned),
+                    isNodule: /nodule/i.test(cleaned)
+                });
+            }
         });
         
         return findings;
     }
 
-    convertSUVValues(text) {
-        // Convert natural language SUV values to proper format
-        return text.replace(/SUV\s*(?:of|is)?\s*(?:about)?\s*([\d.]+)/gi, 'SUVmax $1');
+    cleanMedicalText(text) {
+        // Remove casual language
+        text = text.replace(/I\s*(don't|do not)\s*see\s*any/gi, 'No');
+        text = text.replace(/everything(?:'s|\s*is)?\s*(quiet|normal|fine|good|okay)/gi, 'No abnormal activity');
+        text = text.replace(/looks?\s*(normal|fine|good|okay|clear)/gi, 'unremarkable');
+        text = text.replace(/nothing\s*lighting\s*up/gi, 'no abnormal uptake');
+        text = text.replace(/no\s*bad\s*areas/gi, 'no suspicious areas');
+        text = text.replace(/I\s*see\s*a?/gi, '');
+        text = text.replace(/there(?:'s|\s*is)\s*a?/gi, '');
+        text = text.replace(/(?:his|her|the)\s*(lungs?|liver|kidneys?|bones?)\s*(?:are|is)/gi, '$1');
+        
+        // Apply measurement conversions
+        text = this.convertAllMeasurements(text);
+        
+        // Apply SUV formatting
+        text = this.formatSUVValues(text);
+        
+        // Apply image reference formatting
+        text = this.formatImageReferences(text);
+        
+        // Apply terminology corrections
+        text = this.applyTerminologyCorrections(text);
+        
+        return text;
+    }
+
+    applyAllConversions(text) {
+        text = this.convertAllMeasurements(text);
+        text = this.formatSUVValues(text);
+        text = this.formatImageReferences(text);
+        text = this.applyTerminologyCorrections(text);
+        return text;
+    }
+
+    convertAllMeasurements(text) {
+        // Convert written numbers to digits
+        const numberWords = {
+            'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
+            'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10'
+        };
+        
+        for (const [word, digit] of Object.entries(numberWords)) {
+            const regex = new RegExp(`\\b${word}\\s*point\\s*(\\d+)`, 'gi');
+            text = text.replace(regex, `${digit}.$1`);
+        }
+        
+        // Convert cm to mm
+        text = text.replace(/(\d+\.?\d*)\s*(?:centimeters?|cm)/gi, (match, num) => {
+            return `${Math.round(parseFloat(num) * 10)} mm`;
+        });
+        
+        // Convert decimal measurements
+        text = text.replace(/(\d+)\s*point\s*(\d+)\s*(?:centimeters?|cm)?/gi, (match, whole, decimal, unit) => {
+            const value = parseFloat(`${whole}.${decimal}`);
+            if (unit && unit.match(/cm|centimeter/i)) {
+                return `${Math.round(value * 10)} mm`;
+            }
+            return `${value}`;
+        });
+        
+        return text;
+    }
+
+    formatSUVValues(text) {
+        // Format SUV values properly
+        text = text.replace(/SUV\s*(?:of|is)?\s*(?:about)?\s*([\d.]+)/gi, 'SUVmax $1');
+        text = text.replace(/(?:an?\s*)?SUV\s*(?:of)?\s*(\w+)\s*point\s*(\d+)/gi, (match, whole, decimal) => {
+            const num = this.wordToNumber(whole);
+            return num ? `SUVmax ${num}.${decimal}` : match;
+        });
+        return text;
     }
 
     formatImageReferences(text) {
-        // Convert natural language image references to proper format
-        return text.replace(/(?:on\s*)?image\s*([\w-]+)/gi, '(Image $1)');
+        // Convert various image reference formats
+        text = text.replace(/(?:on\s*)?image\s*(\w+)(?:\s*(?:of|\/)\s*(\d+))?/gi, (match, img, total) => {
+            const imgNum = this.wordToNumber(img) || img;
+            return total ? `(Image ${imgNum} of ${total})` : `(Image ${imgNum})`;
+        });
+        return text;
     }
 
-    initializeEmptyFindings() {
-        return {
-            'Head/Neck': [],
-            'Chest': [],
-            'Abdomen/Pelvis': [],
-            'MSK/Integument': []
+    applyTerminologyCorrections(text) {
+        const corrections = {
+            'speculated': 'spiculated',
+            'lighting up': 'demonstrating uptake',
+            'pretty good': 'significantly',
+            'mild': 'mild',
+            'simple cyst': 'simple cyst',
+            'degenerative changes': 'degenerative changes'
         };
+        
+        for (const [wrong, right] of Object.entries(corrections)) {
+            text = text.replace(new RegExp(wrong, 'gi'), right);
+        }
+        
+        return text;
+    }
+
+    wordToNumber(word) {
+        const numbers = {
+            'one': 1, 'two': 2, 'three': 3, 'four': 4, 'five': 5,
+            'six': 6, 'seven': 7, 'eight': 8, 'nine': 9, 'ten': 10,
+            'eleven': 11, 'twelve': 12, 'thirteen': 13, 'fourteen': 14,
+            'fifteen': 15, 'sixteen': 16, 'seventeen': 17, 'eighteen': 18,
+            'nineteen': 19, 'twenty': 20, 'thirty': 30, 'forty': 40,
+            'fifty': 50, 'sixty': 60, 'seventy': 70, 'eighty': 80,
+            'ninety': 90, 'hundred': 100
+        };
+        
+        const lower = word.toLowerCase();
+        if (numbers[lower]) return numbers[lower];
+        
+        // Handle compound numbers like "twenty-eight"
+        const parts = lower.split(/[-\s]+/);
+        if (parts.length === 2 && numbers[parts[0]] && numbers[parts[1]]) {
+            return numbers[parts[0]] + numbers[parts[1]];
+        }
+        
+        return null;
+    }
+
+    convertYear(yearText) {
+        if (/\d{4}/.test(yearText)) return yearText;
+        
+        const yearMap = {
+            'twenty twenty': '2020',
+            'twenty twenty one': '2021',
+            'twenty twenty-one': '2021',
+            'twenty twenty two': '2022',
+            'twenty twenty-two': '2022',
+            'twenty twenty three': '2023',
+            'twenty twenty-three': '2023',
+            'twenty twenty four': '2024',
+            'twenty twenty-four': '2024',
+            'twenty twenty five': '2025',
+            'twenty twenty-five': '2025'
+        };
+        
+        const lower = yearText.toLowerCase().replace(/[^\w\s-]/g, '');
+        return yearMap[lower] || yearText;
+    }
+
+    convertDate(dateText) {
+        const monthMap = {
+            'january': 'January', 'february': 'February', 'march': 'March',
+            'april': 'April', 'may': 'May', 'june': 'June',
+            'july': 'July', 'august': 'August', 'september': 'September',
+            'october': 'October', 'november': 'November', 'december': 'December'
+        };
+        
+        let converted = dateText;
+        
+        // Convert month names
+        for (const [lower, proper] of Object.entries(monthMap)) {
+            converted = converted.replace(new RegExp(lower, 'gi'), proper);
+        }
+        
+        // Convert years
+        converted = converted.replace(/twenty\s*twenty[-\s]?(\w+)/gi, (match, suffix) => {
+            const year = this.convertYear(match);
+            return year || match;
+        });
+        
+        return converted;
     }
 
     hasPositiveFindings(text) {
-        const positiveIndicators = [
-            'uptake', 'activity', 'lesion', 'mass', 'nodule', 'lymph', 'SUVmax',
-            'measuring', 'suspicious', 'abnormal', 'increased', 'hypermetabolic',
-            'focus', 'lighting up', 'hot spot', 'lit up', 'lights up'
+        const positive = [
+            'uptake', 'activity', 'lesion', 'mass', 'nodule', 'lymph',
+            'SUVmax', 'measuring', 'suspicious', 'abnormal', 'increased',
+            'hypermetabolic', 'focus', 'avid', 'enhancement', 'thickening'
         ];
         
-        const negativeIndicators = [
-            'no abnormal', 'no suspicious', 'no evidence', 'normal', 'looks okay',
-            'no bad areas', 'everything looks', 'all look good', 'looks fine',
-            'no hot spots', 'nothing lighting up'
+        const negative = [
+            'no suspicious', 'no abnormal', 'no evidence', 'unremarkable',
+            'normal', 'clear', 'negative', 'without', 'no increased'
         ];
-
-        const hasPositive = positiveIndicators.some(indicator => 
-            new RegExp(indicator, 'i').test(text)
-        );
-
-        const hasNegative = negativeIndicators.some(indicator => 
-            new RegExp(indicator, 'i').test(text)
-        );
-
+        
+        const hasPositive = positive.some(term => new RegExp(`\\b${term}\\b`, 'i').test(text));
+        const hasNegative = negative.some(term => new RegExp(term, 'i').test(text));
+        
         return hasPositive && !hasNegative;
     }
 
     checkProstatectomy(text) {
-        const hasProstatectomy = /prostatectomy|took.*prostate.*out|removed.*prostate|prostate.*surgery|prostate.*removed/i.test(text);
-        const prostatePresent = /prostate.*present|prostate.*intact|prostate.*gland|prostate.*nodule|prostate.*activity|prostate.*zones|apex.*prostate|mid.*gland|BPH|benign prostatic/i.test(text);
-        return hasProstatectomy && !prostatePresent;
+        const prostatectomyTerms = /prostatectomy|prostate\s*(taken\s*out|removed)|had\s*his\s*prostate/i;
+        const prostatePresent = /prostate\s*(present|intact|gland)|BPH|benign\s*prostatic/i;
+        
+        return prostatectomyTerms.test(text) && !prostatePresent.test(text);
+    }
+
+    buildHistory(history) {
+        return `**History**: ${history}`;
+    }
+
+    buildComparison(comparison) {
+        return `**Comparison**: ${comparison}`;
     }
 
     buildTechnique(tracer, coverage) {
-        const rule = this.template.tracerRules[tracer] || this.template.tracerRules['FDG'];
-        
-        let technique = `**Technique**: ${rule.startPhrase} ${coverage}`;
-        
-        // Add tracer if not already in the phrase
-        if (!technique.includes(tracer)) {
-            technique += ` with ${tracer}`;
-        }
-        
-        technique += '.';
-        
-        return technique;
+        const rule = this.template.tracerRules[tracer];
+        return `**Technique**: ${rule.startPhrase} ${coverage} with ${tracer}.`;
     }
 
     buildFindings(parsed, originalText) {
@@ -330,208 +468,141 @@ class PETCTReportGenerator {
             result += `\n**${category}**: `;
             
             if (hasFindings) {
-                // Add positive findings first
-                const positiveFindingsText = positiveFindings
-                    .map(f => f.text)
-                    .filter(t => t.length > 10) // Filter out very short fragments
-                    .join('. ');
+                // Format positive findings properly
+                const findingsTexts = positiveFindings.map(f => {
+                    let text = f.text;
+                    // Ensure proper capitalization
+                    text = text.charAt(0).toUpperCase() + text.slice(1);
+                    // Ensure proper ending
+                    if (!text.match(/[.!?]$/)) text += '.';
+                    return text;
+                });
                 
-                if (positiveFindingsText) {
-                    result += positiveFindingsText;
-                    if (!positiveFindingsText.endsWith('.')) {
-                        result += '.';
-                    }
-                    result += ' ';
-                }
+                result += findingsTexts.join(' ') + ' ';
                 
-                // Add appropriate mandatory phrase
+                // Add mandatory phrases
                 if (category === 'Chest') {
                     result += this.template.mandatoryPhrases[category].withFindings;
                     
-                    // Handle pulmonary nodules logic
-                    const nodules = positiveFindings.filter(f => f.isNodule);
-                    const noduleCount = nodules.length;
-                    
+                    const noduleCount = positiveFindings.filter(f => f.isNodule).length;
                     if (noduleCount >= 1 && noduleCount <= 3) {
                         result += ' ' + this.template.mandatoryPhrases[category].noOtherNodules;
                     } else if (noduleCount === 0) {
                         result += ' ' + this.template.mandatoryPhrases[category].noNodules;
                     }
-                    // If >3 nodules, don't add any nodule statement
                 } else {
                     result += this.template.mandatoryPhrases[category].withFindings;
                 }
             } else {
-                // No findings - use appropriate mandatory phrase
                 result += this.template.mandatoryPhrases[category].noFindings;
             }
-
-            // Special logic for Abdomen/Pelvis surgical bed
+            
+            // Add surgical bed for prostatectomy cases
             if (category === 'Abdomen/Pelvis' && parsed.hasProstatectomy) {
-                if (!result.includes(', including the pelvic surgical bed')) {
-                    result = result.replace(/lymphadenopathy(?![\w,])/, 'lymphadenopathy, including the pelvic surgical bed');
-                }
+                result = result.replace(/lymphadenopathy(?![\w,])/, 'lymphadenopathy, including the pelvic surgical bed');
             }
-
+            
             // Add incidental findings
-            const incidentalFindings = this.extractIncidentalFindings(originalText, category);
-            if (incidentalFindings) {
-                result += ' ' + incidentalFindings;
+            const incidentals = this.extractIncidentalFindings(originalText, category);
+            if (incidentals) {
+                result += ' ' + incidentals;
             }
             
             if (index < this.template.findingsSubcategories.length - 1) {
-                result += '\n\n';  // Add blank line between subcategories
+                result += '\n\n';
             }
         });
-
+        
         return result;
     }
 
     extractIncidentalFindings(text, category) {
-        const incidentalPatterns = {
-            'Head/Neck': [/physiologic.*uptake/i, /physiologic FDG uptake/i],
-            'Chest': [/coronary.*calcification/i, /atherosclerotic.*calcification/i, /mild.*calcification/i, /heart looks fine/i],
-            'Abdomen/Pelvis': [/renal.*cyst/i, /hepatic.*cyst/i, /physiologic.*colonic/i, /small.*cyst/i, /bowel.*look.*should/i],
-            'MSK/Integument': [/degenerative.*change/i, /multilevel.*degenerative/i]
+        const patterns = {
+            'Chest': [/coronary\s*(?:artery)?\s*calcification/i, /atherosclerotic/i],
+            'Abdomen/Pelvis': [/simple\s*cyst|renal\s*cyst|hepatic\s*cyst/i, /normal\s*bowel\s*activity/i],
+            'MSK/Integument': [/degenerative\s*chang/i, /arthropathy/i]
         };
-
-        const patterns = incidentalPatterns[category] || [];
-        for (const pattern of patterns) {
+        
+        const categoryPatterns = patterns[category] || [];
+        for (const pattern of categoryPatterns) {
             const match = text.match(pattern);
             if (match) {
                 let finding = match[0];
-                
-                // Convert casual language to medical terminology
-                if (/heart looks fine/i.test(finding)) {
-                    finding = 'Normal cardiac appearance';
-                }
-                if (/bowel.*look.*should/i.test(finding)) {
-                    finding = 'Normal bowel activity pattern';
-                }
-                
-                // Capitalize first letter and ensure proper ending
                 finding = finding.charAt(0).toUpperCase() + finding.slice(1);
                 if (!finding.endsWith('.')) finding += '.';
                 return finding;
             }
         }
+        
         return '';
-    }
-
-    convertMeasurements(text) {
-        // Convert various measurement formats to mm
-        return text
-            .replace(/(\d+\.?\d*)\s*(?:point|\.)\s*(\d+)\s*(?:centimeters?|cm)/gi, (match, whole, decimal) => {
-                const num = parseFloat(`${whole}.${decimal}`);
-                return `${Math.round(num * 10)} mm`;
-            })
-            .replace(/(\d+\.?\d*)\s*(?:centimeters?|cm)/gi, (match, num) => {
-                return `${Math.round(parseFloat(num) * 10)} mm`;
-            });
-    }
-
-    applyTerminologyCorrections(text) {
-        const corrections = {
-            'speculated': 'spiculated',
-            'Speculated': 'Spiculated',
-            'lighting up': 'demonstrating increased uptake',
-            'lights up': 'demonstrates increased uptake',
-            'lit up': 'demonstrated increased uptake',
-            'hot spot': 'focus of increased activity',
-            'bad areas': 'areas of abnormal uptake',
-            'scar tissue': 'post-surgical changes'
-        };
-        
-        Object.entries(corrections).forEach(([wrong, correct]) => {
-            text = text.replace(new RegExp(wrong, 'gi'), correct);
-        });
-        
-        return text;
-    }
-
-    countMeasurements(text) {
-        const measurements = text.match(/\d+\.?\d*\s*(?:cm|centimeters?|point \d)/gi) || [];
-        return measurements.length;
-    }
-
-    buildHistory(history) {
-        return `**History**: ${history}`;
-    }
-
-    buildComparison(comparison) {
-        return `**Comparison**: ${comparison}`;
     }
 
     buildImpression(impression) {
         return `**Impression**: ${impression}`;
     }
 
-    buildAlternateImpression(parsed, originalText) {
-        const allFindings = Object.values(parsed.findings).flat();
-        const positiveFindings = allFindings.filter(f => f.hasFindings);
-
-        let summary = '**Alternate Impression for Comparison**: ';
-
-        if (positiveFindings.length > 0) {
-            // Extract key positive findings
-            const summaryElements = [];
-            
-            positiveFindings.forEach(finding => {
-                if (finding.text && finding.text.length > 10) {
-                    // Extract key elements from the finding
-                    const measurements = finding.text.match(/\d+\s*mm/gi) || [];
-                    const locations = finding.text.match(/(right|left)?\s*(upper|lower)?\s*(lung|lobe|iliac|vertebr|hilar|pelvis|surgical)/gi) || [];
-                    const pathology = finding.text.match(/nodule|mass|lesion|lymph node|uptake|activity/gi) || [];
-                    
-                    if (measurements.length > 0 || locations.length > 0 || pathology.length > 0) {
-                        let element = '';
-                        if (measurements[0]) element += measurements[0] + ' ';
-                        if (locations[0]) element += locations[0] + ' ';
-                        if (pathology[0]) element += pathology[0];
-                        
-                        if (element.trim()) {
-                            summaryElements.push(element.trim());
-                        }
-                    }
+    buildAlternateImpression(parsed) {
+        const findings = [];
+        
+        // Collect all positive findings
+        Object.entries(parsed.findings).forEach(([category, categoryFindings]) => {
+            const positive = categoryFindings.filter(f => f.hasFindings);
+            positive.forEach(f => {
+                if (f.text && f.text.length > 10) {
+                    findings.push(f.text);
                 }
             });
-
-            if (summaryElements.length > 0) {
-                summary += summaryElements.join(', ') + '. ';
-            }
-
-            // Add negative findings for regions without findings
+        });
+        
+        let summary = '**Alternate Impression for Comparison**: ';
+        
+        if (findings.length > 0) {
+            // Summarize key findings
+            const keyFindings = findings.slice(0, 3).map(f => {
+                // Extract the key element from each finding
+                const match = f.match(/(\d+\s*mm\s*[\w\s]+(?:node|nodule|lesion|mass|focus))/i);
+                return match ? match[1] : f.split('.')[0];
+            });
+            
+            summary += keyFindings.join(', ') + '.';
+            
+            // Add negative regions
             const negativeRegions = [];
-            Object.entries(parsed.findings).forEach(([category, findings]) => {
-                const hasPositive = findings.some(f => f.hasFindings);
-                if (!hasPositive) {
+            Object.entries(parsed.findings).forEach(([category, categoryFindings]) => {
+                if (!categoryFindings.some(f => f.hasFindings)) {
                     negativeRegions.push(category.toLowerCase());
                 }
             });
-
+            
             if (negativeRegions.length > 0) {
-                summary += `No suspicious activity in ${negativeRegions.join(', ')}.`;
+                summary += ` No suspicious activity in ${negativeRegions.join(', ')}.`;
             }
-
         } else {
             summary += 'No suspicious activity identified in any region examined.';
         }
-
+        
         return summary;
     }
 
-    cleanupText(text) {
-        // Remove extra whitespace and clean up the text
-        return text
-            .replace(/\s+/g, ' ')
-            .replace(/\s*([,.])\s*/g, '$1 ')
-            .trim();
+    countMeasurements(text) {
+        const patterns = [
+            /\d+\.?\d*\s*(?:cm|centimeters?)/gi,
+            /\d+\s*point\s*\d+\s*(?:cm|centimeters?)?/gi,
+            /(?:one|two|three|four|five|six|seven|eight|nine|ten)\s*point\s*\d+/gi
+        ];
+        
+        let count = 0;
+        patterns.forEach(pattern => {
+            const matches = text.match(pattern) || [];
+            count += matches.length;
+        });
+        
+        return count;
     }
 }
 
-// Netlify Function Handler remains the same
+// Netlify Function Handler
 exports.handler = async (event, context) => {
-    // Handle CORS
     const headers = {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
@@ -539,16 +610,10 @@ exports.handler = async (event, context) => {
         'Content-Type': 'application/json'
     };
 
-    // Handle preflight OPTIONS request
     if (event.httpMethod === 'OPTIONS') {
-        return {
-            statusCode: 200,
-            headers,
-            body: ''
-        };
+        return { statusCode: 200, headers, body: '' };
     }
 
-    // Only allow POST requests
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
@@ -562,11 +627,8 @@ exports.handler = async (event, context) => {
     }
 
     try {
-        // Parse request body
-        const requestBody = JSON.parse(event.body);
-        const { dictation, options = {} } = requestBody;
+        const { dictation, options = {} } = JSON.parse(event.body);
 
-        // Validate required fields
         if (!dictation || typeof dictation !== 'string') {
             return {
                 statusCode: 400,
@@ -579,11 +641,9 @@ exports.handler = async (event, context) => {
             };
         }
 
-        // Generate the medical report with natural language support
         const generator = new PETCTReportGenerator(PETCT_TEMPLATE);
         const result = generator.generateReport(dictation, options);
 
-        // Return successful response
         return {
             statusCode: 200,
             headers,
@@ -594,7 +654,7 @@ exports.handler = async (event, context) => {
         };
 
     } catch (error) {
-        console.error('Error processing medical transcription:', error);
+        console.error('Error processing transcription:', error);
         
         return {
             statusCode: 500,
