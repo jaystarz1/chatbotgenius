@@ -1,3 +1,1 @@
-#!/bin/bash
-# Make the LinkedIn update script executable
-chmod +x update-linkedin.sh
+chmod +x force-deploy-clear-cache.sh

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .output {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medical Transcription API Test</h1>
+    
+    <h2>Test Dictation:</h2>
+    <textarea id="dictation">Alright, so this is a 72-year-old woman with breast cancer, she had a mastectomy on the left side about three years ago. Her tumor markers are going up, CA fifteen three went from twenty-five to seventy-eight, so we're doing this PSMA... sorry, I mean FDG scan to look for recurrence.
+
+We're comparing this to her last PET from June of twenty twenty-four.
+
+She fasted overnight, we gave her about eight point five millicuries of the FDG tracer through her IV. Scanned her whole body about fifty-five minutes later.
+
+Looking at her head and neck, there's nothing lighting up abnormally. Her brain looks normal, no bad areas up there.
+
+In her chest, I see a new nodule in the right middle lobe that's eight millimeters and it's lighting up pretty good with an SUV of four point one, that's on image thirty-two. There's also this tiny four millimeter nodule in the left lower lobe but it's not really lighting up much. Her mediastinal nodes look okay. Oh, and she's got some coronary calcification but that's not unexpected at her age.
+
+Down in her abdomen and pelvis, her liver looks fine, kidneys are good. There's a two point three centimeter cyst in the right kidney but that's benign. Normal physiologic uptake in the bowel. No abnormal lymph nodes down there.
+
+Her bones look pretty good overall, just some degenerative changes in her spine. Actually wait, there's increased uptake in the T-seven vertebral body with an SUV of five point six on image fifty-eight, that looks suspicious.
+
+So my impression is the lung nodule and the T-seven uptake are concerning for metastatic disease from her breast cancer.
+
+Compared to June, both the lung nodule and the vertebral uptake are new findings.</textarea>
+    
+    <button onclick="testAPI()">Test API</button>
+    
+    <div id="output"></div>
+
+    <script>
+        async function testAPI() {
+            const dictation = document.getElementById('dictation').value;
+            const outputDiv = document.getElementById('output');
+            
+            outputDiv.innerHTML = '<p>Calling API at ' + new Date().toLocaleTimeString() + '...</p>';
+            console.log('Testing with:', dictation);
+            
+            try {
+                const response = await fetch('https://thechatbotgenius.com/.netlify/functions/medical-transcription?nocache=' + Date.now(), {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        dictation: dictation,
+                        options: {
+                            include_image_references: true,
+                            convert_measurements: true,
+                            strict_formatting: true
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                outputDiv.innerHTML = `
+                    <div class="output">
+                        <h3>API Response:</h3>
+                        <p class="${data.success ? 'success' : 'error'}">
+                            Success: ${data.success}
+                        </p>
+                        
+                        ${data.success ? `
+                            <h4>Formatted Report:</h4>
+                            <pre>${data.report}</pre>
+                            
+                            <h4>Metadata:</h4>
+                            <pre>${JSON.stringify(data.metadata, null, 2)}</pre>
+                        ` : `
+                            <h4>Error:</h4>
+                            <pre class="error">${data.error}</pre>
+                        `}
+                        
+                        <h4>Raw JSON Response:</h4>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </div>
+                `;
+            } catch (error) {
+                outputDiv.innerHTML = `
+                    <div class="output error">
+                        <h3>Error:</h3>
+                        <pre>${error.message}</pre>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

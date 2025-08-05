@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct API Test - Medical Transcription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Direct API Test - Medical Transcription</h1>
+        <p>This tests the API directly to verify it's working correctly.</p>
+        
+        <h2>Test Dictation</h2>
+        <textarea id="dictation">
+This is a 72-year-old man with prostate cancer. He had his prostate taken out back in twenty twenty-three. His PSA went from one point five to two point eight. 
+
+Gave him seven millicuries of PSMA, did a whole body PSMA scan.
+
+Looking at his head and neck, everything's quiet. No bad areas lighting up.
+
+In his chest, everything looks good. No suspicious activity or lymphadenopathy. No pulmonary nodules. Some coronary artery calcification noted.
+
+Down in his belly and pelvis, I see a small focus of PSMA uptake in the right obturator lymph node measuring seven millimeters with an SUV of two point nine (image twenty-five of one hundred thirty, series four). Otherwise no other suspicious infradiaphragmatic activity or lymphadenopathy.
+
+His bones look fine. No suspicious skeletal activity. Some mild degenerative changes in the spine.
+
+My impression is that this represents a single site of recurrent disease in the right obturator lymph node.
+        </textarea>
+        
+        <button onclick="testAPI()">Test API Directly</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function testAPI() {
+            const dictation = document.getElementById('dictation').value;
+            const resultDiv = document.getElementById('result');
+            
+            resultDiv.innerHTML = '<p>Testing API...</p>';
+            
+            try {
+                const response = await fetch('https://thechatbotgenius.com/api/medical-transcription', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        dictation: dictation,
+                        options: {
+                            includeImageReferences: true,
+                            convertMeasurements: true,
+                            strictFormatting: true
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <h3 class="success">API Response - Success</h3>
+                        <h4>Formatted Report:</h4>
+                        <div class="result">
+                            <pre>${data.report}</pre>
+                        </div>
+                        <h4>Metadata:</h4>
+                        <div class="result">
+                            <pre>${JSON.stringify(data.metadata, null, 2)}</pre>
+                        </div>
+                    `;
+                    
+                    // Check for the specific issues
+                    if (data.report.includes('Head/Neck') && data.report.includes('surgical bed')) {
+                        resultDiv.innerHTML += '<p class="error">⚠️ BUG DETECTED: Surgical bed appearing in Head/Neck section!</p>';
+                    }
+                    if (data.report.includes('seven millimeters')) {
+                        resultDiv.innerHTML += '<p class="error">⚠️ BUG DETECTED: Measurement not converted!</p>';
+                    }
+                    if (data.report.includes('SUV of two point nine')) {
+                        resultDiv.innerHTML += '<p class="error">⚠️ BUG DETECTED: SUV not formatted!</p>';
+                    }
+                } else {
+                    resultDiv.innerHTML = `
+                        <h3 class="error">API Error</h3>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <h3 class="error">Network Error</h3>
+                    <pre>${error.message}</pre>
+                `;
+            }
+        }
+        
+        // Auto-test on load
+        window.addEventListener('load', () => {
+            setTimeout(testAPI, 1000);
+        });
+    </script>
+</body>
+</html>
