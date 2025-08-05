@@ -1,6 +1,5 @@
-// Enhanced Medical Transcription with Multi-Step Processing and Anthropic API Review
-// Based on working medical-api-v2.js with graceful fallback
-// Force redeploy: Aug 5 2025
+// Enhanced Medical Transcription with Claude Sonnet 4 Compliance Review & Auto-Correction
+// Multi-step: Generate → Claude Review → Claude Fix → Validate → Return
 
 const PETCT_TEMPLATE = {
     sections: ['History', 'Comparison', 'Technique', 'Findings', 'Impression', 'Alternate Impression for Comparison'],
@@ -45,100 +44,63 @@ const PETCT_TEMPLATE = {
     }
 };
 
-// Internal Review Engine - checks formatting without external API
-class InternalReviewEngine {
-    static reviewReport(report, dictation, instructions) {
-        const issues = [];
-        const corrections = {};
+// Complete Medical Rules for Claude Review
+const MEDICAL_RULES = `
+**CRITICAL MEDICAL FORMATTING RULES:**
 
-        // Check 1: Technique formatting
-        if (!report.includes('Fasting low dose PET/CT') && dictation.toLowerCase().includes('fdg')) {
-            issues.push('Technique should use "Fasting low dose PET/CT" for FDG scans');
-            corrections.technique = 'Use "Fasting low dose PET/CT" for FDG tracer';
-        }
-        
-        if (!report.includes('Low dose PET/CT') && (dictation.toLowerCase().includes('psma') || dictation.toLowerCase().includes('dotatate'))) {
-            issues.push('Technique should use "Low dose PET/CT" for PSMA/DOTATATE scans');
-        }
+**Structure Requirements:**
+- Must have exactly 6 sections: History, Comparison, Technique, Findings, Impression, Alternate Impression for Comparison
+- Findings section must have exactly 4 subcategories in order: Head/Neck, Chest, Abdomen/Pelvis, MSK/Integument
+- Must have exactly ONE **Findings**: header, never multiple
 
-        // Check 2: Single Findings section
-        const findingsCount = (report.match(/\*\*Findings\*\*:/g) || []).length;
-        if (findingsCount > 1) {
-            issues.push(`Multiple **Findings**: sections found (${findingsCount}), should be exactly 1`);
-            corrections.findings = 'Remove duplicate **Findings**: headers';
-        }
+**Technique Formatting:**
+- FDG scans: "Fasting low dose PET/CT [coverage] with FDG."
+- PSMA scans: "Low dose PET/CT [coverage] with Ga-68-PSMA."
+- DOTATATE scans: "Low dose PET/CT [coverage] with Ga-68-DOTATATE."
+- Cardiac FDG: "Ketogenic low dose PET/CT [coverage] with FDG."
 
-        // Check 3: Mandatory phrases presence
-        const mandatoryChecks = [
-            { phrase: 'No suspicious activity or lymphadenopathy', section: 'Head/Neck' },
-            { phrase: 'No suspicious infradiaphragmatic activity or lymphadenopathy', section: 'Abdomen/Pelvis' },
-            { phrase: 'No suspicious skeletal activity or aggressive appearance', section: 'MSK/Integument' }
-        ];
+**Coverage Area Conversions:**
+- "Whole Body" → "eyes to thighs"
+- "Total Body" → "vertex to toes"  
+- "Brain and Whole Body" → "vertex to thighs"
 
-        mandatoryChecks.forEach(check => {
-            if (!report.includes(check.phrase)) {
-                issues.push(`Missing mandatory phrase for ${check.section}: "${check.phrase}"`);
-            }
-        });
+**Measurement Conversions:**
+- ALL word measurements to numeric: "seven millimeters" → "7 mm"
+- Convert cm to mm: "1.4 cm" → "14 mm"
+- "one point five centimeters" → "15 mm"
 
-        // Check 4: Measurement conversion
-        const unconvertedMeasurements = dictation.match(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\s+millimeters?\b/gi);
-        if (unconvertedMeasurements) {
-            unconvertedMeasurements.forEach(match => {
-                if (!this.isConvertedInReport(match, report)) {
-                    issues.push(`Measurement not converted: "${match}" should be numeric mm`);
-                    corrections.measurements = 'Convert word measurements to numeric mm format';
-                }
-            });
-        }
+**SUV Formatting:**
+- "SUV of two point nine" → "SUVmax 2.9"
+- "an SUV of 3.4" → "SUVmax 3.4"
+- Always use "SUVmax" format
 
-        // Check 5: SUV formatting
-        const unconvertedSUV = dictation.match(/SUV\s*of\s*[a-zA-Z]+\s*point\s*\d+/gi);
-        if (unconvertedSUV) {
-            unconvertedSUV.forEach(match => {
-                if (!report.includes('SUVmax')) {
-                    issues.push(`SUV not formatted: "${match}" should be "SUVmax X.X"`);
-                    corrections.suv = 'Format SUV values as "SUVmax X.X"';
-                }
-            });
-        }
+**Mandatory Phrases (EXACT wording required):**
+- Head/Neck: "No suspicious activity or lymphadenopathy." (if no findings)
+- Chest: "No suspicious activity or lymphadenopathy. No pulmonary nodules." (if no findings)
+- Abdomen/Pelvis: "No suspicious infradiaphragmatic activity or lymphadenopathy" (if no findings)
+- MSK/Integument: "No suspicious skeletal activity or aggressive appearance." (if no findings)
 
-        // Check 6: Surgical bed logic
-        const hasProstatectomy = /prostatectomy|prostate\s*(taken\s*out|removed)/i.test(dictation);
-        if (hasProstatectomy) {
-            if (!report.includes('including the pelvic surgical bed')) {
-                issues.push('Prostatectomy detected but surgical bed phrase missing from Abdomen/Pelvis');
-                corrections.surgicalBed = 'Add "including the pelvic surgical bed" to Abdomen/Pelvis section';
-            }
-        }
+**Surgical Bed Logic:**
+- If prostatectomy mentioned AND no current prostate described: Add ", including the pelvic surgical bed" to Abdomen/Pelvis mandatory phrase
+- If prostate still present (BPH, prostate zones, etc.): Do NOT add surgical bed phrase
 
-        return {
-            issues,
-            corrections,
-            needsComplexReview: issues.length > 3,
-            passedBasicReview: issues.length === 0
-        };
-    }
+**Pulmonary Nodule Logic:**
+- If 1-3 nodules listed: Use "No other pulmonary nodules."
+- If >3 nodules listed: Do NOT include "No other pulmonary nodules."
+- If 0 nodules: Use "No pulmonary nodules."
 
-    static isConvertedInReport(originalMeasurement, report) {
-        const numberWords = {
-            'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
-            'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10'
-        };
-        
-        const match = originalMeasurement.match(/\b(\w+)\s+millimeters?\b/i);
-        if (match) {
-            const word = match[1].toLowerCase();
-            const digit = numberWords[word];
-            return digit && report.includes(`${digit} mm`);
-        }
-        return false;
-    }
-}
+**Terminology Corrections:**
+- "speculated" → "spiculated"
+- Casual language → Medical language
+- Image references: "(Image 25 of 130, series 4)" format if provided
 
-// Anthropic API Enhancement with Timeout and Fallback
-async function enhanceWithClaude(report, dictation, options = {}) {
-    const timeout = options.timeout || 3000;
+**With Findings Phrases:**
+- When positive findings present, use "No other suspicious..." phrases after describing findings
+`;
+
+// Claude Sonnet 4 Compliance Review & Correction
+async function claudeComplianceReview(initialReport, dictation, options = {}) {
+    const timeout = options.timeout || 5000;
     
     if (!process.env.ANTHROPIC_API_KEY) {
         throw new Error('Anthropic API key not available');
@@ -156,25 +118,36 @@ async function enhanceWithClaude(report, dictation, options = {}) {
                 "anthropic-version": "2023-06-01"
             },
             body: JSON.stringify({
-                model: "claude-3-sonnet-20240229",
-                max_tokens: 2000,
+                model: "claude-sonnet-4-20250514",
+                max_tokens: 3000,
                 messages: [{
                     role: "user",
-                    content: `Review this PET/CT report against medical formatting rules and fix any issues:
+                    content: `You are a medical transcription quality control expert. Review this PET/CT report for compliance violations and fix ALL errors.
 
-ORIGINAL DICTATION: ${dictation}
+**ORIGINAL DICTATION:**
+${dictation}
 
-GENERATED REPORT: ${report}
+**GENERATED REPORT:**
+${initialReport}
 
-MEDICAL RULES:
+**MEDICAL FORMATTING RULES:**
+${MEDICAL_RULES}
+
+**YOUR TASK:**
+1. Compare the generated report against ALL the medical rules above
+2. Identify EVERY compliance violation (structure, formatting, measurements, terminology, mandatory phrases, etc.)
+3. Fix ALL violations and return the corrected report
+4. Ensure the corrected report follows the rules EXACTLY
+
+**CRITICAL REQUIREMENTS:**
 - Must have exactly ONE **Findings**: section
-- Technique: "Fasting low dose PET/CT" for FDG, "Low dose PET/CT" for PSMA/DOTATATE
-- Convert measurements: "seven millimeters" → "7 mm"
-- Format SUV: "SUV of two point nine" → "SUVmax 2.9"
-- Add "including the pelvic surgical bed" to Abdomen/Pelvis if prostatectomy mentioned
-- Include mandatory phrases for each subcategory
+- Convert ALL measurements: "seven millimeters" → "7 mm", "1.4 cm" → "14 mm"
+- Format ALL SUV values: "SUV of two point nine" → "SUVmax 2.9"
+- Use EXACT mandatory phrases for each subcategory
+- Apply surgical bed logic correctly for prostatectomy cases
+- Correct technique formatting based on tracer type
 
-Return ONLY the corrected report, no explanations.`
+Return ONLY the fully corrected medical report. No explanations, no commentary, just the corrected report.`
                 }]
             }),
             signal: controller.signal
@@ -183,23 +156,78 @@ Return ONLY the corrected report, no explanations.`
         clearTimeout(timeoutId);
         
         if (!response.ok) {
-            throw new Error(`Claude API error: ${response.status}`);
+            throw new Error(`Claude API error: ${response.status} - ${response.statusText}`);
         }
         
         const data = await response.json();
-        return data.content[0].text.trim();
+        const correctedReport = data.content[0].text.trim();
+        
+        // Remove any markdown formatting that Claude might add
+        return correctedReport.replace(/```[\w]*\n?/g, '').trim();
         
     } catch (error) {
         clearTimeout(timeoutId);
         
         if (error.name === 'AbortError') {
-            throw new Error('Claude API timeout');
+            throw new Error('Claude API timeout after 5 seconds');
         }
         throw error;
     }
 }
 
-// Simplified PETCTReportGenerator for reliable processing
+// Final Validation Check
+function validateCorrectedReport(report, dictation) {
+    const issues = [];
+    
+    // Check for single Findings section
+    const findingsCount = (report.match(/\*\*Findings\*\*:/g) || []).length;
+    if (findingsCount !== 1) {
+        issues.push(`Wrong number of **Findings**: sections: ${findingsCount} (should be 1)`);
+    }
+    
+    // Check for measurement conversions
+    const wordMeasurements = dictation.match(/\b(one|two|three|four|five|six|seven|eight|nine|ten)\s+millimeters?\b/gi);
+    if (wordMeasurements) {
+        const numberWords = {
+            'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
+            'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10'
+        };
+        
+        wordMeasurements.forEach(match => {
+            const word = match.match(/\b(\w+)\s+millimeter/i)[1].toLowerCase();
+            const expectedMM = numberWords[word];
+            if (expectedMM && !report.includes(`${expectedMM} mm`)) {
+                issues.push(`Measurement not converted: "${match}" should appear as "${expectedMM} mm"`);
+            }
+        });
+    }
+    
+    // Check for SUV formatting
+    const suvPatterns = dictation.match(/SUV\s*of\s*[a-zA-Z]+\s*point\s*\d+/gi);
+    if (suvPatterns && !report.includes('SUVmax')) {
+        issues.push('SUV values not properly formatted as "SUVmax X.X"');
+    }
+    
+    // Check for mandatory phrases
+    const requiredPhrases = [
+        'No suspicious activity or lymphadenopathy',
+        'No suspicious infradiaphragmatic activity or lymphadenopathy',
+        'No suspicious skeletal activity or aggressive appearance'
+    ];
+    
+    requiredPhrases.forEach(phrase => {
+        if (!report.includes(phrase)) {
+            issues.push(`Missing mandatory phrase: "${phrase}"`);
+        }
+    });
+    
+    return {
+        isValid: issues.length === 0,
+        issues: issues
+    };
+}
+
+// Simplified PETCTReportGenerator for Initial Generation
 class PETCTReportGenerator {
     constructor(template) {
         this.template = template;
@@ -276,8 +304,7 @@ class PETCTReportGenerator {
             history += ', status post radical prostatectomy';
         }
         
-        const psaMatch = text.match(/PSA.*?(\d+\.?\d*)/i);
-        if (psaMatch) {
+        if (/PSA|rising/i.test(text)) {
             history += '. Rising PSA';
         }
         
@@ -303,14 +330,11 @@ class PETCTReportGenerator {
             'MSK/Integument': []
         };
         
-        // Process dictation with conversions
-        let processedText = this.applyAllConversions(dictation);
-        
-        // Look for findings in abdomen/pelvis specifically
-        const abdominalMatch = processedText.match(/(?:down\s*in|in).*?(?:belly|abdomen).*?(.*?)(?:impression|bones|$)/is);
+        // Look for findings in abdomen/pelvis
+        const abdominalMatch = dictation.match(/(?:down\s*in|in).*?(?:belly|abdomen).*?(.*?)(?:impression|bones|$)/is);
         if (abdominalMatch && abdominalMatch[1]) {
             const text = abdominalMatch[1].trim();
-            if (text.includes('mm') || text.includes('SUVmax') || text.includes('node') || text.includes('lesion')) {
+            if (text.length > 10 && (/millimeter|node|lesion|SUV/i.test(text))) {
                 findings['Abdomen/Pelvis'].push({
                     text: text,
                     hasFindings: true,
@@ -320,29 +344,6 @@ class PETCTReportGenerator {
         }
         
         return findings;
-    }
-
-    applyAllConversions(text) {
-        // Convert measurements
-        const numberWords = {
-            'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
-            'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10'
-        };
-        
-        for (const [word, digit] of Object.entries(numberWords)) {
-            text = text.replace(new RegExp(`\\b${word}\\s+millimeters?\\b`, 'gi'), `${digit} mm`);
-            text = text.replace(new RegExp(`\\b${word}\\s+(?:centimeters?|cm)\\b`, 'gi'), `${parseInt(digit) * 10} mm`);
-        }
-        
-        // Convert SUV values
-        text = text.replace(/(?:an?\s*)?SUV\s*(?:of\s*)?([a-zA-Z]+)\s*point\s*(\d+)/gi, (match, whole, decimal) => {
-            const num = numberWords[whole.toLowerCase()];
-            return num ? `SUVmax ${num}.${decimal}` : match;
-        });
-        
-        text = text.replace(/SUV\s*(?:of|is)?\s*([\d.]+)/gi, 'SUVmax $1');
-        
-        return text;
     }
 
     checkProstatectomy(text) {
@@ -437,7 +438,36 @@ class PETCTReportGenerator {
     }
 }
 
-// Main Netlify Function Handler with Multi-Step Processing
+// Internal Fallback Corrections (if Claude fails)
+function applyInternalCorrections(report, dictation) {
+    let corrected = report;
+    
+    // Fix measurements
+    const numberWords = {
+        'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
+        'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10'
+    };
+    
+    for (const [word, digit] of Object.entries(numberWords)) {
+        corrected = corrected.replace(
+            new RegExp(`\\b${word}\\s+millimeters?\\b`, 'gi'), 
+            `${digit} mm`
+        );
+    }
+    
+    // Fix SUV values
+    corrected = corrected.replace(
+        /(?:an?\s*)?SUV\s*(?:of\s*)?([a-zA-Z]+)\s*point\s*(\d+)/gi, 
+        (match, whole, decimal) => {
+            const num = numberWords[whole.toLowerCase()];
+            return num ? `SUVmax ${num}.${decimal}` : match;
+        }
+    );
+    
+    return corrected;
+}
+
+// Main Netlify Function Handler with Claude Sonnet 4 Multi-Step Processing
 exports.handler = async (event, context) => {
     const headers = {
         'Access-Control-Allow-Origin': '*',
@@ -478,34 +508,48 @@ exports.handler = async (event, context) => {
         }
 
         // Step 1: Generate initial report
+        console.log('Step 1: Generating initial report...');
         const generator = new PETCTReportGenerator(PETCT_TEMPLATE);
         const initialResult = generator.generateReport(dictation, options);
         
-        // Step 2: Internal quality review
-        const reviewResults = InternalReviewEngine.reviewReport(
-            initialResult.report, 
-            dictation, 
-            'medical formatting rules'
-        );
-        
-        // Step 3: Claude enhancement with graceful fallback
         let finalReport = initialResult.report;
         let processingMode = 'internal-only';
-        let enhancementStatus = 'not-needed';
+        let claudeStatus = 'not-attempted';
+        let validationResults = { isValid: false, issues: [] };
         
-        if (reviewResults.needsComplexReview) {
-            try {
-                const claudeEnhanced = await enhanceWithClaude(initialResult.report, dictation, {
-                    timeout: 3000
-                });
-                finalReport = claudeEnhanced;
-                processingMode = 'claude-enhanced';
-                enhancementStatus = 'claude-success';
-            } catch (claudeError) {
-                console.log('Claude API unavailable, using internal processing:', claudeError.message);
-                processingMode = 'claude-fallback';
-                enhancementStatus = 'claude-failed';
+        // Step 2: Claude Sonnet 4 Compliance Review & Auto-Correction
+        try {
+            console.log('Step 2: Claude Sonnet 4 compliance review and correction...');
+            const claudeCorrected = await claudeComplianceReview(initialResult.report, dictation, {
+                timeout: 5000
+            });
+            
+            // Step 3: Validate Claude's corrections
+            console.log('Step 3: Validating corrected report...');
+            validationResults = validateCorrectedReport(claudeCorrected, dictation);
+            
+            if (validationResults.isValid) {
+                finalReport = claudeCorrected;
+                processingMode = 'claude-corrected';
+                claudeStatus = 'success';
+            } else {
+                // Claude didn't fix everything - apply internal corrections as backup
+                console.log('Step 4: Claude corrections incomplete, applying internal fallback...');
+                finalReport = applyInternalCorrections(claudeCorrected, dictation);
+                processingMode = 'claude-plus-internal';
+                claudeStatus = 'partial-success';
             }
+            
+        } catch (claudeError) {
+            console.log('Claude API failed, using internal corrections:', claudeError.message);
+            
+            // Step 4: Internal fallback corrections
+            finalReport = applyInternalCorrections(initialResult.report, dictation);
+            processingMode = 'internal-fallback';
+            claudeStatus = 'failed';
+            
+            // Validate internal corrections
+            validationResults = validateCorrectedReport(finalReport, dictation);
         }
 
         return {
@@ -517,17 +561,17 @@ exports.handler = async (event, context) => {
                 metadata: {
                     ...initialResult.metadata,
                     processingMode: processingMode,
-                    enhancementStatus: enhancementStatus,
-                    internalReviewIssues: reviewResults.issues.length,
-                    reviewIssues: reviewResults.issues,
-                    corrections: reviewResults.corrections,
-                    claudeAvailable: enhancementStatus === 'claude-success'
+                    claudeStatus: claudeStatus,
+                    validationPassed: validationResults.isValid,
+                    remainingIssues: validationResults.issues,
+                    stepsTaken: processingMode === 'claude-corrected' ? 3 : 4,
+                    sonnet4Available: claudeStatus !== 'failed'
                 }
             })
         };
 
     } catch (error) {
-        console.error('Error processing transcription:', error);
+        console.error('Error in medical transcription:', error);
         
         return {
             statusCode: 500,
