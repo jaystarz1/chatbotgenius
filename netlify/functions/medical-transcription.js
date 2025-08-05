@@ -206,6 +206,13 @@ function preProcessDictation(dictation) {
     
     console.log('Focused pre-processing complete - deterministic rules applied');
     
+    // **DEBUG: Show the final processed dictation**
+    console.log('=== DEBUGGING: FINAL PRE-PROCESSED DICTATION ===');
+    console.log('Length:', processed.length);
+    console.log('Full processed dictation:');
+    console.log(processed);
+    console.log('=== END PRE-PROCESSING DEBUG ===');
+    
     return {
         processedDictation: processed,
         metadata: {
@@ -224,6 +231,15 @@ function preProcessDictation(dictation) {
 
 async function processWithOpenAIAssistant(processedDictation, options = {}) {
     const timeout = options.timeout || 15000; // Longer timeout for assistant
+    
+    // **DEBUG: Log what we're sending to OpenAI Assistant**
+    console.log('=== DEBUGGING: PRE-PROCESSING TO OPENAI HANDOFF ===');
+    console.log('Original processed dictation length:', processedDictation.length);
+    console.log('First 500 characters of processed dictation:');
+    console.log(processedDictation.substring(0, 500));
+    console.log('Last 500 characters of processed dictation:');
+    console.log(processedDictation.substring(Math.max(0, processedDictation.length - 500)));
+    console.log('=== END DEBUG INFO ===');
     
     if (!process.env.OPENAI_API_KEY) {
         throw new Error('OpenAI API key not available');
@@ -345,6 +361,15 @@ async function processWithOpenAIAssistant(processedDictation, options = {}) {
         }
         
         const report = assistantMessage.content[0].text.value;
+        
+        // **DEBUG: Log what we got back from OpenAI Assistant**
+        console.log('=== DEBUGGING: OPENAI ASSISTANT RESPONSE ===');
+        console.log('Assistant response length:', report.length);
+        console.log('First 500 characters of assistant response:');
+        console.log(report.substring(0, 500));
+        console.log('Last 500 characters of assistant response:');
+        console.log(report.substring(Math.max(0, report.length - 500)));
+        console.log('=== END ASSISTANT RESPONSE DEBUG ===');
         
         clearTimeout(timeoutId);
         console.log('OpenAI Assistant processing completed successfully');
