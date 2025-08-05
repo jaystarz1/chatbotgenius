@@ -232,8 +232,11 @@ class PETCTReportGenerator {
     processRegionFindings(text, region) {
         const findings = [];
         
-        // Clean up the text first
+        // Clean up the text first - INCLUDING measurement conversions
         text = this.cleanMedicalText(text);
+        
+        // Apply conversions BEFORE splitting into sentences
+        text = this.applyAllConversions(text);
         
         // Split into sentences
         const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 5);
@@ -290,15 +293,21 @@ class PETCTReportGenerator {
         // Convert written numbers to digits
         const numberWords = {
             'one': '1', 'two': '2', 'three': '3', 'four': '4', 'five': '5',
-            'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10'
+            'six': '6', 'seven': '7', 'eight': '8', 'nine': '9', 'ten': '10',
+            'eleven': '11', 'twelve': '12', 'thirteen': '13', 'fourteen': '14', 'fifteen': '15'
         };
         
+        // First convert word numbers with measurements
         for (const [word, digit] of Object.entries(numberWords)) {
-            const regex = new RegExp(`\\b${word}\\s*point\\s*(\\d+)`, 'gi');
-            text = text.replace(regex, `${digit}.$1`);
+            // Convert "seven millimeters" to "7 mm"
+            text = text.replace(new RegExp(`\\b${word}\\s+millimeters?\\b`, 'gi'), `${digit} mm`);
+            // Convert "seven centimeters" to "70 mm"
+            text = text.replace(new RegExp(`\\b${word}\\s+(?:centimeters?|cm)\\b`, 'gi'), `${parseInt(digit) * 10} mm`);
+            // Convert "one point five" to "1.5"
+            text = text.replace(new RegExp(`\\b${word}\\s*point\\s*(\\d+)`, 'gi'), `${digit}.$1`);
         }
         
-        // Convert cm to mm
+        // Convert cm to mm for numeric values
         text = text.replace(/(\d+\.?\d*)\s*(?:centimeters?|cm)/gi, (match, num) => {
             return `${Math.round(parseFloat(num) * 10)} mm`;
         });
@@ -318,10 +327,16 @@ class PETCTReportGenerator {
     formatSUVValues(text) {
         // Format SUV values properly
         text = text.replace(/SUV\s*(?:of|is)?\s*(?:about)?\s*([\d.]+)/gi, 'SUVmax $1');
-        text = text.replace(/(?:an?\s*)?SUV\s*(?:of)?\s*(\w+)\s*point\s*(\d+)/gi, (match, whole, decimal) => {
+        
+        // Handle "SUV of two point nine" format
+        text = text.replace(/(?:an?\s*)?SUV\s*(?:of\s*)?([a-zA-Z]+)\s*point\s*(\d+)/gi, (match, whole, decimal) => {
             const num = this.wordToNumber(whole);
             return num ? `SUVmax ${num}.${decimal}` : match;
         });
+        
+        // Clean up any remaining "an SUV" or "a SUV"
+        text = text.replace(/\b(?:an?\s+)?SUV\b/gi, 'SUVmax');
+        
         return text;
     }
 
@@ -497,9 +512,24 @@ class PETCTReportGenerator {
                 result += this.template.mandatoryPhrases[category].noFindings;
             }
             
-            // Add surgical bed for prostatectomy cases
+            // Add surgical bed for prostatectomy cases - ONLY for current section
             if (category === 'Abdomen/Pelvis' && parsed.hasProstatectomy) {
-                result = result.replace(/lymphadenopathy(?![\w,])/, 'lymphadenopathy, including the pelvic surgical bed');
+                // Find the last occurrence of lymphadenopathy in the current section
+                const sectionStart = result.lastIndexOf(`**${category}**: `);
+                const sectionEnd = index < this.template.findingsSubcategories.length - 1 
+                    ? result.indexOf(`\n\n**`, sectionStart + 1)
+                    : result.length;
+                
+                const beforeSection = result.substring(0, sectionStart);
+                const currentSection = result.substring(sectionStart, sectionEnd);
+                const afterSection = result.substring(sectionEnd);
+                
+                const modifiedSection = currentSection.replace(
+                    /lymphadenopathy(?![\w,])/,
+                    'lymphadenopathy, including the pelvic surgical bed'
+                );
+                
+                result = beforeSection + modifiedSection + afterSection;
             }
             
             // Add incidental findings
