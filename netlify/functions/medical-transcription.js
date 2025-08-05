@@ -227,8 +227,8 @@ async function processWithOpenAIAssistant(processedDictation, options = {}) {
                 "OpenAI-Beta": "assistants=v2"
             },
             body: JSON.stringify({
-                assistant_id: "asst_Qz1Vk53CjXqGDTiEVRxwwcR4",
-                model: "gpt-4o" // Using GPT-4o as the latest GPT-4 model
+                assistant_id: "asst_Qz1Vk53CjXqGDTiEVRxwwcR4"
+                // Model is configured in the assistant itself
             }),
             signal: controller.signal
         });
@@ -448,8 +448,7 @@ exports.handler = async (event, context) => {
             assistantStatus: assistantStatus,
             preProcessingApplied: preProcessingResults ? true : false,
             hybridProcessing: processingMode === 'hybrid-openai-success',
-            assistantId: 'asst_Qz1Vk53CjXqGDTiEVRxwwcR4',
-            model: 'gpt-4o'
+            assistantId: 'asst_Qz1Vk53CjXqGDTiEVRxwwcR4'
         };
 
         return {
