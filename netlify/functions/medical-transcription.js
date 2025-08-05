@@ -147,8 +147,54 @@ function preProcessDictation(dictation) {
     // Handle numeric SUV values: "with SUV 3.4" → "with SUVmax 3.4"
     processed = processed.replace(/\bSUV\s+(\d+(?:\.\d+)?)/gi, 'SUVmax $1');
     
-    // **4. TERMINOLOGY CORRECTIONS**
-    processed = processed.replace(/\bspeculated\b/gi, 'spiculated');
+    // **4. TERMINOLOGY CORRECTIONS (Common AI dictation errors)**
+    // Medical terms that AI often transcribes incorrectly
+    const terminologyCorrections = {
+        // Common misheard medical terms
+        'speculated': 'spiculated',
+        'speculation': 'spiculation',
+        'spiculation': 'spiculated', // sometimes gets the wrong form
+        'infiltration': 'infiltrative',
+        'infiltratory': 'infiltrative',
+        'enhancing': 'enhancement',
+        'enhancement': 'enhancing', // context dependent, but often wrong
+        'metabolic': 'hypermetabolic',
+        'hyper metabolic': 'hypermetabolic',
+        'hyper-metabolic': 'hypermetabolic',
+        'nodular': 'nodule',
+        'adenopathy': 'lymphadenopathy',
+        'lymphadenopathies': 'lymphadenopathy',
+        'pathologic': 'pathological',
+        'anatomic': 'anatomical',
+        'morphologic': 'morphological',
+        'physiologic': 'physiological',
+        'avid': 'PSMA-avid', // context dependent
+        'FDG avid': 'FDG-avid',
+        'PSMA avid': 'PSMA-avid',
+        'DOTATATE avid': 'DOTATATE-avid',
+        'uptake': 'FDG uptake', // context dependent
+        'malignant': 'suspicious for malignancy',
+        'benign': 'benign-appearing',
+        'normal': 'unremarkable',
+        'negative': 'no evidence of',
+        'positive': 'demonstrates',
+        'shows': 'demonstrates',
+        'reveals': 'demonstrates',
+        'mass effect': 'mass-effect',
+        'well defined': 'well-defined',
+        'ill defined': 'ill-defined',
+        'non specific': 'nonspecific',
+        'non-specific': 'nonspecific'
+    };
+    
+    // Apply terminology corrections
+    for (const [incorrect, correct] of Object.entries(terminologyCorrections)) {
+        const regex = new RegExp(`\\b${incorrect}\\b`, 'gi');
+        if (regex.test(processed)) {
+            processed = processed.replace(regex, correct);
+            console.log(`Terminology correction: "${incorrect}" → "${correct}"`);
+        }
+    }
     
     console.log('Pre-processing complete - enhanced dictation ready for OpenAI Assistant');
     
