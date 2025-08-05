@@ -56,10 +56,10 @@ function convertWordToNumber(word) {
 }
 
 function preProcessDictation(dictation) {
-    console.log('Starting enhanced pre-processing phase...');
+    console.log('Starting focused pre-processing - deterministic rules only...');
     let processed = dictation;
     
-    // **1. AGE CONVERSION (Fix the main bug)**
+    // **1. AGE CONVERSION**
     processed = processed.replace(/(\w+(?:-\w+)*)-year-old\s*(man|woman|male|female)/gi, (match, ageWord, gender) => {
         const ageNum = convertWordToNumber(ageWord);
         if (ageNum) {
@@ -119,7 +119,6 @@ function preProcessDictation(dictation) {
         return match;
     });
 
-    
     // **3. SUV CONVERSIONS**
     
     // "SUV of four point eight" → "SUVmax 4.8"
@@ -147,22 +146,65 @@ function preProcessDictation(dictation) {
     // Handle numeric SUV values: "with SUV 3.4" → "with SUVmax 3.4"
     processed = processed.replace(/\bSUV\s+(\d+(?:\.\d+)?)/gi, 'SUVmax $1');
     
-    // **4. TERMINOLOGY CORRECTIONS (Only what's specified in instructions)**
-    // From the original instructions: "spiculated", never "speculated"
-    const terminologyCorrections = {
-        'speculated': 'spiculated'
+    // **4. COVERAGE AREA CONVERSIONS (X=Y from instructions)**
+    const coverageConversions = {
+        'whole body': 'eyes to thighs',
+        'total body': 'vertex to toes',
+        'head to toe': 'vertex to toes',
+        'head to toes': 'vertex to toes',
+        'eyes to toes': 'vertex to toes',
+        'brain and whole body': 'vertex to thighs',
+        'brain plus eyes to thighs': 'brain and eyes to thighs'
     };
     
-    // Apply terminology corrections
-    for (const [incorrect, correct] of Object.entries(terminologyCorrections)) {
-        const regex = new RegExp(`\\b${incorrect}\\b`, 'gi');
+    for (const [original, converted] of Object.entries(coverageConversions)) {
+        const regex = new RegExp(`\\b${original}\\b`, 'gi');
         if (regex.test(processed)) {
-            processed = processed.replace(regex, correct);
-            console.log(`Terminology correction: "${incorrect}" → "${correct}"`);
+            processed = processed.replace(regex, converted);
+            console.log(`Coverage conversion: "${original}" → "${converted}"`);
         }
     }
     
-    console.log('Pre-processing complete - enhanced dictation ready for OpenAI Assistant');
+    // **5. TRACER NAME STANDARDIZATION (X=Y from instructions)**
+    // "PSMA" → "Ga-68-PSMA" (but be careful not to double-convert)
+    processed = processed.replace(/\bPSMA\b(?!-)/gi, 'Ga-68-PSMA');
+    processed = processed.replace(/\bDOTATATE\b(?!-)/gi, 'Ga-68-DOTATATE');
+    console.log('Tracer standardization applied');
+    
+    // **6. TRACER DETECTION & TECHNIQUE BUILDING (If/Then from instructions)**
+    let detectedTracer = null;
+    let isCardiac = /cardiac/i.test(processed);
+    
+    if (/Ga-68-PSMA|PSMA/i.test(processed)) {
+        detectedTracer = 'Ga-68-PSMA';
+    } else if (/Ga-68-DOTATATE|DOTATATE/i.test(processed)) {
+        detectedTracer = 'Ga-68-DOTATATE';
+    } else if (/FDG/i.test(processed)) {
+        detectedTracer = 'FDG';
+    }
+    
+    // Add technique hints for OpenAI (but don't build full technique sentence here)
+    if (detectedTracer) {
+        let techniqueHint = '';
+        if (detectedTracer === 'Ga-68-PSMA') {
+            techniqueHint = '[TECHNIQUE_HINT: Low dose PET/CT with Ga-68-PSMA]';
+        } else if (detectedTracer === 'Ga-68-DOTATATE') {
+            techniqueHint = '[TECHNIQUE_HINT: Low dose PET/CT with Ga-68-DOTATATE]';
+        } else if (detectedTracer === 'FDG' && isCardiac) {
+            techniqueHint = '[TECHNIQUE_HINT: Ketogenic low dose PET/CT with FDG]';
+        } else if (detectedTracer === 'FDG') {
+            techniqueHint = '[TECHNIQUE_HINT: Fasting low dose PET/CT with FDG]';
+        }
+        
+        processed = techniqueHint + '\n\n' + processed;
+        console.log(`Technique hint added: ${techniqueHint}`);
+    }
+    
+    // **7. TERMINOLOGY CORRECTIONS (Only what's specified in instructions)**
+    processed = processed.replace(/\bspeculated\b/gi, 'spiculated');
+    console.log('Terminology correction applied: speculated → spiculated');
+    
+    console.log('Focused pre-processing complete - deterministic rules applied');
     
     return {
         processedDictation: processed,
@@ -170,7 +212,10 @@ function preProcessDictation(dictation) {
             conversionsApplied: true,
             ageConverted: /\d+-year-old/.test(processed),
             measurementsConverted: (processed.match(/\d+\s*mm/g) || []).length,
-            suvConverted: (processed.match(/SUVmax\s+\d+\.\d+/g) || []).length
+            suvConverted: (processed.match(/SUVmax\s+\d+\.\d+/g) || []).length,
+            tracerDetected: detectedTracer,
+            coverageConverted: true,
+            techniqueHintAdded: detectedTracer ? true : false
         }
     };
 }
