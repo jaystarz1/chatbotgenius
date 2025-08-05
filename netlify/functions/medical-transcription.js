@@ -120,30 +120,10 @@ function preProcessDictation(dictation) {
         return match;
     });
     
-    // **2. MEASUREMENT CONVERSIONS**
+    // **2. MEASUREMENT CONVERSIONS (ORDER MATTERS!)**
+    // Process decimal measurements FIRST to avoid interference
     
-    // "two centimeter" → "20 mm"
-    processed = processed.replace(/(\w+(?:-\w+)*)\s+centimeters?/gi, (match, word) => {
-        const num = convertWordToNumber(word);
-        if (num) {
-            console.log(`Measurement conversion: "${word} centimeter" → "${num * 10} mm"`);
-            return `${num * 10} mm`;
-        }
-        return match;
-    });
-    
-    // "nine millimeter" → "9 mm"
-    processed = processed.replace(/(\w+(?:-\w+)*)\s+millimeters?/gi, (match, word) => {
-        const num = convertWordToNumber(word);
-        if (num) {
-            console.log(`Measurement conversion: "${word} millimeter" → "${num} mm"`);
-            return `${num} mm`;
-        }
-        return match;
-    });
-    
-    // Handle decimal measurements more comprehensively
-    // "three point five centimeter" → "35 mm"
+    // "one point two centimeters" → "12 mm" (MUST BE FIRST)
     processed = processed.replace(/(\w+(?:-\w+)*)\s*point\s*(\w+(?:-\w+)*)\s+centimeters?/gi, (match, whole, decimal) => {
         const wholeNum = convertWordToNumber(whole);
         const decimalNum = convertWordToNumber(decimal);
@@ -169,16 +149,27 @@ function preProcessDictation(dictation) {
         return `${mmValue} mm`;
     });
     
-    // Fix "point" format that got partially converted: "three point 50 mm" → "35 mm"
-    processed = processed.replace(/(\w+(?:-\w+)*)\s*point\s*(\d+)\s*mm/gi, (match, word, number) => {
-        const wordNum = convertWordToNumber(word);
-        if (wordNum !== null) {
-            const totalMm = wordNum * 10 + parseInt(number);
-            console.log(`Fixed point format: "${word} point ${number} mm" → "${totalMm} mm"`);
-            return `${totalMm} mm`;
+    // NOW do simple word conversions (after decimals are handled)
+    // "two centimeter" → "20 mm"
+    processed = processed.replace(/(\w+(?:-\w+)*)\s+centimeters?/gi, (match, word) => {
+        const num = convertWordToNumber(word);
+        if (num) {
+            console.log(`Measurement conversion: "${word} centimeter" → "${num * 10} mm"`);
+            return `${num * 10} mm`;
         }
         return match;
     });
+    
+    // "nine millimeter" → "9 mm"
+    processed = processed.replace(/(\w+(?:-\w+)*)\s+millimeters?/gi, (match, word) => {
+        const num = convertWordToNumber(word);
+        if (num) {
+            console.log(`Measurement conversion: "${word} millimeter" → "${num} mm"`);
+            return `${num} mm`;
+        }
+        return match;
+    });
+
     
     // **3. SUV CONVERSIONS**
     
@@ -417,7 +408,9 @@ ${MEDICAL_RULES}
 - Fix decimal measurements: "three point 50 mm" should be "35 mm", "one point 80 mm" should be "18 mm"
 - Include ALL dictated findings in proper sections (chest, abdomen/pelvis, skeletal)
 - Apply correct nodule logic based on actual count
-- Remove incomplete fragments like "In the."
+- Remove incomplete fragments like "In the." or "My."
+- Remove duplicate mandatory phrases (e.g., don't repeat "No other suspicious activity" twice)
+- Clean up any formatting issues or incomplete sentences
 
 **CRITICAL:** If the dictation mentions specific findings (masses, nodules, lymph nodes, liver lesions, bone lesions), ensure they are ALL included in the final report with proper measurements and SUV values in the correct anatomical sections.
 
@@ -438,8 +431,22 @@ ${MEDICAL_RULES}
         
         console.log('Claude review completed successfully');
         
-        // Remove any markdown formatting that Claude might add
-        return correctedReport.replace(/```[\w]*\n?/g, '').trim();
+        // Remove any markdown formatting and clean up the report
+        let cleanedReport = correctedReport.replace(/```[\w]*\n?/g, '').trim();
+        
+        // Post-processing cleanup to remove duplicates and fragments
+        cleanedReport = cleanedReport
+            // Remove duplicate "No other suspicious activity" phrases
+            .replace(/(No (?:other )?suspicious (?:activity|infradiaphragmatic activity|skeletal activity)[^.]*\.)\s*\1/gi, '$1')
+            // Remove standalone fragments like "My." or "In the."
+            .replace(/\b(My|In the|The)\./g, '')
+            // Clean up multiple spaces
+            .replace(/\s+/g, ' ')
+            // Clean up extra line breaks
+            .replace(/\n\s*\n\s*\n/g, '\n\n')
+            .trim();
+        
+        return cleanedReport;
         
     } catch (error) {
         clearTimeout(timeoutId);
