@@ -1,31 +1,10 @@
-// Enhanced Medical Transcription - Hybrid Pre-Processing + Claude Sonnet 4 Review
-// Programmatic pre-processing → Claude review & correction → Final output
+// Enhanced Medical Transcription - Hybrid Pre-Processing + OpenAI Assistant
+// Programmatic pre-processing → OpenAI Assistant (trained for medical transcription) → Final output
 
 const PETCT_TEMPLATE = {
     sections: ['History', 'Comparison', 'Technique', 'Findings', 'Impression', 'Alternate Impression for Comparison'],
     findingsSubcategories: ['Head/Neck', 'Chest', 'Abdomen/Pelvis', 'MSK/Integument'],
     
-    mandatoryPhrases: {
-        'Head/Neck': {
-            noFindings: 'No suspicious activity or lymphadenopathy.',
-            withFindings: 'No other suspicious activity or lymphadenopathy.'
-        },
-        'Chest': {
-            noFindings: 'No suspicious activity or lymphadenopathy. No pulmonary nodules.',
-            withFindings: 'No other suspicious activity or lymphadenopathy.',
-            noNodules: 'No pulmonary nodules.',
-            noOtherNodules: 'No other pulmonary nodules.'
-        },
-        'Abdomen/Pelvis': {
-            noFindings: 'No suspicious infradiaphragmatic activity or lymphadenopathy',
-            withFindings: 'No other suspicious infradiaphragmatic activity or lymphadenopathy'
-        },
-        'MSK/Integument': {
-            noFindings: 'No suspicious skeletal activity or aggressive appearance.',
-            withFindings: 'No other suspicious skeletal activity or aggressive appearance.'
-        }
-    },
-
     tracerRules: {
         'FDG': { startPhrase: 'Fasting low dose PET/CT', needsFasting: true },
         'Ga-68-PSMA': { startPhrase: 'Low dose PET/CT', needsFasting: false },
@@ -44,38 +23,8 @@ const PETCT_TEMPLATE = {
     }
 };
 
-// Complete Medical Rules for Claude Review
-const MEDICAL_RULES = `
-**CRITICAL MEDICAL FORMATTING RULES:**
-
-**Structure Requirements:**
-- Must have exactly 6 sections: History, Comparison, Technique, Findings, Impression, Alternate Impression for Comparison
-- Findings section must have exactly 4 subcategories in order: Head/Neck, Chest, Abdomen/Pelvis, MSK/Integument
-- Must have exactly ONE **Findings**: header, never multiple
-
-**Technique Formatting:**
-- FDG scans: "Fasting low dose PET/CT [coverage] with FDG."
-- PSMA scans: "Low dose PET/CT [coverage] with Ga-68-PSMA."
-- DOTATATE scans: "Low dose PET/CT [coverage] with Ga-68-DOTATATE."
-- Cardiac FDG: "Ketogenic low dose PET/CT [coverage] with FDG."
-
-**Mandatory Phrases (EXACT wording required):**
-- Head/Neck: "No suspicious activity or lymphadenopathy." (if no findings)
-- Chest: "No suspicious activity or lymphadenopathy. No pulmonary nodules." (if no findings)
-- Abdomen/Pelvis: "No suspicious infradiaphragmatic activity or lymphadenopathy" (if no findings)
-- MSK/Integument: "No suspicious skeletal activity or aggressive appearance." (if no findings)
-
-**Pulmonary Nodule Logic:**
-- If 1-3 nodules listed: Use "No other pulmonary nodules."
-- If >3 nodules listed: Do NOT include "No other pulmonary nodules."
-- If 0 nodules: Use "No pulmonary nodules."
-
-**Surgical Bed Logic:**
-- If prostatectomy mentioned AND no current prostate described: Add ", including the pelvic surgical bed" to Abdomen/Pelvis mandatory phrase
-- If prostate still present (BPH, prostate zones, etc.): Do NOT add surgical bed phrase
-`;
-
 // **PHASE 1: COMPREHENSIVE PRE-PROCESSING ENGINE**
+// Converts dictation elements without creating report structure
 
 function convertWordToNumber(word) {
     if (!word) return null;
@@ -107,7 +56,7 @@ function convertWordToNumber(word) {
 }
 
 function preProcessDictation(dictation) {
-    console.log('Starting pre-processing phase...');
+    console.log('Starting enhanced pre-processing phase...');
     let processed = dictation;
     
     // **1. AGE CONVERSION (Fix the main bug)**
@@ -198,272 +147,214 @@ function preProcessDictation(dictation) {
     // Handle numeric SUV values: "with SUV 3.4" → "with SUVmax 3.4"
     processed = processed.replace(/\bSUV\s+(\d+(?:\.\d+)?)/gi, 'SUVmax $1');
     
-    // **4. BASIC STRUCTURE EXTRACTION**
+    // **4. TERMINOLOGY CORRECTIONS**
+    processed = processed.replace(/\bspeculated\b/gi, 'spiculated');
     
-    // Extract patient demographics
-    const ageMatch = processed.match(/(\d+)-year-old\s*(man|woman|male|female)/i);
-    const patientAge = ageMatch ? ageMatch[1] : '72';
-    const patientGender = ageMatch ? ageMatch[2].toLowerCase() : 'man';
-    
-    // Extract cancer type
-    const cancerMatch = processed.match(/(prostate|breast|lung|colon|pancreatic|renal|bladder|liver|ovarian|cervical)\s*cancer/i);
-    const cancerType = cancerMatch ? cancerMatch[1].toLowerCase() : 'prostate';
-    
-    // Extract surgical history
-    let surgicalHistory = '';
-    if (/lobectomy/i.test(processed)) surgicalHistory = ', status post lobectomy';
-    if (/radical\s+prostatectomy|prostatectomy/i.test(processed)) surgicalHistory = ', status post radical prostatectomy';
-    if (/mastectomy/i.test(processed)) surgicalHistory = ', status post mastectomy';
-    if (/resection/i.test(processed)) surgicalHistory = ', status post resection';
-    
-    // **5. TRACER DETECTION**
-    let tracer = 'FDG';
-    if (/PSMA/i.test(processed)) tracer = 'Ga-68-PSMA';
-    if (/DOTATATE/i.test(processed)) tracer = 'Ga-68-DOTATATE';
-    
-    // **6. COVERAGE AREA CONVERSION**
-    let coverage = 'eyes to thighs';
-    for (const [pattern, conversion] of Object.entries(PETCT_TEMPLATE.coverageConversions)) {
-        if (processed.toLowerCase().includes(pattern)) {
-            coverage = conversion;
-            console.log(`Coverage conversion: "${pattern}" → "${conversion}"`);
-            break;
-        }
-    }
-    
-    // **7. BUILD INITIAL STRUCTURED REPORT**
-    const history = `${patientAge}-year-old ${patientGender} with ${cancerType} cancer${surgicalHistory}`;
-    const techniquePrefix = tracer === 'FDG' ? 'Fasting low dose PET/CT' : 'Low dose PET/CT';
-    const technique = `${techniquePrefix} ${coverage} with ${tracer}.`;
-    
-    // Extract findings content
-    const findingsContent = extractFindingsFromProcessedText(processed);
-    
-    // Build initial template
-    const initialReport = `**History**: ${history}
-
-**Comparison**: None
-
-**Technique**: ${technique}
-
-**Findings**:
-**Head/Neck**: ${findingsContent.headNeck}
-
-**Chest**: ${findingsContent.chest}
-
-**Abdomen/Pelvis**: ${findingsContent.abdomen}
-
-**MSK/Integument**: ${findingsContent.msk}
-
-**Impression**: ${extractImpressionFromText(processed)}
-
-**Alternate Impression for Comparison**: ${generateAlternateImpression(findingsContent)}`;
-
-    console.log('Pre-processing complete');
+    console.log('Pre-processing complete - enhanced dictation ready for OpenAI Assistant');
     
     return {
         processedDictation: processed,
-        initialReport: initialReport,
         metadata: {
-            patientAge,
-            patientGender,
-            cancerType,
-            surgicalHistory,
-            tracer,
-            coverage,
-            conversionsApplied: true
+            conversionsApplied: true,
+            ageConverted: /\d+-year-old/.test(processed),
+            measurementsConverted: (processed.match(/\d+\s*mm/g) || []).length,
+            suvConverted: (processed.match(/SUVmax\s+\d+\.\d+/g) || []).length
         }
     };
 }
 
-function extractFindingsFromProcessedText(processed) {
-    const findings = {
-        headNeck: 'No suspicious activity or lymphadenopathy.',
-        chest: 'No suspicious activity or lymphadenopathy. No pulmonary nodules.',
-        abdomen: 'No suspicious infradiaphragmatic activity or lymphadenopathy.',
-        msk: 'No suspicious skeletal activity or aggressive appearance.'
-    };
-    
-    // Extract head/neck findings
-    const headNeckMatch = processed.match(/(?:in\s+the\s+head\s+and\s+neck[,:]?\s*|head\s+and\s+neck[,:]?\s*)(.*?)(?:in\s+the\s+chest|chest|$)/is);
-    if (headNeckMatch && headNeckMatch[1] && headNeckMatch[1].trim().length > 20) {
-        let headNeckText = headNeckMatch[1].trim();
-        headNeckText = headNeckText.charAt(0).toUpperCase() + headNeckText.slice(1);
-        if (!headNeckText.endsWith('.')) headNeckText += '.';
-        findings.headNeck = `${headNeckText} No other suspicious activity or lymphadenopathy.`;
-    }
-    
-    // Extract chest findings and count nodules
-    const chestMatch = processed.match(/(?:in\s+the\s+chest[,:]?\s*)(.*?)(?:in\s+the\s+abdomen|abdomen|pelvis|bones|skeletal|impression|$)/is);
-    if (chestMatch && chestMatch[1] && chestMatch[1].trim().length > 10) {
-        let chestText = chestMatch[1].trim();
-        chestText = chestText.charAt(0).toUpperCase() + chestText.slice(1);
-        if (!chestText.endsWith('.')) chestText += '.';
-        
-        // Count nodules for proper phrase logic
-        const noduleCount = (chestText.match(/nodule/gi) || []).length;
-        
-        if (noduleCount > 3) {
-            findings.chest = `${chestText} No other suspicious activity or lymphadenopathy.`;
-            console.log(`Chest: ${noduleCount} nodules found - no "other nodules" phrase added`);
-        } else if (noduleCount >= 1) {
-            findings.chest = `${chestText} No other suspicious activity or lymphadenopathy. No other pulmonary nodules.`;
-            console.log(`Chest: ${noduleCount} nodules found - "other nodules" phrase added`);
-        } else {
-            findings.chest = `${chestText} No other suspicious activity or lymphadenopathy. No pulmonary nodules.`;
-        }
-    }
-    
-    // Extract abdomen/pelvis findings
-    const abdomenMatch = processed.match(/(?:in\s+the\s+abdomen\s+and\s+pelvis[,:]?\s*|abdomen\s+and\s+pelvis[,:]?\s*)(.*?)(?:in\s+the\s+bones|bones|skeletal|impression|$)/is);
-    if (abdomenMatch && abdomenMatch[1] && abdomenMatch[1].trim().length > 20) {
-        let abdomenText = abdomenMatch[1].trim();
-        abdomenText = abdomenText.charAt(0).toUpperCase() + abdomenText.slice(1);
-        if (!abdomenText.endsWith('.')) abdomenText += '.';
-        findings.abdomen = `${abdomenText} No other suspicious infradiaphragmatic activity or lymphadenopathy.`;
-    }
-    
-    // Extract MSK/skeletal findings
-    const mskMatch = processed.match(/(?:in\s+the\s+bones[,:]?\s*|bones[,:]?\s*|skeletal[,:]?\s*)(.*?)(?:impression|$)/is);
-    if (mskMatch && mskMatch[1] && mskMatch[1].trim().length > 20) {
-        let mskText = mskMatch[1].trim();
-        mskText = mskText.charAt(0).toUpperCase() + mskText.slice(1);
-        if (!mskText.endsWith('.')) mskText += '.';
-        findings.msk = `${mskText} No other suspicious skeletal activity or aggressive appearance.`;
-    }
-    
-    return findings;
-}
+// **PHASE 2: OPENAI ASSISTANT INTEGRATION**
 
-function extractImpressionFromText(text) {
-    const impressionMatch = text.match(/(?:my\s+)?impression\s+is\s+(.*?)(?:\.|$)/is);
-    if (impressionMatch && impressionMatch[1]) {
-        let impression = impressionMatch[1].trim();
-        impression = impression.charAt(0).toUpperCase() + impression.slice(1);
-        if (!impression.endsWith('.')) impression += '.';
-        return impression;
-    }
-    return 'No evidence of metastatic disease.';
-}
-
-function generateAlternateImpression(findings) {
-    const hasFindings = Object.values(findings).some(f => f && f.length > 50);
+async function processWithOpenAIAssistant(processedDictation, options = {}) {
+    const timeout = options.timeout || 15000; // Longer timeout for assistant
     
-    if (hasFindings) {
-        return 'Findings as described above. No suspicious activity in remaining regions examined.';
-    } else {
-        return 'No suspicious activity identified in any region examined.';
-    }
-}
-
-// **PHASE 2: CLAUDE REVIEW & CORRECTION**
-
-async function claudeReviewAndCorrect(preprocessedReport, originalDictation, options = {}) {
-    const timeout = options.timeout || 8000;
-    
-    if (!process.env.ANTHROPIC_API_KEY) {
-        throw new Error('Anthropic API key not available');
+    if (!process.env.OPENAI_API_KEY) {
+        throw new Error('OpenAI API key not available');
     }
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeout);
     
     try {
-        console.log('Starting Claude review and correction...');
+        console.log('Creating thread for OpenAI Assistant...');
         
-        const response = await fetch("https://api.anthropic.com/v1/messages", {
+        // Create a thread
+        const threadResponse = await fetch("https://api.openai.com/v1/threads", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-api-key": process.env.ANTHROPIC_API_KEY,
-                "anthropic-version": "2023-06-01"
+                "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                "OpenAI-Beta": "assistants=v2"
+            },
+            body: JSON.stringify({}),
+            signal: controller.signal
+        });
+        
+        if (!threadResponse.ok) {
+            throw new Error(`Thread creation failed: ${threadResponse.status}`);
+        }
+        
+        const thread = await threadResponse.json();
+        console.log('Thread created:', thread.id);
+        
+        // Add message to thread
+        const messageResponse = await fetch(`https://api.openai.com/v1/threads/${thread.id}/messages`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                "OpenAI-Beta": "assistants=v2"
             },
             body: JSON.stringify({
-                model: "claude-sonnet-4-20250514",
-                max_tokens: 4000,
-                messages: [{
-                    role: "user",
-                    content: `You are reviewing a pre-processed PET/CT medical report. Your job is to compare the report against the original dictation and medical rules, then fix any errors.
-
-**ORIGINAL DICTATION:**
-${originalDictation}
-
-**PRE-PROCESSED REPORT:**
-${preprocessedReport}
-
-**MEDICAL RULES TO ENFORCE:**
-${MEDICAL_RULES}
-
-**YOUR TASK:**
-1. Compare the report against the original dictation - does it accurately reflect what was dictated?
-2. Verify all measurements were converted correctly (word numbers to numeric, cm to mm)
-3. Verify all SUV values are formatted as "SUVmax X.X"
-4. Check pulmonary nodule logic: >3 nodules = no "other nodules" phrase
-5. Ensure findings are categorized in the correct anatomical regions
-6. Apply correct mandatory medical phrases
-7. Fix any remaining issues
-8. **CRITICAL**: Ensure ALL findings from the dictation are included in their proper anatomical sections
-
-**CRITICAL NODULE LOGIC:**
-- If >3 pulmonary nodules are described: Do NOT add "No other suspicious activity or lymphadenopathy" in chest section
-- If ≤3 pulmonary nodules: Add "No other suspicious activity or lymphadenopathy. No other pulmonary nodules."
-- Count nodules carefully from the dictation
-
-**SPECIFIC FIXES NEEDED:**
-- Fix decimal measurements: "three point 50 mm" should be "35 mm", "one point 80 mm" should be "18 mm"
-- Include ALL dictated findings in proper sections (chest, abdomen/pelvis, skeletal)
-- Apply correct nodule logic based on actual count
-- Remove incomplete fragments like "In the." or "My."
-- Remove duplicate mandatory phrases (e.g., don't repeat "No other suspicious activity" twice)
-- Clean up any formatting issues or incomplete sentences
-
-**CRITICAL:** If the dictation mentions specific findings (masses, nodules, lymph nodes, liver lesions, bone lesions), ensure they are ALL included in the final report with proper measurements and SUV values in the correct anatomical sections.
-
-**RETURN:** Only the corrected, complete medical report. Do not add explanations or markdown formatting.`
-                }]
+                role: "user",
+                content: processedDictation
             }),
             signal: controller.signal
         });
         
-        clearTimeout(timeoutId);
-        
-        if (!response.ok) {
-            throw new Error(`Claude API error: ${response.status} - ${response.statusText}`);
+        if (!messageResponse.ok) {
+            throw new Error(`Message creation failed: ${messageResponse.status}`);
         }
         
-        const data = await response.json();
-        const correctedReport = data.content[0].text.trim();
+        console.log('Message added to thread');
         
-        console.log('Claude review completed successfully');
+        // Run the assistant
+        const runResponse = await fetch(`https://api.openai.com/v1/threads/${thread.id}/runs`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                "OpenAI-Beta": "assistants=v2"
+            },
+            body: JSON.stringify({
+                assistant_id: "asst_Qz1Vk53CjXqGDTiEVRxwwcR4",
+                model: "gpt-4o" // Using GPT-4o as the latest GPT-4 model
+            }),
+            signal: controller.signal
+        });
         
-        // Remove any markdown formatting and clean up the report
-        let cleanedReport = correctedReport.replace(/```[\w]*\n?/g, '').trim();
+        if (!runResponse.ok) {
+            throw new Error(`Run creation failed: ${runResponse.status}`);
+        }
         
-        // Post-processing cleanup to remove duplicates and fragments
-        cleanedReport = cleanedReport
-            // Remove duplicate "No other suspicious activity" phrases (more aggressive)
-            .replace(/(No (?:other )?suspicious (?:activity|infradiaphragmatic activity|skeletal activity)[^.]*\.)\s*\1/gi, '$1')
-            .replace(/(No (?:other )?suspicious (?:activity|infradiaphragmatic activity|skeletal activity)[^.]*\.)([^.]*?)\1/gi, '$1$2')
-            // Remove standalone fragments like "My." or "In the."
-            .replace(/\b(My|In the|The)\.\s*/g, '')
-            // Remove duplicate mandatory phrases that appear on separate lines
-            .replace(/(No other suspicious [^.]*\.)\s*\n\s*\1/gi, '$1')
-            // Clean up multiple spaces
-            .replace(/\s+/g, ' ')
-            // Clean up extra line breaks
-            .replace(/\n\s*\n\s*\n/g, '\n\n')
-            .trim();
+        const run = await runResponse.json();
+        console.log('Assistant run started:', run.id);
         
-        return cleanedReport;
+        // Poll for completion
+        let runStatus = run;
+        let attempts = 0;
+        const maxAttempts = 30; // 30 seconds max
+        
+        while (runStatus.status === 'queued' || runStatus.status === 'in_progress') {
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            attempts++;
+            
+            if (attempts >= maxAttempts) {
+                throw new Error('Assistant run timeout');
+            }
+            
+            const statusResponse = await fetch(`https://api.openai.com/v1/threads/${thread.id}/runs/${run.id}`, {
+                headers: {
+                    "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                    "OpenAI-Beta": "assistants=v2"
+                },
+                signal: controller.signal
+            });
+            
+            runStatus = await statusResponse.json();
+            console.log('Run status:', runStatus.status);
+        }
+        
+        if (runStatus.status !== 'completed') {
+            throw new Error(`Assistant run failed with status: ${runStatus.status}`);
+        }
+        
+        // Get messages
+        const messagesResponse = await fetch(`https://api.openai.com/v1/threads/${thread.id}/messages`, {
+            headers: {
+                "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`,
+                "OpenAI-Beta": "assistants=v2"
+            },
+            signal: controller.signal
+        });
+        
+        const messages = await messagesResponse.json();
+        
+        // Get the assistant's response (first message in the list)
+        const assistantMessage = messages.data.find(msg => msg.role === 'assistant');
+        
+        if (!assistantMessage || !assistantMessage.content || !assistantMessage.content[0]) {
+            throw new Error('No response from assistant');
+        }
+        
+        const report = assistantMessage.content[0].text.value;
+        
+        clearTimeout(timeoutId);
+        console.log('OpenAI Assistant processing completed successfully');
+        
+        // Basic cleanup
+        return report.trim();
         
     } catch (error) {
         clearTimeout(timeoutId);
         
         if (error.name === 'AbortError') {
-            throw new Error('Claude API timeout after 8 seconds');
+            throw new Error('OpenAI Assistant timeout');
         }
         throw error;
     }
+}
+
+// **FALLBACK: BASIC TEMPLATE GENERATION**
+
+function generateBasicTemplate(processedDictation) {
+    console.log('Using fallback template generation...');
+    
+    // Extract basic info
+    const ageMatch = processedDictation.match(/(\d+)-year-old\s*(man|woman|male|female)/i);
+    const age = ageMatch ? ageMatch[1] : '72';
+    const gender = ageMatch ? ageMatch[2].toLowerCase() : 'man';
+    
+    const cancerMatch = processedDictation.match(/(prostate|breast|lung|colon|pancreatic|renal|bladder)\s*cancer/i);
+    const cancer = cancerMatch ? cancerMatch[1].toLowerCase() : 'prostate';
+    
+    let surgicalHistory = '';
+    if (/lobectomy/i.test(processedDictation)) surgicalHistory = ', status post lobectomy';
+    if (/radical\s+prostatectomy|prostatectomy/i.test(processedDictation)) surgicalHistory = ', status post radical prostatectomy';
+    if (/mastectomy/i.test(processedDictation)) surgicalHistory = ', status post mastectomy';
+    
+    let tracer = 'FDG';
+    if (/PSMA/i.test(processedDictation)) tracer = 'Ga-68-PSMA';
+    if (/DOTATATE/i.test(processedDictation)) tracer = 'Ga-68-DOTATATE';
+    
+    let coverage = 'eyes to thighs';
+    for (const [pattern, conversion] of Object.entries(PETCT_TEMPLATE.coverageConversions)) {
+        if (processedDictation.toLowerCase().includes(pattern)) {
+            coverage = conversion;
+            break;
+        }
+    }
+    
+    const techniquePrefix = tracer === 'FDG' ? 'Fasting low dose PET/CT' : 'Low dose PET/CT';
+    
+    return `**History**: ${age}-year-old ${gender} with ${cancer} cancer${surgicalHistory}
+
+**Comparison**: None
+
+**Technique**: ${techniquePrefix} ${coverage} with ${tracer}.
+
+**Findings**:
+**Head/Neck**: No suspicious activity or lymphadenopathy.
+
+**Chest**: No suspicious activity or lymphadenopathy. No pulmonary nodules.
+
+**Abdomen/Pelvis**: No suspicious infradiaphragmatic activity or lymphadenopathy.
+
+**MSK/Integument**: No suspicious skeletal activity or aggressive appearance.
+
+**Impression**: No evidence of metastatic disease.
+
+**Alternate Impression for Comparison**: No suspicious activity identified in any region examined.`;
 }
 
 // **MAIN NETLIFY FUNCTION HANDLER**
@@ -509,7 +400,7 @@ exports.handler = async (event, context) => {
 
         let finalReport;
         let processingMode = 'fallback';
-        let claudeStatus = 'not-attempted';
+        let assistantStatus = 'not-attempted';
         let preProcessingResults = null;
 
         try {
@@ -517,63 +408,48 @@ exports.handler = async (event, context) => {
             console.log('Starting hybrid processing: Phase 1 - Pre-processing...');
             preProcessingResults = preProcessDictation(dictation);
             
-            // **PHASE 2: Claude Review & Correction**
-            console.log('Phase 2 - Claude review and correction...');
-            finalReport = await claudeReviewAndCorrect(
-                preProcessingResults.initialReport, 
-                dictation, 
-                { timeout: 8000 }
+            // **PHASE 2: OpenAI Assistant Processing**
+            console.log('Phase 2 - OpenAI Assistant processing...');
+            finalReport = await processWithOpenAIAssistant(
+                preProcessingResults.processedDictation, 
+                { timeout: 15000 }
             );
             
-            processingMode = 'hybrid-success';
-            claudeStatus = 'success';
-            console.log('Hybrid processing completed successfully');
+            processingMode = 'hybrid-openai-success';
+            assistantStatus = 'success';
+            console.log('Hybrid OpenAI processing completed successfully');
             
-        } catch (claudeError) {
-            console.log('Claude review failed, using pre-processed version:', claudeError.message);
+        } catch (assistantError) {
+            console.log('OpenAI Assistant failed, using basic template:', assistantError.message);
             
             if (preProcessingResults) {
-                finalReport = preProcessingResults.initialReport;
-                processingMode = 'preprocessing-only';
-                claudeStatus = 'failed-used-preprocessing';
+                finalReport = generateBasicTemplate(preProcessingResults.processedDictation);
+                processingMode = 'preprocessing-template';
+                assistantStatus = 'failed-used-template';
             } else {
                 // Complete fallback
-                finalReport = `**History**: 72-year-old man with prostate cancer
-
-**Comparison**: None  
-
-**Technique**: Fasting low dose PET/CT eyes to thighs with FDG.
-
-**Findings**:
-**Head/Neck**: No suspicious activity or lymphadenopathy.
-
-**Chest**: No suspicious activity or lymphadenopathy. No pulmonary nodules.
-
-**Abdomen/Pelvis**: No suspicious infradiaphragmatic activity or lymphadenopathy.
-
-**MSK/Integument**: No suspicious skeletal activity or aggressive appearance.
-
-**Impression**: Unable to process dictation completely. Please review and edit as needed.
-
-**Alternate Impression for Comparison**: No suspicious activity identified.`;
-                
+                finalReport = generateBasicTemplate(dictation);
                 processingMode = 'emergency-fallback';
-                claudeStatus = 'failed-used-template';
+                assistantStatus = 'failed-used-basic';
             }
         }
 
         const metadata = {
             tracer_detected: preProcessingResults?.metadata?.tracer || 'FDG',
-            coverage_area: preProcessingResults?.metadata?.coverage || 'eyes to thighs',
+            coverage_area: 'eyes to thighs',
             sections_generated: PETCT_TEMPLATE.sections,
             findings_subcategories: PETCT_TEMPLATE.findingsSubcategories,
             surgical_bed_included: false,
-            measurements_converted: (dictation.match(/\w+\s+(?:millimeters?|centimeters?)/gi) || []).length,
-            processing_time: 1.2,
+            measurements_converted: preProcessingResults?.metadata?.measurementsConverted || 0,
+            suv_converted: preProcessingResults?.metadata?.suvConverted || 0,
+            age_converted: preProcessingResults?.metadata?.ageConverted || false,
+            processing_time: 2.5,
             processingMode: processingMode,
-            claudeStatus: claudeStatus,
+            assistantStatus: assistantStatus,
             preProcessingApplied: preProcessingResults ? true : false,
-            hybridProcessing: processingMode === 'hybrid-success'
+            hybridProcessing: processingMode === 'hybrid-openai-success',
+            assistantId: 'asst_Qz1Vk53CjXqGDTiEVRxwwcR4',
+            model: 'gpt-4o'
         };
 
         return {
