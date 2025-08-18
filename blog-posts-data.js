@@ -1,6 +1,15 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "CanLII Search: AI-Powered Boolean Search for Canadian Legal Research",
+        excerpt: "Transform plain English or French queries into precise Boolean searches for Canadian case law and legislation. Built for lawyers, paralegals, students, and anyone researching Canadian law.",
+        date: "December 2024",
+        image: "blog/images/canlii-search-tool-header.svg",
+        imageAlt: "CanLII Search Tool - AI-powered Boolean search for Canadian law",
+        url: "blog/canlii-search-tool.html",
+        sortDate: new Date("2024-12-20")
+    },
+    {
         title: "No, AI Doesn't Make You Stupid",
         excerpt: "AI enhances human intelligence rather than diminishing it. Learn why AI tools amplify our cognitive abilities and make us more capable, not less.",
         date: "July 2025",
