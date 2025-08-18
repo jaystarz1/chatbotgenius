@@ -172,43 +172,77 @@
             line-height: 1.8;
         }
         
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
         }
         
-        /* Project Preview Container */
-        .project-preview {
+        /* Alternate layout for every other card */
+        .project-card:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .project-card:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        /* Preview Section */
+        .project-preview-section {
+            position: relative;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            overflow: hidden;
+        }
+        
+        .project-preview-wrapper {
             position: relative;
             width: 100%;
-            height: 300px;
-            background: #f0f0f0;
-            overflow: hidden;
-            border-bottom: 3px solid #4c5fd5;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Screenshot fallback for sites that block iframes */
+        .project-screenshot {
+            width: 90%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
         
         .project-preview-iframe {
-            width: 100%;
-            height: 600px; /* Double height to show more content */
+            width: 200%;
+            height: 1000px;
             border: none;
-            transform: scale(0.5); /* Scale down to 50% */
+            transform: scale(0.5);
             transform-origin: top left;
-            pointer-events: none; /* Disable interaction */
+            position: absolute;
+            top: 0;
+            left: 0;
         }
         
         .preview-overlay {
@@ -219,47 +253,65 @@
             bottom: 0;
             background: linear-gradient(to bottom, 
                 rgba(255,255,255,0) 0%, 
-                rgba(255,255,255,0) 70%, 
-                rgba(255,255,255,0.9) 100%);
+                rgba(26, 31, 113, 0.05) 100%);
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: center;
-            padding-bottom: 15px;
             cursor: pointer;
-        }
-        
-        .preview-overlay-text {
-            background: rgba(26, 31, 113, 0.9);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
             transition: background 0.3s;
         }
         
-        .project-card:hover .preview-overlay-text {
-            background: rgba(76, 95, 213, 0.95);
+        .preview-overlay:hover {
+            background: linear-gradient(to bottom, 
+                rgba(26, 31, 113, 0.1) 0%, 
+                rgba(26, 31, 113, 0.2) 100%);
+        }
+        
+        .view-live-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .view-live-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 95, 213, 0.4);
+        }
+        
+        /* Content Section */
+        .project-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .project-header {
-            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
-            color: white;
-            padding: 25px 30px;
+            margin-bottom: 25px;
         }
         
-        .project-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        .project-badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
         }
         
         .project-type {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.85rem;
         }
         
         .project-price {
@@ -268,19 +320,20 @@
             color: #1a1f71;
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
-            margin-left: 10px;
         }
         
-        .project-body {
-            padding: 30px;
+        .project-content h3 {
+            font-size: 1.8rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
         }
         
         .project-description {
-            color: #333;
-            line-height: 1.8;
-            margin-bottom: 25px;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
         
         .project-features {
@@ -289,7 +342,7 @@
         
         .project-features h4 {
             color: #1a1f71;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 1.1rem;
         }
         
@@ -299,10 +352,11 @@
         }
         
         .project-features li {
-            padding: 8px 0;
+            padding: 6px 0;
             padding-left: 25px;
             position: relative;
-            color: #555;
+            color: #666;
+            font-size: 0.95rem;
         }
         
         .project-features li:before {
@@ -311,6 +365,17 @@
             left: 0;
             color: #4c5fd5;
             font-weight: bold;
+        }
+        
+        .project-impact {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #f9c74f;
+            margin-bottom: 20px;
+        }
+        
+        .project-impact strong {
+            color: #1a1f71;
         }
         
         .project-link {
@@ -322,6 +387,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: transform 0.2s, box-shadow 0.2s;
+            align-self: flex-start;
         }
         
         .project-link:hover {
@@ -331,7 +397,7 @@
         
         .section-divider {
             text-align: center;
-            margin: 60px 0;
+            margin: 80px 0 60px;
             position: relative;
         }
         
@@ -353,16 +419,6 @@
             right: 0;
             height: 2px;
             background: linear-gradient(90deg, transparent, #4c5fd5, transparent);
-        }
-        
-        /* Loading placeholder for iframes */
-        .preview-loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #999;
-            font-size: 1.2rem;
         }
         
         .cta-section {
@@ -407,6 +463,27 @@
             padding: 30px 0;
         }
         
+        @media (max-width: 968px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-preview-section {
+                min-height: 300px;
+            }
+            
+            .project-card:nth-child(even) {
+                direction: ltr;
+            }
+            
+            .view-live-button {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -414,11 +491,6 @@
             
             .mobile-menu-toggle {
                 display: block;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
             }
             
             .page-header h1 {
@@ -429,8 +501,8 @@
                 font-size: 1.8rem;
             }
             
-            .project-preview {
-                height: 200px;
+            .project-content {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -467,7 +539,7 @@
 
     <!-- Projects Section -->
     <section class="projects-section">
-        <div class="container">
+        <div class="projects-container">
             <div class="section-intro">
                 <h2>Showcasing AI Innovation</h2>
                 <p>From intelligent web applications to custom business websites, these projects demonstrate the power of AI-driven development. Each solution is crafted to solve real problems and deliver measurable results.</p>
@@ -478,87 +550,102 @@
                 <h2>🤖 AI-Powered Tools</h2>
             </div>
 
-            <div class="projects-grid">
-                <!-- CanLII Boolean Search Tool -->
-                <div class="project-card">
-                    <div class="project-preview">
-                        <iframe 
-                            src="https://canliisearch.thechatbotgenius.com/" 
-                            class="project-preview-iframe"
-                            title="CanLII Boolean Search Tool Preview"
-                            loading="lazy">
-                        </iframe>
-                        <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="preview-overlay">
-                            <span class="preview-overlay-text">Click to View Live Site →</span>
-                        </a>
+            <!-- CanLII Boolean Search Tool -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
+                        <!-- Using a screenshot as fallback since the site might block iframes -->
+                        <img src="images/canlii-search-screenshot.svg" 
+                             alt="CanLII Boolean Search Tool Interface" 
+                             class="project-screenshot"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; width: 90%; padding: 40px; background: linear-gradient(135deg, #1a1f71, #4c5fd5); border-radius: 10px; text-align: center; color: white;">
+                            <h3 style="margin-bottom: 15px;">CanLII Boolean Search Tool</h3>
+                            <p style="margin-bottom: 20px;">Advanced legal search interface</p>
+                            <div style="background: white; color: #1a1f71; padding: 20px; border-radius: 5px;">
+                                <p>🔍 Visual Query Builder</p>
+                                <p>⚡ Real-time Validation</p>
+                                <p>📚 Legal Database Integration</p>
+                            </div>
+                        </div>
                     </div>
+                    <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
                     <div class="project-header">
-                        <div class="project-type">Legal Tech Tool</div>
+                        <div class="project-badges">
+                            <span class="project-type">Legal Tech Tool</span>
+                        </div>
                         <h3>CanLII Boolean Search Tool</h3>
                     </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            An advanced Boolean search interface for the CanLII legal database, designed to help legal professionals and researchers craft precise, complex searches. This tool transforms the way users interact with Canada's largest legal information database, making sophisticated legal research accessible to everyone.
-                        </p>
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>Intuitive visual Boolean query builder</li>
-                                <li>Real-time syntax validation and error checking</li>
-                                <li>Smart auto-suggestions for legal terms and operators</li>
-                                <li>Save and share complex search queries</li>
-                                <li>Direct integration with CanLII's search API</li>
-                                <li>Mobile-responsive design for research on the go</li>
-                            </ul>
-                        </div>
-                        <p class="project-description">
-                            <strong>Impact:</strong> Reduces legal research time by up to 70% by eliminating syntax errors and enabling complex multi-condition searches that would be difficult to construct manually.
-                        </p>
-                        <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="project-link">
-                            View Live Tool →
-                        </a>
+                    <p class="project-description">
+                        An advanced Boolean search interface for the CanLII legal database, designed to help legal professionals and researchers craft precise, complex searches. This tool transforms the way users interact with Canada's largest legal information database.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Intuitive visual Boolean query builder</li>
+                            <li>Real-time syntax validation</li>
+                            <li>Smart auto-suggestions for legal terms</li>
+                            <li>Save and share complex queries</li>
+                            <li>Direct CanLII integration</li>
+                            <li>Mobile-responsive design</li>
+                        </ul>
                     </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Reduces legal research time by up to 70% by eliminating syntax errors and enabling complex multi-condition searches.
+                    </div>
+                    <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="project-link">
+                        Explore the Tool →
+                    </a>
                 </div>
+            </div>
 
-                <!-- Grievances Book Landing Page -->
-                <div class="project-card">
-                    <div class="project-preview">
+            <!-- Grievances Book Landing Page -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
                         <iframe 
                             src="https://grievances.thechatbotgenius.com/" 
                             class="project-preview-iframe"
                             title="Grievances Book Landing Page Preview"
                             loading="lazy">
                         </iframe>
-                        <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="preview-overlay">
-                            <span class="preview-overlay-text">Click to View Live Site →</span>
-                        </a>
+                        <div class="preview-overlay"></div>
                     </div>
+                    <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
                     <div class="project-header">
-                        <div class="project-type">Book Landing Page</div>
+                        <div class="project-badges">
+                            <span class="project-type">Book Landing Page</span>
+                        </div>
                         <h3>Grievances: Interactive Book Experience</h3>
                     </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            A compelling, AI-enhanced landing page for "Grievances" - featuring dynamic content presentation, reader engagement tools, and conversion optimization. This project showcases how AI can transform a simple book landing page into an interactive experience that connects with readers.
-                        </p>
-                        <div class="project-features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                <li>AI-powered excerpt recommendations based on visitor behavior</li>
-                                <li>Interactive chapter previews with smooth animations</li>
-                                <li>Integrated review aggregation and display</li>
-                                <li>Smart call-to-action placement for maximum conversion</li>
-                                <li>SEO optimization for book-related searches</li>
-                                <li>Mobile-first responsive design</li>
-                            </ul>
-                        </div>
-                        <p class="project-description">
-                            <strong>Impact:</strong> Achieved 40% higher conversion rates compared to traditional book landing pages through AI-driven personalization and strategic design elements.
-                        </p>
-                        <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="project-link">
-                            View Live Page →
-                        </a>
+                    <p class="project-description">
+                        A compelling, AI-enhanced landing page featuring dynamic content presentation, reader engagement tools, and conversion optimization. This project showcases how AI can transform a simple book landing page into an interactive experience.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>AI-powered excerpt recommendations</li>
+                            <li>Interactive chapter previews</li>
+                            <li>Integrated review aggregation</li>
+                            <li>Smart call-to-action placement</li>
+                            <li>SEO optimization for book searches</li>
+                            <li>Mobile-first responsive design</li>
+                        </ul>
                     </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Achieved 40% higher conversion rates compared to traditional book landing pages through AI-driven personalization.
+                    </div>
+                    <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="project-link">
+                        Visit Page →
+                    </a>
                 </div>
             </div>
 
@@ -567,91 +654,97 @@
                 <h2>🌐 Client Websites</h2>
             </div>
 
-            <div class="projects-grid">
-                <!-- The British Nanny -->
-                <div class="project-card">
-                    <div class="project-preview">
+            <!-- The British Nanny -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
                         <iframe 
                             src="https://thebritishnanny.ca/" 
                             class="project-preview-iframe"
                             title="The British Nanny Website Preview"
                             loading="lazy">
                         </iframe>
-                        <a href="https://thebritishnanny.ca/" target="_blank" class="preview-overlay">
-                            <span class="preview-overlay-text">Click to View Live Site →</span>
-                        </a>
+                        <div class="preview-overlay"></div>
                     </div>
+                    <a href="https://thebritishnanny.ca/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
                     <div class="project-header">
-                        <div class="project-type">Business Website</div>
-                        <div class="project-price">$1,000</div>
+                        <div class="project-badges">
+                            <span class="project-type">Business Website</span>
+                            <span class="project-price">$1,000</span>
+                        </div>
                         <h3>The British Nanny</h3>
                     </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            A premium multi-page website for an established childcare service in Ottawa. Built entirely with AI assistance and client collaboration, this SEO-enhanced site showcases professional nanny services with a warm, trustworthy design that appeals to discerning parents.
-                        </p>
-                        <div class="project-features">
-                            <h4>Delivered Features:</h4>
-                            <ul>
-                                <li>5+ professionally designed pages with cohesive branding</li>
-                                <li>Advanced SEO optimization for local search dominance</li>
-                                <li>Mobile-responsive design with perfect cross-device experience</li>
-                                <li>Contact form integration with spam protection</li>
-                                <li>Service showcase with detailed descriptions</li>
-                                <li>Testimonials section with trust indicators</li>
-                                <li>Fast loading times (under 2 seconds)</li>
-                            </ul>
-                        </div>
-                        <p class="project-description">
-                            <strong>Client Result:</strong> 150% increase in qualified inquiries within the first month. The site now ranks #1 for "British nanny Ottawa" and related keywords.
-                        </p>
-                        <a href="https://thebritishnanny.ca/" target="_blank" class="project-link">
-                            Visit Website →
-                        </a>
+                    <p class="project-description">
+                        A premium multi-page website for an established childcare service in Ottawa. Built entirely with AI assistance and client collaboration, this SEO-enhanced site showcases professional nanny services with a warm, trustworthy design.
+                    </p>
+                    <div class="project-features">
+                        <h4>Delivered Features:</h4>
+                        <ul>
+                            <li>5+ professionally designed pages</li>
+                            <li>Advanced SEO for local search</li>
+                            <li>Perfect mobile responsiveness</li>
+                            <li>Contact form with spam protection</li>
+                            <li>Service showcase sections</li>
+                            <li>Testimonials with trust indicators</li>
+                        </ul>
                     </div>
+                    <div class="project-impact">
+                        <strong>Client Result:</strong> 150% increase in qualified inquiries within the first month. Now ranks #1 for "British nanny Ottawa".
+                    </div>
+                    <a href="https://thebritishnanny.ca/" target="_blank" class="project-link">
+                        Visit Website →
+                    </a>
                 </div>
+            </div>
 
-                <!-- Ottawa Handyman -->
-                <div class="project-card">
-                    <div class="project-preview">
+            <!-- Ottawa Handyman -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
                         <iframe 
                             src="https://ottawahandiman.ca/" 
                             class="project-preview-iframe"
                             title="Ottawa Handyman Website Preview"
                             loading="lazy">
                         </iframe>
-                        <a href="https://ottawahandiman.ca/" target="_blank" class="preview-overlay">
-                            <span class="preview-overlay-text">Click to View Live Site →</span>
-                        </a>
+                        <div class="preview-overlay"></div>
                     </div>
+                    <a href="https://ottawahandiman.ca/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
                     <div class="project-header">
-                        <div class="project-type">Business Website</div>
-                        <div class="project-price">$500</div>
+                        <div class="project-badges">
+                            <span class="project-type">Business Website</span>
+                            <span class="project-price">$500</span>
+                        </div>
                         <h3>Ottawa Handyman</h3>
                     </div>
-                    <div class="project-body">
-                        <p class="project-description">
-                            A streamlined single-page website for a local handyman service, demonstrating that powerful web presence doesn't require complexity. This AI-crafted site delivers maximum impact with focused messaging and clear calls-to-action, perfect for service-based businesses.
-                        </p>
-                        <div class="project-features">
-                            <h4>Delivered Features:</h4>
-                            <ul>
-                                <li>Single-page design with smooth scroll navigation</li>
-                                <li>Service menu with clear pricing structure</li>
-                                <li>Click-to-call functionality for mobile users</li>
-                                <li>Local SEO optimization for Ottawa market</li>
-                                <li>Gallery showcasing completed projects</li>
-                                <li>Fast-loading optimized images</li>
-                                <li>Contact form with instant quote request</li>
-                            </ul>
-                        </div>
-                        <p class="project-description">
-                            <strong>Client Result:</strong> Website paid for itself within two weeks through new customer acquisitions. Consistent lead generation of 10+ inquiries per week.
-                        </p>
-                        <a href="https://ottawahandiman.ca/" target="_blank" class="project-link">
-                            Visit Website →
-                        </a>
+                    <p class="project-description">
+                        A streamlined single-page website for a local handyman service, demonstrating that powerful web presence doesn't require complexity. This AI-crafted site delivers maximum impact with focused messaging and clear calls-to-action.
+                    </p>
+                    <div class="project-features">
+                        <h4>Delivered Features:</h4>
+                        <ul>
+                            <li>Single-page smooth scroll design</li>
+                            <li>Service menu with pricing</li>
+                            <li>Click-to-call for mobile</li>
+                            <li>Local SEO optimization</li>
+                            <li>Project gallery showcase</li>
+                            <li>Instant quote request form</li>
+                        </ul>
                     </div>
+                    <div class="project-impact">
+                        <strong>Client Result:</strong> Website paid for itself within two weeks. Consistent lead generation of 10+ inquiries per week.
+                    </div>
+                    <a href="https://ottawahandiman.ca/" target="_blank" class="project-link">
+                        Visit Website →
+                    </a>
                 </div>
             </div>
         </div>
@@ -693,26 +786,6 @@
                 navLinks.style.gap = '15px';
             }
         }
-        
-        // Add loading state for iframes
-        document.addEventListener('DOMContentLoaded', function() {
-            const iframes = document.querySelectorAll('.project-preview-iframe');
-            iframes.forEach(iframe => {
-                // Create loading text
-                const loadingText = document.createElement('div');
-                loadingText.className = 'preview-loading';
-                loadingText.textContent = 'Loading preview...';
-                iframe.parentElement.appendChild(loadingText);
-                
-                // Remove loading text when iframe loads
-                iframe.addEventListener('load', function() {
-                    const loading = this.parentElement.querySelector('.preview-loading');
-                    if (loading) {
-                        loading.remove();
-                    }
-                });
-            });
-        });
     </script>
 </body>
 </html>
