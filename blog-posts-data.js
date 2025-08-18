@@ -4,7 +4,7 @@ const blogPostsData = [
         title: "An Airing of Grievances: The Essential Guide Every CAF Grievance Analyst Needs",
         excerpt: "After five years analyzing hundreds of grievances at CFGA, Jay Tarzwell shares essential knowledge for CAF and DND analysts in this comprehensive guide to military grievance management.",
         date: "August 2025",
-        image: "../../Grievance Website/images/book-cover-ebook-opt.jpg",
+        image: "blog/images/airing-of-grievances-header.svg",
         imageAlt: "An Airing of Grievances book cover - The Unofficial Guide to Grievance Management in the Canadian Armed Forces",
         url: "blog/airing-of-grievances-book.html",
         sortDate: new Date("2025-08-18")
