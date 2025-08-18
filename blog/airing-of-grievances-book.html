@@ -15,7 +15,7 @@
     <!-- Open Graph tags -->
     <meta property="og:title" content="An Airing of Grievances: The Essential Guide for CAF Grievance Analysts">
     <meta property="og:description" content="Master the art of military grievance analysis with this essential guide for CAF and DND analysts. Five years of CFGA experience distilled into practical tools.">
-    <meta property="og:image" content="https://thechatbotgenius.com/blog/images/airing-of-grievances-cover.jpg">
+    <meta property="og:image" content="https://thechatbotgenius.com/blog/images/airing-of-grievances-header.svg">
     <meta property="og:url" content="https://thechatbotgenius.com/blog/airing-of-grievances-book.html">
     <meta property="og:type" content="article">
     
@@ -148,20 +148,50 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <a href="../index.html" class="logo">The Chatbot Genius</a>
-                <div class="nav-links">
-                    <a href="../index.html">Home</a>
-                    <a href="../index.html#services">Services</a>
-                    <a href="../index.html#about">About</a>
-                    <a href="../blog.html">Blog</a>
-                    <a href="../index.html#contact">Contact</a>
-                </div>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <a href="../index.html" style="color: white; text-decoration: none;">
+                        <span aria-hidden="true">🤖</span> The Chatbot Genius
+                    </a>
+                </div>
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
+                    Menu
+                </button>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../ai-news.html">AI News</a></li>
+                    <li><a href="../books.html">Books</a></li>
+                    <li><a href="../blog.html">Blog</a></li>
+                    <li><a href="../projects.html">Projects</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="padding: 8px 20px; border-radius: 5px;" target="_blank" aria-label="Book a consultation call - opens in new window">Book a Call</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <div class="blog-header">
         <h1>An Airing of Grievances: The Essential Guide Every CAF Grievance Analyst Needs</h1>
@@ -369,5 +399,18 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('show');
+            });
+        }
+    </script>
 </body>
 </html>
