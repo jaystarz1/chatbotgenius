@@ -1,0 +1,37 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <!-- Robot head background -->
+  <rect x="6" y="8" width="20" height="16" rx="3" ry="3" fill="#6B7280"/>
+  
+  <!-- Face plate -->
+  <rect x="8" y="10" width="16" height="12" rx="2" ry="2" fill="#9CA3AF"/>
+  
+  <!-- Antenna -->
+  <line x1="16" y1="8" x2="16" y2="4" stroke="#4B5563" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="16" cy="3" r="2" fill="#EF4444"/>
+  
+  <!-- Eyes -->
+  <circle cx="11" cy="15" r="2.5" fill="#1F2937"/>
+  <circle cx="21" cy="15" r="2.5" fill="#1F2937"/>
+  
+  <!-- Eye pupils (glowing effect) -->
+  <circle cx="11" cy="15" r="1.5" fill="#3B82F6"/>
+  <circle cx="21" cy="15" r="1.5" fill="#3B82F6"/>
+  
+  <!-- Eye shine -->
+  <circle cx="11.5" cy="14.5" r="0.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="21.5" cy="14.5" r="0.5" fill="#FFFFFF" opacity="0.8"/>
+  
+  <!-- Mouth/speaker grille -->
+  <rect x="12" y="19" width="8" height="1" rx="0.5" fill="#4B5563"/>
+  <rect x="12" y="20.5" width="8" height="1" rx="0.5" fill="#4B5563"/>
+  
+  <!-- Ear panels -->
+  <rect x="4" y="14" width="2" height="4" rx="1" fill="#6B7280"/>
+  <rect x="26" y="14" width="2" height="4" rx="1" fill="#6B7280"/>
+  
+  <!-- Decorative bolts -->
+  <circle cx="8" cy="11" r="0.5" fill="#374151"/>
+  <circle cx="24" cy="11" r="0.5" fill="#374151"/>
+  <circle cx="8" cy="21" r="0.5" fill="#374151"/>
+  <circle cx="24" cy="21" r="0.5" fill="#374151"/>
+</svg>
