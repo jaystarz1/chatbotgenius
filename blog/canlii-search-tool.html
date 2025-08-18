@@ -128,9 +128,7 @@
         <div class="container">
             <div class="nav-content">
                 <div class="nav-brand">
-                    <a href="../index.html" style="color: white; text-decoration: none;">
-                        <span aria-hidden="true">🤖</span> The Chatbot Genius
-                    </a>
+                    <span aria-hidden="true">🤖</span> The Chatbot Genius
                 </div>
                 <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
                     Menu
@@ -313,18 +311,5 @@
     </footer>
 
     <script src="../script.js"></script>
-    <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-        
-        if (mobileMenuToggle && navLinks) {
-            mobileMenuToggle.addEventListener('click', function() {
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !isExpanded);
-                navLinks.classList.toggle('show');
-            });
-        }
-    </script>
 </body>
 </html>
