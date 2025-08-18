@@ -19,50 +19,204 @@
     <meta property="og:url" content="https://thechatbotgenius.com/blog/canlii-search-tool.html">
     <meta property="og:type" content="article">
     
-    <link rel="stylesheet" href="../style.css">
     <style>
+        /* Navigation styles from main site */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: 2px solid white;
+            color: white;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin: auto 0;
+        }
+        
+        .mobile-menu-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn) {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: bold;
+            border: 2px solid #ff8c42;
+        }
+        
+        .btn-book:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+        }
+        
+        /* Blog specific styles */
         .blog-header {
             background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
             color: white;
             padding: 60px 0;
             text-align: center;
+            margin-top: 0;
         }
+        
         .blog-content {
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
             line-height: 1.8;
         }
+        
         .blog-content h2 {
             color: #0d47a1;
             margin-top: 40px;
             margin-bottom: 20px;
         }
+        
         .blog-content h3 {
             color: #1565c0;
             margin-top: 30px;
             margin-bottom: 15px;
         }
+        
         .table-of-contents {
             background: #f5f5f5;
             padding: 20px;
             border-radius: 8px;
             margin: 30px 0;
         }
+        
         .table-of-contents ul {
             list-style: none;
             padding-left: 0;
         }
+        
         .table-of-contents li {
             margin: 10px 0;
         }
+        
         .table-of-contents a {
             color: #1565c0;
             text-decoration: none;
         }
+        
         .table-of-contents a:hover {
             text-decoration: underline;
         }
+        
         .feature-box {
             background: #f8f9fa;
             border-left: 4px solid #1976d2;
@@ -70,6 +224,7 @@
             margin: 20px 0;
             border-radius: 4px;
         }
+        
         .tool-screenshot {
             max-width: 100%;
             border: 1px solid #ddd;
@@ -77,6 +232,7 @@
             margin: 20px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
         .cta-button {
             display: inline-block;
             background: linear-gradient(135deg, #1976d2, #1565c0);
@@ -88,18 +244,95 @@
             margin: 20px 0;
             transition: transform 0.3s;
         }
+        
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
         }
+        
         .back-link {
             display: inline-block;
             margin: 20px 0;
             color: #1976d2;
             text-decoration: none;
         }
+        
         .back-link:hover {
             text-decoration: underline;
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .social-links {
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        
+        .social-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .banner-content {
+                font-size: 0.85rem;
+            }
+            
+            .banner-separator {
+                display: none;
+            }
+            
+            .banner-item {
+                width: 100%;
+                padding: 2px 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1f71;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                height: auto;
+            }
+            
+            .nav-links a:not(.btn) {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -300,7 +533,7 @@
         <a href="../blog.html" class="back-link" style="margin-top: 40px;">← Back to Blog</a>
     </div>
 
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
             <div class="social-links">
@@ -310,6 +543,18 @@
         </div>
     </footer>
 
-    <script src="../script.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('show');
+            });
+        }
+    </script>
 </body>
 </html>
