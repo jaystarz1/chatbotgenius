@@ -1,6 +1,15 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "An Airing of Grievances: The Essential Guide Every CAF Grievance Analyst Needs",
+        excerpt: "After five years analyzing hundreds of grievances at CFGA, Jay Tarzwell shares essential knowledge for CAF and DND analysts in this comprehensive guide to military grievance management.",
+        date: "August 2025",
+        image: "../../Grievance Website/images/book-cover-ebook-opt.jpg",
+        imageAlt: "An Airing of Grievances book cover - The Unofficial Guide to Grievance Management in the Canadian Armed Forces",
+        url: "blog/airing-of-grievances-book.html",
+        sortDate: new Date("2025-08-18")
+    },
+    {
         title: "CanLII Search: AI-Powered Boolean Search for Canadian Legal Research",
         excerpt: "Transform plain English or French queries into precise Boolean searches for Canadian case law and legislation. Built for lawyers, paralegals, students, and anyone researching Canadian law.",
         date: "August 2025",
