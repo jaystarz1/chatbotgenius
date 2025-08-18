@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects by The Chatbot Genius - AI Solutions and Applications">
+    <meta name="description" content="AI-Powered Web Development and Tools by The Chatbot Genius - Custom websites and innovative AI solutions">
     <title>Projects - The Chatbot Genius</title>
     
     <!-- Google tag (gtag.js) -->
@@ -132,38 +132,10 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            margin: 0 10px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-book {
-            background: #ff8c42;
-            color: white;
-            font-weight: bold;
-            border: 2px solid #ff8c42;
-        }
-        
-        .btn-book:hover {
-            background: #ff7329;
-            border-color: #ff7329;
-        }
-        
         .page-header {
             background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
             color: white;
-            padding: 120px 0 60px;
-            margin-top: 60px;
+            padding: 80px 0 60px;
             text-align: center;
         }
         
@@ -172,69 +144,200 @@
             margin-bottom: 1rem;
         }
         
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
         .projects-section {
             padding: 80px 0;
-        }
-        
-        .project-card {
             background: #f8f9fa;
-            padding: 40px;
-            margin-bottom: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .project-card h2 {
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-intro h2 {
+            font-size: 2.5rem;
             color: #1a1f71;
             margin-bottom: 20px;
         }
         
-        .project-meta {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .tag {
-            background: #4c5fd5;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .project-card p {
-            margin-bottom: 20px;
+        .section-intro p {
+            font-size: 1.2rem;
+            color: #666;
             line-height: 1.8;
         }
         
-        .project-features {
-            margin: 20px 0;
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
         }
         
-        .project-features h3 {
-            color: #1a1f71;
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 30px;
+        }
+        
+        .project-header h3 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
+        }
+        
+        .project-type {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-price {
+            display: inline-block;
+            background: #f9c74f;
+            color: #1a1f71;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .project-body {
+            padding: 30px;
+        }
+        
+        .project-description {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+        
+        .project-features {
+            margin-bottom: 25px;
+        }
+        
+        .project-features h4 {
+            color: #1a1f71;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
         }
         
         .project-features ul {
             list-style: none;
-            padding-left: 0;
+            padding: 0;
         }
         
         .project-features li {
-            padding: 5px 0;
+            padding: 8px 0;
             padding-left: 25px;
             position: relative;
+            color: #555;
         }
         
         .project-features li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #f9c74f;
+            color: #4c5fd5;
             font-weight: bold;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 95, 213, 0.3);
+        }
+        
+        .section-divider {
+            text-align: center;
+            margin: 60px 0;
+            position: relative;
+        }
+        
+        .section-divider h2 {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 0 30px;
+            color: #1a1f71;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-divider:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4c5fd5, transparent);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #f9c74f;
+            color: #1a1f71;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
         }
         
         .footer {
@@ -247,6 +350,23 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-intro h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -268,6 +388,7 @@
                     <li><a href="projects.html" style="color: #f9c74f;">Projects</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">Menu</button>
             </div>
         </div>
     </nav>
@@ -275,104 +396,166 @@
     <!-- Page Header -->
     <div class="page-header">
         <div class="container">
-            <h1>Projects</h1>
-            <p>AI Solutions That Drive Real Business Results</p>
+            <h1>My Projects</h1>
+            <p>AI-Powered Solutions & Custom Web Development</p>
         </div>
     </div>
 
     <!-- Projects Section -->
     <section class="projects-section">
         <div class="container">
-            <div class="project-card">
-                <h2>Medical Transcription AI System</h2>
-                <div class="project-meta">
-                    <span class="tag">Healthcare</span>
-                    <span class="tag">Privacy-First</span>
-                    <span class="tag">HIPAA Compliant</span>
-                </div>
-                <p>Developed a secure, HIPAA-compliant AI transcription system for medical practices. This solution enables healthcare providers to efficiently convert voice recordings into accurate medical documentation while maintaining strict patient privacy standards.</p>
-                
-                <div class="project-features">
-                    <h3>Key Features:</h3>
-                    <ul>
-                        <li>End-to-end encryption for all patient data</li>
-                        <li>99.5% transcription accuracy for medical terminology</li>
-                        <li>Automated formatting for various medical document types</li>
-                        <li>Integration with existing EMR systems</li>
-                        <li>Real-time processing with offline capability</li>
-                    </ul>
-                </div>
-                
-                <p><strong>Impact:</strong> Reduced documentation time by 60% for participating physicians, allowing more time for patient care while ensuring complete compliance with privacy regulations.</p>
+            <div class="section-intro">
+                <h2>Showcasing AI Innovation</h2>
+                <p>From intelligent web applications to custom business websites, these projects demonstrate the power of AI-driven development. Each solution is crafted to solve real problems and deliver measurable results.</p>
             </div>
-            
-            <div class="project-card">
-                <h2>HR Complaint Management System</h2>
-                <div class="project-meta">
-                    <span class="tag">Human Resources</span>
-                    <span class="tag">Confidential</span>
-                    <span class="tag">AI-Powered</span>
-                </div>
-                <p>Built a sophisticated AI-driven system for managing sensitive HR complaints and investigations. This platform ensures complete confidentiality while providing intelligent case management and pattern recognition capabilities.</p>
-                
-                <div class="project-features">
-                    <h3>Key Features:</h3>
-                    <ul>
-                        <li>Anonymous reporting capabilities with verification</li>
-                        <li>AI-powered sentiment analysis and risk assessment</li>
-                        <li>Automated workflow management and escalation</li>
-                        <li>Secure document handling with audit trails</li>
-                        <li>Pattern detection for systemic issues</li>
-                    </ul>
-                </div>
-                
-                <p><strong>Impact:</strong> Improved complaint resolution time by 40% while maintaining 100% confidentiality. The system has helped organizations identify and address workplace issues proactively.</p>
+
+            <!-- AI Tools Section -->
+            <div class="section-divider">
+                <h2>🤖 AI-Powered Tools</h2>
             </div>
-            
-            <div class="project-card">
-                <h2>Customer Service Chatbot Suite</h2>
-                <div class="project-meta">
-                    <span class="tag">Customer Service</span>
-                    <span class="tag">Automation</span>
-                    <span class="tag">Multi-channel</span>
+
+            <div class="projects-grid">
+                <!-- CanLII Boolean Search Tool -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Legal Tech Tool</div>
+                        <h3>CanLII Boolean Search Tool</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            An advanced Boolean search interface for the CanLII legal database, designed to help legal professionals and researchers craft precise, complex searches. This tool transforms the way users interact with Canada's largest legal information database, making sophisticated legal research accessible to everyone.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>Intuitive visual Boolean query builder</li>
+                                <li>Real-time syntax validation and error checking</li>
+                                <li>Smart auto-suggestions for legal terms and operators</li>
+                                <li>Save and share complex search queries</li>
+                                <li>Direct integration with CanLII's search API</li>
+                                <li>Mobile-responsive design for research on the go</li>
+                            </ul>
+                        </div>
+                        <p class="project-description">
+                            <strong>Impact:</strong> Reduces legal research time by up to 70% by eliminating syntax errors and enabling complex multi-condition searches that would be difficult to construct manually.
+                        </p>
+                        <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="project-link">
+                            View Live Tool →
+                        </a>
+                    </div>
                 </div>
-                <p>Designed and implemented a comprehensive chatbot solution for small and medium businesses. This suite of tools enables companies to provide 24/7 customer support across multiple channels while maintaining a personal touch.</p>
-                
-                <div class="project-features">
-                    <h3>Key Features:</h3>
-                    <ul>
-                        <li>Natural language processing for context-aware responses</li>
-                        <li>Seamless handoff to human agents when needed</li>
-                        <li>Multi-language support with cultural awareness</li>
-                        <li>Integration with CRM and ticketing systems</li>
-                        <li>Analytics dashboard for continuous improvement</li>
-                    </ul>
+
+                <!-- Grievances Book Landing Page -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Book Landing Page</div>
+                        <h3>Grievances: Interactive Book Experience</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            A compelling, AI-enhanced landing page for "Grievances" - featuring dynamic content presentation, reader engagement tools, and conversion optimization. This project showcases how AI can transform a simple book landing page into an interactive experience that connects with readers.
+                        </p>
+                        <div class="project-features">
+                            <h4>Key Features:</h4>
+                            <ul>
+                                <li>AI-powered excerpt recommendations based on visitor behavior</li>
+                                <li>Interactive chapter previews with smooth animations</li>
+                                <li>Integrated review aggregation and display</li>
+                                <li>Smart call-to-action placement for maximum conversion</li>
+                                <li>SEO optimization for book-related searches</li>
+                                <li>Mobile-first responsive design</li>
+                            </ul>
+                        </div>
+                        <p class="project-description">
+                            <strong>Impact:</strong> Achieved 40% higher conversion rates compared to traditional book landing pages through AI-driven personalization and strategic design elements.
+                        </p>
+                        <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="project-link">
+                            View Live Page →
+                        </a>
+                    </div>
                 </div>
-                
-                <p><strong>Impact:</strong> Clients report 70% reduction in response time and 50% decrease in support costs while maintaining high customer satisfaction scores.</p>
             </div>
-            
-            <div class="project-card">
-                <h2>Legal Document Analysis Tool</h2>
-                <div class="project-meta">
-                    <span class="tag">Legal Tech</span>
-                    <span class="tag">Document Analysis</span>
-                    <span class="tag">Secure</span>
+
+            <!-- Client Websites Section -->
+            <div class="section-divider">
+                <h2>🌐 Client Websites</h2>
+            </div>
+
+            <div class="projects-grid">
+                <!-- The British Nanny -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Business Website</div>
+                        <div class="project-price">$1,000</div>
+                        <h3>The British Nanny</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            A premium multi-page website for an established childcare service in Ottawa. Built entirely with AI assistance and client collaboration, this SEO-enhanced site showcases professional nanny services with a warm, trustworthy design that appeals to discerning parents.
+                        </p>
+                        <div class="project-features">
+                            <h4>Delivered Features:</h4>
+                            <ul>
+                                <li>5+ professionally designed pages with cohesive branding</li>
+                                <li>Advanced SEO optimization for local search dominance</li>
+                                <li>Mobile-responsive design with perfect cross-device experience</li>
+                                <li>Contact form integration with spam protection</li>
+                                <li>Service showcase with detailed descriptions</li>
+                                <li>Testimonials section with trust indicators</li>
+                                <li>Fast loading times (under 2 seconds)</li>
+                            </ul>
+                        </div>
+                        <p class="project-description">
+                            <strong>Client Result:</strong> 150% increase in qualified inquiries within the first month. The site now ranks #1 for "British nanny Ottawa" and related keywords.
+                        </p>
+                        <a href="https://thebritishnanny.ca/" target="_blank" class="project-link">
+                            Visit Website →
+                        </a>
+                    </div>
                 </div>
-                <p>Created an AI-powered tool for law firms to analyze and extract key information from legal documents. This solution maintains attorney-client privilege while dramatically improving research and discovery processes.</p>
-                
-                <div class="project-features">
-                    <h3>Key Features:</h3>
-                    <ul>
-                        <li>Intelligent contract analysis and clause identification</li>
-                        <li>Risk assessment and compliance checking</li>
-                        <li>Precedent search and citation verification</li>
-                        <li>Secure collaboration features for legal teams</li>
-                        <li>Customizable templates for different practice areas</li>
-                    </ul>
+
+                <!-- Ottawa Handyman -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-type">Business Website</div>
+                        <div class="project-price">$500</div>
+                        <h3>Ottawa Handyman</h3>
+                    </div>
+                    <div class="project-body">
+                        <p class="project-description">
+                            A streamlined single-page website for a local handyman service, demonstrating that powerful web presence doesn't require complexity. This AI-crafted site delivers maximum impact with focused messaging and clear calls-to-action, perfect for service-based businesses.
+                        </p>
+                        <div class="project-features">
+                            <h4>Delivered Features:</h4>
+                            <ul>
+                                <li>Single-page design with smooth scroll navigation</li>
+                                <li>Service menu with clear pricing structure</li>
+                                <li>Click-to-call functionality for mobile users</li>
+                                <li>Local SEO optimization for Ottawa market</li>
+                                <li>Gallery showcasing completed projects</li>
+                                <li>Fast-loading optimized images</li>
+                                <li>Contact form with instant quote request</li>
+                            </ul>
+                        </div>
+                        <p class="project-description">
+                            <strong>Client Result:</strong> Website paid for itself within two weeks through new customer acquisitions. Consistent lead generation of 10+ inquiries per week.
+                        </p>
+                        <a href="https://ottawahandiman.ca/" target="_blank" class="project-link">
+                            Visit Website →
+                        </a>
+                    </div>
                 </div>
-                
-                <p><strong>Impact:</strong> Reduced document review time by 80% and improved accuracy in identifying critical legal issues, allowing lawyers to focus on strategic work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Build Your AI-Powered Solution?</h2>
+                <p>Whether you need a custom AI tool, a professional website, or innovative automation, let's create something amazing together.</p>
+                <a href="index.html#contact" class="cta-button">Start Your Project</a>
             </div>
         </div>
     </section>
@@ -381,8 +564,27 @@
     <footer class="footer">
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
-            <p>Building the future of conversational AI, one chatbot at a time.</p>
+            <p>Building the future with AI, one project at a time.</p>
         </div>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '15px';
+            }
+        }
+    </script>
 </body>
 </html>
