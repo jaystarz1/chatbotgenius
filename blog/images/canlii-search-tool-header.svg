@@ -1,87 +1,118 @@
 <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Main gradient background -->
+    <!-- Main gradient background matching CanLII Search dark theme -->
     <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0d47a1;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#1565c0;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1976d2;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#312e81;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4c1d95;stop-opacity:1" />
     </linearGradient>
     
-    <!-- Accent gradient for elements -->
+    <!-- Accent gradient with purple/blue -->
     <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#ee5a24;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
     </linearGradient>
     
     <!-- Pattern for background texture -->
     <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(139,92,246,0.1)" stroke-width="1"/>
     </pattern>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
   
   <!-- Background -->
   <rect width="1200" height="630" fill="url(#bgGradient)"/>
   <rect width="1200" height="630" fill="url(#gridPattern)"/>
   
-  <!-- Maple leaf icon (representing Canadian law) -->
+  <!-- Canadian Maple Leaf (stylized) -->
   <g transform="translate(100, 200)">
     <path d="M 50 10 L 55 25 L 70 20 L 65 30 L 80 35 L 65 40 L 70 50 L 55 45 L 50 60 L 45 45 L 30 50 L 35 40 L 20 35 L 35 30 L 30 20 L 45 25 Z" 
-          fill="rgba(255,255,255,0.15)" 
-          stroke="white" 
-          stroke-width="2"/>
+          fill="rgba(139,92,246,0.2)" 
+          stroke="#8b5cf6" 
+          stroke-width="2"
+          filter="url(#glow)"/>
   </g>
   
-  <!-- Search icon -->
+  <!-- Search icon with glow -->
   <g transform="translate(950, 100)">
-    <circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="4"/>
-    <line x1="70" y1="70" x2="90" y2="90" stroke="rgba(255,255,255,0.3)" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="30" fill="none" stroke="#6366f1" stroke-width="3" opacity="0.6"/>
+    <line x1="70" y1="70" x2="90" y2="90" stroke="#6366f1" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
   </g>
   
-  <!-- Boolean operators visualization -->
+  <!-- Boolean operators with modern style -->
   <g transform="translate(900, 400)">
-    <text x="0" y="0" font-family="monospace" font-size="24" fill="rgba(255,255,255,0.2)" font-weight="bold">AND</text>
-    <text x="80" y="30" font-family="monospace" font-size="24" fill="rgba(255,255,255,0.2)" font-weight="bold">OR</text>
-    <text x="40" y="60" font-family="monospace" font-size="24" fill="rgba(255,255,255,0.2)" font-weight="bold">NOT</text>
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="26" fill="#8b5cf6" font-weight="bold" opacity="0.4">AND</text>
+    <text x="80" y="30" font-family="'Courier New', monospace" font-size="26" fill="#6366f1" font-weight="bold" opacity="0.4">OR</text>
+    <text x="40" y="60" font-family="'Courier New', monospace" font-size="26" fill="#a78bfa" font-weight="bold" opacity="0.4">NOT</text>
   </g>
   
-  <!-- AI brain network visualization -->
+  <!-- AI neural network visualization -->
   <g transform="translate(150, 400)">
-    <circle cx="0" cy="0" r="4" fill="rgba(255,255,255,0.3)"/>
-    <circle cx="40" cy="-20" r="4" fill="rgba(255,255,255,0.3)"/>
-    <circle cx="40" cy="20" r="4" fill="rgba(255,255,255,0.3)"/>
-    <circle cx="80" cy="0" r="4" fill="rgba(255,255,255,0.3)"/>
-    <line x1="0" y1="0" x2="40" y2="-20" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    <line x1="0" y1="0" x2="40" y2="20" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    <line x1="40" y1="-20" x2="80" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-    <line x1="40" y1="20" x2="80" y2="0" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <circle cx="0" cy="0" r="5" fill="#8b5cf6" opacity="0.6"/>
+    <circle cx="40" cy="-20" r="5" fill="#6366f1" opacity="0.6"/>
+    <circle cx="40" cy="20" r="5" fill="#6366f1" opacity="0.6"/>
+    <circle cx="80" cy="0" r="5" fill="#8b5cf6" opacity="0.6"/>
+    <line x1="0" y1="0" x2="40" y2="-20" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <line x1="0" y1="0" x2="40" y2="20" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+    <line x1="40" y1="-20" x2="80" y2="0" stroke="#6366f1" stroke-width="1" opacity="0.3"/>
+    <line x1="40" y1="20" x2="80" y2="0" stroke="#6366f1" stroke-width="1" opacity="0.3"/>
   </g>
   
-  <!-- Main title -->
-  <text x="600" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">
+  <!-- Main title with modern font -->
+  <text x="600" y="280" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="68" font-weight="700" fill="white" text-anchor="middle">
     CanLII Search Tool
   </text>
   
-  <!-- Subtitle -->
-  <text x="600" y="340" font-family="Arial, sans-serif" font-size="32" fill="rgba(255,255,255,0.9)" text-anchor="middle">
+  <!-- Subtitle with gradient fill -->
+  <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <text x="600" y="340" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="30" fill="url(#textGradient)" text-anchor="middle" font-weight="500">
     AI-Powered Boolean Search for Canadian Law
   </text>
   
   <!-- Additional descriptive text -->
-  <text x="600" y="400" font-family="Arial, sans-serif" font-size="24" fill="rgba(255,255,255,0.7)" text-anchor="middle">
+  <text x="600" y="400" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="22" fill="rgba(199,210,254,0.8)" text-anchor="middle">
     Transform Plain Language into Precise Legal Queries
   </text>
   
+  <!-- Bilingual text -->
+  <text x="600" y="440" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" fill="rgba(165,180,252,0.6)" text-anchor="middle">
+    English • Français
+  </text>
+  
   <!-- The Chatbot Genius branding -->
-  <text x="600" y="550" font-family="Arial, sans-serif" font-size="20" fill="rgba(255,255,255,0.5)" text-anchor="middle">
+  <text x="600" y="550" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif" font-size="18" fill="rgba(199,210,254,0.5)" text-anchor="middle">
     A Tool by The Chatbot Genius
   </text>
   
-  <!-- Decorative elements -->
-  <rect x="350" y="430" width="500" height="2" fill="url(#accentGradient)" opacity="0.6"/>
+  <!-- Decorative accent line with gradient -->
+  <rect x="350" y="470" width="500" height="2" fill="url(#accentGradient)" opacity="0.5"/>
   
-  <!-- Corner accents -->
-  <path d="M 50 50 L 50 30 L 30 30" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 1150 50 L 1150 30 L 1170 30" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 50 580 L 50 600 L 30 600" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
-  <path d="M 1150 580 L 1150 600 L 1170 600" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+  <!-- Corner accents with purple theme -->
+  <g opacity="0.3">
+    <path d="M 50 50 L 50 30 L 30 30" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+    <path d="M 1150 50 L 1150 30 L 1170 30" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+    <path d="M 50 580 L 50 600 L 30 600" fill="none" stroke="#6366f1" stroke-width="2"/>
+    <path d="M 1150 580 L 1150 600 L 1170 600" fill="none" stroke="#6366f1" stroke-width="2"/>
+  </g>
+  
+  <!-- Floating particles for depth -->
+  <circle cx="200" cy="150" r="2" fill="#8b5cf6" opacity="0.4"/>
+  <circle cx="800" cy="200" r="3" fill="#6366f1" opacity="0.3"/>
+  <circle cx="1000" cy="300" r="2" fill="#a78bfa" opacity="0.4"/>
+  <circle cx="300" cy="500" r="3" fill="#8b5cf6" opacity="0.3"/>
+  <circle cx="900" cy="150" r="2" fill="#6366f1" opacity="0.5"/>
 </svg>

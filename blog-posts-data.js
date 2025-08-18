@@ -3,11 +3,11 @@ const blogPostsData = [
     {
         title: "CanLII Search: AI-Powered Boolean Search for Canadian Legal Research",
         excerpt: "Transform plain English or French queries into precise Boolean searches for Canadian case law and legislation. Built for lawyers, paralegals, students, and anyone researching Canadian law.",
-        date: "December 2024",
+        date: "August 2025",
         image: "blog/images/canlii-search-tool-header.svg",
         imageAlt: "CanLII Search Tool - AI-powered Boolean search for Canadian law",
         url: "blog/canlii-search-tool.html",
-        sortDate: new Date("2024-12-20")
+        sortDate: new Date("2025-08-17")
     },
     {
         title: "No, AI Doesn't Make You Stupid",
@@ -34,7 +34,7 @@ const blogPostsData = [
         image: "blog/images/ai-jobs-paradox-header.svg",
         imageAlt: "AI and humans working together in modern workplace",
         url: "blog/ai-jobs-paradox-ceos-wrong.html",
-        sortDate: new Date("2025-07-16") // Today's date
+        sortDate: new Date("2025-07-16")
     },
     {
         title: "What Does an Army General Look Like? Demonstrated Bias in Generative AI",
