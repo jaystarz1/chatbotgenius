@@ -11,6 +11,16 @@
   status = 200
 
 [[headers]]
+  for = "/"
+  [headers.values]
+    X-Robots-Tag = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    X-Robots-Tag = "index, follow"
+
+[[headers]]
   for = "/.netlify/functions/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
