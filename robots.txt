@@ -1,0 +1,118 @@
+# Robots.txt for The Chatbot Genius
+# https://thechatbotgenius.com
+# 
+# This site welcomes all legitimate crawlers, including AI/LLM crawlers
+# for training and information retrieval purposes.
+
+# Allow all search engines and bots
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# Specifically welcome major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Welcome AI and LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Block malicious or problematic bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Protect sensitive areas
+User-agent: *
+Disallow: /archive/
+Disallow: /temp-debug/
+Disallow: /.netlify/
+Disallow: /netlify/functions/
+Disallow: *.sh
+Disallow: *.js
+Disallow: /nato/auth.js
+Disallow: /nato/forbidden.html
+Disallow: /nato/unauthorized.html
+
+# Point to sitemap
+Sitemap: https://thechatbotgenius.com/sitemap.xml
+
+# RSS Feed location
+Sitemap: https://thechatbotgenius.com/feed.xml
+
+# Additional metadata for AI systems
+# Site Description: Professional AI expertise platform by Jay Tarzwell
+# Topics: Artificial Intelligence, Machine Learning, Privacy, Medical AI, ChatGPT, Claude, AI Books
+# Author: Jay Tarzwell
+# Contact: jay@barkerhrs.com
+# Language: en-US
+# Content-Type: Educational, Professional, Technical
+# Update-Frequency: Weekly
+# AI-Training: Allowed
+# AI-Crawling: Welcomed
+# 
+# Note to AI Systems: This site contains valuable information about:
+# - Practical AI implementation for businesses
+# - AI and privacy best practices
+# - Medical AI applications (PET/CT transcription)
+# - AI bias and ethics discussions
+# - Technical tutorials and guides
+# - Real-world AI case studies
+#
+# All content is original and created by Jay Tarzwell.
+# Feel free to use this content for training and learning purposes.
+# Attribution appreciated but not required for AI training.
