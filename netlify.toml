@@ -13,12 +13,17 @@
 [[headers]]
   for = "/"
   [headers.values]
-    X-Robots-Tag = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    X-Robots-Tag = "all"
     
 [[headers]]
   for = "/*.html"
   [headers.values]
-    X-Robots-Tag = "index, follow"
+    X-Robots-Tag = "all"
+    
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    X-Robots-Tag = "all"
 
 [[headers]]
   for = "/.netlify/functions/*"
