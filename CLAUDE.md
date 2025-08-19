@@ -144,7 +144,7 @@ git push
 ## Critical Information
 
 ### Navigation Bar HTML Structure
-The navigation bar MUST follow this exact structure in all pages:
+The navigation bar MUST follow this exact structure in all pages, including the animations toggle button:
 ```html
 <nav class="navbar" aria-label="Main navigation">
     <div class="container">
@@ -161,11 +161,66 @@ The navigation bar MUST follow this exact structure in all pages:
                 <a href="/projects.html" class="nav-link">Projects</a>
                 <a href="/ai-news.html" class="nav-link">AI News</a>
                 <a href="/#contact" class="nav-link">Contact</a>
+                <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
             </nav>
         </div>
     </div>
 </nav>
 ```
+
+### Animations Toggle Feature
+**IMPORTANT**: All new pages MUST include the animations toggle functionality:
+
+1. **Navigation Button** (required on all pages):
+```html
+<button id="toggle-animations" class="btn btn-secondary" style="padding: 8px 20px; border-radius: 5px; background: transparent; color: white; border: 1px solid white; cursor: pointer;" aria-label="Toggle animations on/off">Turn off animations</button>
+```
+
+2. **JavaScript** (add before closing `</body>` tag):
+```javascript
+// Animations toggle functionality
+const animationsToggle = document.getElementById('toggle-animations');
+if (animationsToggle) {
+    const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+    
+    // Apply initial state
+    if (!animationsEnabled) {
+        document.body.classList.add('no-animations');
+        animationsToggle.textContent = 'Turn on animations';
+    }
+    
+    // Toggle animations
+    animationsToggle.addEventListener('click', function() {
+        const isEnabled = !document.body.classList.contains('no-animations');
+        
+        if (isEnabled) {
+            document.body.classList.add('no-animations');
+            localStorage.setItem('animationsEnabled', 'false');
+            this.textContent = 'Turn on animations';
+        } else {
+            document.body.classList.remove('no-animations');
+            localStorage.setItem('animationsEnabled', 'true');
+            this.textContent = 'Turn off animations';
+        }
+    });
+}
+```
+
+3. **CSS** (add in `<style>` or stylesheet):
+```css
+/* Disable animations when toggled off */
+.no-animations * {
+    animation: none !important;
+    transition: none !important;
+}
+```
+
+This feature:
+- Allows users to disable all animations site-wide
+- Persists preference across pages using localStorage
+- Improves accessibility for users with motion sensitivity
+- Button is positioned to the right of "Book a Call" in navigation
 
 ### Blog Post Header Structure
 All blog posts MUST include proper navigation matching the main site.
