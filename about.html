@@ -413,6 +413,7 @@
                     <li><a href="projects.html">Projects</a></li>
                     <li><a href="/#contact">Contact</a></li>
                     <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="padding: 8px 20px; border-radius: 5px;" target="_blank" aria-label="Book a consultation call - opens in new window">Book a Call</a></li>
+                    <li><button id="toggle-animations" class="btn btn-secondary" style="padding: 8px 20px; border-radius: 5px; background: transparent; color: white; border: 1px solid white; cursor: pointer;" aria-label="Toggle animations on/off">Turn off animations</button></li>
                 </ul>
             </div>
         </div>
@@ -490,6 +491,39 @@
                 mobileMenuToggle.focus();
             }
         });
+        
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+        
+        // Apply initial state
+        if (!animationsEnabled) {
+            document.body.classList.add('no-animations');
+            animationsToggle.textContent = 'Turn on animations';
+        }
+        
+        // Toggle animations
+        animationsToggle.addEventListener('click', function() {
+            const isEnabled = !document.body.classList.contains('no-animations');
+            
+            if (isEnabled) {
+                document.body.classList.add('no-animations');
+                localStorage.setItem('animationsEnabled', 'false');
+                this.textContent = 'Turn on animations';
+            } else {
+                document.body.classList.remove('no-animations');
+                localStorage.setItem('animationsEnabled', 'true');
+                this.textContent = 'Turn off animations';
+            }
+        });
     </script>
+    
+    <style>
+        /* Disable animations when toggled off */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
 </body>
 </html>
