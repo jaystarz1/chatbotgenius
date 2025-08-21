@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Package - $297 | The Chatbot Genius</title>
+    <meta name="description" content="Professional 5-page website for new businesses ready in just 3 days. Full SEO optimization, Google Analytics, and mobile-responsive design for $297.">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Package Hero */
+        .package-hero {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .package-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .delivery-promise {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 50px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .feature-icon-large {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* What's Included Section */
+        .included-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .included-column h3 {
+            font-size: 1.8rem;
+            color: #1a1f71;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #007bff;
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #dee2e6;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .included-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: #28a745;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .x-icon {
+            color: #dc3545;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #007bff;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 0 40px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #007bff;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .step-time {
+            color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Page Examples Section */
+        .pages-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .pages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .page-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .page-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .page-title {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .page-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .comparison-table {
+            max-width: 1000px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .comparison-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .comparison-feature {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .comparison-check {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        .check-yes {
+            color: #28a745;
+        }
+
+        .check-no {
+            color: #dc3545;
+        }
+
+        .comparison-header-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 20px;
+            background: #f8f9fa;
+            font-weight: bold;
+            color: #1a1f71;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1f71, #4c5fd5);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(243, 156, 18, 0.4);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        /* Success Story */
+        .success-story {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 5px solid #007bff;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        .success-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+
+        .success-author {
+            color: #1a1f71;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .package-hero h1 {
+                font-size: 2rem;
+            }
+
+            .included-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+            }
+
+            .step-content {
+                margin: 0 0 0 40px;
+            }
+
+            .step-number {
+                left: 20px;
+            }
+
+            .comparison-row,
+            .comparison-header-row {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .pages-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Animations toggle */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../../" class="nav-link">Home</a>
+                    <a href="../../about.html" class="nav-link">About</a>
+                    <a href="../../books.html" class="nav-link">Books</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="../../projects.html" class="nav-link">Projects</a>
+                    <a href="../../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Package Hero -->
+    <section class="package-hero">
+        <div class="container">
+            <div class="price-badge">$297</div>
+            <h1>Landing Package</h1>
+            <p class="hero-subtitle">Perfect Starting Point for New Businesses & Services</p>
+            <div class="delivery-promise">
+                ⚡ 3 Business Days Delivery • 5 Professional Pages • Full SEO
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Launch Online</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-large">📄</div>
+                    <h3 class="feature-title">5 Professional Pages</h3>
+                    <p class="feature-description">Home, About, Services, Contact, and one custom page of your choice. Perfect foundation for your online presence.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🔍</div>
+                    <h3 class="feature-title">Full SEO Optimization</h3>
+                    <p class="feature-description">Complete on-page SEO including meta tags, schema markup, and keyword optimization to help you rank in search results.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">📊</div>
+                    <h3 class="feature-title">Google Analytics</h3>
+                    <p class="feature-description">Track your visitors, understand your audience, and measure your growth with professional analytics setup.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">📱</div>
+                    <h3 class="feature-title">Mobile Responsive</h3>
+                    <p class="feature-description">Looks perfect on every device. Your customers can find you whether they're on phone, tablet, or desktop.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">📧</div>
+                    <h3 class="feature-title">Contact Forms</h3>
+                    <p class="feature-description">Professional contact forms that send inquiries directly to your email. Never miss a potential customer.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🚀</div>
+                    <h3 class="feature-title">3-Day Delivery</h3>
+                    <p class="feature-description">Go from idea to live website in just 3 business days. No waiting weeks or months like traditional agencies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">What's Included vs What's Not</h2>
+            
+            <div class="included-grid">
+                <div class="included-column">
+                    <h3>✅ Included</h3>
+                    <ul class="included-list">
+                        <li><span class="check-icon">✓</span> 5 custom-designed pages</li>
+                        <li><span class="check-icon">✓</span> Mobile responsive design</li>
+                        <li><span class="check-icon">✓</span> SEO optimization</li>
+                        <li><span class="check-icon">✓</span> Google Analytics setup</li>
+                        <li><span class="check-icon">✓</span> Contact forms</li>
+                        <li><span class="check-icon">✓</span> Social media integration</li>
+                        <li><span class="check-icon">✓</span> 1 month of updates</li>
+                        <li><span class="check-icon">✓</span> Free hosting setup</li>
+                        <li><span class="check-icon">✓</span> SSL certificate</li>
+                        <li><span class="check-icon">✓</span> Basic animations</li>
+                    </ul>
+                </div>
+                
+                <div class="included-column">
+                    <h3>❌ Not Included</h3>
+                    <ul class="included-list">
+                        <li><span class="x-icon">✗</span> E-commerce functionality</li>
+                        <li><span class="x-icon">✗</span> Blog setup</li>
+                        <li><span class="x-icon">✗</span> Member portals</li>
+                        <li><span class="x-icon">✗</span> Custom applications</li>
+                        <li><span class="x-icon">✗</span> Video hosting</li>
+                        <li><span class="x-icon">✗</span> Email marketing</li>
+                        <li><span class="x-icon">✗</span> Domain name (you provide)</li>
+                        <li><span class="x-icon">✗</span> Logo design</li>
+                        <li><span class="x-icon">✗</span> Content writing</li>
+                        <li><span class="x-icon">✗</span> Photography</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Examples Section -->
+    <section class="pages-section">
+        <div class="container">
+            <h2 class="section-title">Your 5 Professional Pages</h2>
+            
+            <div class="pages-grid">
+                <div class="page-card">
+                    <div class="page-icon">🏠</div>
+                    <h3 class="page-title">Homepage</h3>
+                    <p class="page-desc">Compelling hero section, services overview, and clear calls-to-action</p>
+                </div>
+                
+                <div class="page-card">
+                    <div class="page-icon">👤</div>
+                    <h3 class="page-title">About</h3>
+                    <p class="page-desc">Your story, mission, values, and what makes you unique</p>
+                </div>
+                
+                <div class="page-card">
+                    <div class="page-icon">⚙️</div>
+                    <h3 class="page-title">Services</h3>
+                    <p class="page-desc">Detailed service descriptions with benefits and pricing</p>
+                </div>
+                
+                <div class="page-card">
+                    <div class="page-icon">📞</div>
+                    <h3 class="page-title">Contact</h3>
+                    <p class="page-desc">Contact form, phone, email, location, and business hours</p>
+                </div>
+                
+                <div class="page-card">
+                    <div class="page-icon">⭐</div>
+                    <h3 class="page-title">Custom Page</h3>
+                    <p class="page-desc">FAQ, Testimonials, Portfolio, or any page you need</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Our 3-Day Process</h2>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 1: Discovery</h3>
+                        <div class="step-time">Morning</div>
+                        <p>30-minute discovery call to understand your business, target audience, and goals. We'll gather your content, images, and brand guidelines.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 1: AI Design</h3>
+                        <div class="step-time">Afternoon</div>
+                        <p>Our AI creates custom designs based on your requirements. We refine and perfect the design to match your brand perfectly.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 2: Development</h3>
+                        <div class="step-time">All Day</div>
+                        <p>Build all 5 pages with full functionality, SEO optimization, and mobile responsiveness. Set up analytics and forms.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Day 3: Review & Launch</h3>
+                        <div class="step-time">Morning</div>
+                        <p>You review the site, we make any final adjustments, and launch your new website. Full training on how to manage it.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Story -->
+    <section class="features-section">
+        <div class="container">
+            <div class="success-story">
+                <p class="success-quote">"I needed a website for my new consulting business fast. The Chatbot Genius delivered a beautiful 5-page site in just 3 days. I had my first client inquiry through the contact form on day 4!"</p>
+                <p class="success-author">— Sarah M., Business Consultant</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">Landing Package vs Traditional Agencies</h2>
+            
+            <div class="comparison-table">
+                <div class="comparison-header">Why Choose The Landing Package?</div>
+                <div class="comparison-header-row">
+                    <div>Feature</div>
+                    <div>Landing Package</div>
+                    <div>Traditional Agency</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">Delivery Time</div>
+                    <div class="comparison-check check-yes">3 days</div>
+                    <div class="comparison-check check-no">8-12 weeks</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">Total Cost</div>
+                    <div class="comparison-check check-yes">$297</div>
+                    <div class="comparison-check check-no">$3,000-$10,000</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">SEO Included</div>
+                    <div class="comparison-check check-yes">✓</div>
+                    <div class="comparison-check check-no">Extra $$$</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">Mobile Responsive</div>
+                    <div class="comparison-check check-yes">✓</div>
+                    <div class="comparison-check check-yes">✓</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">You Own Everything</div>
+                    <div class="comparison-check check-yes">✓</div>
+                    <div class="comparison-check check-no">Often No</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">Monthly Hosting Fees</div>
+                    <div class="comparison-check check-yes">$0</div>
+                    <div class="comparison-check check-no">$50-200/mo</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="comparison-feature">Updates Included</div>
+                    <div class="comparison-check check-yes">1 month</div>
+                    <div class="comparison-check check-no">Hourly rates</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">Is 5 pages enough for my business?</h3>
+                    <p class="faq-answer">For most new businesses and services, 5 pages is the perfect start. It covers all essential information without overwhelming visitors. You can always add more pages later - we charge just $97 per additional page.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I need more than 5 pages?</h3>
+                    <p class="faq-answer">Check out our Standard Package (10 pages for $497) or Complete Package (25 pages for $997). You can also start with the Landing Package and add pages as you grow.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do I need to provide content?</h3>
+                    <p class="faq-answer">Yes, you provide the text content and images. However, we can help structure and optimize your content for SEO. If you need professional copywriting, we can refer you to our partners.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I update the site myself?</h3>
+                    <p class="faq-answer">Yes! We can teach you to make updates using AI tools (see our DIY AI Training for $497), or you can use our maintenance services starting at $15 per update.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What about hosting?</h3>
+                    <p class="faq-answer">We set up your site on free hosting platforms like GitHub Pages or Netlify. You only pay for your domain name (about $20/year). No monthly hosting fees!</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Is this good for local SEO?</h3>
+                    <p class="faq-answer">Absolutely! We include local SEO optimization, Google Business integration, and schema markup to help you rank in local searches. Perfect for Ottawa businesses!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Launch Your Business Online?</h2>
+            <p>Get a professional 5-page website in just 3 days for $297</p>
+            <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary">Book Your Free Consultation</a>
+            
+            <div class="contact-info">
+                <p>Questions? Call us: <a href="tel:343-597-5646">343-597-5646</a></p>
+                <p>Email: <a href="mailto:jay@barkerhrs.com">jay@barkerhrs.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p><a href="../../">Home</a> | <a href="../">Web Development</a> | <a href="../../privacy-policy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        if (animationsToggle) {
+            const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+            
+            // Apply initial state
+            if (!animationsEnabled) {
+                document.body.classList.add('no-animations');
+                animationsToggle.textContent = 'Turn on animations';
+            }
+            
+            // Toggle animations
+            animationsToggle.addEventListener('click', function() {
+                const isEnabled = !document.body.classList.contains('no-animations');
+                
+                if (isEnabled) {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                } else {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
