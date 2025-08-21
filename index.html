@@ -19,6 +19,10 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://thechatbotgenius.com/">
     
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/homepage-enhancements.css">
+    
     <!-- Open Graph Tags -->
     <meta property="og:title" content="AI Consultant Ottawa & Canada | ChatGPT Expert - Jay Tarzwell">
     <meta property="og:description" content="Transform your business with secure AI. Ottawa-based, globally serving. ChatGPT, Claude & privacy expert.">
@@ -58,8 +62,9 @@
       gtag('js', new Date());
       gtag('config', 'G-R76R0B7J9B');
     </script>
+    
     <style>
-        /* Inline CSS to ensure styles load */
+        /* Critical inline CSS for immediate rendering */
         * {
             margin: 0;
             padding: 0;
@@ -563,26 +568,6 @@
             position: relative;
         }
         
-        /* Pause button for rotating content */
-        
-        .pause-btn {
-            background: #ff8c42;
-            border: none;
-            color: white;
-            padding: 4px 12px;
-            cursor: pointer;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: background 0.3s ease;
-            display: inline-block;
-            vertical-align: middle;
-        }
-        
-        .pause-btn:hover {
-            background: #ff7329;
-        }
-        
         .stats-bar {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px 0;
@@ -696,6 +681,8 @@
             border: 0;
         }
         
+        /* Carousel, Spotlight, Ticker styles moved to /css/homepage-enhancements.css */
+        
         /* Mobile responsive styles */
         @media (max-width: 1200px) {
             .content-wrapper {
@@ -800,6 +787,71 @@
             
             .book-featured-grid img {
                 width: 220px !important;
+            }
+            
+            /* Carousel mobile styles */
+            .carousel-posts-grid {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-nav-prev {
+                left: 10px;
+            }
+            
+            .carousel-nav-next {
+                right: 10px;
+            }
+            
+            .post-image-container {
+                height: 180px;
+            }
+            
+            .carousel-track {
+                min-height: auto;
+            }
+            
+            /* Mobile styles for new features */
+            .spotlight-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .spotlight-title {
+                font-size: 2rem;
+            }
+            
+            .spotlight-visual {
+                order: -1;
+                margin-bottom: 30px;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .time-content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-media {
+                margin-bottom: 30px;
+            }
+            
+            @media (max-width: 600px) {
+                .metrics-grid {
+                    grid-template-columns: 1fr;
+                }
             }
         }
     </style>
@@ -1016,41 +1068,94 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <nav class="navbar" aria-label="Main navigation">
         <div class="container">
             <div class="nav-content">
-                <div class="nav-brand">
-                    <span aria-hidden="true">🤖</span> The Chatbot Genius
-                </div>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
-                    Menu
-                </button>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="/" aria-current="page">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="ai-news.html">AI News</a></li>
-                    <li><a href="books.html">Books</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" target="_blank" aria-label="Book a consultation call - opens in new window">Book a Call</a></li>
-                    <li><button id="toggle-animations" class="btn btn-secondary" style="padding: 8px 20px; border-radius: 5px; background: transparent; color: white; border: 1px solid white; cursor: pointer;" aria-label="Toggle animations on/off">Turn off animations</button></li>
-                </ul>
+                <a href="/" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/books.html" class="nav-link">Books</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <a href="/projects.html" class="nav-link">Projects</a>
+                    <a href="/ai-news.html" class="nav-link">AI News</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" aria-labelledby="hero-heading">
-        <div class="container">
-            <h1 id="hero-heading">AI Consultant Ottawa & Canada | ChatGPT & Claude Expert</h1>
-            <div class="tagline-banner">
-                <div class="tagline-rotation">
-                    <h2 id="rotating-tagline" aria-live="polite">Jay Tarzwell - Former Military Analyst | Building Secure AI Solutions Globally</h2>
+    <!-- Enhanced Hero Spotlight Section -->
+    <section class="hero-spotlight" id="hero-spotlight" aria-labelledby="hero-heading">
+        <div class="spotlight-carousel">
+            <div class="spotlight-track" id="spotlight-track">
+                <!-- Dynamic content will be loaded here -->
+                <div class="spotlight-slide" style="min-width: 100%; color: white; text-align: center; padding: 100px 20px;">
+                    <h1 style="font-size: 3rem;">Loading amazing content...</h1>
+                    <p style="font-size: 1.2rem;">If you see this, JavaScript is not loading properly.</p>
                 </div>
-                <div style="text-align: center; margin-top: 10px;">
-                    <button class="pause-btn" id="pause-rotation" aria-label="Pause tagline rotation">❚❚</button>
-                </div>
+            </div>
+            
+            <!-- Spotlight Navigation -->
+            <div class="spotlight-nav">
+                <button class="spotlight-nav-btn spotlight-prev" id="spotlight-prev" aria-label="Previous spotlight">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="spotlight-indicators" id="spotlight-indicators"></div>
+                <button class="spotlight-nav-btn spotlight-next" id="spotlight-next" aria-label="Next spotlight">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Live Content Ticker -->
+    <div class="content-ticker" id="content-ticker">
+        <div class="ticker-wrapper">
+            <div class="ticker-content" id="ticker-content">
+                <!-- Dynamic ticker content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Story Section -->
+    <section class="featured-story-section" id="featured-story">
+        <div class="featured-story-wrapper">
+            <div class="featured-header">
+                <span class="featured-badge">Featured This Week</span>
+                <h2 style="font-size: 3rem; color: #1a1f71; margin: 0;">Spotlight Story</h2>
+            </div>
+            <div class="featured-story-content" id="featured-content">
+                <!-- Dynamic featured content -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Dynamic Metrics Dashboard -->
+    <section class="metrics-dashboard" id="metrics-dashboard">
+        <div class="metrics-container">
+            <div class="metrics-grid" id="metrics-grid">
+                <!-- Dynamic metrics -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Time-Based Content Section -->
+    <section class="time-content" id="time-content">
+        <div class="time-content-wrapper">
+            <h2 class="time-greeting" id="time-greeting"></h2>
+            <p class="time-suggestion" id="time-suggestion"></p>
+            <div class="time-content-grid" id="time-grid">
+                <!-- Dynamic time-based content -->
             </div>
         </div>
     </section>
@@ -1058,16 +1163,41 @@
     <!-- Main Content with Sidebar -->
     <div class="content-wrapper">
         <main id="main-content" class="main-content">
-            <!-- Latest Insights Section -->
+            <!-- Latest Insights Section - Enhanced Carousel -->
             <section class="section" style="background: #f8f9fa;" aria-labelledby="insights-heading">
                 <div class="container">
                     <h2 id="insights-heading" style="text-align: center; font-size: 2.5rem; color: #1a1f71; margin-bottom: 3rem;">Latest Insights</h2>
-                    <div class="insights-grid" id="latest-insights-grid">
-                        <!-- Blog posts will be dynamically loaded here -->
-                        <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-                            <p>Loading latest blog posts...</p>
+                    
+                    <!-- Carousel Container -->
+                    <div class="blog-carousel-container">
+                        <!-- Main Carousel -->
+                        <div class="blog-carousel" id="blog-carousel">
+                            <div class="carousel-track" id="carousel-track">
+                                <!-- Posts will be dynamically loaded here -->
+                                <div style="text-align: center; padding: 40px;">
+                                    <p>Loading latest blog posts...</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="carousel-nav carousel-nav-prev" id="carousel-prev" aria-label="Previous posts">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="carousel-nav carousel-nav-next" id="carousel-next" aria-label="Next posts">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- Dots Navigation -->
+                        <div class="carousel-dots" id="carousel-dots">
+                            <!-- Dots will be dynamically generated -->
                         </div>
                     </div>
+                    
                     <div style="text-align: center; margin-top: 50px;">
                         <a href="blog.html" class="btn btn-primary">View All Blog Posts</a>
                     </div>
@@ -1213,18 +1343,14 @@
     
     <!-- Load blog posts data -->
     <script src="blog-posts-data.js"></script>
+    
+    <!-- Homepage Enhancement Scripts -->
+    <script src="js/homepage-enhancements.js" defer></script>
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const navLinks = document.getElementById('nav-links');
+        // Mobile menu toggle (if needed in future)
+        // Currently using standard responsive nav without toggle
         
-        mobileMenuToggle.addEventListener('click', function() {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !isExpanded);
-            navLinks.classList.toggle('show');
-        });
-        
-        // Rotating taglines with pause control
+        // Rotating taglines linked to global animation toggle
         const taglines = [
             "AI & Privacy Expert | Building Secure, Practical AI Solutions for SMBs",
             "Transform Your Business with AI in 10 Hours",
@@ -1235,9 +1361,8 @@
         
         let currentIndex = 0;
         let rotationInterval;
-        let isPaused = false;
+        let isPaused = localStorage.getItem('animationsEnabled') === 'false';
         const taglineElement = document.getElementById('rotating-tagline');
-        const pauseBtn = document.getElementById('pause-rotation');
         
         function rotateTagline() {
             if (!isPaused) {
@@ -1254,15 +1379,10 @@
         // Add transition style
         taglineElement.style.transition = 'opacity 0.5s ease-in-out';
         
-        // Start rotation
-        rotationInterval = setInterval(rotateTagline, 4000);
-        
-        // Pause/Play functionality
-        pauseBtn.addEventListener('click', function() {
-            isPaused = !isPaused;
-            this.textContent = isPaused ? '▶' : '❚❚';
-            this.setAttribute('aria-label', isPaused ? 'Play tagline rotation' : 'Pause tagline rotation');
-        });
+        // Start rotation only if animations are enabled
+        if (!isPaused) {
+            rotationInterval = setInterval(rotateTagline, 4000);
+        }
         
         // Close mobile menu when clicking outside
         document.addEventListener('click', function(event) {
@@ -1381,37 +1501,48 @@
         // Refresh news feed every 2 hours
         setInterval(loadNewsFeed, 2 * 60 * 60 * 1000);
         
-        // Function to load latest blog posts
-        function loadLatestBlogPosts() {
-            const container = document.getElementById('latest-insights-grid');
-            
-            // Sort posts by date (newest first)
-            const sortedPosts = blogPostsData.sort((a, b) => b.sortDate - a.sortDate);
-            
-            // Take the two most recent posts
-            const latestPosts = sortedPosts.slice(0, 2);
-            
-            // Generate HTML for the posts
-            let postsHTML = '';
-            latestPosts.forEach(post => {
-                postsHTML += `
-                    <article class="insight-card">
-                        <img src="${post.image}" alt="${post.imageAlt}" class="insight-image">
-                        <div class="insight-content">
-                            <h3>${post.title}</h3>
-                            <p>${post.excerpt}</p>
-                            <a href="${post.url}" class="insight-link">Read More →</a>
-                        </div>
-                    </article>
-                `;
-            });
-            
-            // Update the container with the posts
-            container.innerHTML = postsHTML;
-        }
+        // Blog carousel functionality moved to /js/homepage-enhancements.js
         
-        // Load blog posts on page load
-        loadLatestBlogPosts();
+        // Initialize carousel when DOM is ready
+        let blogCarousel;
+        
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing features...');
+            
+            // Small delay to ensure blog data is loaded
+            setTimeout(function() {
+                try {
+                    // Initialize blog carousel if data exists
+                    if (typeof blogPostsData !== 'undefined' && blogPostsData.length > 0) {
+                        console.log('Blog data found, initializing carousel and spotlight...');
+                        blogCarousel = new BlogCarousel();
+                        
+                        // Initialize hero spotlight (needs blog data)
+                        initializeHeroSpotlight();
+                    }
+                    
+                    // Initialize features that don't need blog data
+                    console.log('Initializing other features...');
+                    initializeContentTicker();
+                    initializeFeaturedStory();
+                    initializeMetricsDashboard();
+                    initializeTimeBasedContent();
+                } catch (error) {
+                    console.error('Error initializing features:', error);
+                }
+            }, 500);
+        });
+        
+        // Hero Spotlight moved to /js/homepage-enhancements.js
+        
+        // Content Ticker moved to /js/homepage-enhancements.js
+        
+        // Featured Story moved to /js/homepage-enhancements.js
+        
+        // Metrics Dashboard moved to /js/homepage-enhancements.js
+        
+        // Time-Based Content moved to /js/homepage-enhancements.js
         
         // Animations toggle functionality
         const animationsToggle = document.getElementById('toggle-animations');
@@ -1431,10 +1562,28 @@
                 document.body.classList.add('no-animations');
                 localStorage.setItem('animationsEnabled', 'false');
                 this.textContent = 'Turn on animations';
+                
+                // Stop carousel animation too
+                if (window.blogCarousel) {
+                    window.blogCarousel.handleAnimationToggle(false);
+                }
+                
+                // Stop tagline rotation
+                isPaused = true;
+                clearInterval(rotationInterval);
             } else {
                 document.body.classList.remove('no-animations');
                 localStorage.setItem('animationsEnabled', 'true');
                 this.textContent = 'Turn off animations';
+                
+                // Resume carousel animation
+                if (window.blogCarousel) {
+                    window.blogCarousel.handleAnimationToggle(true);
+                }
+                
+                // Resume tagline rotation
+                isPaused = false;
+                rotationInterval = setInterval(rotateTagline, 4000);
             }
         });
     </script>
@@ -1445,7 +1594,12 @@
             animation: none !important;
             transition: none !important;
         }
+        
+        .no-animations .ticker-content {
+            animation: none !important;
+        }
     </style>
     <!-- Universal Share Button -->
-    <script src="/js/share-button.js"></script></body>
+    <script src="js/share-button.js"></script>
+</body>
 </html>
