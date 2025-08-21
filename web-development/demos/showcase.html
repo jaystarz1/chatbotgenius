@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Event Website Examples | $97 Single Page Sites - The Chatbot Genius</title>
+    <meta name="description" content="See examples of our $97 event websites. Wedding, birthday, garage sale, fundraiser pages built in 24 hours. Professional design, mobile-ready, Ottawa web development.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R76R0B7J9B');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 20px;
+            background: #f8f9fa;
+            text-align: center;
+        }
+        
+        .breadcrumb a {
+            color: #4c5fd5;
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Demo Grid */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 3rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .demo-preview {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-preview.wedding {
+            background: linear-gradient(135deg, #f5d0d0 0%, #ffefd5 100%);
+        }
+        
+        .demo-preview.garage-sale {
+            background: linear-gradient(135deg, #87CEEB 0%, #FFE4B5 100%);
+        }
+        
+        .demo-preview.birthday {
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFDAB9 100%);
+        }
+        
+        .demo-preview.anniversary {
+            background: linear-gradient(135deg, #FFD700 0%, #FFF8DC 100%);
+        }
+        
+        .demo-preview.fundraiser {
+            background: linear-gradient(135deg, #98FB98 0%, #F0FFF0 100%);
+        }
+        
+        .demo-preview.corporate {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        }
+        
+        .demo-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #4caf50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .demo-status.coming-soon {
+            background: #ff9800;
+        }
+        
+        .demo-icon {
+            font-size: 4rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.3;
+        }
+        
+        .demo-content {
+            padding: 1.5rem;
+        }
+        
+        .demo-content h3 {
+            color: #1a1f71;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .demo-content p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .demo-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-features li {
+            padding: 0.25rem 0;
+            color: #666;
+        }
+        
+        .demo-features li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .demo-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            flex: 1;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-view {
+            background: #4c5fd5;
+            color: white;
+        }
+        
+        .btn-order {
+            background: #ff8c42;
+            color: white;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .price-highlight {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #f9c74f;
+            margin: 1rem 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1f71;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .demo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>Event Website Examples</h1>
+        <p>Professional single-page sites delivered in 24 hours for just $97</p>
+    </header>
+    
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+        <a href="/">Home</a> > 
+        <a href="/web-development.html">Web Development</a> > 
+        Event Demos
+    </nav>
+    
+    <!-- Demo Grid -->
+    <section class="demo-grid">
+        <!-- Wedding Demo -->
+        <div class="demo-card">
+            <div class="demo-preview wedding">
+                <span class="demo-status">Live Demo</span>
+                <div class="demo-icon">💕</div>
+            </div>
+            <div class="demo-content">
+                <h3>Wedding Website</h3>
+                <p>Elegant wedding announcement and RSVP site perfect for your special day.</p>
+                <ul class="demo-features">
+                    <li>RSVP form with meal choices</li>
+                    <li>Event timeline & locations</li>
+                    <li>Accommodation details</li>
+                    <li>Gift registry links</li>
+                </ul>
+                <div class="demo-buttons">
+                    <a href="/web-development/demos/wedding.html" class="btn btn-view">View Demo</a>
+                    <a href="/web-development.html#contact" class="btn btn-order">Order This</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Garage Sale Demo -->
+        <div class="demo-card">
+            <div class="demo-preview garage-sale">
+                <span class="demo-status coming-soon">Coming Soon</span>
+                <div class="demo-icon">🏷️</div>
+            </div>
+            <div class="demo-content">
+                <h3>Garage Sale</h3>
+                <p>Community garage sale or estate sale announcement page with maps and items.</p>
+                <ul class="demo-features">
+                    <li>Multiple addresses with map</li>
+                    <li>Item categories & highlights</li>
+                    <li>Date, time & rain date</li>
+                    <li>Contact information</li>
+                </ul>
+                <div class="demo-buttons">
+                    <a href="#" class="btn btn-view" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                    <a href="/web-development.html#contact" class="btn btn-order">Order This</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Birthday Demo -->
+        <div class="demo-card">
+            <div class="demo-preview birthday">
+                <span class="demo-status coming-soon">Coming Soon</span>
+                <div class="demo-icon">🎂</div>
+            </div>
+            <div class="demo-content">
+                <h3>Birthday Party</h3>
+                <p>Fun birthday invitation page for kids or adults with RSVP and party details.</p>
+                <ul class="demo-features">
+                    <li>Party theme & activities</li>
+                    <li>RSVP with guest count</li>
+                    <li>Gift ideas & wishlist</li>
+                    <li>Location & parking info</li>
+                </ul>
+                <div class="demo-buttons">
+                    <a href="#" class="btn btn-view" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                    <a href="/web-development.html#contact" class="btn btn-order">Order This</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Anniversary Demo -->
+        <div class="demo-card">
+            <div class="demo-preview anniversary">
+                <span class="demo-status coming-soon">Coming Soon</span>
+                <div class="demo-icon">🥂</div>
+            </div>
+            <div class="demo-content">
+                <h3>Anniversary Party</h3>
+                <p>Celebrate milestone anniversaries with an elegant invitation and details page.</p>
+                <ul class="demo-features">
+                    <li>Memory lane photo gallery</li>
+                    <li>Event details & dress code</li>
+                    <li>RSVP form</li>
+                    <li>Special messages section</li>
+                </ul>
+                <div class="demo-buttons">
+                    <a href="#" class="btn btn-view" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                    <a href="/web-development.html#contact" class="btn btn-order">Order This</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Fundraiser Demo -->
+        <div class="demo-card">
+            <div class="demo-preview fundraiser">
+                <span class="demo-status coming-soon">Coming Soon</span>
+                <div class="demo-icon">🎗️</div>
+            </div>
+            <div class="demo-content">
+                <h3>Fundraiser Event</h3>
+                <p>Charity or fundraising event page with donation options and cause information.</p>
+                <ul class="demo-features">
+                    <li>About the cause</li>
+                    <li>Donation buttons & goals</li>
+                    <li>Event schedule & tickets</li>
+                    <li>Sponsor recognition</li>
+                </ul>
+                <div class="demo-buttons">
+                    <a href="#" class="btn btn-view" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                    <a href="/web-development.html#contact" class="btn btn-order">Order This</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Corporate Event Demo -->
+        <div class="demo-card">
+            <div class="demo-preview corporate">
+                <span class="demo-status coming-soon">Coming Soon</span>
+                <div class="demo-icon">🏢</div>
+            </div>
+            <div class="demo-content">
+                <h3>Corporate Event</h3>
+                <p>Professional conference or corporate event page with registration and agenda.</p>
+                <ul class="demo-features">
+                    <li>Event agenda & speakers</li>
+                    <li>Registration form</li>
+                    <li>Venue & accommodation</li>
+                    <li>Sponsor logos</li>
+                </ul>
+                <div class="demo-buttons">
+                    <a href="#" class="btn btn-view" style="opacity: 0.5; cursor: not-allowed;">Coming Soon</a>
+                    <a href="/web-development.html#contact" class="btn btn-order">Order This</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Get Your Event Online Today</h2>
+        <div class="price-highlight">Just $97</div>
+        <p>Professional design • Mobile responsive • SEO optimized • 24-hour delivery</p>
+        <div style="margin-top: 2rem;">
+            <a href="/web-development.html#contact" class="btn btn-order" style="font-size: 1.2rem; padding: 15px 40px;">
+                Order Your Event Page Now →
+            </a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+            Perfect for: Weddings • Birthdays • Garage Sales • Fundraisers • Corporate Events • Anniversaries
+        </p>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 The Chatbot Genius | <a href="/web-development.html">Back to Web Development</a></p>
+    </footer>
+</body>
+</html>

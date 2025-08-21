@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Sarah & Michael's Wedding | June 15, 2025 | Ottawa</title>
+    <meta name="description" content="Join us for the wedding celebration of Sarah Thompson and Michael Chen on June 15, 2025 at the Château Laurier in Ottawa. RSVP and find all event details here.">
+    <meta name="keywords" content="Sarah Michael wedding, Ottawa wedding June 2025, Château Laurier wedding">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Sarah & Michael's Wedding - June 15, 2025">
+    <meta property="og:description" content="We're getting married! Join us for our special day in Ottawa.">
+    <meta property="og:image" content="https://example.com/couple-photo.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5d0d0 0%, #ffefd5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="80" fill="%23ffffff10" text-anchor="middle">💕</text></svg>') repeat;
+            animation: float 20s linear infinite;
+            opacity: 0.1;
+        }
+        
+        @keyframes float {
+            to { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+        
+        .couple-names {
+            font-size: 4rem;
+            color: #d4756b;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+        
+        .wedding-date {
+            font-size: 1.8rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-20px); }
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            color: #d4756b;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 300;
+        }
+        
+        .section-alt {
+            background: #fafafa;
+        }
+        
+        /* Details Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .detail-card {
+            text-align: center;
+        }
+        
+        .detail-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .detail-card h3 {
+            color: #d4756b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+        
+        /* RSVP Form */
+        .rsvp-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .btn {
+            background: #d4756b;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .btn:hover {
+            background: #c06057;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+        
+        .timeline-time {
+            min-width: 100px;
+            text-align: right;
+            padding-right: 2rem;
+            color: #d4756b;
+            font-weight: bold;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: 2rem;
+            border-left: 2px solid #f5d0d0;
+        }
+        
+        /* Map */
+        .map-container {
+            margin-top: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #d4756b;
+            color: white;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .footer h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .couple-names {
+                font-size: 2.5rem;
+            }
+            
+            .wedding-date {
+                font-size: 1.3rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-time {
+                text-align: left;
+                padding-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .timeline-content {
+                padding-left: 0;
+                border-left: none;
+                padding-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="couple-names">Sarah & Michael</h1>
+            <p class="wedding-date">June 15, 2025</p>
+            <p style="font-size: 1.2rem; color: #888;">Ottawa, Ontario</p>
+        </div>
+        <div class="scroll-indicator">
+            <svg width="30" height="30" viewBox="0 0 30 30">
+                <path d="M15 20 L8 13 L10 11 L15 16 L20 11 L22 13 Z" fill="#d4756b"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="section">
+        <h2>Our Story</h2>
+        <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; color: #666;">
+            We met at a coffee shop on Sparks Street five years ago. What started as a chance encounter 
+            over spilled lattes turned into the love story of our lives. Now we're ready to celebrate 
+            this next chapter with all of you – our cherished family and friends.
+        </p>
+    </section>
+
+    <!-- Event Details -->
+    <section class="section section-alt">
+        <h2>Event Details</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">⛪</div>
+                <h3>Ceremony</h3>
+                <p>4:00 PM</p>
+                <p>St. Andrew's Church</p>
+                <p>82 Kent Street, Ottawa</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">🥂</div>
+                <h3>Reception</h3>
+                <p>6:00 PM</p>
+                <p>Château Laurier Ballroom</p>
+                <p>1 Rideau Street, Ottawa</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule -->
+    <section class="section">
+        <h2>Wedding Day Schedule</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">3:30 PM</div>
+                <div class="timeline-content">
+                    <strong>Guest Arrival</strong>
+                    <p>Please arrive at St. Andrew's Church</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">4:00 PM</div>
+                <div class="timeline-content">
+                    <strong>Ceremony Begins</strong>
+                    <p>Exchange of vows and rings</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">5:00 PM</div>
+                <div class="timeline-content">
+                    <strong>Cocktail Hour</strong>
+                    <p>Drinks and appetizers at Château Laurier</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">6:00 PM</div>
+                <div class="timeline-content">
+                    <strong>Reception & Dinner</strong>
+                    <p>Dinner, speeches, and dancing</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">11:00 PM</div>
+                <div class="timeline-content">
+                    <strong>Late Night Snacks</strong>
+                    <p>Poutine bar and sweet treats</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="section section-alt">
+        <h2>RSVP</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">Please respond by May 1, 2025</p>
+        
+        <form class="rsvp-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="attending">Will you be attending?</label>
+                <select id="attending" name="attending" required>
+                    <option value="">Please select...</option>
+                    <option value="yes">Joyfully Accept</option>
+                    <option value="no">Regretfully Decline</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="guests">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="dietary">Dietary Restrictions</label>
+                <textarea id="dietary" name="dietary" rows="3" placeholder="Please let us know of any allergies or dietary needs"></textarea>
+            </div>
+            
+            <button type="submit" class="btn">Send RSVP</button>
+        </form>
+    </section>
+
+    <!-- Accommodations -->
+    <section class="section">
+        <h2>Accommodations</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">We have room blocks at the following hotels:</p>
+        
+        <div class="details-grid">
+            <div class="detail-card">
+                <h3>Château Laurier</h3>
+                <p>1 Rideau Street</p>
+                <p>Use code: THOMPSON-CHEN</p>
+                <p>$189/night</p>
+            </div>
+            <div class="detail-card">
+                <h3>Lord Elgin Hotel</h3>
+                <p>100 Elgin Street</p>
+                <p>Use code: SARAHMIKE2025</p>
+                <p>$159/night</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registry -->
+    <section class="section section-alt">
+        <h2>Gift Registry</h2>
+        <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 600px; margin: 0 auto;">
+            Your presence at our wedding is the greatest gift of all. However, if you wish to honour us 
+            with a gift, we have registries at the following stores:
+        </p>
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="font-size: 1.2rem;">Hudson's Bay | Williams Sonoma | Amazon</p>
+        </div>
+    </section>
+
+    <!-- Map -->
+    <section class="section">
+        <h2>Locations</h2>
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.575667328942!2d-75.69719668444666!3d45.42114797910046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce05b25f5113af%3A0x8a6a51e131dd15ed!2sFairmont%20Château%20Laurier!5e0!3m2!1sen!2sca!4v1234567890" 
+                width="100%" 
+                height="400" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>#SarahAndMike2025</h3>
+        <p>We can't wait to celebrate with you!</p>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
+            Website created in 24 hours by The Chatbot Genius<br>
+            <a href="https://thechatbotgenius.com" style="color: white;">Get your event website for $97</a>
+        </p>
+    </footer>
+
+    <script>
+        // Handle RSVP form submission
+        document.querySelector('.rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const attending = formData.get('attending');
+            const guests = formData.get('guests');
+            const dietary = formData.get('dietary');
+            
+            // Build email body
+            let emailBody = `RSVP from ${name}\n\n`;
+            emailBody += `Email: ${email}\n`;
+            emailBody += `Attending: ${attending === 'yes' ? 'Yes' : 'No'}\n`;
+            emailBody += `Number of Guests: ${guests}\n`;
+            if (dietary) {
+                emailBody += `Dietary Restrictions: ${dietary}\n`;
+            }
+            
+            // Create mailto link
+            const subject = `Wedding RSVP from ${name}`;
+            const mailtoLink = `mailto:sarah.and.mike@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show confirmation
+            this.innerHTML = `
+                <div style="text-align: center; padding: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">💕</div>
+                    <h3 style="color: #d4756b; margin-bottom: 1rem;">Thank You!</h3>
+                    <p>Your RSVP has been prepared. Please send the email to confirm.</p>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

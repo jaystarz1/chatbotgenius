@@ -629,6 +629,10 @@ let blogCarousel;
 // Function to initialize everything
 function initializeHomepageFeatures() {
     console.log('Initializing homepage features...');
+    console.log('blogPostsData exists?', typeof blogPostsData !== 'undefined');
+    if (typeof blogPostsData !== 'undefined') {
+        console.log('blogPostsData length:', blogPostsData.length);
+    }
     
     try {
         // Initialize blog carousel if data exists

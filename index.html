@@ -160,15 +160,18 @@
         
         .main-content {
             flex: 1;
-            max-width: 1200px;
+            /* Removed max-width to allow proper flex layout */
         }
         
         /* News Sidebar Styles */
         .news-sidebar {
-            width: 380px;
+            width: 380px !important;
             flex-shrink: 0;
             margin-top: 0;
             padding-top: 20px;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         .news-sidebar-inner {
@@ -1345,7 +1348,7 @@
     <script src="blog-posts-data.js"></script>
     
     <!-- Homepage Enhancement Scripts -->
-    <script src="js/homepage-enhancements.js" defer></script>
+    <script src="js/homepage-enhancements.js"></script>
     <script>
         // Mobile menu toggle (if needed in future)
         // Currently using standard responsive nav without toggle
@@ -1364,6 +1367,8 @@
         let isPaused = localStorage.getItem('animationsEnabled') === 'false';
         const taglineElement = document.getElementById('rotating-tagline');
         
+        // Only run tagline rotation if element exists
+        if (taglineElement) {
         function rotateTagline() {
             if (!isPaused) {
                 currentIndex = (currentIndex + 1) % taglines.length;
@@ -1383,64 +1388,114 @@
         if (!isPaused) {
             rotationInterval = setInterval(rotateTagline, 4000);
         }
+        } // End of taglineElement check
         
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.nav-content') && navLinks.classList.contains('show')) {
-                navLinks.classList.remove('show');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-            }
-        });
+        // Mobile menu code removed - no longer needed with new navbar structure
         
-        // Close mobile menu when pressing Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && navLinks.classList.contains('show')) {
-                navLinks.classList.remove('show');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.focus();
-            }
-        });
-
         // RSS Feed Functionality
         async function loadNewsFeed() {
+            console.log('loadNewsFeed called!');
             const feedContainer = document.getElementById('news-feed');
-            const rssFeedUrl = 'https://www.google.ca/alerts/feeds/04066946017456136967/4823471870123205';
+            console.log('Feed container:', feedContainer);
             
-            // Using a CORS proxy to fetch RSS feed
-            // Try multiple proxies in case one fails
-            const proxies = [
-                'https://corsproxy.io/?',
-                'https://api.allorigins.win/raw?url=',
-                'https://cors-anywhere.herokuapp.com/'
-            ];
-            
-            let data = null;
-            let error = null;
-            
-            // Try each proxy until one works
-            for (const proxy of proxies) {
-                try {
-                    const response = await fetch(proxy + encodeURIComponent(rssFeedUrl));
-                    if (response.ok) {
-                        data = await response.text();
-                        break;
-                    }
-                } catch (e) {
-                    error = e;
-                    continue;
-                }
+            // Safety check - ensure element exists
+            if (!feedContainer) {
+                console.error('news-feed element not found');
+                return;
             }
             
-            if (!data) {
-                throw error || new Error('All proxies failed');
-            }
-            
+            console.log('Loading static news items...');
             try {
+                // Show static AI news items as fallback/default
+                const staticNews = [
+                    {
+                        title: "Claude 3.5 Sonnet Sets New Benchmarks",
+                        link: "/ai-news.html",
+                        excerpt: "Anthropic's latest model excels at coding, analysis, and creative tasks.",
+                        date: "Latest"
+                    },
+                    {
+                        title: "ChatGPT Voice Mode Rolling Out",
+                        link: "/ai-news.html", 
+                        excerpt: "OpenAI releases advanced voice capabilities to Plus subscribers.",
+                        date: "This Week"
+                    },
+                    {
+                        title: "Google Gemini 2.0 Announced",
+                        link: "/ai-news.html",
+                        excerpt: "Next generation multimodal AI with enhanced reasoning capabilities.",
+                        date: "Recent"
+                    },
+                    {
+                        title: "AI Coding Assistants Transform Development",
+                        link: "/blog/claude-desktop-mcp-website-experiment.html",
+                        excerpt: "How Claude Desktop and MCP servers enable non-coders to build websites.",
+                        date: "Featured"
+                    },
+                    {
+                        title: "The AI Jobs Paradox",
+                        link: "/blog/ai-jobs-paradox-ceos-wrong.html",
+                        excerpt: "Why CEOs are wrong about AI replacing workers - data shows 400% productivity boost.",
+                        date: "Must Read"
+                    }
+                ];
+                
+                let newsHTML = '';
+                staticNews.forEach(item => {
+                    newsHTML += `
+                        <article class="news-item">
+                            <h4><a href="${item.link}">${item.title}</a></h4>
+                            <p class="news-meta">${item.date}</p>
+                            <p>${item.excerpt}</p>
+                        </article>
+                    `;
+                });
+                
+                console.log('Generated news HTML:', newsHTML);
+                feedContainer.innerHTML = newsHTML;
+                console.log('News HTML set to container');
+                
+                // Add "View All" link at the bottom
+                feedContainer.innerHTML += `
+                    <div style="text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+                        <a href="/ai-news.html" style="color: #4c5fd5; text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                            View All AI News →
+                        </a>
+                    </div>
+                `;
+                
+                // Try to load live RSS feed in background
+                const rssFeedUrl = 'https://www.google.ca/alerts/feeds/04066946017456136967/4823471870123205';
+                const proxies = [
+                    'https://corsproxy.io/?',
+                    'https://api.allorigins.win/raw?url='
+                ];
+                
+                let data = null;
+                for (const proxy of proxies) {
+                    try {
+                        const response = await fetch(proxy + encodeURIComponent(rssFeedUrl));
+                        if (response.ok) {
+                            data = await response.text();
+                            break;
+                        }
+                    } catch (e) {
+                        console.log('Proxy failed:', proxy);
+                        continue;
+                    }
+                }
+                
+                if (!data) {
+                    console.log('Using static news feed - RSS proxies unavailable');
+                    return; // Keep static news
+                }
+                
+                // Try to parse RSS if we got data
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(data, "text/xml");
                 
                 const items = xmlDoc.querySelectorAll("entry");
-                let newsHTML = '';
+                newsHTML = ''; // Reset newsHTML instead of redeclaring
                 
                 // Process first 20 items
                 Array.from(items).slice(0, 20).forEach(item => {
@@ -1485,7 +1540,7 @@
                 `;
                 
             } catch (error) {
-                console.error('Error loading RSS feed:', error);
+                console.error('Error loading news feed:', error);
                 feedContainer.innerHTML = `
                     <div class="news-error">
                         <p>Unable to load news feed at the moment.</p>
@@ -1495,20 +1550,25 @@
             }
         }
         
-        // Load news feed on page load
-        loadNewsFeed();
-        
-        // Refresh news feed every 2 hours
-        setInterval(loadNewsFeed, 2 * 60 * 60 * 1000);
-        
         // Blog carousel functionality moved to /js/homepage-enhancements.js
         
         // Initialize carousel when DOM is ready
-        let blogCarousel;
+        // blogCarousel variable is declared in homepage-enhancements.js
         
         // Wait for DOM to be ready
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, initializing features...');
+            
+            // FIRST PRIORITY - Load news feed when DOM is ready
+            try {
+                console.log('Attempting to load news feed...');
+                loadNewsFeed();
+                
+                // Refresh news feed every 2 hours
+                setInterval(loadNewsFeed, 2 * 60 * 60 * 1000);
+            } catch (e) {
+                console.error('Error loading news feed:', e);
+            }
             
             // Small delay to ensure blog data is loaded
             setTimeout(function() {
@@ -1516,7 +1576,10 @@
                     // Initialize blog carousel if data exists
                     if (typeof blogPostsData !== 'undefined' && blogPostsData.length > 0) {
                         console.log('Blog data found, initializing carousel and spotlight...');
-                        blogCarousel = new BlogCarousel();
+                        // Use the global blogCarousel from homepage-enhancements.js
+                        if (!window.blogCarousel) {
+                            window.blogCarousel = new BlogCarousel();
+                        }
                         
                         // Initialize hero spotlight (needs blog data)
                         initializeHeroSpotlight();
