@@ -86,10 +86,37 @@
             height: 70px;
         }
         
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+        
         .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.5rem;
             font-weight: bold;
             color: white;
+            text-decoration: none;
+            white-space: nowrap;
         }
         
         .mobile-menu-toggle {
@@ -162,6 +189,15 @@
             transition: all 0.3s ease;
             white-space: nowrap;
             display: inline-block;
+        }
+        
+        .btn-secondary {
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
         }
         
         .btn-book:hover {
@@ -364,25 +400,24 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <nav class="navbar" aria-label="Main navigation">
         <div class="container">
             <div class="nav-content">
-                <div class="nav-brand">
-                    <span aria-hidden="true">🤖</span> The Chatbot Genius
-                </div>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation menu">
-                    Menu
-                </button>
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../ai-news.html">AI News</a></li>
-                    <li><a href="../books.html">Books</a></li>
-                    <li><a href="../blog.html">Blog</a></li>
-                    <li><a href="../projects.html">Projects</a></li>
-                    <li><a href="../index.html#contact">Contact</a></li>
-                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" target="_blank" aria-label="Book a consultation call - opens in new window">Book a Call</a></li>
-                </ul>
+                <a href="../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../" class="nav-link">Home</a>
+                    <a href="../about.html" class="nav-link">About</a>
+                    <a href="../books.html" class="nav-link">Books</a>
+                    <a href="../blog.html" class="nav-link">Blog</a>
+                    <a href="../projects.html" class="nav-link">Projects</a>
+                    <a href="../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
             </div>
         </div>
     </nav>

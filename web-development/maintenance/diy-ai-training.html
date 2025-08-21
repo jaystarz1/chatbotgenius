@@ -115,6 +115,110 @@
             box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
         }
 
+        /* Web Dev Navigation */
+        .web-dev-nav {
+            background: rgba(26, 31, 113, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
+            position: sticky;
+            top: 80px;
+            z-index: 900;
+        }
+
+        .web-dev-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .web-nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .web-nav-link:hover {
+            color: #f9c74f;
+            background: rgba(249, 199, 79, 0.1);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-toggle {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-toggle:hover,
+        .dropdown-toggle.active {
+            color: #f9c74f;
+            background: rgba(249, 199, 79, 0.1);
+        }
+
+        .dropdown-arrow {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .dropdown.open .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            margin-top: 10px;
+            z-index: 1000;
+        }
+
+        .dropdown.open .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-radius: 8px;
+            margin: 5px;
+        }
+
+        .dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1a1f71;
+        }
+
         .btn-secondary {
             padding: 8px 20px;
             background: transparent;
@@ -605,6 +709,39 @@
         </div>
     </nav>
 
+    <!-- Web Development Sub-Navigation -->
+    <nav class="web-dev-nav">
+        <div class="container">
+            <div class="web-dev-menu">
+                <a href="../" class="web-nav-link">Web Development Home</a>
+                <div class="dropdown">
+                    <div class="dropdown-toggle">
+                        Packages <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="../packages/starter-site.html">Starter Site - $497</a>
+                        <a href="../packages/business-site.html">Business Site - $997</a>
+                        <a href="../packages/premium-site.html">Premium Site - $1997</a>
+                        <a href="../packages/event-page.html">View All Packages</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-toggle active">
+                        Maintenance <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="diy-ai-training.html">DIY AI Training - $497</a>
+                        <a href="monthly-monitoring.html">Monthly Monitoring - $97/mo</a>
+                        <a href="pay-as-you-go.html">Pay As You Go - $15/update</a>
+                    </div>
+                </div>
+                <a href="../add-ons/" class="web-nav-link">Add-Ons</a>
+                <a href="../faq.html" class="web-nav-link">FAQ</a>
+                <a href="../contact.html" class="web-nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -946,6 +1083,38 @@
             this.textContent = document.body.classList.contains('no-animations') 
                 ? 'Turn on animations' 
                 : 'Turn off animations';
+        });
+
+        // Dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.classList.remove('open');
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    dropdown.classList.toggle('open');
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    dropdowns.forEach(dropdown => {
+                        dropdown.classList.remove('open');
+                    });
+                }
+            });
         });
     </script>
 </body>

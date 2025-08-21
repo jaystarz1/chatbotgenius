@@ -115,6 +115,108 @@
             box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
         }
 
+        /* Web Dev Sub-Navigation */
+        .web-dev-nav {
+            background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
+            position: sticky;
+            top: 70px;
+            z-index: 1000;
+        }
+
+        .web-dev-menu {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .web-nav-link {
+            color: #1a1f71;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .web-nav-link:hover {
+            background: rgba(26, 31, 113, 0.1);
+            color: #4c5fd5;
+        }
+        
+        .web-nav-link.active {
+            background: rgba(26, 31, 113, 0.15);
+            color: #1a1f71;
+        }
+
+        .web-nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 10px;
+            min-width: 220px;
+            margin-top: 5px;
+        }
+
+        .web-nav-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px 15px;
+            color: #495057;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .dropdown-content a:hover {
+            background: #f8f9fa;
+            color: #1a1f71;
+        }
+
+        .web-nav-cta {
+            background: linear-gradient(135deg, #f9c74f 0%, #f39c12 100%);
+            color: #1a1f71;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: auto;
+            transition: all 0.3s;
+        }
+
+        .web-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 0.8em;
+        }
+
         .btn-secondary {
             padding: 8px 20px;
             background: transparent;
@@ -609,6 +711,51 @@
                     <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
                     <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
                 </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Web Dev Sub-Navigation -->
+    <nav class="web-dev-nav" aria-label="Web Development Services Navigation">
+        <div class="container">
+            <div class="web-dev-menu">
+                <!-- Overview -->
+                <a href="../" class="web-nav-link">Overview</a>
+                
+                <!-- Demos Dropdown -->
+                <div class="web-nav-dropdown">
+                    <button class="web-nav-link dropdown-toggle active">
+                        Demos <span class="arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="showcase.html">🎨 View All Demos</a>
+                        <a href="wedding.html">💑 Wedding</a>
+                        <a href="birthday.html">🎂 Birthday</a>
+                        <a href="anniversary.html">💝 Anniversary</a>
+                        <a href="fundraiser.html">💖 Fundraiser</a>
+                        <a href="garage-sale.html">🏷️ Garage Sale</a>
+                        <a href="corporate-event.html">🏢 Corporate</a>
+                    </div>
+                </div>
+                
+                <!-- Packages Dropdown -->
+                <div class="web-nav-dropdown">
+                    <button class="web-nav-link dropdown-toggle">
+                        Packages <span class="arrow">▼</span>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="../packages/event-page.html">🎉 Event Page - $97</a>
+                        <a href="../packages/business-website.html">🏢 Business Website - $297</a>
+                        <a href="../packages/ecommerce.html">🛍️ E-commerce - $497</a>
+                        <a href="../packages/custom.html">✨ Custom Solution</a>
+                    </div>
+                </div>
+                
+                <!-- Maintenance -->
+                <a href="../maintenance/" class="web-nav-link">Maintenance</a>
+                
+                <!-- CTA -->
+                <a href="https://calendly.com/jay-barkerhrs/30min" class="web-nav-cta">Book Free Consultation</a>
             </div>
         </div>
     </nav>

@@ -30,52 +30,117 @@
             background-color: #f5f5f5;
         }
         
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
         /* Navigation */
-        nav {
+        .navbar {
             background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
-            padding: 1rem 0;
-            position: fixed;
+            color: white;
+            padding: 0;
+            position: sticky;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
         }
         
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            height: 70px;
         }
         
-        nav .logo {
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.5rem;
             font-weight: bold;
-            color: #f9c74f;
-            text-decoration: none;
-        }
-        
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-        
-        nav a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            white-space: nowrap;
         }
         
-        nav a:hover {
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
             color: #f9c74f;
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: 600;
+            border: 2px solid #ff8c42;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        
+        .btn-book:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
         }
         
         /* Main Content */
         main {
-            margin-top: 80px;
             padding: 2rem 0;
         }
         
@@ -227,18 +292,44 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
+    <!-- Top Banner -->
+    <div class="top-banner">
         <div class="container">
-            <a href="index.html" class="logo">The Chatbot Genius</a>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="books.html">Books</a></li>
-                <li><a href="ai-news.html">AI News</a></li>
-                <li><a href="ai-insights.html">AI Insights</a></li>
-                <li><a href="projects.html">Projects</a></li>
-            </ul>
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/books.html" class="nav-link">Books</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <a href="/projects.html" class="nav-link">Projects</a>
+                    <a href="/ai-news.html" class="nav-link">AI News</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
         </div>
     </nav>
     

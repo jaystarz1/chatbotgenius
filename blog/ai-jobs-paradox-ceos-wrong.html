@@ -254,17 +254,24 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
+        <nav class="navbar" aria-label="Main navigation">
         <div class="container">
             <div class="nav-content">
-                <a href="/" class="logo">The Chatbot Genius</a>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About</a></li>
-                    <li><a href="/books.html">Books</a></li>
-                    <li><a href="/blog.html">Blog</a></li>
-                    <li><a href="/projects.html">Projects</a></li>
-                </ul>
+                <a href="../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../" class="nav-link">Home</a>
+                    <a href="../about.html" class="nav-link">About</a>
+                    <a href="../books.html" class="nav-link">Books</a>
+                    <a href="../blog.html" class="nav-link">Blog</a>
+                    <a href="../projects.html" class="nav-link">Projects</a>
+                    <a href="../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
             </div>
         </div>
     </nav>

@@ -143,8 +143,33 @@ git push
 
 ## Critical Information
 
-### Navigation Bar HTML Structure
-The navigation bar MUST follow this exact structure in all pages, including the animations toggle button:
+### MANDATORY Navigation Structure (NEVER DEVIATE)
+
+**IMPORTANT**: Every page on the site (except standalone privacy policies) MUST have consistent navigation. This is critical for professional appearance and user experience.
+
+#### 1. Top Banner (Required on ALL main pages)
+```html
+<!-- Top Banner -->
+<div class="top-banner">
+    <div class="container">
+        <div class="banner-content">
+            <span class="banner-item">
+                <span aria-hidden="true">✍️</span> Writer & Publisher
+            </span>
+            <span class="banner-separator" aria-hidden="true">•</span>
+            <span class="banner-item">
+                <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+            </span>
+            <span class="banner-separator" aria-hidden="true">•</span>
+            <span class="banner-item">
+                <span aria-hidden="true">🎓</span> Generative AI Trainer
+            </span>
+        </div>
+    </div>
+</div>
+```
+
+#### 2. Navigation Bar (EXACT structure required)
 ```html
 <nav class="navbar" aria-label="Main navigation">
     <div class="container">
@@ -168,6 +193,51 @@ The navigation bar MUST follow this exact structure in all pages, including the 
     </div>
 </nav>
 ```
+
+**For blog posts**, use relative paths: `href="../"` for Home and `href="../about.html"` for other pages.
+
+#### 3. Required CSS for Navigation
+```css
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap; /* CRITICAL: Prevents wrapping to two lines */
+}
+
+.logo {
+    font-size: 2rem;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #f9c74f;
+}
+```
+
+#### Navigation Requirements Summary:
+1. **Banner**: Present on ALL main pages (Home, About, Books, Blog, Projects, AI News)
+2. **Nav Brand**: MUST be clickable `<a>` tag linking to home, NOT a `<div>`
+3. **Brand Text**: "The Chatbot Genius" must stay on ONE LINE (use `white-space: nowrap`)
+4. **Link Order**: Home → About → Books → Blog → Projects → AI News → Contact
+5. **Buttons**: Orange "Book a Call" button + White "Turn off animations" button
+6. **Structure**: Use `<nav class="nav-menu">` with direct `<a>` tags, NOT `<ul><li>` structure
 
 ### Animations Toggle Feature
 **IMPORTANT**: All new pages MUST include the animations toggle functionality:
