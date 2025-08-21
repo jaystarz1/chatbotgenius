@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Page Package - $97 | The Chatbot Genius</title>
+    <meta name="description" content="Get your event online in 24 hours! Perfect for weddings, birthdays, fundraisers, and community events. Mobile-responsive AI-generated design starting at just $97.">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Package Hero */
+        .package-hero {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .package-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .delivery-promise {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+        }
+
+        /* Package Tiers */
+        .tiers-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 50px;
+        }
+
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tier-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .tier-header {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .tier-basic .tier-header {
+            background: linear-gradient(135deg, #6c757d, #495057);
+        }
+
+        .tier-recurring .tier-header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+        }
+
+        .tier-premier .tier-header {
+            background: linear-gradient(135deg, #ffc107, #ff9800);
+        }
+
+        .tier-header h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .tier-price {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .tier-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 5px;
+        }
+
+        .tier-body {
+            padding: 30px;
+        }
+
+        .tier-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .tier-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tier-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        .feature-no {
+            color: #dc3545;
+        }
+
+        .tier-best-for {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .best-for-title {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+
+        .btn-select {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            font-size: 1.1rem;
+            border-radius: 10px;
+        }
+
+        .btn-select:hover {
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .feature-icon-large {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #4c5fd5;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #4c5fd5;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 0 40px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #4c5fd5;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .step-time {
+            color: #28a745;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Examples Section */
+        .examples-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .example-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .example-image {
+            height: 150px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .example-info {
+            padding: 20px;
+        }
+
+        .example-title {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 5px;
+        }
+
+        .example-type {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1f71, #4c5fd5);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(243, 156, 18, 0.4);
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .package-hero h1 {
+                font-size: 2rem;
+            }
+
+            .tiers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+            }
+
+            .step-content {
+                margin: 0 0 0 40px;
+            }
+
+            .step-number {
+                left: 20px;
+            }
+        }
+
+        /* Animations toggle */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../../" class="nav-link">Home</a>
+                    <a href="../../about.html" class="nav-link">About</a>
+                    <a href="../../books.html" class="nav-link">Books</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="../../projects.html" class="nav-link">Projects</a>
+                    <a href="../../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Package Hero -->
+    <section class="package-hero">
+        <div class="container">
+            <div class="price-badge">Starting at $97</div>
+            <h1>Event Page Package</h1>
+            <p class="hero-subtitle">Get Your Event Online in Just 24 Hours!</p>
+            <div class="delivery-promise">
+                ⚡ Guaranteed 24-Hour Delivery
+            </div>
+        </div>
+    </section>
+
+    <!-- Package Tiers -->
+    <section class="tiers-section">
+        <div class="container">
+            <h2 class="section-title">Choose Your Event Page Type</h2>
+            
+            <div class="tiers-grid">
+                <!-- Basic Event Page -->
+                <div class="tier-card tier-basic">
+                    <div class="tier-header">
+                        <h3>Basic Event Page</h3>
+                        <div class="tier-price">$97</div>
+                        <div class="tier-subtitle">One-time events</div>
+                    </div>
+                    <div class="tier-body">
+                        <div class="tier-best-for">
+                            <div class="best-for-title">Best For:</div>
+                            Weddings, Birthday Parties, Baby Showers, Private Events
+                        </div>
+                        <ul class="tier-features">
+                            <li><span class="feature-icon">✓</span> Custom AI-generated design</li>
+                            <li><span class="feature-icon">✓</span> Mobile responsive</li>
+                            <li><span class="feature-icon">✓</span> RSVP/contact form</li>
+                            <li><span class="feature-icon">✓</span> Shareable link</li>
+                            <li><span class="feature-icon">✓</span> Hosted for 14 days post-event</li>
+                            <li><span class="feature-icon feature-no">✗</span> NO SEO (private by design)</li>
+                            <li><span class="feature-icon">✓</span> 24-hour delivery</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-select">Get Started</a>
+                    </div>
+                </div>
+
+                <!-- Recurring Event Page -->
+                <div class="tier-card tier-recurring">
+                    <div class="tier-header">
+                        <h3>Recurring Event Page</h3>
+                        <div class="tier-price">$97</div>
+                        <div class="tier-subtitle">+ $6/month hosting</div>
+                    </div>
+                    <div class="tier-body">
+                        <div class="tier-best-for">
+                            <div class="best-for-title">Best For:</div>
+                            Clubs, Workshops, Classes, Annual Events
+                        </div>
+                        <ul class="tier-features">
+                            <li><span class="feature-icon">✓</span> Everything in Basic</li>
+                            <li><span class="feature-icon">✓</span> Year-round hosting</li>
+                            <li><span class="feature-icon">✓</span> Updateable content</li>
+                            <li><span class="feature-icon">✓</span> Consistent URL</li>
+                            <li><span class="feature-icon">✓</span> $47 per major update</li>
+                            <li><span class="feature-icon feature-no">✗</span> NO SEO (private)</li>
+                            <li><span class="feature-icon">✓</span> 24-hour delivery</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-select">Get Started</a>
+                    </div>
+                </div>
+
+                <!-- Premier Event Page -->
+                <div class="tier-card tier-premier">
+                    <div class="tier-header">
+                        <h3>Premier Event Page</h3>
+                        <div class="tier-price">$197</div>
+                        <div class="tier-subtitle">First year included</div>
+                    </div>
+                    <div class="tier-body">
+                        <div class="tier-best-for">
+                            <div class="best-for-title">Best For:</div>
+                            Conferences, Fundraisers, Public Events, Festivals
+                        </div>
+                        <ul class="tier-features">
+                            <li><span class="feature-icon">✓</span> Everything in Recurring</li>
+                            <li><span class="feature-icon">✓</span> FULL SEO OPTIMIZATION</li>
+                            <li><span class="feature-icon">✓</span> Event schema markup</li>
+                            <li><span class="feature-icon">✓</span> Google event cards</li>
+                            <li><span class="feature-icon">✓</span> Custom domain setup</li>
+                            <li><span class="feature-icon">✓</span> 1 update/month included</li>
+                            <li><span class="feature-icon">✓</span> 48-hour priority delivery</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-select">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">What You Get</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-large">🎨</div>
+                    <h3 class="feature-title">AI-Powered Design</h3>
+                    <p class="feature-description">Professional, custom design generated by AI and refined by human expertise. Matches your event theme perfectly.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">📱</div>
+                    <h3 class="feature-title">Mobile Responsive</h3>
+                    <p class="feature-description">Looks perfect on every device. Your guests can view and RSVP from their phones, tablets, or computers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">⚡</div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">24-hour delivery for basic events. No waiting weeks like traditional agencies. Get online before your invitations arrive!</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">📝</div>
+                    <h3 class="feature-title">RSVP Management</h3>
+                    <p class="feature-description">Built-in forms for RSVPs, contact info, and special requests. Get notifications when guests respond.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🔗</div>
+                    <h3 class="feature-title">Easy Sharing</h3>
+                    <p class="feature-description">Simple link to share via text, email, or social media. No complicated URLs to remember.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon-large">🏆</div>
+                    <h3 class="feature-title">Professional Quality</h3>
+                    <p class="feature-description">Don't settle for Facebook events or basic templates. Get a professional page that impresses your guests.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Quick Call</h3>
+                        <div class="step-time">15 minutes</div>
+                        <p>We'll discuss your event details, theme, and any special requirements. Share your vision and we'll make it happen.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">AI Design</h3>
+                        <div class="step-time">2-4 hours</div>
+                        <p>Our AI creates a custom design based on your requirements. We then refine it to ensure it's perfect for your event.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Development</h3>
+                        <div class="step-time">4-6 hours</div>
+                        <p>We build your page with all features including RSVP forms, maps, and any custom elements you need.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Launch!</h3>
+                        <div class="step-time">Within 24 hours</div>
+                        <p>Your event page goes live with a shareable link. Start sending it to guests immediately!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="examples-section">
+        <div class="container">
+            <h2 class="section-title">See Our Event Pages in Action</h2>
+            
+            <div class="examples-grid">
+                <a href="../demos/wedding.html" class="example-card">
+                    <div class="example-image">💑</div>
+                    <div class="example-info">
+                        <h3 class="example-title">Wedding Celebration</h3>
+                        <p class="example-type">Basic Event - $97</p>
+                    </div>
+                </a>
+                
+                <a href="../demos/birthday.html" class="example-card">
+                    <div class="example-image">🎂</div>
+                    <div class="example-info">
+                        <h3 class="example-title">Birthday Party</h3>
+                        <p class="example-type">Basic Event - $97</p>
+                    </div>
+                </a>
+                
+                <a href="../demos/garage-sale.html" class="example-card">
+                    <div class="example-image">🏷️</div>
+                    <div class="example-info">
+                        <h3 class="example-title">Community Garage Sale</h3>
+                        <p class="example-type">Basic Event - $97</p>
+                    </div>
+                </a>
+                
+                <a href="../demos/anniversary.html" class="example-card">
+                    <div class="example-image">💝</div>
+                    <div class="example-info">
+                        <h3 class="example-title">Anniversary Celebration</h3>
+                        <p class="example-type">Recurring Event - $97</p>
+                    </div>
+                </a>
+                
+                <a href="../demos/fundraiser.html" class="example-card">
+                    <div class="example-image">🎗️</div>
+                    <div class="example-info">
+                        <h3 class="example-title">Charity Fundraiser</h3>
+                        <p class="example-type">Premier Event - $197</p>
+                    </div>
+                </a>
+                
+                <a href="../demos/corporate-event.html" class="example-card">
+                    <div class="example-image">🏢</div>
+                    <div class="example-info">
+                        <h3 class="example-title">Corporate Conference</h3>
+                        <p class="example-type">Premier Event - $197</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">How quickly can my event page be ready?</h3>
+                    <p class="faq-answer">Basic event pages are delivered within 24 hours of our initial call. Premier event pages with SEO optimization take 48 hours. If you need it even faster, we offer rush delivery for an additional $50.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What's the difference between private and SEO-optimized pages?</h3>
+                    <p class="faq-answer">Basic and Recurring event pages are intentionally NOT indexed by Google - perfect for private events. Premier pages include full SEO optimization, making them discoverable in search results - ideal for public events, fundraisers, and conferences.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I make changes after the page is live?</h3>
+                    <p class="faq-answer">Yes! Minor text changes are $15 each. Major updates (new sections, design changes) are $47. Premier packages include 1 update per month free.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do I need to provide hosting?</h3>
+                    <p class="faq-answer">No! Basic pages include hosting until 14 days after your event. Recurring and Premier pages include hosting (Recurring is $6/month after the first month, Premier is $10/month after the first year).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I want to keep my event page as a memory?</h3>
+                    <p class="faq-answer">We offer a Memory Archive service for $25/year that keeps your event page online indefinitely. Perfect for weddings and milestone celebrations!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Get Your Event Online?</h2>
+            <p>Don't let your special event go unnoticed. Get a professional page that impresses!</p>
+            <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary">Book Your Free Consultation</a>
+            
+            <div class="contact-info">
+                <p>Prefer to call? <a href="tel:343-597-5646">343-597-5646</a></p>
+                <p>Email: <a href="mailto:jay@barkerhrs.com">jay@barkerhrs.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p><a href="../../">Home</a> | <a href="../">Web Development</a> | <a href="../../privacy-policy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        if (animationsToggle) {
+            const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+            
+            // Apply initial state
+            if (!animationsEnabled) {
+                document.body.classList.add('no-animations');
+                animationsToggle.textContent = 'Turn on animations';
+            }
+            
+            // Toggle animations
+            animationsToggle.addEventListener('click', function() {
+                const isEnabled = !document.body.classList.contains('no-animations');
+                
+                if (isEnabled) {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                } else {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

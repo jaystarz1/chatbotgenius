@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Garage Sale Event Page Demo - The Chatbot Genius</title>
+    <meta name="description" content="See our garage sale event page demo. Perfect for neighborhood sales, community events, and yard sales. Only $97 with 24-hour delivery.">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Demo Navigation */
+        .demo-nav {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .demo-nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            color: #4c5fd5;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            color: #1a1f71;
+        }
+
+        .demo-price {
+            background: #28a745;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* Garage Sale Specific Styles */
+        .garage-sale-hero {
+            background: linear-gradient(135deg, #3498db 0%, #2ecc71 100%);
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .garage-sale-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .event-date {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .event-location {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Sale Items Preview */
+        .items-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 40px;
+        }
+
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .item-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-category {
+            color: #3498db;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .item-name {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .item-price {
+            font-size: 1.5rem;
+            color: #2ecc71;
+            font-weight: bold;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .map-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #1976d2;
+        }
+
+        .map-info h3 {
+            font-size: 2rem;
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+
+        .address-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .parking-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Sellers Section */
+        .sellers-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .sellers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .seller-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .seller-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .seller-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .seller-items {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1f71, #4c5fd5);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(243, 156, 18, 0.4);
+        }
+
+        /* Features List */
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .feature-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .garage-sale-hero h1 {
+                font-size: 2rem;
+            }
+
+            .map-container {
+                grid-template-columns: 1fr;
+            }
+
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sellers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Animations toggle */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../../" class="nav-link">Home</a>
+                    <a href="../../about.html" class="nav-link">About</a>
+                    <a href="../../books.html" class="nav-link">Books</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="../../projects.html" class="nav-link">Projects</a>
+                    <a href="../../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Demo Navigation -->
+    <div class="demo-nav">
+        <div class="container">
+            <div class="demo-nav-content">
+                <a href="showcase.html" class="back-link">
+                    ← Back to All Demos
+                </a>
+                <span class="demo-price">Starting at $97</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Garage Sale Hero -->
+    <section class="garage-sale-hero">
+        <div class="container">
+            <span class="event-badge">🏷️ Community Event</span>
+            <h1>Meadowbrook Annual<br>Neighborhood Garage Sale</h1>
+            <div class="event-date">📅 Saturday, June 15, 2025</div>
+            <div class="event-location">📍 Meadowbrook Community - 50+ Participating Homes</div>
+        </div>
+    </section>
+
+    <!-- Items Preview Section -->
+    <section class="items-section">
+        <div class="container">
+            <h2 class="section-title">Featured Items</h2>
+            <div class="items-grid">
+                <div class="item-card">
+                    <div class="item-image">🪑</div>
+                    <div class="item-info">
+                        <div class="item-category">Furniture</div>
+                        <div class="item-name">Vintage Oak Dining Set</div>
+                        <div class="item-price">$150</div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image">🚲</div>
+                    <div class="item-info">
+                        <div class="item-category">Sports & Recreation</div>
+                        <div class="item-name">Mountain Bike - Like New</div>
+                        <div class="item-price">$75</div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image">📚</div>
+                    <div class="item-info">
+                        <div class="item-category">Books & Media</div>
+                        <div class="item-name">Collection of 100+ Books</div>
+                        <div class="item-price">$2 each</div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image">🧸</div>
+                    <div class="item-info">
+                        <div class="item-category">Kids & Toys</div>
+                        <div class="item-name">Toys & Games Bundle</div>
+                        <div class="item-price">$20</div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image">🔧</div>
+                    <div class="item-info">
+                        <div class="item-category">Tools & Hardware</div>
+                        <div class="item-name">Power Tool Collection</div>
+                        <div class="item-price">Various</div>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <div class="item-image">👗</div>
+                    <div class="item-info">
+                        <div class="item-category">Clothing</div>
+                        <div class="item-name">Designer Clothes (Size M)</div>
+                        <div class="item-price">$5-$25</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    🗺️
+                </div>
+                <div class="map-info">
+                    <h3>Event Location</h3>
+                    <div class="address-card">
+                        <strong>Meadowbrook Community</strong><br>
+                        Main Entrance: 1234 Maple Street<br>
+                        Ottawa, ON K2P 0V7<br>
+                        <div class="parking-info">
+                            🚗 Free street parking available
+                        </div>
+                    </div>
+                    <p><strong>Event Hours:</strong></p>
+                    <p>8:00 AM - 4:00 PM</p>
+                    <p style="margin-top: 15px;">💡 <strong>Tip:</strong> Come early for the best deals! Coffee and donuts available at the community center.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Participating Sellers -->
+    <section class="sellers-section">
+        <div class="container">
+            <h2 class="section-title">Participating Families</h2>
+            <div class="sellers-grid">
+                <div class="seller-card">
+                    <div class="seller-avatar">👨‍👩‍👧</div>
+                    <div class="seller-name">The Johnsons</div>
+                    <div class="seller-items">Baby items, toys, clothes</div>
+                </div>
+                <div class="seller-card">
+                    <div class="seller-avatar">👵</div>
+                    <div class="seller-name">Mrs. Thompson</div>
+                    <div class="seller-items">Antiques, vintage items</div>
+                </div>
+                <div class="seller-card">
+                    <div class="seller-avatar">👨‍👩‍👦‍👦</div>
+                    <div class="seller-name">The Chen Family</div>
+                    <div class="seller-items">Electronics, games</div>
+                </div>
+                <div class="seller-card">
+                    <div class="seller-avatar">👨</div>
+                    <div class="seller-name">Mike's Workshop</div>
+                    <div class="seller-items">Tools, hardware</div>
+                </div>
+                <div class="seller-card">
+                    <div class="seller-avatar">👩</div>
+                    <div class="seller-name">Sarah's Boutique</div>
+                    <div class="seller-items">Designer clothes</div>
+                </div>
+                <div class="seller-card">
+                    <div class="seller-avatar">➕</div>
+                    <div class="seller-name">45+ More!</div>
+                    <div class="seller-items">Everything imaginable</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want This Page for Your Garage Sale?</h2>
+            <p>Get your community event online in just 24 hours!</p>
+            <a href="../packages/event-page.html" class="btn btn-primary">Get Your Event Page - Only $97</a>
+            
+            <div class="features-list">
+                <div class="feature-badge">
+                    ✨ AI-Generated Design
+                </div>
+                <div class="feature-badge">
+                    📱 Mobile Responsive
+                </div>
+                <div class="feature-badge">
+                    🚀 24-Hour Delivery
+                </div>
+                <div class="feature-badge">
+                    🗺️ Interactive Map
+                </div>
+                <div class="feature-badge">
+                    📧 Contact Forms
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p>Questions? Call <a href="tel:343-597-5646">343-597-5646</a> or <a href="mailto:jay@barkerhrs.com">Email Us</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        if (animationsToggle) {
+            const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+            
+            // Apply initial state
+            if (!animationsEnabled) {
+                document.body.classList.add('no-animations');
+                animationsToggle.textContent = 'Turn on animations';
+            }
+            
+            // Toggle animations
+            animationsToggle.addEventListener('click', function() {
+                const isEnabled = !document.body.classList.contains('no-animations');
+                
+                if (isEnabled) {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                } else {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
