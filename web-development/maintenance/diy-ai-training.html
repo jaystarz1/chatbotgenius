@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIY AI Training - $497 | Learn to Update Your Site with AI | The Chatbot Genius</title>
+    <meta name="description" content="One-time $497 training to manage your website using Claude Desktop. Includes AI setup, custom prompts, Git integration, and 30 days of support. Never pay for updates again.">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .training-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .value-props {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        /* What You'll Learn */
+        .learn-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 50px;
+        }
+
+        .learn-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .learn-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .learn-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .learn-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .learn-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Training Process */
+        .process-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .step-details {
+            list-style: none;
+        }
+
+        .step-details li {
+            padding: 8px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-icon {
+            color: #667eea;
+        }
+
+        /* What's Included */
+        .included-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .included-column h3 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            color: #28a745;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .feature-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Success Stories */
+        .success-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .success-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .success-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .success-quote {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .success-author {
+            font-weight: bold;
+            color: #1a1f71;
+        }
+
+        .success-business {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Compare Options */
+        .compare-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .compare-table {
+            max-width: 1000px;
+            margin: 50px auto;
+            overflow-x: auto;
+        }
+
+        .compare-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .compare-table th {
+            background: #1a1f71;
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .compare-table th.highlight {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .compare-table td {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .compare-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .check-yes {
+            color: #28a745;
+            font-size: 1.3rem;
+        }
+
+        .check-no {
+            color: #dc3545;
+            font-size: 1.3rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .guarantee {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guarantee-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .included-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .compare-table {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animations toggle */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../../" class="nav-link">Home</a>
+                    <a href="../../about.html" class="nav-link">About</a>
+                    <a href="../../books.html" class="nav-link">Books</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="../../projects.html" class="nav-link">Projects</a>
+                    <a href="../../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="training-badge">🎓 AI Training Program</div>
+            <div class="price-badge">$497</div>
+            <h1>DIY AI Website Training</h1>
+            <p class="hero-subtitle">Learn to Update Your Own Website Using Claude Desktop</p>
+            
+            <div class="value-props">
+                <div class="value-item">
+                    ⏱️ 2-Hour Training
+                </div>
+                <div class="value-item">
+                    📚 Custom Playbook
+                </div>
+                <div class="value-item">
+                    🛟 30 Days Support
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="learn-section">
+        <div class="container">
+            <h2 class="section-title">Master AI-Powered Website Management</h2>
+            
+            <div class="learn-grid">
+                <div class="learn-card">
+                    <div class="learn-icon">🤖</div>
+                    <h3 class="learn-title">Claude Desktop Mastery</h3>
+                    <p class="learn-description">Set up and configure Claude Desktop for website editing. Learn the interface, features, and best practices for AI-powered development.</p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-icon">📝</div>
+                    <h3 class="learn-title">Perfect Prompting</h3>
+                    <p class="learn-description">Master the art of writing prompts that get exactly what you want. Your custom playbook includes proven templates for every update type.</p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-icon">🔧</div>
+                    <h3 class="learn-title">Git & GitHub Basics</h3>
+                    <p class="learn-description">Learn version control to track changes, roll back mistakes, and collaborate safely. No coding experience required.</p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-icon">🎨</div>
+                    <h3 class="learn-title">Content Updates</h3>
+                    <p class="learn-description">Add blog posts, update service pages, change prices, swap images, and modify text - all through simple AI conversations.</p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-icon">🚀</div>
+                    <h3 class="learn-title">SEO Optimization</h3>
+                    <p class="learn-description">Use AI to improve your search rankings with keyword research, meta descriptions, and content optimization strategies.</p>
+                </div>
+
+                <div class="learn-card">
+                    <div class="learn-icon">📊</div>
+                    <h3 class="learn-title">Performance Monitoring</h3>
+                    <p class="learn-description">Track your site's performance, identify issues, and use AI to implement fixes that keep your site running fast.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Process -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">Your Training Journey</h2>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Pre-Training Setup</h3>
+                        <p class="step-description">Before our session, we'll help you install the necessary tools and prepare your environment.</p>
+                        <ul class="step-details">
+                            <li><span class="detail-icon">•</span> Install Claude Desktop ($20/month subscription)</li>
+                            <li><span class="detail-icon">•</span> Set up GitHub account (free)</li>
+                            <li><span class="detail-icon">•</span> Configure your development environment</li>
+                            <li><span class="detail-icon">•</span> Review your custom AI playbook</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Live Training Session</h3>
+                        <p class="step-description">2-hour hands-on training where you'll make real updates to your website.</p>
+                        <ul class="step-details">
+                            <li><span class="detail-icon">•</span> Screen sharing walkthrough</li>
+                            <li><span class="detail-icon">•</span> Practice common updates together</li>
+                            <li><span class="detail-icon">•</span> Learn troubleshooting techniques</li>
+                            <li><span class="detail-icon">•</span> Q&A and personalized guidance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">30-Day Support Period</h3>
+                        <p class="step-description">Full support as you master your new skills.</p>
+                        <ul class="step-details">
+                            <li><span class="detail-icon">•</span> Email support for questions</li>
+                            <li><span class="detail-icon">•</span> Troubleshooting assistance</li>
+                            <li><span class="detail-icon">•</span> Additional prompt templates as needed</li>
+                            <li><span class="detail-icon">•</span> One follow-up call if required</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">Everything You Get for $497</h2>
+            
+            <div class="included-grid">
+                <div class="included-column">
+                    <h3>Training Materials</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Custom AI Playbook</div>
+                                <div class="feature-description">50+ proven prompts for every type of website update</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Video Recordings</div>
+                                <div class="feature-description">Recording of your training session for future reference</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Quick Reference Guide</div>
+                                <div class="feature-description">One-page cheat sheet for common tasks</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Troubleshooting Manual</div>
+                                <div class="feature-description">Solutions to common problems and how to fix them</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="included-column">
+                    <h3>Ongoing Support</h3>
+                    <ul class="feature-list">
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">30 Days of Email Support</div>
+                                <div class="feature-description">Get help whenever you're stuck</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Emergency Assistance</div>
+                                <div class="feature-description">If something breaks, we'll help you fix it</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Follow-Up Call</div>
+                                <div class="feature-description">One additional 30-minute call if needed</div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="feature-icon">✓</span>
+                            <div class="feature-text">
+                                <div class="feature-title">Lifetime Updates</div>
+                                <div class="feature-description">Get new prompts and techniques as they develop</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-section">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            
+            <div class="success-grid">
+                <div class="success-card">
+                    <p class="success-quote">"I was paying $200/month for website updates. Now I do it myself in minutes. The training paid for itself in 3 months!"</p>
+                    <div class="success-author">Sarah Mitchell</div>
+                    <div class="success-business">Mitchell Consulting Group</div>
+                </div>
+
+                <div class="success-card">
+                    <p class="success-quote">"I thought I needed to be technical to update my website. Jay showed me how easy it is with AI. Game changer!"</p>
+                    <div class="success-author">Mike Chen</div>
+                    <div class="success-business">Chen's Auto Repair</div>
+                </div>
+
+                <div class="success-card">
+                    <p class="success-quote">"The custom playbook alone is worth the price. I use it every week to add new content and keep my site fresh."</p>
+                    <div class="success-author">Jennifer Ross</div>
+                    <div class="success-business">Ross Legal Services</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compare Options -->
+    <section class="compare-section">
+        <div class="container">
+            <h2 class="section-title">Compare Your Options</h2>
+            
+            <div class="compare-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Cost</th>
+                            <th>Speed</th>
+                            <th>Control</th>
+                            <th>Long-term Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>DIY AI Training</strong></td>
+                            <td><strong>$497 once</strong> + $20/mo Claude</td>
+                            <td>Instant updates</td>
+                            <td>Full control</td>
+                            <td><span class="check-yes">✓</span> Best ROI</td>
+                        </tr>
+                        <tr>
+                            <td>Monthly Monitoring</td>
+                            <td>$97/month forever</td>
+                            <td>24-48 hours</td>
+                            <td>Request updates</td>
+                            <td>$1,164/year ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>Pay As You Go</td>
+                            <td>$15-75 per update</td>
+                            <td>24-48 hours</td>
+                            <td>Request updates</td>
+                            <td>Unpredictable costs</td>
+                        </tr>
+                        <tr>
+                            <td>Traditional Agency</td>
+                            <td>$500-2000/month</td>
+                            <td>3-7 days</td>
+                            <td>Limited control</td>
+                            <td><span class="check-no">✗</span> Most expensive</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">Do I need any coding experience?</h3>
+                    <p class="faq-answer">Absolutely not! If you can write an email, you can update your website with AI. The whole point is to make website management accessible to everyone. You'll be having conversations with AI, not writing code.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I break something?</h3>
+                    <p class="faq-answer">That's what Git is for! Every change is tracked and reversible. During training, you'll learn how to undo any mistake in seconds. Plus, you have 30 days of support if you need help.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How much does Claude Desktop cost?</h3>
+                    <p class="faq-answer">Claude Desktop is $20/month from Anthropic. This gives you unlimited website updates, content creation, and so much more. Most clients save 10x this amount by not paying for professional updates.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I use this training for multiple websites?</h3>
+                    <p class="faq-answer">Yes! Once you learn these skills, you can manage unlimited websites. Many clients end up managing sites for friends, family, or even starting their own web services business.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I need help after 30 days?</h3>
+                    <p class="faq-answer">You can always book additional training sessions at $97/hour, or switch to our pay-as-you-go support at $15 per request. Most clients find they're fully independent after the 30-day period.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Take Control of Your Website Today</h2>
+            <p>Stop paying hundreds every month for simple updates. Learn once, save forever.</p>
+            
+            <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary">Book Your Training Session</a>
+            
+            <div class="guarantee">
+                <div class="guarantee-title">💯 30-Day Money-Back Guarantee</div>
+                <p>If you're not completely confident managing your website after our training, we'll refund your investment in full.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 The Chatbot Genius | Ottawa, ON | <a href="tel:3435975646">343-597-5646</a></p>
+            <p>
+                <a href="../">Web Development</a> | 
+                <a href="../packages/event-page.html">View Packages</a> | 
+                <a href="../../">Main Site</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation toggle
+        document.getElementById('toggle-animations').addEventListener('click', function() {
+            document.body.classList.toggle('no-animations');
+            this.textContent = document.body.classList.contains('no-animations') 
+                ? 'Turn on animations' 
+                : 'Turn off animations';
+        });
+    </script>
+</body>
+</html>
