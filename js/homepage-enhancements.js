@@ -320,6 +320,29 @@ function initializeHeroSpotlight() {
     // Clear any placeholder content
     track.innerHTML = '';
     
+    // Get today's featured book from parent window if available
+    let featuredBook = null;
+    if (window.parent && window.parent.getTodaysFeaturedBook) {
+        featuredBook = window.parent.getTodaysFeaturedBook();
+    } else if (window.getTodaysFeaturedBook) {
+        featuredBook = window.getTodaysFeaturedBook();
+    }
+    
+    // Default book if function not available
+    if (!featuredBook) {
+        featuredBook = {
+            title: 'The Last Algorithm',
+            tagline: 'A Mind-Bending Journey into AI\'s Future',
+            learnMoreUrl: 'books.html#book3',
+            amazonUrl: 'https://www.amazon.com/dp/B0FB46WG8R',
+            cover: 'images/last-algorithm-cover-new.jpg',
+            reviews: [{
+                text: 'The Last Algorithm isn\'t just another book about artificial intelligence—it\'s a mind-bending blend of fiction and non-fiction... Original and thought-provoking.',
+                author: 'Elizabeth, Verified Reader'
+            }]
+        };
+    }
+    
     const spotlightContent = [
         {
             type: 'blog',
@@ -332,19 +355,19 @@ function initializeHeroSpotlight() {
         },
         {
             type: 'book',
-            badge: 'Bestseller',
-            title: 'The Last Algorithm',
-            subtitle: 'A Mind-Bending Journey into AI\'s Future',
-            description: 'Explore the philosophical and practical implications of advanced AI in this thought-provoking bestseller that\'s captivating readers worldwide.',
+            badge: '📚 Book of the Day',
+            title: featuredBook.title,
+            subtitle: featuredBook.tagline,
+            description: 'Today\'s featured book from our collection. Each day brings a new literary adventure!',
             cta: [
-                {text: 'Learn More', url: 'books.html#book3', primary: true},
-                {text: 'Buy on Amazon', url: 'https://www.amazon.com/dp/B0FB46WG8R', primary: false}
+                {text: 'Learn More', url: featuredBook.learnMoreUrl, primary: true},
+                {text: 'Buy on Amazon', url: featuredBook.amazonUrl, primary: false}
             ],
-            visual: 'images/last-algorithm-cover-new.jpg',
-            testimonial: {
-                text: 'The Last Algorithm isn\'t just another book about artificial intelligence—it\'s a mind-bending blend of fiction and non-fiction... Original and thought-provoking.',
-                author: '— Elizabeth, Verified Reader'
-            }
+            visual: featuredBook.cover,
+            testimonial: featuredBook.reviews[0] ? {
+                text: featuredBook.reviews[0].text,
+                author: '— ' + featuredBook.reviews[0].author
+            } : null
         },
         {
             type: 'service',
@@ -467,9 +490,15 @@ function initializeContentTicker() {
     const tickerContent = document.getElementById('ticker-content');
     if (!tickerContent) return;
     
+    // Get today's featured book
+    let featuredBook = null;
+    if (window.getTodaysFeaturedBook) {
+        featuredBook = window.getTodaysFeaturedBook();
+    }
+    
     const tickerItems = [
         {text: '🚀 NEW: CanLII Search Tool - AI-Powered Legal Research', badge: 'NEW'},
-        {text: '📚 The Last Algorithm - Now a Bestseller on Amazon'},
+        {text: `📚 Today's Featured Book: ${featuredBook ? featuredBook.title : 'The Last Algorithm'} - Available on Amazon`},
         {text: '💡 Transform Your Business with AI in Just 10 Hours'},
         {text: '🎯 Free 30-Minute AI Consultation Available'},
         {text: '📰 Latest: AI Jobs Paradox - Why CEOs Are Wrong'},

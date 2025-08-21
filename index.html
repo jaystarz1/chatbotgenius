@@ -1552,6 +1552,152 @@
         
         // Blog carousel functionality moved to /js/homepage-enhancements.js
         
+        // Daily Book Rotation System
+        const booksData = [
+            {
+                id: 'book1',
+                title: 'Chatbot Genius: The 10-Hour Beginner\'s Guide',
+                tagline: 'Transform Your Business with AI in Just 10 Hours!',
+                cover: 'images/Cover - chatbot-genius-cover-10 Hour Beginners guide to transforming your work and life.jpg',
+                altText: 'Chatbot Genius 10-Hour Guide book cover',
+                learnMoreUrl: 'books.html#book1',
+                amazonUrl: 'https://www.amazon.com/dp/B0DB3GS284',
+                amazonCaUrl: 'https://www.amazon.ca/Chatbot-Genius-10-Hour-Beginners-Transforming-ebook/dp/B0DB3GS284',
+                reviews: [
+                    {
+                        text: 'This product was clearly and concisely written. Easy to read and understand. I was able to follow examples and put into practice the ideas and within an hour or so was using chat AI confidently.',
+                        author: 'Verified Purchase (Canada)'
+                    },
+                    {
+                        text: 'A brilliant introduction to understanding AI and how to use it to enhance or improve your own knowledge. Impressed!',
+                        author: 'Elizabeth D. (UK)'
+                    },
+                    {
+                        text: 'Great tool to get you started with helpful tips and tricks. Practical exercises make learning easy and fun.',
+                        author: 'Amazon Customer'
+                    }
+                ]
+            },
+            {
+                id: 'book2',
+                title: 'Maggie and the Christmas Elf',
+                tagline: 'A Heartwarming Christmas Story for the Whole Family',
+                cover: 'images/maggie-christmas-elf-cover-new.jpg',
+                altText: 'Maggie and the Christmas Elf book cover',
+                learnMoreUrl: 'books.html#book2',
+                amazonUrl: 'https://www.amazon.com/Maggie-Christmas-Elf-Jay-Tarzwell/dp/B09M7GRGZB',
+                amazonCaUrl: 'https://www.amazon.ca/dp/B09M7GRGZB',
+                reviews: [
+                    {
+                        text: 'A truly unique and entertaining Christmas story that delighted our whole family. The illustrations are beautiful!',
+                        author: 'Holiday Reader'
+                    },
+                    {
+                        text: 'My children ask for this story every Christmas Eve. It has become a family tradition. Wonderfully written and illustrated.',
+                        author: 'Sarah M.'
+                    },
+                    {
+                        text: 'A touching story with a perfect ending. Years in the making and it shows - every detail is thoughtfully crafted.',
+                        author: 'Book Reviewer'
+                    }
+                ]
+            },
+            {
+                id: 'book3',
+                title: 'The Last Algorithm',
+                tagline: 'A Thought-Provoking Journey into AI\'s Future and Humanity\'s Destiny',
+                cover: 'images/last-algorithm-cover-new.jpg',
+                altText: 'The Last Algorithm book cover showing futuristic AI imagery',
+                learnMoreUrl: 'books.html#book3',
+                amazonUrl: 'https://www.amazon.com/dp/B0FB46WG8R',
+                amazonCaUrl: 'https://www.amazon.ca/dp/B0FB46WG8R',
+                reviews: [
+                    {
+                        text: 'The Last Algorithm isn\'t just another book about artificial intelligence—it\'s a mind-bending blend of fiction and non-fiction... It\'s original, thought-provoking, and unlike anything I\'ve read before.',
+                        author: 'Elizabeth'
+                    },
+                    {
+                        text: 'I was prepared to be reading through a heavy topic. Was pleasantly surprised by the way the story has been written... It is definitely a great read.',
+                        author: 'Sheena C.'
+                    },
+                    {
+                        text: 'I enjoyed the pace of this book. It has a snappy, articulate tempo that makes it an easy read... Readers will find the originality refreshing.',
+                        author: 'Tom M.'
+                    }
+                ]
+            },
+            {
+                id: 'book4',
+                title: 'Chatbot Genius: Quick Start Guide',
+                tagline: 'Your Fast Track to Mastering AI Chatbots - For Non-Techies!',
+                cover: 'images/chatbot-genius-cover-final.jpg',
+                altText: 'Chatbot Genius Quick Start Guide book cover',
+                learnMoreUrl: 'books.html#book4',
+                amazonUrl: 'https://www.amazon.com/dp/B0DK61C5R8',
+                amazonCaUrl: 'https://www.amazon.ca/Chatbot-Genius-Quick-Start-Non-Techies-Regular-ebook/dp/B0DK61C5R8',
+                reviews: [
+                    {
+                        text: 'Perfect for non-techies! This guide got me up and running with AI chatbots in less than an hour. No jargon, just results.',
+                        author: 'Business Owner'
+                    },
+                    {
+                        text: 'Finally, an AI guide that speaks my language. Practical, straightforward, and immediately useful. Highly recommend!',
+                        author: 'Jennifer K.'
+                    },
+                    {
+                        text: 'Cuts through the complexity beautifully. If you want to start using AI today, this is the book you need.',
+                        author: 'Tech Newbie'
+                    }
+                ]
+            }
+        ];
+        
+        // Function to get today's featured book
+        function getTodaysFeaturedBook() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+            const bookIndex = dayOfYear % booksData.length;
+            return booksData[bookIndex];
+        }
+        
+        // Function to render the featured book section
+        function renderFeaturedBook() {
+            const book = getTodaysFeaturedBook();
+            const featuredBookSection = document.querySelector('section[aria-labelledby="featured-book-heading"] .book-featured-grid');
+            
+            if (!featuredBookSection) return;
+            
+            const bookHTML = `
+                <!-- Book Column -->
+                <div style="text-align: center;">
+                    <div style="position: relative; display: inline-block;">
+                        <span style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #ff8c42, #f9c74f); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1;">📚 Book of the Day</span>
+                        <img src="${book.cover}" alt="${book.altText}" style="width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); border-radius: 5px;">
+                    </div>
+                    <h3 style="margin-top: 20px; color: #1a1f71; font-size: 1.8rem;">${book.title}</h3>
+                    <p style="color: #4c5fd5; font-style: italic; font-size: 1.1rem; margin-bottom: 25px;">${book.tagline}</p>
+                    <div>
+                        <a href="${book.learnMoreUrl}" class="btn btn-primary" style="margin-right: 10px;">Learn More</a>
+                        <a href="${book.amazonUrl}" class="btn btn-primary" target="_blank" aria-label="Buy ${book.title} on Amazon - opens in new window">Buy on Amazon</a>
+                    </div>
+                </div>
+                
+                <!-- Reviews Column -->
+                <div>
+                    <h3 style="color: #1a1f71; margin-bottom: 25px;">What Readers Are Saying</h3>
+                    ${book.reviews.map(review => `
+                        <article style="margin-bottom: 25px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                            <div class="star-rating" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+                            <blockquote style="font-style: italic; line-height: 1.6; margin-bottom: 8px; font-size: 0.95rem;">"${review.text}"</blockquote>
+                            <cite style="text-align: right; color: #666; font-weight: bold; font-size: 0.9rem; display: block;">– ${review.author}</cite>
+                        </article>
+                    `).join('')}
+                </div>
+            `;
+            
+            featuredBookSection.innerHTML = bookHTML;
+        }
+        
         // Initialize carousel when DOM is ready
         // blogCarousel variable is declared in homepage-enhancements.js
         
@@ -1591,6 +1737,9 @@
                     initializeFeaturedStory();
                     initializeMetricsDashboard();
                     initializeTimeBasedContent();
+                    
+                    // Initialize daily featured book rotation
+                    renderFeaturedBook();
                 } catch (error) {
                     console.error('Error initializing features:', error);
                 }
