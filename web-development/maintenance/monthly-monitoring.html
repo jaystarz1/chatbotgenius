@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Monitoring - $97/month | The Chatbot Genius</title>
+    <meta name="description" content="Professional website maintenance with 20 updates included monthly. SEO monitoring, content updates, performance optimization for just $97/month.">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Package Hero */
+        .package-hero {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .package-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        /* What's Included Section */
+        .included-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 50px;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .included-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .included-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .included-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #28a745;
+        }
+
+        .included-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .included-list {
+            list-style: none;
+        }
+
+        .included-list li {
+            padding: 10px 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-icon {
+            color: #28a745;
+            flex-shrink: 0;
+        }
+
+        /* How It Works Section */
+        .how-it-works-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Update Types Section */
+        .update-types-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .update-types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .update-category {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #28a745;
+        }
+
+        .update-list {
+            list-style: none;
+        }
+
+        .update-list li {
+            padding: 10px 0;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 50px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: linear-gradient(135deg, #1a1f71, #4c5fd5);
+            color: white;
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        td {
+            padding: 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .highlight-row {
+            background: #f0fff4;
+        }
+
+        .price-cell {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        /* Perfect For Section */
+        .perfect-for-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .perfect-for-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .perfect-card {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .perfect-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .perfect-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #28a745;
+        }
+
+        .perfect-title {
+            font-size: 1.3rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .perfect-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, white);
+        }
+
+        .benefits-container {
+            max-width: 900px;
+            margin: 50px auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: #28a745;
+            flex-shrink: 0;
+        }
+
+        .benefit-content {
+            flex: 1;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .benefit-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #28a745;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .or-divider {
+            margin: 30px 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .package-hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .update-types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 500px;
+            }
+
+            .benefit-item {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Animations toggle */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../../" class="nav-link">Home</a>
+                    <a href="../../about.html" class="nav-link">About</a>
+                    <a href="../../books.html" class="nav-link">Books</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="../../projects.html" class="nav-link">Projects</a>
+                    <a href="../../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Package Hero -->
+    <section class="package-hero">
+        <div class="container">
+            <div class="price-badge">$97/month</div>
+            <h1>Monthly Monitoring</h1>
+            <p class="hero-subtitle">Professional Website Care with 20 Updates Included</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span>✅</span> 20 Updates Monthly
+                </div>
+                <div class="hero-feature">
+                    <span>📈</span> SEO Monitoring
+                </div>
+                <div class="hero-feature">
+                    <span>⚡</span> Performance Optimization
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">Everything Your Website Needs to Thrive</h2>
+            
+            <div class="included-grid">
+                <div class="included-card">
+                    <div class="included-icon">✏️</div>
+                    <h3 class="included-title">Content Updates</h3>
+                    <ul class="included-list">
+                        <li><span class="check-icon">✓</span> Text changes and corrections</li>
+                        <li><span class="check-icon">✓</span> New blog posts (up to 2/month)</li>
+                        <li><span class="check-icon">✓</span> Image replacements</li>
+                        <li><span class="check-icon">✓</span> Product/service updates</li>
+                        <li><span class="check-icon">✓</span> Pricing adjustments</li>
+                    </ul>
+                </div>
+
+                <div class="included-card">
+                    <div class="included-icon">🔍</div>
+                    <h3 class="included-title">SEO Optimization</h3>
+                    <ul class="included-list">
+                        <li><span class="check-icon">✓</span> Monthly ranking reports</li>
+                        <li><span class="check-icon">✓</span> Keyword adjustments</li>
+                        <li><span class="check-icon">✓</span> Meta tag optimization</li>
+                        <li><span class="check-icon">✓</span> Content recommendations</li>
+                        <li><span class="check-icon">✓</span> Competitor monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="included-card">
+                    <div class="included-icon">⚡</div>
+                    <h3 class="included-title">Performance & Security</h3>
+                    <ul class="included-list">
+                        <li><span class="check-icon">✓</span> Speed optimization</li>
+                        <li><span class="check-icon">✓</span> Uptime monitoring</li>
+                        <li><span class="check-icon">✓</span> Security scans</li>
+                        <li><span class="check-icon">✓</span> Backup verification</li>
+                        <li><span class="check-icon">✓</span> Browser compatibility</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <h2 class="section-title">Simple, Hassle-Free Process</h2>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Submit Updates</h3>
+                    <p class="step-description">Email your changes anytime. We track all requests and confirm receipt within 2 hours.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Quick Implementation</h3>
+                    <p class="step-description">Most updates completed within 24 hours. You'll get a notification when changes are live.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Monthly Report</h3>
+                    <p class="step-description">Receive detailed reports on updates made, SEO performance, and recommendations.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Ongoing Optimization</h3>
+                    <p class="step-description">We proactively suggest improvements to keep your site competitive and current.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update Types Section -->
+    <section class="update-types-section">
+        <div class="container">
+            <h2 class="section-title">What Counts as an Update?</h2>
+            
+            <div class="update-types-grid">
+                <div class="update-category">
+                    <h3 class="category-title">Standard Updates (1 credit each)</h3>
+                    <ul class="update-list">
+                        <li>📝 Text changes on existing pages</li>
+                        <li>🖼️ Image replacements or additions</li>
+                        <li>🔗 Link updates or additions</li>
+                        <li>📞 Contact information changes</li>
+                        <li>⏰ Hours of operation updates</li>
+                        <li>💰 Price adjustments</li>
+                        <li>📅 Event date changes</li>
+                    </ul>
+                </div>
+
+                <div class="update-category">
+                    <h3 class="category-title">Complex Updates (2-3 credits)</h3>
+                    <ul class="update-list">
+                        <li>📄 New blog posts with images</li>
+                        <li>🎨 Section redesigns</li>
+                        <li>📊 New forms or calculators</li>
+                        <li>🗺️ Map integrations</li>
+                        <li>📹 Video embeds</li>
+                        <li>🛒 Product/service additions</li>
+                        <li>📈 Analytics setup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">Compare Maintenance Options</h2>
+            
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Monthly Monitoring</th>
+                            <th>Pay As You Go</th>
+                            <th>DIY AI Training</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight-row">
+                            <td><strong>Price</strong></td>
+                            <td class="price-cell">$97/month</td>
+                            <td>$15/update</td>
+                            <td>$497 one-time</td>
+                        </tr>
+                        <tr>
+                            <td>Updates Included</td>
+                            <td><strong>20 per month</strong></td>
+                            <td>Pay per update</td>
+                            <td>Unlimited (you do it)</td>
+                        </tr>
+                        <tr>
+                            <td>Response Time</td>
+                            <td><strong>24 hours</strong></td>
+                            <td>48-72 hours</td>
+                            <td>Instant (your control)</td>
+                        </tr>
+                        <tr>
+                            <td>SEO Monitoring</td>
+                            <td>✅ Included</td>
+                            <td>❌ Not included</td>
+                            <td>❌ Self-managed</td>
+                        </tr>
+                        <tr>
+                            <td>Performance Reports</td>
+                            <td>✅ Monthly</td>
+                            <td>❌ Not included</td>
+                            <td>❌ Self-generated</td>
+                        </tr>
+                        <tr>
+                            <td>Technical Support</td>
+                            <td>✅ Priority</td>
+                            <td>✅ Per request</td>
+                            <td>✅ 30 days included</td>
+                        </tr>
+                        <tr>
+                            <td>Best For</td>
+                            <td><strong>Active businesses</strong></td>
+                            <td>Occasional updates</td>
+                            <td>Tech-savvy owners</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfect For Section -->
+    <section class="perfect-for-section">
+        <div class="container">
+            <h2 class="section-title">Perfect For These Businesses</h2>
+            
+            <div class="perfect-for-grid">
+                <div class="perfect-card">
+                    <div class="perfect-icon">🏪</div>
+                    <h3 class="perfect-title">Retail & E-commerce</h3>
+                    <p class="perfect-description">Keep product listings current, update seasonal promotions, and maintain fresh content that drives sales.</p>
+                </div>
+
+                <div class="perfect-card">
+                    <div class="perfect-icon">🏢</div>
+                    <h3 class="perfect-title">Service Businesses</h3>
+                    <p class="perfect-description">Update service offerings, pricing, team changes, and case studies to stay competitive.</p>
+                </div>
+
+                <div class="perfect-card">
+                    <div class="perfect-icon">🍽️</div>
+                    <h3 class="perfect-title">Restaurants & Cafes</h3>
+                    <p class="perfect-description">Menu updates, seasonal specials, event announcements, and hours changes handled promptly.</p>
+                </div>
+
+                <div class="perfect-card">
+                    <div class="perfect-icon">🏥</div>
+                    <h3 class="perfect-title">Healthcare Practices</h3>
+                    <p class="perfect-description">Staff updates, new services, patient resources, and compliance updates managed professionally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Monthly Monitoring Makes Sense</h2>
+            
+            <div class="benefits-container">
+                <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Predictable Costs</h3>
+                        <p class="benefit-description">No surprise bills or per-update charges. Budget exactly $97/month for all your website needs. With 20 updates included, you're paying less than $5 per change.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏱️</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Save Your Time</h3>
+                        <p class="benefit-description">Stop struggling with website updates. Focus on running your business while we handle all the technical details. The average business owner saves 10+ hours per month.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Peace of Mind</h3>
+                        <p class="benefit-description">Your website is monitored 24/7 for issues. We catch and fix problems before your customers notice them. Regular backups ensure you never lose your content.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Stay Competitive</h3>
+                        <p class="benefit-description">Regular SEO adjustments keep you visible in search results. We monitor your competitors and suggest improvements to keep you ahead.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">What happens if I need more than 20 updates?</h3>
+                    <p class="faq-answer">Additional updates are just $10 each, or you can roll unused updates to the next month (up to 10). Most clients find 20 updates more than sufficient for their monthly needs.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I cancel anytime?</h3>
+                    <p class="faq-answer">Yes! There's no long-term contract. Cancel with 30 days notice. We'll provide all your website files and ensure a smooth transition.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">How quickly are updates made?</h3>
+                    <p class="faq-answer">Most updates are completed within 24 hours on business days. Urgent updates can be prioritized and often completed same-day.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you handle hosting and domains?</h3>
+                    <p class="faq-answer">Your hosting remains free through GitHub Pages or Netlify. We can manage your domain renewals for an additional $30/year if desired.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What's included in the monthly SEO report?</h3>
+                    <p class="faq-answer">You'll receive ranking positions for key terms, traffic analytics, competitor analysis, and actionable recommendations for improvement.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can you add new pages or features?</h3>
+                    <p class="faq-answer">Yes! New pages count as 5 updates each. Major features like e-commerce or booking systems are quoted separately but can use your update credits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Keep Your Website Fresh & Competitive</h2>
+            <p>Join businesses that trust us to maintain their online presence</p>
+            <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary">Start Monthly Monitoring</a>
+            
+            <div class="or-divider">or</div>
+            
+            <a href="../packages/event-page.html" class="btn btn-outline">Explore Other Options</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. Ottawa's AI-Powered Web Development.</p>
+            <p>Questions? Call <a href="tel:3435975646">343-597-5646</a> or <a href="mailto:jay@barkerhrs.com">email us</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Get stored preference or default to true
+        let animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+        
+        // Get the toggle button
+        const animationsToggle = document.getElementById('toggle-animations');
+        
+        // Apply initial state
+        if (!animationsEnabled) {
+            document.body.classList.add('no-animations');
+            if (animationsToggle) {
+                animationsToggle.textContent = 'Turn on animations';
+            }
+        }
+        
+        // Toggle animations
+        if (animationsToggle) {
+            animationsToggle.addEventListener('click', function() {
+                animationsEnabled = !animationsEnabled;
+                
+                if (animationsEnabled) {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                } else {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

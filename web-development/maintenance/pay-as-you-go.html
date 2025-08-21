@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay As You Go - $15/Update | The Chatbot Genius</title>
+    <meta name="description" content="Flexible website maintenance with no monthly fees. Pay only $15 per update when you need changes. Perfect for stable websites with occasional updates.">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Top Banner */
+        .top-banner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: white;
+            text-align: center;
+        }
+
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .banner-separator {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .btn-secondary {
+            padding: 8px 20px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Package Hero */
+        .package-hero {
+            background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .price-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .package-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        /* How It Works Section */
+        .how-it-works-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 50px;
+        }
+
+        .process-timeline {
+            max-width: 900px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #17a2b8;
+        }
+
+        .process-step {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+            position: relative;
+        }
+
+        .process-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin: 0 40px;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: #17a2b8;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .step-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Credit System Section */
+        .credit-system-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .credit-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .credit-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .credit-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #17a2b8;
+            margin-bottom: 10px;
+        }
+
+        .credit-label {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+
+        .credit-examples {
+            list-style: none;
+            text-align: left;
+        }
+
+        .credit-examples li {
+            padding: 8px 0;
+            color: #666;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Pricing Examples Section */
+        .pricing-examples-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .example-title {
+            font-size: 1.5rem;
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+
+        .example-items {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .example-items li {
+            padding: 10px 0;
+            color: #495057;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .example-items li:last-child {
+            border-bottom: none;
+        }
+
+        .example-total {
+            text-align: right;
+            padding-top: 15px;
+            border-top: 2px solid #17a2b8;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #17a2b8;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .comparison-content {
+            max-width: 1000px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+
+        .comparison-column {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .comparison-title {
+            font-size: 1.8rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .comparison-subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .pros-cons-list {
+            list-style: none;
+        }
+
+        .pros-cons-list li {
+            padding: 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pro-icon {
+            color: #28a745;
+            font-size: 1.2rem;
+        }
+
+        .con-icon {
+            color: #dc3545;
+            font-size: 1.2rem;
+        }
+
+        /* Perfect For Section */
+        .perfect-for-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .use-case-card {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .use-case-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #17a2b8;
+        }
+
+        .use-case-title {
+            font-size: 1.3rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+
+        .use-case-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .frequency-badge {
+            display: inline-block;
+            background: #17a2b8;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 50px auto;
+        }
+
+        .benefit-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #17a2b8;
+            flex-shrink: 0;
+        }
+
+        .benefit-content {
+            flex: 1;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            color: #1a1f71;
+            margin-bottom: 10px;
+        }
+
+        .benefit-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        .faq-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #17a2b8, #20c997);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #17a2b8;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-options {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #f9c74f;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .package-hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .process-timeline::before {
+                left: 20px;
+            }
+
+            .process-step {
+                flex-direction: column !important;
+            }
+
+            .step-content {
+                margin: 0 0 0 40px;
+            }
+
+            .step-number {
+                left: 20px;
+            }
+
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-content {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-options {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animations toggle */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../../" class="nav-link">Home</a>
+                    <a href="../../about.html" class="nav-link">About</a>
+                    <a href="../../books.html" class="nav-link">Books</a>
+                    <a href="../../blog.html" class="nav-link">Blog</a>
+                    <a href="../../projects.html" class="nav-link">Projects</a>
+                    <a href="../../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Package Hero -->
+    <section class="package-hero">
+        <div class="container">
+            <div class="price-badge">$15/Update</div>
+            <h1>Pay As You Go</h1>
+            <p class="hero-subtitle">No Monthly Fees • Complete Flexibility • Billed After Completion</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <span>💳</span> No Commitment
+                </div>
+                <div class="hero-feature">
+                    <span>⏱️</span> 48-72 Hour Delivery
+                </div>
+                <div class="hero-feature">
+                    <span>✅</span> Pay After Completion
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Process</h2>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3 class="step-title">Request Update</h3>
+                        <p class="step-description">Email your changes with clear instructions. We'll confirm receipt and provide a credit estimate within 2 hours.</p>
+                    </div>
+                    <div class="step-number">1</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3 class="step-title">We Complete the Work</h3>
+                        <p class="step-description">Updates are typically completed within 48-72 hours. Rush service available for an additional $10.</p>
+                    </div>
+                    <div class="step-number">2</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3 class="step-title">Review & Approve</h3>
+                        <p class="step-description">Check the live changes on your site. We'll make any minor adjustments needed at no extra charge.</p>
+                    </div>
+                    <div class="step-number">3</div>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-content">
+                        <h3 class="step-title">Simple Payment</h3>
+                        <p class="step-description">Pay only after you're satisfied. Invoice sent via email with multiple payment options available.</p>
+                    </div>
+                    <div class="step-number">4</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credit System Section -->
+    <section class="credit-system-section">
+        <div class="container">
+            <h2 class="section-title">Transparent Credit System</h2>
+            
+            <div class="credit-cards">
+                <div class="credit-card">
+                    <div class="credit-value">1</div>
+                    <div class="credit-label">Credit = $15</div>
+                    <ul class="credit-examples">
+                        <li>• Text changes</li>
+                        <li>• Image swaps</li>
+                        <li>• Contact updates</li>
+                        <li>• Price changes</li>
+                        <li>• Hours updates</li>
+                    </ul>
+                </div>
+
+                <div class="credit-card">
+                    <div class="credit-value">2</div>
+                    <div class="credit-label">Credits = $30</div>
+                    <ul class="credit-examples">
+                        <li>• Blog posts</li>
+                        <li>• New sections</li>
+                        <li>• Form additions</li>
+                        <li>• Gallery updates</li>
+                        <li>• Menu changes</li>
+                    </ul>
+                </div>
+
+                <div class="credit-card">
+                    <div class="credit-value">3</div>
+                    <div class="credit-label">Credits = $45</div>
+                    <ul class="credit-examples">
+                        <li>• Page redesigns</li>
+                        <li>• Complex forms</li>
+                        <li>• Integrations</li>
+                        <li>• Feature additions</li>
+                        <li>• Layout changes</li>
+                    </ul>
+                </div>
+
+                <div class="credit-card">
+                    <div class="credit-value">5</div>
+                    <div class="credit-label">Credits = $75</div>
+                    <ul class="credit-examples">
+                        <li>• Complete new pages</li>
+                        <li>• E-commerce setup</li>
+                        <li>• Booking systems</li>
+                        <li>• Major features</li>
+                        <li>• Custom functionality</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Examples Section -->
+    <section class="pricing-examples-section">
+        <div class="container">
+            <h2 class="section-title">Real Pricing Examples</h2>
+            
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h3 class="example-title">Restaurant Menu Update</h3>
+                    <ul class="example-items">
+                        <li>Update 5 menu prices <span>1 credit</span></li>
+                        <li>Add 3 new dishes with descriptions <span>1 credit</span></li>
+                        <li>Replace 2 food photos <span>1 credit</span></li>
+                    </ul>
+                    <div class="example-total">Total: $45 (3 credits)</div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="example-title">Service Business Refresh</h3>
+                    <ul class="example-items">
+                        <li>Update team bio <span>1 credit</span></li>
+                        <li>Add new service page <span>5 credits</span></li>
+                        <li>Update contact info <span>1 credit</span></li>
+                    </ul>
+                    <div class="example-total">Total: $105 (7 credits)</div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="example-title">Event Announcement</h3>
+                    <ul class="example-items">
+                        <li>Create event banner <span>1 credit</span></li>
+                        <li>Add event details section <span>2 credits</span></li>
+                        <li>Add registration form <span>2 credits</span></li>
+                    </ul>
+                    <div class="example-total">Total: $75 (5 credits)</div>
+                </div>
+
+                <div class="example-card">
+                    <h3 class="example-title">Seasonal Promotion</h3>
+                    <ul class="example-items">
+                        <li>Update homepage banner <span>1 credit</span></li>
+                        <li>Add promotion popup <span>2 credits</span></li>
+                        <li>Update 3 product prices <span>1 credit</span></li>
+                    </ul>
+                    <div class="example-total">Total: $60 (4 credits)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2 class="section-title">Is Pay As You Go Right for You?</h2>
+            
+            <div class="comparison-content">
+                <div class="comparison-column">
+                    <div class="comparison-header">
+                        <h3 class="comparison-title">✅ Perfect If You...</h3>
+                        <p class="comparison-subtitle">Match these criteria</p>
+                    </div>
+                    <ul class="pros-cons-list">
+                        <li><span class="pro-icon">✓</span> Update your site less than 5 times per month</li>
+                        <li><span class="pro-icon">✓</span> Have a stable, established website</li>
+                        <li><span class="pro-icon">✓</span> Want to avoid monthly commitments</li>
+                        <li><span class="pro-icon">✓</span> Prefer to control your budget</li>
+                        <li><span class="pro-icon">✓</span> Make seasonal updates only</li>
+                        <li><span class="pro-icon">✓</span> Handle your own SEO</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-column">
+                    <div class="comparison-header">
+                        <h3 class="comparison-title">❌ Consider Alternatives If...</h3>
+                        <p class="comparison-subtitle">These apply to you</p>
+                    </div>
+                    <ul class="pros-cons-list">
+                        <li><span class="con-icon">✗</span> You need frequent updates (6+ monthly)</li>
+                        <li><span class="con-icon">✗</span> Want proactive SEO monitoring</li>
+                        <li><span class="con-icon">✗</span> Need priority support</li>
+                        <li><span class="con-icon">✗</span> Want monthly performance reports</li>
+                        <li><span class="con-icon">✗</span> Prefer predictable monthly costs</li>
+                        <li><span class="con-icon">✗</span> Need same-day updates regularly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perfect For Section -->
+    <section class="perfect-for-section">
+        <div class="container">
+            <h2 class="section-title">Ideal Use Cases</h2>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏛️</div>
+                    <h3 class="use-case-title">Established Businesses</h3>
+                    <p class="use-case-description">Your website is complete and you just need occasional updates for new team members, services, or announcements.</p>
+                    <div class="frequency-badge">1-3 updates/month</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">📚</div>
+                    <h3 class="use-case-title">Professional Services</h3>
+                    <p class="use-case-description">Law firms, accounting offices, and consultants who update case studies, team pages, or credentials periodically.</p>
+                    <div class="frequency-badge">2-4 updates/quarter</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🎨</div>
+                    <h3 class="use-case-title">Portfolio Sites</h3>
+                    <p class="use-case-description">Artists, photographers, and creatives who add new work to their portfolios every few months.</p>
+                    <div class="frequency-badge">3-5 updates/quarter</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏘️</div>
+                    <h3 class="use-case-title">Community Organizations</h3>
+                    <p class="use-case-description">Non-profits, clubs, and associations updating board members, events, or newsletters quarterly.</p>
+                    <div class="frequency-badge">Seasonal updates</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏢</div>
+                    <h3 class="use-case-title">Corporate Pages</h3>
+                    <p class="use-case-description">Company websites that need updates for press releases, investor relations, or executive changes.</p>
+                    <div class="frequency-badge">As needed</div>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🎓</div>
+                    <h3 class="use-case-title">Educational Sites</h3>
+                    <p class="use-case-description">Schools, courses, and training programs updating schedules, curriculum, or instructor information.</p>
+                    <div class="frequency-badge">Per semester</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Pay As You Go?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">No Wasted Money</h3>
+                        <p class="benefit-description">Only pay for what you use. No monthly fees sitting idle when you don't need changes.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Complete Control</h3>
+                        <p class="benefit-description">Decide when and what to update. No pressure to use monthly allowances.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Budget Friendly</h3>
+                        <p class="benefit-description">Perfect for tight budgets. Spread updates throughout the year as cash flow allows.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h3 class="benefit-title">Professional Service</h3>
+                        <p class="benefit-description">Same quality work as monthly plans. Your site stays professional and current.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3 class="faq-question">How do I know how many credits an update will cost?</h3>
+                    <p class="faq-answer">We'll provide a quote within 2 hours of receiving your request. Most updates are 1-2 credits. You can always decline if the cost is higher than expected.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I purchase credits in advance?</h3>
+                    <p class="faq-answer">Yes! Buy 10 credits for $140 (save $10) or 20 credits for $270 (save $30). Credits never expire and can be used anytime.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What if I need updates faster than 48 hours?</h3>
+                    <p class="faq-answer">Rush service is available for an additional $10 per update. Most rush requests are completed within 24 hours.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you offer emergency support?</h3>
+                    <p class="faq-answer">Yes! If your site has issues, we'll fix critical problems immediately and bill afterward. Emergency repairs start at 2 credits.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">Can I switch to monthly monitoring later?</h3>
+                    <p class="faq-answer">Absolutely! If you find yourself needing frequent updates, switching to our $97/month plan often saves money.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">What payment methods do you accept?</h3>
+                    <p class="faq-answer">We accept credit cards, PayPal, e-transfer, and checks. Payment is due within 7 days of invoice.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready for Flexible Website Maintenance?</h2>
+            <p>Start with your first update - no contracts, no commitments</p>
+            
+            <a href="mailto:jay@barkerhrs.com?subject=Pay As You Go Update Request" class="btn btn-primary">Request Your First Update</a>
+            
+            <div class="cta-options">
+                <a href="monthly-monitoring.html" class="btn btn-outline">View Monthly Plan</a>
+                <a href="diy-ai-training.html" class="btn btn-outline">Learn to DIY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. Ottawa's AI-Powered Web Development.</p>
+            <p>Questions? Call <a href="tel:3435975646">343-597-5646</a> or <a href="mailto:jay@barkerhrs.com">email us</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Get stored preference or default to true
+        let animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+        
+        // Get the toggle button
+        const animationsToggle = document.getElementById('toggle-animations');
+        
+        // Apply initial state
+        if (!animationsEnabled) {
+            document.body.classList.add('no-animations');
+            if (animationsToggle) {
+                animationsToggle.textContent = 'Turn on animations';
+            }
+        }
+        
+        // Toggle animations
+        if (animationsToggle) {
+            animationsToggle.addEventListener('click', function() {
+                animationsEnabled = !animationsEnabled;
+                
+                if (animationsEnabled) {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                } else {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
