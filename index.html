@@ -295,8 +295,67 @@
         }
         
         .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.5rem;
             font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+        
+        /* Buttons in navigation */
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-book {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .btn-book:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 8px 20px;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
         
         /* Mobile Menu Button */
@@ -343,6 +402,92 @@
         
         .nav-links a:not(.btn):hover {
             background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Services Dropdown */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-dropdown-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .nav-dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        
+        .nav-dropdown-toggle:hover {
+            color: #f9c74f;
+        }
+        
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: 100%;
+            margin-top: 0;
+            padding-top: 10px;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown-menu a {
+            color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .nav-dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-dropdown-menu a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1a1f71;
+            padding-left: 25px;
         }
         
         /* Hide decorative emoji from screen readers */
@@ -1084,7 +1229,17 @@
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>
                     <a href="/blog.html" class="nav-link">Blog</a>
-                    <a href="/projects.html" class="nav-link">Projects</a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Services</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/web-development/">Custom Website Building</a>
+                            <a href="/services/training.html">AI Training & Workshops</a>
+                            <a href="/services/consulting.html">AI Consulting</a>
+                            <a href="/services/app-development.html">Custom App Development</a>
+                            <a href="/projects.html">Projects Portfolio</a>
+                            <a href="/api/medical-transcription.html">Medical Transcription API</a>
+                        </div>
+                    </div>
                     <a href="/ai-news.html" class="nav-link">AI News</a>
                     <a href="/#contact" class="nav-link">Contact</a>
                     <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
