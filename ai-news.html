@@ -1853,9 +1853,13 @@
         // Refresh every 3 hours
         setInterval(loadAndGenerateDigest, 3 * 60 * 60 * 1000);
     </script>
-    <!-- Universal Share Button -->
-    <script src="/js/share-button.js"></script></body>
-        
+    
+    <!-- Load news integration scripts -->
+    <script src="/js/news-cache.js"></script>
+    <script src="/js/news-loader.js"></script>
+    <script src="/js/news-integration.js"></script>
+    
+    <script>
         // Animations toggle functionality
         const animationsToggle = document.getElementById('toggle-animations');
         if (animationsToggle) {
@@ -1891,6 +1895,8 @@
             transition: none !important;
         }
     </style>
+    
     <!-- Universal Share Button -->
-    <script src="/js/share-button.js"></script></body>
+    <script src="/js/share-button.js"></script>
+</body>
 </html>
