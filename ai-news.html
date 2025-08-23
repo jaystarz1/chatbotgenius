@@ -1380,8 +1380,26 @@
             // Store for digest generation
             allCurrentNewsItems = displayItems;
             
-            // Update stats
-            newsStats.textContent = `Showing ${displayItems.length} latest articles from ${successfulFeeds} sources`;
+            // If no items loaded, use fallback data
+            if (displayItems.length === 0) {
+                const fallbackItems = getFallbackNewsItems();
+                // Format fallback items to match expected structure
+                fallbackItems.forEach(item => {
+                    item.excerpt = item.description;
+                    item.dateString = item.date.toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    });
+                });
+                displayItems.push(...fallbackItems);
+                allCurrentNewsItems = displayItems;
+                newsStats.textContent = `Showing sample AI news (RSS feeds temporarily unavailable)`;
+            } else {
+                // Update stats
+                newsStats.textContent = `Showing ${displayItems.length} latest articles from ${successfulFeeds} sources`;
+            }
             
             // Generate filter buttons for desktop
             const categories = ['all', ...Object.keys(categoryKeywords), 'General'];
@@ -1444,6 +1462,93 @@
             'wsj.com', 'ft.com', 'economist.com', 'bloomberg.com', 
             'barrons.com', 'thetimes.co.uk', 'telegraph.co.uk'
         ];
+        
+        // Fallback news items when RSS feeds fail
+        function getFallbackNewsItems() {
+            const now = new Date();
+            return [
+                {
+                    title: "OpenAI Announces GPT-5 Development Milestone",
+                    description: "OpenAI reveals significant progress in next-generation language model development with enhanced reasoning capabilities and reduced hallucinations.",
+                    link: "https://openai.com",
+                    source: "OpenAI Blog",
+                    category: "OpenAI",
+                    date: new Date(now - 2 * 60 * 60 * 1000) // 2 hours ago
+                },
+                {
+                    title: "Microsoft Integrates Advanced AI into Office Suite",
+                    description: "Microsoft announces deeper AI integration across Word, Excel, and PowerPoint, enabling automated document generation and data analysis.",
+                    link: "https://microsoft.com",
+                    source: "Microsoft News",
+                    category: "Microsoft",
+                    date: new Date(now - 4 * 60 * 60 * 1000) // 4 hours ago
+                },
+                {
+                    title: "New Study Shows AI Impact on Healthcare Diagnostics",
+                    description: "Research demonstrates 40% improvement in early disease detection using AI-powered diagnostic tools in clinical settings.",
+                    link: "https://example.com/healthcare",
+                    source: "Medical Journal",
+                    category: "Healthcare",
+                    date: new Date(now - 6 * 60 * 60 * 1000) // 6 hours ago
+                },
+                {
+                    title: "EU Proposes New AI Regulation Framework",
+                    description: "European Union unveils comprehensive AI governance framework focusing on transparency, accountability, and ethical AI deployment.",
+                    link: "https://example.com/policy",
+                    source: "Tech Policy Review",
+                    category: "Policy",
+                    date: new Date(now - 8 * 60 * 60 * 1000) // 8 hours ago
+                },
+                {
+                    title: "NVIDIA Launches Next-Gen AI Training Chips",
+                    description: "NVIDIA announces new GPU architecture specifically designed for large-scale AI model training with 3x performance improvement.",
+                    link: "https://nvidia.com",
+                    source: "NVIDIA Newsroom",
+                    category: "Tech",
+                    date: new Date(now - 10 * 60 * 60 * 1000) // 10 hours ago
+                },
+                {
+                    title: "AI Ethics Committee Releases Best Practices Guide",
+                    description: "Leading AI ethics organization publishes comprehensive guidelines for responsible AI development and deployment.",
+                    link: "https://example.com/ethics",
+                    source: "AI Ethics Institute",
+                    category: "Ethics",
+                    date: new Date(now - 12 * 60 * 60 * 1000) // 12 hours ago
+                },
+                {
+                    title: "Major Banks Adopt AI for Fraud Detection",
+                    description: "Financial institutions report 60% reduction in fraud cases after implementing advanced AI detection systems.",
+                    link: "https://example.com/business",
+                    source: "Financial Times",
+                    category: "Business",
+                    date: new Date(now - 14 * 60 * 60 * 1000) // 14 hours ago
+                },
+                {
+                    title: "Breakthrough in AI-Powered Drug Discovery",
+                    description: "Pharmaceutical company uses AI to identify promising drug candidates in record time, reducing development cycle by 50%.",
+                    link: "https://example.com/pharma",
+                    source: "Pharma Weekly",
+                    category: "Healthcare",
+                    date: new Date(now - 16 * 60 * 60 * 1000) // 16 hours ago
+                },
+                {
+                    title: "Google DeepMind Achieves New Milestone in Robotics",
+                    description: "DeepMind demonstrates robots learning complex tasks through observation, marking significant advancement in autonomous systems.",
+                    link: "https://deepmind.com",
+                    source: "DeepMind Research",
+                    category: "Tech",
+                    date: new Date(now - 18 * 60 * 60 * 1000) // 18 hours ago
+                },
+                {
+                    title: "AI Job Market Report Shows 200% Growth",
+                    description: "New report reveals explosive growth in AI-related job opportunities across all sectors with competitive salaries.",
+                    link: "https://example.com/jobs",
+                    source: "Tech Jobs Report",
+                    category: "Jobs",
+                    date: new Date(now - 20 * 60 * 60 * 1000) // 20 hours ago
+                }
+            ];
+        }
         
         // Dynamic Daily Digest Generator
         function generateDynamicDigest(newsItems) {
@@ -1853,11 +1958,6 @@
         // Refresh every 3 hours
         setInterval(loadAndGenerateDigest, 3 * 60 * 60 * 1000);
     </script>
-    
-    <!-- Load news integration scripts -->
-    <script src="/js/news-cache.js"></script>
-    <script src="/js/news-loader.js"></script>
-    <script src="/js/news-integration.js"></script>
     
     <script>
         // Animations toggle functionality
