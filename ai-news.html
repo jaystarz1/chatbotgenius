@@ -1031,15 +1031,18 @@
     </button>
     
     <script>
-        // Mobile menu toggle
+        // Mobile menu toggle - WITH NULL CHECKS
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navLinks = document.getElementById('nav-links');
         
-        mobileMenuToggle.addEventListener('click', function() {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', !isExpanded);
-            navLinks.classList.toggle('show');
-        });
+        // NULL CHECK PROTECTION
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('show');
+            });
+        }
         
         // Return to Top Button functionality
         function scrollToTop() {
@@ -1081,20 +1084,26 @@
             }
         });
         
-        // Close mobile menu when clicking outside
+        // Close mobile menu when clicking outside - WITH NULL CHECKS
         document.addEventListener('click', function(event) {
-            if (!event.target.closest('.nav-content') && navLinks.classList.contains('show')) {
-                navLinks.classList.remove('show');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            if (navLinks && navLinks.classList.contains('show')) {
+                if (!event.target.closest('.nav-content')) {
+                    navLinks.classList.remove('show');
+                    if (mobileMenuToggle) {
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    }
+                }
             }
         });
         
-        // Close mobile menu when pressing Escape
+        // Close mobile menu when pressing Escape - WITH NULL CHECKS
         document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && navLinks.classList.contains('show')) {
+            if (event.key === 'Escape' && navLinks && navLinks.classList.contains('show')) {
                 navLinks.classList.remove('show');
-                mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                mobileMenuToggle.focus();
+                if (mobileMenuToggle) {
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                    mobileMenuToggle.focus();
+                }
             }
         });
 
@@ -1266,9 +1275,16 @@
 
         // RSS Feed Functionality for Multiple Feeds
         async function loadAllNewsFeeds() {
+            try {
             const newsGrid = document.getElementById('news-grid');
             const newsStats = document.getElementById('news-stats');
             const categoryFilters = document.getElementById('category-filters');
+            
+            // Check if required elements exist
+            if (!newsGrid) {
+                console.error('Critical: news-grid element not found');
+                return;
+            }
             
             // All RSS feed URLs - 17 feeds
             const rssFeeds = [
@@ -1375,14 +1391,14 @@
             uniqueItems.sort((a, b) => b.date - a.date);
             
             // Take first 100 items
-            const displayItems = uniqueItems.slice(0, 100);
+            let displayItems = uniqueItems.slice(0, 100); // CHANGED FROM const TO let
             
             // Store for digest generation
             allCurrentNewsItems = displayItems;
             
-            // Always use fallback data for now since RSS feeds are failing
-            // TODO: Fix RSS feed loading with proper backend proxy
-            if (displayItems.length === 0 || true) {  // Force fallback
+            // Use fallback data when RSS feeds fail or for now as temporary solution
+            // TODO: Implement proper backend proxy for RSS feeds
+            if (displayItems.length === 0 || true) {  // TEMPORARY: Force fallback until RSS proxy is fixed
                 const fallbackItems = getFallbackNewsItems();
                 // Format fallback items to match expected structure
                 fallbackItems.forEach(item => {
@@ -1452,6 +1468,45 @@
                         <p><small>Please check back later or try refreshing the page.</small></p>
                     </div>
                 `;
+            }
+            
+            } catch (error) {
+                // Comprehensive error handling
+                console.error('Fatal error in loadAllNewsFeeds:', error);
+                
+                // Try to display fallback content even if error occurs
+                const newsGrid = document.getElementById('news-grid');
+                if (newsGrid) {
+                    try {
+                        const fallbackItems = getFallbackNewsItems();
+                        fallbackItems.forEach(item => {
+                            item.excerpt = item.description;
+                            item.dateString = new Date(item.date).toLocaleDateString();
+                        });
+                        
+                        newsGrid.innerHTML = fallbackItems.map(item => `
+                            <article class="news-card" data-category="${item.category}">
+                                <div class="news-card-content">
+                                    <span class="category-badge category-${item.category.toLowerCase()}">${item.category}</span>
+                                    <h3><a href="${item.link}" target="_blank">${item.title}</a></h3>
+                                    <p class="news-card-excerpt">${item.excerpt}</p>
+                                    <div class="news-card-meta">
+                                        <span class="news-source">${item.source}</span>
+                                        <span class="news-date">${item.dateString}</span>
+                                    </div>
+                                </div>
+                            </article>
+                        `).join('');
+                    } catch (fallbackError) {
+                        newsGrid.innerHTML = `
+                            <div style="padding: 20px; background: #fee; color: #c00; border-radius: 10px;">
+                                <h3>News Loading Error</h3>
+                                <p>Unable to load news content.</p>
+                                <button onclick="location.reload()" style="padding: 10px 20px; margin-top: 10px;">Reload Page</button>
+                            </div>
+                        `;
+                    }
+                }
             }
         }
         
