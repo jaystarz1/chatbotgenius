@@ -142,6 +142,7 @@
 
         .web-nav-dropdown {
             position: relative;
+            display: inline-block;
         }
 
         .dropdown-toggle {
@@ -150,6 +151,31 @@
             cursor: pointer;
             font-family: inherit;
             font-size: inherit;
+            color: #1a1f71;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dropdown-toggle:hover {
+            background: rgba(26, 31, 113, 0.1);
+            color: #4c5fd5;
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .web-nav-dropdown:hover .arrow {
+            transform: rotate(180deg);
         }
 
         .dropdown-content {
@@ -158,30 +184,55 @@
             top: 100%;
             left: 0;
             background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 10px;
-            padding: 10px;
-            min-width: 220px;
-            margin-top: 5px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            min-width: 250px;
+            margin-top: 10px;
+            z-index: 1002;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        /* Invisible bridge to maintain hover */
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
         }
 
         .web-nav-dropdown:hover .dropdown-content {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .dropdown-content a {
             display: block;
-            padding: 10px 15px;
-            color: #495057;
+            padding: 12px 20px;
+            color: #333;
             text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
             white-space: nowrap;
+        }
+        
+        .dropdown-content a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .dropdown-content a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
         }
 
         .dropdown-content a:hover {
             background: #f8f9fa;
             color: #1a1f71;
+            padding-left: 25px;
         }
 
         .web-nav-cta {
@@ -198,12 +249,6 @@
         .web-nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
-        }
-        
-        .arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 0.8em;
         }
         
         /* Hero Section */
@@ -873,12 +918,12 @@
                 
                 <!-- Demos Dropdown -->
                 <div class="web-nav-dropdown">
-                    <button class="web-nav-link dropdown-toggle">
+                    <a href="/web-development/demos/showcase.html" class="dropdown-toggle">
                         Demos <span class="arrow">▼</span>
-                    </button>
+                    </a>
                     <div class="dropdown-content">
                         <a href="/web-development/demos/showcase.html">🎨 View All Demos</a>
-                        <a href="/web-development/demos/wedding.html">💑 Wedding</a>
+                        <a href="/web-development/demos/wedding-clean.html">💑 Wedding</a>
                         <a href="/web-development/demos/birthday.html">🎂 Birthday</a>
                         <a href="/web-development/demos/anniversary.html">💝 Anniversary</a>
                         <a href="/web-development/demos/fundraiser.html">💖 Fundraiser</a>
@@ -889,9 +934,9 @@
                 
                 <!-- Packages Dropdown -->
                 <div class="web-nav-dropdown">
-                    <button class="web-nav-link dropdown-toggle">
+                    <a href="/web-development/packages/event-page.html" class="dropdown-toggle">
                         Packages <span class="arrow">▼</span>
-                    </button>
+                    </a>
                     <div class="dropdown-content">
                         <a href="/web-development/packages/event-page.html">🎯 Event Page - $97</a>
                         <a href="/web-development/packages/landing-package.html">🚀 Landing - $297</a>
@@ -902,9 +947,9 @@
                 
                 <!-- Maintenance Dropdown -->
                 <div class="web-nav-dropdown">
-                    <button class="web-nav-link dropdown-toggle">
+                    <a href="/web-development/maintenance/monthly-monitoring.html" class="dropdown-toggle">
                         Maintenance <span class="arrow">▼</span>
-                    </button>
+                    </a>
                     <div class="dropdown-content">
                         <a href="/web-development/maintenance/monthly-monitoring.html">📅 Monthly - $97/mo</a>
                         <a href="/web-development/maintenance/pay-as-you-go.html">💳 Pay As You Go - $15</a>
@@ -931,6 +976,104 @@
             <div class="hero-cta">
                 <a href="#services" class="btn-primary">View Packages</a>
                 <a href="/web-development/demos/showcase.html" class="btn-secondary">See Examples</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Site Navigation Section -->
+    <section class="site-nav-section" style="padding: 60px 20px; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="font-size: 2rem; color: #1a1f71; margin-bottom: 1rem;">Quick Navigation</h2>
+                <p class="section-subtitle" style="color: #666; margin-bottom: 3rem;">Explore all our web development services and resources</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+                
+                <!-- Demos Card -->
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border: 2px solid #e9ecef; border-radius: 15px; padding: 2rem; transition: all 0.3s;">
+                    <h3 style="color: #1a1f71; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 2rem;">🎨</span> Live Demos
+                    </h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">See real examples of our work in action</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="/web-development/demos/showcase.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center;">
+                            <span>🖼️ View All Demos</span>
+                            <span>→</span>
+                        </a>
+                        <a href="/web-development/demos/wedding-clean.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s;">💑 Wedding Event Page</a>
+                        <a href="/web-development/demos/birthday.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s;">🎂 Birthday Party Page</a>
+                        <a href="/web-development/demos/anniversary.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s;">💝 Anniversary Celebration</a>
+                        <a href="/web-development/demos/fundraiser.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s;">💖 Fundraiser Event</a>
+                        <a href="/web-development/demos/garage-sale.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s;">🏷️ Garage Sale</a>
+                        <a href="/web-development/demos/corporate-event.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s;">🏢 Corporate Event</a>
+                    </div>
+                </div>
+                
+                <!-- Packages Card -->
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border: 2px solid #e9ecef; border-radius: 15px; padding: 2rem; transition: all 0.3s;">
+                    <h3 style="color: #1a1f71; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 2rem;">📦</span> Service Packages
+                    </h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Choose the perfect package for your needs</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="/web-development/packages/event-page.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>🎯 Event Page</span>
+                            <span style="color: #f39c12; font-weight: bold;">$97</span>
+                        </a>
+                        <a href="/web-development/packages/landing-package.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>🚀 Landing Package</span>
+                            <span style="color: #f39c12; font-weight: bold;">$297</span>
+                        </a>
+                        <a href="/web-development/packages/standard-package.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>💼 Standard Business</span>
+                            <span style="color: #f39c12; font-weight: bold;">$497</span>
+                        </a>
+                        <a href="/web-development/packages/complete-package.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>⭐ Complete Package</span>
+                            <span style="color: #f39c12; font-weight: bold;">$997</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Maintenance Card -->
+                <div style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border: 2px solid #e9ecef; border-radius: 15px; padding: 2rem; transition: all 0.3s;">
+                    <h3 style="color: #1a1f71; font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                        <span style="font-size: 2rem;">🛠️</span> Maintenance Options
+                    </h3>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Keep your website updated and running smoothly</p>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <a href="/web-development/maintenance/monthly-monitoring.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>📅 Monthly Monitoring</span>
+                            <span style="color: #f39c12; font-weight: bold;">$97/mo</span>
+                        </a>
+                        <a href="/web-development/maintenance/pay-as-you-go.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>💳 Pay As You Go</span>
+                            <span style="color: #f39c12; font-weight: bold;">$15/update</span>
+                        </a>
+                        <a href="/web-development/maintenance/diy-ai-training.html" style="color: #4c5fd5; text-decoration: none; padding: 8px; border-radius: 5px; transition: all 0.2s; display: flex; justify-content: space-between;">
+                            <span>🎓 DIY AI Training</span>
+                            <span style="color: #f39c12; font-weight: bold;">$497</span>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Quick Actions -->
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="color: #1a1f71; margin-bottom: 1.5rem;">Popular Actions</h3>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="/web-development/demos/showcase.html" class="btn-primary" style="background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%); color: white; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                        🎨 Browse All Demos
+                    </a>
+                    <a href="#services" class="btn-primary" style="background: #f9c74f; color: #1a1f71; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                        📊 Compare Packages
+                    </a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn-primary" style="background: linear-gradient(135deg, #f39c12 0%, #f9c74f 100%); color: #1a1f71; padding: 15px 35px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s;">
+                        💬 Get Free Quote
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1019,7 +1162,7 @@
                     <div class="demo-content">
                         <h3>Wedding Celebration</h3>
                         <p>Elegant design for your special day</p>
-                        <a href="/web-development/demos/wedding.html" class="btn-demo">View Demo →</a>
+                        <a href="/web-development/demos/wedding-clean.html" class="btn-demo">View Demo →</a>
                     </div>
                 </div>
                 <div class="demo-card">
@@ -1246,12 +1389,64 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
+            <!-- Web Development Sitemap -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem; text-align: left;">
+                
+                <!-- Demos Column -->
+                <div>
+                    <h3 style="color: #f9c74f; margin-bottom: 1rem; font-size: 1.2rem;">Demo Sites</h3>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="/web-development/demos/showcase.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🖼️ View All Demos</a>
+                        <a href="/web-development/demos/wedding-clean.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">💑 Wedding Event</a>
+                        <a href="/web-development/demos/birthday.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🎂 Birthday Party</a>
+                        <a href="/web-development/demos/anniversary.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">💝 Anniversary</a>
+                        <a href="/web-development/demos/fundraiser.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">💖 Fundraiser</a>
+                        <a href="/web-development/demos/garage-sale.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🏷️ Garage Sale</a>
+                        <a href="/web-development/demos/corporate-event.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🏢 Corporate Event</a>
+                    </div>
+                </div>
+                
+                <!-- Packages Column -->
+                <div>
+                    <h3 style="color: #f9c74f; margin-bottom: 1rem; font-size: 1.2rem;">Service Packages</h3>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="/web-development/packages/event-page.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🎯 Event Page - $97</a>
+                        <a href="/web-development/packages/landing-package.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🚀 Landing - $297</a>
+                        <a href="/web-development/packages/standard-package.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">💼 Standard - $497</a>
+                        <a href="/web-development/packages/complete-package.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">⭐ Complete - $997</a>
+                    </div>
+                </div>
+                
+                <!-- Maintenance Column -->
+                <div>
+                    <h3 style="color: #f9c74f; margin-bottom: 1rem; font-size: 1.2rem;">Maintenance Options</h3>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="/web-development/maintenance/monthly-monitoring.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">📅 Monthly - $97/mo</a>
+                        <a href="/web-development/maintenance/pay-as-you-go.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">💳 Pay As You Go - $15</a>
+                        <a href="/web-development/maintenance/diy-ai-training.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🎓 DIY Training - $497</a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links Column -->
+                <div>
+                    <h3 style="color: #f9c74f; margin-bottom: 1rem; font-size: 1.2rem;">Quick Links</h3>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="/" style="color: rgba(255,255,255,0.8); text-decoration: none;">🏠 Main Site Home</a>
+                        <a href="/ai-insights.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🤖 AI Insights</a>
+                        <a href="/books.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">📚 Books</a>
+                        <a href="/projects.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">🚀 Projects</a>
+                        <a href="https://calendly.com/jay-barkerhrs/30min" style="color: rgba(255,255,255,0.8); text-decoration: none;">📅 Book Consultation</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Footer Links -->
+            <div class="footer-links" style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem;">
                 <a href="/">Home</a>
-                <a href="/ai-insights.html">AI Insights</a>
-                <a href="/books.html">Books</a>
-                <a href="/projects.html">Projects</a>
+                <a href="/web-development/">Web Development</a>
+                <a href="/blog.html">Blog</a>
                 <a href="tel:343-597-5646">343-597-5646</a>
+                <a href="mailto:jay@barkerhrs.com">Email</a>
             </div>
             <p>&copy; 2024 The Chatbot Genius. Ottawa, Canada.</p>
         </div>

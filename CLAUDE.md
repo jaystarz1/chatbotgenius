@@ -354,9 +354,40 @@ Configured in Netlify dashboard:
 - **LinkedIn**: https://linkedin.com/in/jaysontarzwell
 - **GitHub**: @jaytarzwell
 
+## WEB DESIGN SYSTEM - CRITICAL
+
+### ⚠️ MANDATORY READING - THE BOSS'S REQUIREMENTS ⚠️
+**BEFORE ANY WEB WORK, YOU MUST READ:**
+→ `/Users/jaytarzwell/chatbotgenius/WEBPAGE-STANDARDS-BOSS.md`
+
+**THIS DOCUMENT CONTAINS:**
+- Non-negotiable quality standards for ALL web pages
+- Intelligent event-specific design requirements
+- The exact process that keeps builds under 90 minutes
+- What makes pages premium WITHOUT being generic
+- THE RULES THAT MAKE OUR PAGES PROFITABLE
+
+**ALSO REQUIRED:**
+→ `/Users/jaytarzwell/chatbotgenius/WEBDESIGN.md` (Technical implementation details)
+
+**NEVER** create massive inline HTML/CSS files. **ALWAYS** use the shared CSS/JS system at:
+- `web-development/demos/assets/css/base.css`
+- `web-development/demos/assets/css/components.css` 
+- `web-development/demos/assets/themes/[event-type].css`
+- `web-development/demos/assets/js/*.js`
+
 ## Notes for Claude
 
-### When Creating/Editing Files
+### When Creating/Editing Web Demos
+1. **READ WEBPAGE-STANDARDS-BOSS.md FIRST** - Non-negotiable boss requirements
+2. **READ WEBDESIGN.md SECOND** - Technical implementation details
+3. Intelligently adapt design to event type (corporate vs wedding vs birthday)
+4. Use the shared CSS/JS system - NO INLINE STYLES over 50 lines
+5. Include ALL required content sections per event type
+6. Test that shared assets load properly
+7. Complete build in under 90 minutes
+
+### When Creating/Editing Other Files
 1. Always preserve the existing navigation structure
 2. Use the Van Gogh-inspired color palette
 3. Follow the established file naming conventions
@@ -370,11 +401,56 @@ Configured in Netlify dashboard:
 4. Check network tab for failed resource loads
 
 ### Best Practices
-1. Keep inline CSS for critical styles (reliability)
-2. Use SVG for logos and icons when possible
-3. Optimize images before adding to repository
-4. Write clear, descriptive commit messages
-5. Test on both desktop and mobile views
+1. For web demos: USE THE SHARED SYSTEM (see WEBDESIGN.md)
+2. For main site: Keep inline CSS for critical styles (reliability)
+3. Use SVG for logos and icons when possible
+4. Optimize images before adding to repository
+5. Write clear, descriptive commit messages
+6. Test on both desktop and mobile views
+
+## Specialized Documentation
+
+### Web Development Projects
+For web development and client site creation, refer to these essential guides:
+
+#### Core Documentation
+- **`/web-development/docs/DEMO-GUIDE.md`** - Complete guide to using demos as templates
+- **`/web-development/docs/CLIENT-WORKFLOW.md`** - Step-by-step client project process
+- **`/web-development/docs/TECHNICAL-REFERENCE.md`** - CSS patterns, JS modules, performance tips
+
+#### Demo-Specific Guides
+Each demo has its own comprehensive README:
+- **`/web-development/demos/WEDDING-README.md`** - Wedding demo complete guide
+- **`/web-development/demos/CORPORATE-README.md`** - Corporate event guide (when created)
+- **`/web-development/demos/BIRTHDAY-README.md`** - Birthday demo guide (when created)
+
+#### Quick References
+- **`/web-development/QUICK-START.md`** - Quick commands for starting client projects
+- **`/web-development/README.md`** - Overall web development structure
+
+### IMPORTANT: Client Site Creation Process
+
+**When creating client sites, ALWAYS:**
+1. **Read the relevant demo README first** - Contains critical setup information
+2. **Use the modular version** (e.g., `wedding-clean.html`) not the monolithic version
+3. **Copy the entire assets folder** - Contains all CSS/JS dependencies
+4. **Test all JavaScript functionality** - Especially countdown timers
+5. **Ensure dates are in the future** - Countdown shows 00:00:00 for past dates
+6. **Keep the attribution footer** - It's how we get referrals
+
+**Quick Start Example:**
+```bash
+# For a new wedding site
+cp demos/wedding-clean.html clients/smith-wedding.html
+cp -r demos/assets clients/smith-assets/
+# Then update: names, dates, colors, content
+```
+
+### Common Issues Reference
+- **Countdown showing zeros**: Date is in the past, use future date
+- **CSS not loading**: Check relative paths to assets folder
+- **Fonts not displaying**: Google Fonts link must be before CSS
+- **Share buttons broken**: JavaScript must load at end of body
 
 ## Recent Updates
 - Medical transcription API fully operational

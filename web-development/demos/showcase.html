@@ -95,6 +95,41 @@
             box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
         }
         
+        /* Breadcrumb Navigation */
+        .breadcrumb-nav {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #dee2e6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: #4c5fd5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #1a1f71;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-separator {
+            color: #999;
+        }
+        
+        .breadcrumb-current {
+            color: #666;
+            font-weight: 500;
+        }
+        
         /* Web Dev Sub-Navigation */
         .web-dev-nav {
             background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
@@ -213,6 +248,56 @@
         .header p {
             font-size: 1.2rem;
             opacity: 0.95;
+        }
+        
+        /* Demo Explanation */
+        .demo-explanation {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #dee2e6;
+            border-left: 5px solid #4c5fd5;
+            margin: 2rem 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .explanation-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+        }
+        
+        .explanation-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+        
+        .explanation-text h3 {
+            color: #1a1f71;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .explanation-text p {
+            color: #495057;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .explanation-text strong {
+            color: #4c5fd5;
+        }
+        
+        @media (max-width: 768px) {
+            .explanation-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .demo-explanation {
+                margin: 1rem 10px;
+            }
         }
         
         /* Demo Grid */
@@ -533,6 +618,19 @@
         </div>
     </nav>
     
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="/web-development/">Web Development</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Demo Showcase</span>
+            </div>
+        </div>
+    </nav>
+    
     <!-- Web Dev Sub-Navigation -->
     <nav class="web-dev-nav" aria-label="Web Development Services Navigation">
         <div class="container">
@@ -547,7 +645,7 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="/web-development/demos/showcase.html">🎨 View All Demos</a>
-                        <a href="/web-development/demos/wedding.html">💑 Wedding</a>
+                        <a href="/web-development/demos/wedding-clean.html">💑 Wedding</a>
                         <a href="/web-development/demos/birthday.html">🎂 Birthday</a>
                         <a href="/web-development/demos/anniversary.html">💝 Anniversary</a>
                         <a href="/web-development/demos/fundraiser.html">💖 Fundraiser</a>
@@ -593,6 +691,19 @@
         <p>Professional single-page sites delivered in 24 hours for just $97</p>
     </header>
     
+    <!-- Demo Explanation Note -->
+    <div class="demo-explanation">
+        <div class="container">
+            <div class="explanation-content">
+                <div class="explanation-icon">✨</div>
+                <div class="explanation-text">
+                    <h3>Pure Client Experience</h3>
+                    <p><strong>Important:</strong> These demos show exactly what your clients will see - clean, professional pages with no extra branding or navigation from The Chatbot Genius. Each demo represents the final deliverable your clients receive.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Demo Grid -->
     <section class="demo-grid">
         <!-- Wedding Demo -->
@@ -611,7 +722,7 @@
                     <li>Gift registry links</li>
                 </ul>
                 <div class="demo-buttons">
-                    <a href="/web-development/demos/wedding.html" class="btn btn-view">View Demo</a>
+                    <a href="/web-development/demos/wedding-clean.html" class="btn btn-view">View Demo</a>
                     <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-order">Order This</a>
                 </div>
             </div>

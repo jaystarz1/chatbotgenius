@@ -8,7 +8,7 @@
 │
 ├── /demos/                        # Event page demos ($97 service)
 │   ├── showcase.html             # Lists all demo types with previews
-│   ├── wedding.html              # Wedding event page demo ✓ COMPLETE
+│   ├── wedding-clean.html              # Wedding event page demo ✓ COMPLETE
 │   ├── garage-sale.html          # Community garage sale demo
 │   ├── birthday.html             # Birthday party demo
 │   ├── anniversary.html          # Anniversary celebration demo

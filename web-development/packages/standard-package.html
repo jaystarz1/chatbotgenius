@@ -228,6 +228,41 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
+        /* Breadcrumb Navigation */
+        .breadcrumb-nav {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #dee2e6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: #4c5fd5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #1a1f71;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-separator {
+            color: #999;
+        }
+        
+        .breadcrumb-current {
+            color: #666;
+            font-weight: 500;
+        }
+
         /* Package Hero */
         .package-hero {
             background: linear-gradient(135deg, #6f42c1 0%, #8e44ad 100%);
@@ -734,7 +769,6 @@
                             <a href="../../services/consulting.html">AI Consulting</a>
                             <a href="../../services/app-development.html">Custom App Development</a>
                             <a href="../../projects.html">Projects Portfolio</a>
-                            <a href="../../api/medical-transcription.html">Medical Transcription API</a>
                         </div>
                     </div>
                     <a href="../../ai-news.html" class="nav-link">AI News</a>
@@ -742,6 +776,21 @@
                     <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
                     <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
                 </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../">Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="../">Web Development</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href=".">Packages</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">Standard Business Package</span>
             </div>
         </div>
     </nav>
@@ -760,7 +809,7 @@
                     </button>
                     <div class="dropdown-content">
                         <a href="/web-development/demos/showcase.html">🎨 View All Demos</a>
-                        <a href="/web-development/demos/wedding.html">💑 Wedding</a>
+                        <a href="/web-development/demos/wedding-clean.html">💑 Wedding</a>
                         <a href="/web-development/demos/birthday.html">🎂 Birthday</a>
                         <a href="/web-development/demos/anniversary.html">💝 Anniversary</a>
                         <a href="/web-development/demos/fundraiser.html">🎗️ Fundraiser</a>

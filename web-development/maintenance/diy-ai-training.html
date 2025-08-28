@@ -115,6 +115,41 @@
             box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
         }
 
+        /* Breadcrumb Navigation */
+        .breadcrumb-nav {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #dee2e6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .breadcrumb a {
+            color: #4c5fd5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: #1a1f71;
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-separator {
+            color: #999;
+        }
+        
+        .breadcrumb-current {
+            color: #666;
+            font-weight: 500;
+        }
+
         /* Web Dev Navigation */
         .web-dev-nav {
             background: rgba(26, 31, 113, 0.95);
@@ -707,7 +742,6 @@
                             <a href="../../services/consulting.html">AI Consulting</a>
                             <a href="../../services/app-development.html">Custom App Development</a>
                             <a href="../../projects.html">Projects Portfolio</a>
-                            <a href="../../api/medical-transcription.html">Medical Transcription API</a>
                         </div>
                     </div>
                     <a href="../../ai-news.html" class="nav-link">AI News</a>
@@ -715,6 +749,21 @@
                     <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
                     <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
                 </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../../">Home</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href="../">Web Development</a>
+                <span class="breadcrumb-separator">›</span>
+                <a href=".">Maintenance</a>
+                <span class="breadcrumb-separator">›</span>
+                <span class="breadcrumb-current">DIY AI Training</span>
             </div>
         </div>
     </nav>
