@@ -1,0 +1,31 @@
+/* ===================================
+   Top Banner Component - The Chatbot Genius
+   =================================== */
+
+.top-banner {
+    background: var(--bg-dark-blue);
+    color: var(--text-white);
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: var(--z-dropdown);
+}
+
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.banner-item {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+}
+
+.banner-separator {
+    color: var(--primary-blue);
+    font-weight: var(--font-weight-bold);
+}

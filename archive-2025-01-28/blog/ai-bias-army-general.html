@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="What Does an Army General Look Like? Demonstrated Bias in Generative AI - An experiment exploring AI bias in image generation">
+    <title>What Does an Army General Look Like? Demonstrated Bias in Generative AI - The Chatbot Genius</title>
+    <meta property="og:title" content="What Does an Army General Look Like? Demonstrated Bias in Generative AI">
+    <meta property="og:description" content="An experiment using ChatGPT 4 that highlights bias in advanced AI models and the importance of diversity in AI development.">
+    <meta property="og:type" content="article">
+    <meta property="article:author" content="Jay Tarzwell">
+    <meta property="article:published_time" content="2024-07-24">
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .article-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .nav-links a:hover {
+            color: #f9c74f;
+        }
+        
+        .article-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 120px 0 60px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        
+        .article-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .article-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .article-content {
+            padding: 60px 0;
+        }
+        
+        .article-content h2 {
+            color: #1a1f71;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .article-content h3 {
+            color: #4c5fd5;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .article-content p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .article-content ul {
+            margin: 20px 0;
+            padding-left: 30px;
+        }
+        
+        .article-content li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #4c5fd5;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .experiment-results {
+            background: #f8f9fa;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        
+        .experiment-results h3 {
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+        
+        .stats-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .stats-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .stats-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .stat-label {
+            font-weight: 600;
+            color: #4c5fd5;
+        }
+        
+        .stat-value {
+            font-weight: bold;
+            color: #1a1f71;
+            font-size: 1.1rem;
+        }
+        
+        .call-to-action {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .call-to-action h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .image-placeholder {
+            background: #e0e0e0;
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .book-promo {
+            background: #f9c74f;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .book-promo h3 {
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+        
+        .book-promo p {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #1a1f71;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: #4c5fd5;
+        }
+        
+        .blog-nav {
+            background: #f8f9fa;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+        
+        .blog-nav-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4c5fd5;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-to-blog:hover {
+            color: #1a1f71;
+        }
+        
+        .blog-nav-separator {
+            color: #ccc;
+        }
+        
+        .current-post {
+            color: #666;
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .article-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .article-content {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+        <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="../" class="nav-link">Home</a>
+                    <a href="../about.html" class="nav-link">About</a>
+                    <a href="../books.html" class="nav-link">Books</a>
+                    <a href="../blog.html" class="nav-link">Blog</a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Services</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="../web-development/">Custom Website Building</a>
+                            <a href="../services/training.html">AI Training & Workshops</a>
+                            <a href="../services/consulting.html">AI Consulting</a>
+                            <a href="../services/app-development.html">Custom App Development</a>
+                            <a href="../projects.html">Projects Portfolio</a>
+                        </div>
+                    </div>
+                    <a href="../ai-news.html" class="nav-link">AI News</a>
+                    <a href="../#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <div class="article-header">
+        <div class="article-container">
+            <h1>What Does an Army General Look Like? Demonstrated Bias in Generative AI</h1>
+            <div class="article-meta">
+                By Jay Tarzwell CD | July 24, 2024
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Navigation -->
+    <div class="blog-nav">
+        <div class="article-container">
+            <div class="blog-nav-content">
+                <a href="../blog.html" class="back-to-blog">
+                    <span>←</span> Back to Blog
+                </a>
+                <span class="blog-nav-separator">|</span>
+                <span class="current-post">AI Bias in Image Generation</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <article class="article-content">
+        <div class="article-container">
+            <div class="highlight-box">
+                <p><em>This post is adapted from my upcoming book, "Chatbot Genius: The 10-Hour Guide to Transforming Your Work and Life - From Beginner to Pro: Unlock Your AI Mindset"</em></p>
+            </div>
+
+            <p>Have you ever wondered what an army general looks like? As we celebrate the appointment of the Canadian Armed Forces' newest Chief of Defence Staff, LGen Jennie Carignan ✅, Canada's first female chief of defence, I thought this would be an interesting experiment in exploring AI bias.</p>
+
+            <p>Admittedly, most people don't likely wonder what an army general looks like. It's not a question most of us ask, but when you do think of it, who do you picture? My experiment using ChatGPT 4 was on July 23, 2024, and highlights bias in advanced models.</p>
+
+            <h2>The Experiment: Visualizing an "Army General"</h2>
+            
+            <p>I asked ChatGPT 4 to "create a picture of an army general" 25 times. The results were revealing:</p>
+
+            <div class="experiment-results">
+                <h3>Out of the first 15 images:</h3>
+                <ul class="stats-list">
+                    <li>
+                        <span class="stat-label">First 10 images:</span>
+                        <span class="stat-value">All men</span>
+                    </li>
+                    <li>
+                        <span class="stat-label">First female general appeared:</span>
+                        <span class="stat-value">11th attempt</span>
+                    </li>
+                    <li>
+                        <span class="stat-label">Total gender breakdown:</span>
+                        <span class="stat-value">12 men, 3 women</span>
+                    </li>
+                    <li>
+                        <span class="stat-label">Ethnic representation:</span>
+                        <span class="stat-value">8 European descent, 7 people of color</span>
+                    </li>
+                    <li>
+                        <span class="stat-label">National representation:</span>
+                        <span class="stat-value">9 appeared to be American generals</span>
+                    </li>
+                    <li>
+                        <span class="stat-label">African American males:</span>
+                        <span class="stat-value">2 generals</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="highlight-box" style="border-color: #e74c3c;">
+                <p><strong>Most striking? Out of 25 attempts:</strong></p>
+                <p style="font-size: 1.2rem; color: #e74c3c; font-weight: bold; margin-bottom: 0;">0 female African or African American generals were presented</p>
+            </div>
+
+            <div class="image-placeholder">
+                <img src="../images/generals-1.jpeg" alt="Grid of AI-generated military general images showing bias" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+                <p style="font-size: 0.9rem; color: #666; text-align: center; font-style: italic;">The first 15 AI-generated images when asked to "create a picture of an army general"</p>
+            </div>
+
+            <h2>What This Reveals About AI Bias</h2>
+
+            <h3>1. Underrepresentation</h3>
+            <p>The 5:1 ratio of men to women presented by ChatGPT wasn't apparent in the first ten image generations.</p>
+
+            <h3>2. Delayed Diversity</h3>
+            <p>It took 11 attempts before a woman appeared, suggesting a strong initial bias towards male representation in the underlying data or model.</p>
+
+            <h3>3. Intersectional Blindness</h3>
+            <p>The complete absence of African or African American women generals points to a significant gap in the AI's training data.</p>
+
+            <h3>4. Data Skew</h3>
+            <p>The results suggest the training data is predominantly American and male-centric.</p>
+
+            <h3>5. Post-hoc Corrections</h3>
+            <p>The sporadic inclusion of women after the 10th attempt might indicate attempts to balance the output, rather than a truly representative dataset.</p>
+
+            <h2>Female African American General Officers</h2>
+            
+            <p>While there are some duplicate images in this screen capture from Google Images, there was no shortage of images of female African American generals. I used this image to demonstrate they do exist.</p>
+
+            <div class="image-placeholder">
+                <img src="../images/generals-2.jpeg" alt="Google Images showing female African American generals" style="width: 100%; border-radius: 10px;">
+                <p style="font-size: 0.9rem; margin-top: 10px;">(Screencap: Author under fair use for educational purposes)</p>
+            </div>
+
+            <h2>The Root of the Problem</h2>
+
+            <p>This bias likely stems from a lack of diversity in the teams developing these AI systems. Without diverse perspectives in the room, these blindspots can easily go unnoticed during development and testing phases. To be clear, there was no shortage of images of female general officers, and they were likely viewed in training by the model.</p>
+
+            <p>The inference is that proportionally, the ratio of pictures of men and women would have led the model to conclude they weren't representational enough to consider. Where bias is reinforced is when the model calculates the probability based on the representation and then determines it is so low that it factors the possibility out entirely.</p>
+
+            <h2>Why This Matters</h2>
+
+            <p>Bias in AI isn't just a technical issue—it's a reflection and potential amplifier of societal inequalities. From hiring decisions to content recommendations, biased AI can reinforce harmful stereotypes and perpetuate discrimination in subtle yet impactful ways.</p>
+
+            <h2>Moving Forward</h2>
+
+            <p>As we continue to develop and deploy AI systems, it's crucial that we:</p>
+
+            <ul>
+                <li>Diversify development teams</li>
+                <li>Critically examine our training data for inherent bias and representation</li>
+                <li>Implement rigorous testing for fairness and representation</li>
+                <li>Remain vigilant and open to feedback from diverse user groups</li>
+            </ul>
+
+            <p>By addressing these issues head-on, we can work towards creating AI systems that are not only powerful but also fair and inclusive.</p>
+
+            <div class="call-to-action">
+                <h3>Try This Experiment Yourself</h3>
+                <p>If you have the time, I recommend you try this. Meta.ai has a free image generator so use that with this prompt - "create a picture of an army general." (I used a paid ChatGPT account, so results may vary between models.)</p>
+                <p style="margin-top: 20px;">What are your thoughts on AI bias? Have you encountered similar issues in your work with AI systems?</p>
+            </div>
+
+            <div class="book-promo">
+                <h3>Learn More About AI and Its Impact</h3>
+                <p>This post is adapted from my upcoming book, "Chatbot Genius: The 10-Hour Guide to Transforming Your Work and Life". In this guide, I take you from beginner to pro, helping you unlock your AI mindset.</p>
+                <a href="../books.html" class="btn">Explore My Books</a>
+            </div>
+
+            <div style="margin-top: 40px; color: #666;">
+                <p><strong>Tags:</strong> #AIbias #bias #DEI #ChatGPT4 #UnmaskingAI</p>
+            </div>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p>Building the future of conversational AI, one chatbot at a time.</p>
+        </div>
+    </footer>
+    <!-- Universal Share Button -->
+    <script src="/js/share-button.js"></script></body>
+</html>

@@ -428,10 +428,53 @@ cp -r demos/assets clients/smith-assets/
 - RSS feed automation
 - Google Analytics integration
 - NATO project section (protected)
+- **ACTIVE: Site Modernization Project (Jan 2025)** - See `SITE-MODERNIZATION-PLAN.md`
+
+## Active Development: Site Modernization (January 2025)
+
+### ⚠️ CRITICAL: Modernization in Progress
+**If working on site refactoring, READ FIRST:**
+→ `/Users/jaytarzwell/chatbotgenius/SITE-MODERNIZATION-PLAN.md`
+
+**Current Status**: Planning Phase
+**Approach**: Modular CSS extraction with zero-downtime deployment
+**Scope**: Main site pages only (demo pages excluded)
+
+### Modernization Quick Reference
+- **Phase 1**: CSS Extraction (about.html first) ⏳ IN PROGRESS
+  - ✅ Created archive backup (archive-2025-01-28/)
+  - ✅ Set up CSS folder structure
+  - ✅ Extracted core components (nav, banner, footer, buttons)
+  - ✅ Created about-test.html with external CSS
+  - 🔄 Testing and refinement needed
+- **Phase 2**: Design System Enhancement
+- **Phase 3**: Responsive Implementation
+- **Phase 4**: Performance & Polish
+
+### Testing Protocol
+1. Every change tested locally first
+2. Visual regression checks required
+3. Mobile testing mandatory
+4. Git commit after each successful test
+5. Rollback procedures documented
+
+### Component Architecture
+```
+css/
+├── 01-settings/     # Variables, tokens
+├── 02-base/        # Resets, globals
+├── 03-components/  # Reusable components
+├── 04-layouts/     # Page layouts
+├── 05-pages/       # Page-specific styles
+└── 06-utilities/   # Helper classes
+```
 
 ## Known Issues
-- None currently reported
+- Inline CSS needs extraction (~7,500 lines across all pages)
+- Mobile responsiveness needs improvement
+- Typography system needs modernization
 
 ---
-Last Updated: January 2025
-Status: Production Site - Handle with Care
+Last Updated: January 28, 2025
+Status: Production Site - Modernization in Progress
+Active Plan: SITE-MODERNIZATION-PLAN.md

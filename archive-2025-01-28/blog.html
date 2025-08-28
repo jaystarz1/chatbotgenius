@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Tags -->
+    <title>AI Blog Ottawa | ChatGPT Tutorials & Claude Insights - Jay Tarzwell</title>
+    <meta name="description" content="Expert AI insights from Ottawa consultant Jay Tarzwell. ChatGPT tutorials, Claude guides, AI ethics, privacy tips, and practical implementation strategies for Canadian businesses.">
+    <meta name="keywords" content="AI blog, ChatGPT tutorials, Claude AI guides, Ottawa AI expert, AI implementation, AI privacy, Jay Tarzwell blog">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thechatbotgenius.com/blog.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Blog - ChatGPT & Claude Insights from Ottawa Expert">
+    <meta property="og:description" content="Expert AI insights, tutorials, and implementation guides from Jay Tarzwell.">
+    <meta property="og:image" content="https://thechatbotgenius.com/blog/images/ai-jobs-paradox-header.svg">
+    <meta property="og:url" content="https://thechatbotgenius.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Chatbot Genius">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Blog - Expert Insights from Ottawa">
+    <meta name="twitter:description" content="ChatGPT tutorials, Claude guides, and AI implementation strategies">
+    <meta name="twitter:image" content="https://thechatbotgenius.com/blog/images/ai-jobs-paradox-header.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+    <link rel="mask-icon" href="/favicon.svg" color="#1a1f71">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R76R0B7J9B');
+    </script>
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+        
+        /* Services Dropdown */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-dropdown-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .nav-dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        
+        .nav-dropdown-toggle:hover {
+            color: #f9c74f;
+        }
+        
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: 100%;
+            margin-top: 0;
+            padding-top: 10px;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown-menu a {
+            color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .nav-dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-dropdown-menu a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1a1f71;
+            padding-left: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: 600;
+            border: 2px solid #ff8c42;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        
+        .btn-book:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .writings-section {
+            padding: 80px 0;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-card h3 {
+            color: #1a1f71;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        
+        .article-date {
+            color: #f9c74f;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .article-card p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: #4c5fd5;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .read-more:hover {
+            color: #1a1f71;
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .banner-content {
+                font-size: 0.85rem;
+            }
+            
+            .banner-separator {
+                display: none;
+            }
+            
+            .banner-item {
+                width: 100%;
+                padding: 2px 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1f71;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                height: auto;
+            }
+            
+            .nav-links a:not(.btn) {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "The Chatbot Genius Blog",
+      "description": "Expert AI insights, ChatGPT tutorials, and Claude implementation guides from Ottawa consultant Jay Tarzwell",
+      "url": "https://thechatbotgenius.com/blog.html",
+      "author": {
+        "@type": "Person",
+        "name": "Jay Tarzwell",
+        "url": "https://thechatbotgenius.com/about.html",
+        "jobTitle": "AI Consultant",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "Ontario",
+          "addressCountry": "CA"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Chatbot Genius",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://thechatbotgenius.com/favicon.svg"
+        }
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thechatbotgenius.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://thechatbotgenius.com/blog.html"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/books.html" class="nav-link">Books</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Services</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/web-development/">Custom Website Building</a>
+                            <a href="/services/training.html">AI Training & Workshops</a>
+                            <a href="/services/consulting.html">AI Consulting</a>
+                            <a href="/services/app-development.html">Custom App Development</a>
+                            <a href="/projects.html">Projects Portfolio</a>
+                        </div>
+                    </div>
+                    <a href="/ai-news.html" class="nav-link">AI News</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>AI Blog Ottawa - ChatGPT & Claude Expert Insights</h1>
+            <p>Practical AI Tutorials, Implementation Guides & Industry Analysis from Jay Tarzwell</p>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="writings-section">
+        <div class="container">
+            <h2 style="text-align: center; color: #1a1f71; margin-bottom: 50px;">Recent Blog Posts</h2>
+            
+            <div class="articles-grid" id="blog-posts-container">
+                <!-- Blog posts will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p>Building the future of conversational AI, one chatbot at a time.</p>
+        </div>
+    </footer>
+    
+    <!-- Load blog posts data -->
+    <script src="/blog-posts-data.js?v=2"></script>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-content') && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close mobile menu when pressing Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.focus();
+            }
+        });
+        
+        // Load blog posts dynamically
+        function loadBlogPosts() {
+            const container = document.getElementById('blog-posts-container');
+            
+            // Debug log
+            console.log('Loading blog posts...');
+            console.log('blogPostsData:', typeof blogPostsData !== 'undefined' ? blogPostsData : 'undefined');
+            
+            // Check if blogPostsData exists
+            if (typeof blogPostsData === 'undefined') {
+                container.innerHTML = '<p style="text-align: center; color: #666;">No blog posts found.</p>';
+                console.error('blogPostsData is undefined');
+                return;
+            }
+            
+            // Sort posts by sortDate in descending order (newest first)
+            const sortedPosts = [...blogPostsData].sort((a, b) => b.sortDate - a.sortDate);
+            
+            // Generate HTML for each post
+            sortedPosts.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'article-card';
+                article.innerHTML = `
+                    <img src="${post.image}" alt="${post.imageAlt}" class="article-image">
+                    <div class="article-content">
+                        <h3>${post.title}</h3>
+                        <p class="article-date">${post.date}</p>
+                        <p>${post.excerpt}</p>
+                        <a href="${post.url}" class="read-more">Read More →</a>
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        }
+        
+        // Load posts when page is ready
+        document.addEventListener('DOMContentLoaded', loadBlogPosts);
+        
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        if (animationsToggle) {
+            const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+            
+            // Apply initial state
+            if (!animationsEnabled) {
+                document.body.classList.add('no-animations');
+                animationsToggle.textContent = 'Turn on animations';
+            }
+            
+            // Toggle animations
+            animationsToggle.addEventListener('click', function() {
+                const isEnabled = !document.body.classList.contains('no-animations');
+                
+                if (isEnabled) {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                } else {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                }
+            });
+        }
+    </script>
+    
+    <style>
+        /* Disable animations when toggled off */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+    <!-- Universal Share Button -->
+    <script src="/js/share-button.js"></script></body>
+</html>

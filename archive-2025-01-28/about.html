@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Tags -->
+    <title>About Jay Tarzwell | AI Consultant Ottawa - Former Military Analyst</title>
+    <meta name="description" content="Learn about Jay Tarzwell, Ottawa's leading AI consultant. Former military analyst with 10+ years in AI, ChatGPT expert, Claude specialist, and author of multiple AI books.">
+    <meta name="keywords" content="Jay Tarzwell, AI consultant Ottawa, ChatGPT expert, Claude specialist, military analyst, AI author, privacy expert, Canadian AI consultant">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thechatbotgenius.com/about.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="About Jay Tarzwell - AI Consultant Ottawa & Canada">
+    <meta property="og:description" content="Former military analyst turned AI expert. Specializing in ChatGPT, Claude, and privacy-focused AI solutions.">
+    <meta property="og:image" content="https://thechatbotgenius.com/images/jay-tarzwell-photo-new.jpg">
+    <meta property="og:url" content="https://thechatbotgenius.com/about.html">
+    <meta property="og:type" content="profile">
+    <meta property="og:site_name" content="The Chatbot Genius">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Jay Tarzwell - AI Consultant Ottawa">
+    <meta name="twitter:description" content="Former military analyst. AI expert. Author. Building secure AI solutions globally.">
+    <meta name="twitter:image" content="https://thechatbotgenius.com/images/jay-tarzwell-photo-new.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+    <link rel="mask-icon" href="/favicon.svg" color="#1a1f71">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R76R0B7J9B');
+    </script>
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+        
+        /* Services Dropdown */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-dropdown-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .nav-dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        
+        .nav-dropdown-toggle:hover {
+            color: #f9c74f;
+        }
+        
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: 100%;
+            margin-top: 0;
+            padding-top: 10px;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown-menu a {
+            color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .nav-dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-dropdown-menu a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1a1f71;
+            padding-left: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: 600;
+            border: 2px solid #ff8c42;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        
+        .btn-book:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-content {
+            padding: 80px 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 80px;
+        }
+        
+        .headshot {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .bio h2 {
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+        
+        .bio p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .banner-content {
+                font-size: 0.85rem;
+            }
+            
+            .banner-separator {
+                display: none;
+            }
+            
+            .banner-item {
+                width: 100%;
+                padding: 2px 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1f71;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                height: auto;
+            }
+            
+            .nav-links a:not(.btn) {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .headshot {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "dateCreated": "2023-01-01",
+      "dateModified": "2025-01-19",
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "#jaytarzwell",
+        "name": "Jay Tarzwell",
+        "alternateName": "The Chatbot Genius",
+        "jobTitle": "AI Consultant & Privacy Expert",
+        "description": "Ottawa-based AI consultant specializing in ChatGPT, Claude, and privacy-focused AI solutions. Former military analyst with the Canadian Armed Forces. Author of multiple books on AI and technology.",
+        "url": "https://thechatbotgenius.com/about.html",
+        "image": "https://thechatbotgenius.com/images/jay-tarzwell-photo-new.jpg",
+        "email": "jay@barkerhrs.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "Ontario",
+          "addressCountry": "CA"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "The Chatbot Genius",
+          "url": "https://thechatbotgenius.com"
+        },
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "Canadian Armed Forces"
+        },
+        "sameAs": [
+          "https://linkedin.com/in/jaysontarzwell",
+          "https://github.com/jaytarzwell",
+          "https://www.amazon.ca/Jay-Tarzwell/e/B0C9S7FHBG"
+        ],
+        "knowsAbout": [
+          "Artificial Intelligence",
+          "ChatGPT",
+          "Claude AI",
+          "Privacy & Security",
+          "Machine Learning",
+          "Natural Language Processing",
+          "Military Intelligence Analysis",
+          "Grievance Management",
+          "AI Ethics"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "AI Consultant",
+          "description": "Provides AI consulting services to businesses in Ottawa, Canada, and internationally",
+          "estimatedSalary": {
+            "@type": "MonetaryAmountDistribution",
+            "currency": "CAD",
+            "median": 150000
+          }
+        }
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thechatbotgenius.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Jay Tarzwell",
+          "item": "https://thechatbotgenius.com/about.html"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/books.html" class="nav-link">Books</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Services</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/web-development/">Custom Website Building</a>
+                            <a href="/services/training.html">AI Training & Workshops</a>
+                            <a href="/services/consulting.html">AI Consulting</a>
+                            <a href="/services/app-development.html">Custom App Development</a>
+                            <a href="/projects.html">Projects Portfolio</a>
+                        </div>
+                    </div>
+                    <a href="/ai-news.html" class="nav-link">AI News</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>About Jay Tarzwell - Ottawa AI Consultant & ChatGPT Expert</h1>
+            <p>Former Military Analyst | AI Privacy Expert | Author | Serving Ottawa & Globally</p>
+        </div>
+    </div>
+
+    <!-- About Content -->
+    <section class="about-content">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <img src="images/jay-tarzwell-photo-new.jpg" alt="Jay Tarzwell" class="headshot">
+                </div>
+                <div class="bio">
+                    <h2>From Military Service to AI Innovation</h2>
+                    <p>I'm Jay Tarzwell, an AI consultant and author dedicated to making artificial intelligence accessible and practical for businesses of all sizes. As a military veteran with deep experience in generative AI, I bring a unique perspective to the world of AI and chatbots.</p>
+                    
+                    <h3>My AI Journey</h3>
+                    <p>My fascination with AI began with a book I read in 9th grade featuring an Albert Einstein chatbot that helped the teenage protagonist navigate his journey. While the book's title has faded from memory, that image of a machine you could converse with mesmerized me. I honestly never thought I'd see the day when such technology would exist. Thirty-eight years later, when ChatGPT emerged, I fell in love with the possibilities.</p>
+                    
+                    <h3>From Vision to Reality</h3>
+                    <p>Today, I specialize in building bespoke AI applications with robust data privacy, particularly for sensitive industries like healthcare and legal services. Most businesses need practical, secure AI solutions that actually work—not just flashy tech demos. This realization led me to focus on developing AI apps through innovative approaches and extensive use of Model Context Protocols (MCPs) that transform chatbots from novelties into executive assistants.</p>
+                    
+                    <h3>The Chatbot Genius Philosophy</h3>
+                    <p>"The Chatbot Genius" isn't about me—it's about you. I believe anyone can become a chatbot genius with the right guidance. That's why I write step-by-step books designed to guide readers one page at a time, with hands-on practice using chatbots on their phones. Yes, books might seem old school in our digital age, but for many people, there's something irreplaceable about the tactile experience of learning from a physical book.</p>
+                    
+                    <h3>Real Solutions, Real Impact</h3>
+                    <p>I've helped organizations and individuals transform their operations through intelligent automation. From developing medical transcription tools that protect patient privacy to creating HR complaint management systems that ensure confidentiality, my focus is always on delivering real value while maintaining the highest security standards.</p>
+                    
+                    <p>When I'm not consulting, training people to communicate effectively with AI, or writing, you'll find me exploring emerging technologies, spending time with my family, or working on my next book. I believe that AI should enhance human capabilities, not replace them, and I'm passionate about helping others harness this powerful technology responsibly and effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p>Building the future of conversational AI, one chatbot at a time.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-content') && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close mobile menu when pressing Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.focus();
+            }
+        });
+        
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+        
+        // Apply initial state
+        if (!animationsEnabled) {
+            document.body.classList.add('no-animations');
+            animationsToggle.textContent = 'Turn on animations';
+        }
+        
+        // Toggle animations
+        animationsToggle.addEventListener('click', function() {
+            const isEnabled = !document.body.classList.contains('no-animations');
+            
+            if (isEnabled) {
+                document.body.classList.add('no-animations');
+                localStorage.setItem('animationsEnabled', 'false');
+                this.textContent = 'Turn on animations';
+            } else {
+                document.body.classList.remove('no-animations');
+                localStorage.setItem('animationsEnabled', 'true');
+                this.textContent = 'Turn off animations';
+            }
+        });
+    </script>
+    
+    <style>
+        /* Disable animations when toggled off */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+    <!-- Universal Share Button -->
+    <script src="/js/share-button.js"></script></body>
+</html>

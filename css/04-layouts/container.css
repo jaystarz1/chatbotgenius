@@ -1,0 +1,36 @@
+/* ===================================
+   Container Layout - The Chatbot Genius
+   =================================== */
+
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Container Variants */
+.container--narrow {
+    max-width: 900px;
+}
+
+.container--wide {
+    max-width: 1400px;
+}
+
+.container--full {
+    max-width: 100%;
+    padding: 0;
+}
+
+/* Section Spacing */
+.section {
+    padding: var(--spacing-3xl) 0;
+}
+
+.section--small {
+    padding: var(--spacing-xl) 0;
+}
+
+.section--large {
+    padding: 80px 0;
+}
