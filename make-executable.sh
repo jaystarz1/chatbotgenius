@@ -1,1 +1,0 @@
-chmod +x force-deploy-clear-cache.sh
