@@ -1,0 +1,130 @@
+/* ===================================
+   Responsive Utilities - The Chatbot Genius
+   =================================== */
+
+/* Mobile Responsive - Max Width 768px */
+@media (max-width: 768px) {
+    /* Banner Adjustments */
+    .banner-content {
+        font-size: 0.85rem;
+    }
+    
+    .banner-separator {
+        display: none;
+    }
+    
+    .banner-item {
+        width: 100%;
+        padding: 2px 0;
+    }
+    
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+        display: block;
+        background: transparent;
+        border: 2px solid white;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1.2rem;
+    }
+    
+    /* Navigation Mobile Styles */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-dark);
+        flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-menu.show {
+        display: flex;
+    }
+    
+    .nav-menu .nav-link,
+    .nav-menu .btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+    }
+    
+    /* Page-specific mobile adjustments */
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .headshot {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Skills grid mobile */
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* CTA buttons mobile */
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Tablet - 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+    
+    .about-grid {
+        grid-template-columns: 250px 1fr;
+        gap: 40px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Hide mobile toggle on desktop */
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+    
+    .nav-menu {
+        display: flex !important;
+        position: static !important;
+        background: transparent !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+}

@@ -1,0 +1,163 @@
+/* ===================================
+   Cards Component - The Chatbot Genius
+   =================================== */
+
+/* Base Card Styles */
+.card {
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Feature Card */
+.feature-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.feature-card .icon {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-blue);
+}
+
+.feature-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Book Card */
+.book-card {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+.book-card img {
+    width: 100%;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+}
+
+.book-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.book-card p {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Blog Card */
+.blog-card {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+}
+
+.blog-card h2 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-2xl);
+}
+
+.blog-card h2 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.blog-card h2 a:hover {
+    color: var(--primary-blue);
+}
+
+.blog-meta {
+    color: var(--text-light);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.blog-excerpt {
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Project Card */
+.project-card {
+    background: var(--bg-light);
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+}
+
+.project-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-xl);
+}
+
+.project-card .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.tech-tag {
+    background: var(--primary-blue);
+    color: var(--text-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-sm);
+}
+
+/* Service Card */
+.service-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+}
+
+.service-card .icon {
+    font-size: var(--font-size-3xl);
+    color: var(--accent-gold);
+    margin-bottom: var(--spacing-md);
+}
+
+.service-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-md);
+}
+
+.service-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.service-card ul li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.service-card ul li:before {
+    content: "✓";
+    color: var(--accent-gold);
+    margin-right: var(--spacing-sm);
+    font-weight: bold;
+}

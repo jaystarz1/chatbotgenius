@@ -1,0 +1,145 @@
+/* ===================================
+   Forms Component - The Chatbot Genius
+   =================================== */
+
+/* Form Container */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    background: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-dark);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+textarea,
+select {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-base);
+    transition: border-color var(--transition-base), box-shadow var(--transition-base);
+    background: var(--bg-white);
+    color: var(--text-dark);
+}
+
+/* Focus States */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(76, 95, 213, 0.1);
+}
+
+/* Textarea */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Select */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    background-size: 20px;
+    padding-right: var(--spacing-2xl);
+}
+
+/* Checkboxes and Radios */
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: var(--spacing-sm);
+}
+
+/* Form Help Text */
+.form-help {
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--text-light);
+}
+
+/* Form Errors */
+.form-error {
+    color: #ef4444;
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+}
+
+input.error,
+textarea.error,
+select.error {
+    border-color: #ef4444;
+}
+
+/* Form Success */
+.form-success {
+    color: #10b981;
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xs);
+}
+
+/* Submit Button */
+.form-submit {
+    margin-top: var(--spacing-xl);
+}
+
+/* Contact Form Specific */
+.contact-form {
+    background: var(--bg-light);
+    padding: var(--spacing-2xl);
+    border-radius: var(--border-radius-lg);
+}
+
+.contact-form h2 {
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Newsletter Form */
+.newsletter-form {
+    display: flex;
+    gap: var(--spacing-md);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+}
+
+.newsletter-form button {
+    white-space: nowrap;
+}

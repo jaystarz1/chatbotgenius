@@ -2,6 +2,20 @@
    About Page Specific Styles - The Chatbot Genius
    =================================== */
 
+/* Page Header Section */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: var(--text-white);
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: var(--font-weight-bold);
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
@@ -18,9 +32,18 @@
 
 /* About Content */
 .about-content {
-    padding: var(--spacing-3xl) 0;
+    padding: 80px 0;
     max-width: 900px;
     margin: 0 auto;
+}
+
+/* About Grid Layout */
+.about-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 80px;
 }
 
 .about-intro {
@@ -31,8 +54,11 @@
     margin-bottom: var(--spacing-3xl);
 }
 
+/* Headshot Styles */
 .headshot {
-    text-align: center;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .headshot img {
@@ -56,6 +82,17 @@
 }
 
 /* Bio Sections */
+.bio h2 {
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    font-size: var(--font-size-2xl);
+}
+
+.bio p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
 .bio-section {
     margin-bottom: var(--spacing-2xl);
 }
