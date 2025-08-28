@@ -40,16 +40,16 @@
       gtag('js', new Date());
       gtag('config', 'G-R76R0B7J9B');
     </script>
-    <!-- External CSS Files -->
-    <link rel="stylesheet" href="/css/01-settings/variables.css">
-    <link rel="stylesheet" href="/css/02-base/reset.css">
-    <link rel="stylesheet" href="/css/03-components/top-banner.css">
-    <link rel="stylesheet" href="/css/03-components/navigation.css">
-    <link rel="stylesheet" href="/css/03-components/buttons.css">
-    <link rel="stylesheet" href="/css/04-layouts/container.css">
-    <link rel="stylesheet" href="/css/05-pages/about.css">
-    <link rel="stylesheet" href="/css/03-components/footer.css">
-    <link rel="stylesheet" href="/css/06-utilities/responsive.css">
+    <!-- External CSS Files - Using relative paths for local testing -->
+    <link rel="stylesheet" href="css/01-settings/variables.css">
+    <link rel="stylesheet" href="css/02-base/reset.css">
+    <link rel="stylesheet" href="css/03-components/top-banner.css">
+    <link rel="stylesheet" href="css/03-components/navigation.css">
+    <link rel="stylesheet" href="css/03-components/buttons.css">
+    <link rel="stylesheet" href="css/04-layouts/container.css">
+    <link rel="stylesheet" href="css/05-pages/about.css">
+    <link rel="stylesheet" href="css/03-components/footer.css">
+    <link rel="stylesheet" href="css/06-utilities/responsive.css">
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
@@ -162,7 +162,10 @@
                     <span class="logo" aria-hidden="true">🤖</span>
                     <span>The Chatbot Genius</span>
                 </a>
-                <nav class="nav-menu" role="navigation">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <nav class="nav-menu" id="nav-links" role="navigation">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>

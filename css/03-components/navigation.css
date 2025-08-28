@@ -13,6 +13,25 @@
     transition: all var(--transition-base);
 }
 
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: 2px solid white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    margin: 4px 0;
+    transition: var(--transition-base);
+}
+
 .nav-content {
     display: flex;
     justify-content: space-between;
