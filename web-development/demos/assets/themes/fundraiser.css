@@ -1,0 +1,460 @@
+/* =================================================================
+   FUNDRAISER THEME - CAUSE-DRIVEN DESIGN
+   
+   Premium fundraiser theme with trust-building colors and professional layout
+   ================================================================= */
+
+/* =================================================================
+   COLOR SYSTEM - FUNDRAISER PALETTE
+   ================================================================= */
+:root {
+    --fundraiser-primary: #2E7D32;      /* Trust green */
+    --fundraiser-secondary: #1976D2;    /* Confidence blue */
+    --fundraiser-accent: #F57C00;       /* Action orange */
+    --fundraiser-hope: #9C27B0;         /* Hope purple */
+    --fundraiser-light-green: #C8E6C9;  /* Soft green background */
+    --fundraiser-light-blue: #E3F2FD;   /* Soft blue background */
+    --fundraiser-dark: #263238;         /* Professional dark */
+    --fundraiser-text: #37474F;         /* Readable text */
+    --fundraiser-white: #FFFFFF;
+    --fundraiser-gradient: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+    --fundraiser-warm-gradient: linear-gradient(135deg, #F57C00 0%, #9C27B0 100%);
+}
+
+/* =================================================================
+   BODY & BACKGROUND
+   ================================================================= */
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    color: var(--fundraiser-text) !important;
+    background: linear-gradient(to bottom, #E3F2FD 0%, #FFFFFF 50%, #C8E6C9 100%) !important;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* =================================================================
+   HERO SECTION - FUNDRAISER IMPACT
+   ================================================================= */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background: var(--fundraiser-gradient);
+    color: white;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff20" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,218.7C672,203,768,149,864,128C960,107,1056,117,1152,138.7C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom/cover no-repeat;
+    opacity: 0.1;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem) !important;
+    font-weight: 800 !important;
+    margin-bottom: 1rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem !important;
+    font-weight: 400 !important;
+    margin-bottom: 2rem !important;
+    opacity: 0.95;
+}
+
+/* =================================================================
+   PROGRESS BAR - DONATION TRACKER
+   ================================================================= */
+.donation-progress {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    margin: 3rem auto;
+    max-width: 800px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.progress-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--fundraiser-primary);
+}
+
+.progress-goal {
+    font-size: 1.2rem;
+    color: var(--fundraiser-text);
+}
+
+.progress-bar-container {
+    background: var(--fundraiser-light-green);
+    border-radius: 50px;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar-fill {
+    background: var(--fundraiser-gradient);
+    height: 100%;
+    border-radius: 50px;
+    transition: width 2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #E0E0E0;
+}
+
+.progress-stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--fundraiser-secondary);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--fundraiser-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* =================================================================
+   BUTTONS - FUNDRAISER CTA STYLE
+   ================================================================= */
+.btn {
+    padding: 18px 45px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-donate {
+    background: var(--fundraiser-warm-gradient);
+    color: white;
+    font-size: 1.3rem;
+    padding: 20px 50px;
+    box-shadow: 0 5px 20px rgba(245, 124, 0, 0.3);
+    animation: pulse-donate 2s infinite;
+}
+
+@keyframes pulse-donate {
+    0% {
+        box-shadow: 0 5px 20px rgba(245, 124, 0, 0.3);
+    }
+    50% {
+        box-shadow: 0 8px 30px rgba(245, 124, 0, 0.5);
+    }
+    100% {
+        box-shadow: 0 5px 20px rgba(245, 124, 0, 0.3);
+    }
+}
+
+.btn-donate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 35px rgba(245, 124, 0, 0.4);
+}
+
+.btn-primary {
+    background: var(--fundraiser-gradient);
+    color: white;
+    box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(46, 125, 50, 0.4);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--fundraiser-primary);
+    border: 2px solid var(--fundraiser-primary);
+}
+
+.btn-secondary:hover {
+    background: var(--fundraiser-primary);
+    color: white;
+}
+
+/* =================================================================
+   IMPACT CARDS - SHOWCASE RESULTS
+   ================================================================= */
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.impact-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.impact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.impact-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: var(--fundraiser-gradient);
+}
+
+.impact-card-content {
+    padding: 1.5rem;
+}
+
+.impact-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--fundraiser-primary);
+    margin-bottom: 0.5rem;
+}
+
+.impact-card-text {
+    color: var(--fundraiser-text);
+    line-height: 1.6;
+}
+
+/* =================================================================
+   DONOR RECOGNITION WALL
+   ================================================================= */
+.donor-wall {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.donor-wall-title {
+    font-size: 2rem;
+    color: var(--fundraiser-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.donor-tiers {
+    display: grid;
+    gap: 2rem;
+}
+
+.donor-tier {
+    border-left: 4px solid var(--fundraiser-accent);
+    padding-left: 1.5rem;
+}
+
+.tier-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--fundraiser-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.donor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.donor-name {
+    background: var(--fundraiser-light-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    color: var(--fundraiser-text);
+}
+
+/* =================================================================
+   COUNTDOWN TIMER - CAMPAIGN END
+   ================================================================= */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    border-top: 3px solid var(--fundraiser-accent);
+}
+
+.countdown-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--fundraiser-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.countdown-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--fundraiser-text);
+    margin-top: 0.3rem;
+}
+
+/* =================================================================
+   TESTIMONIALS - BUILD TRUST
+   ================================================================= */
+.testimonial {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.testimonial::before {
+    content: '"';
+    font-size: 4rem;
+    color: var(--fundraiser-accent);
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    opacity: 0.3;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--fundraiser-text);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.testimonial-author {
+    font-weight: 600;
+    color: var(--fundraiser-primary);
+}
+
+/* =================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .progress-amount {
+        font-size: 1.5rem;
+    }
+    
+    .btn-donate {
+        font-size: 1.1rem;
+        padding: 15px 35px;
+    }
+    
+    .impact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-item {
+        min-width: 80px;
+        padding: 1rem;
+    }
+    
+    .countdown-number {
+        font-size: 2rem;
+    }
+}
+
+/* =================================================================
+   ACCESSIBILITY OVERRIDES
+   ================================================================= */
+*:focus-visible {
+    outline: 3px solid var(--fundraiser-accent) !important;
+    outline-offset: 3px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero {
+        background: var(--fundraiser-dark);
+    }
+    
+    .btn-donate {
+        background: var(--fundraiser-accent);
+        color: black;
+    }
+}

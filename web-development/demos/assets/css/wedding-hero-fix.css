@@ -1,0 +1,61 @@
+/* WEDDING HERO TEXT FIX - Force proper visibility */
+
+.wedding-names {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: clamp(4rem, 10vw, 8rem) !important;
+    font-weight: 400 !important;
+    color: #3A2429 !important;  /* Even darker for maximum contrast */
+    margin-bottom: 2rem !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    opacity: 1 !important;  /* Force full opacity */
+    visibility: visible !important;
+    animation: none !important;  /* Remove all animations for now */
+    transform: none !important;  /* Remove any transforms */
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.wedding-date {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;  /* Bolder */
+    font-size: 1.5rem !important;
+    letter-spacing: 0.3em !important;
+    text-transform: uppercase !important;
+    color: #8B6914 !important;  /* Dark gold */
+    margin-bottom: 1rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+}
+
+.wedding-location {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.25rem !important;
+    font-style: italic !important;
+    color: #4A3038 !important;  /* Dark mauve */
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
+
+/* Ensure the container is visible */
+.wedding-hero-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+/* Remove any interfering animations from parent */
+.wedding-hero * {
+    animation-fill-mode: forwards !important;
+}
+
+/* If there's a char class from split text, make those visible */
+.wedding-names .char {
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: #3A2429 !important;
+}

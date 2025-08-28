@@ -1,0 +1,496 @@
+/* =================================================================
+   WEDDING-LUXURY.CSS - Premium Wedding Event Styles
+   ================================================================= */
+
+/* Wedding Color Palette */
+:root {
+    --wedding-rose: #E8B4B8;
+    --wedding-gold: #D4AF37;
+    --wedding-champagne: #F7E7CE;
+    --wedding-blush: #FFE4E1;
+    --wedding-cream: #FFF8F3;
+    --wedding-sage: #9CAF88;
+    --wedding-mauve: #95626C;
+    --wedding-pearl: #FDEEF4;
+}
+
+/* Wedding Hero - Full Screen Luxury */
+.wedding-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FFF5F5 0%, #FFFAF8 100%);
+    overflow: hidden;
+}
+
+/* Animated Background Particles */
+.wedding-hero::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(232, 180, 184, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(247, 231, 206, 0.2) 0%, transparent 50%);
+    animation: float 20s ease-in-out infinite;
+}
+
+/* Rose Petals Animation */
+.rose-petals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.petal {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #E8B4B8;
+    border-radius: 0 100% 0 100%;
+    opacity: 0.6;  /* More subtle petals */
+    animation: fall linear infinite;
+    filter: blur(1px);  /* Soften the petals */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Hero Content Styling */
+.wedding-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: var(--space-xl);
+}
+
+/* Names in Elegant Script - WCAG Compliant Contrast */
+.wedding-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 400;
+    color: #5A3A42;  /* Much darker mauve for proper contrast */
+    margin-bottom: var(--space-md);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08),
+                 0 4px 16px rgba(149, 98, 108, 0.1);
+    animation: fadeInScale 1.5s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.wedding-date {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;  /* Increased from 300 for better readability */
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #B8860B;  /* Darker gold for WCAG compliance */
+    margin-bottom: var(--space-sm);
+    animation: fadeInUp 1.4s var(--ease-luxury);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.wedding-location {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: #6B4550;  /* Darker for better contrast */
+    font-weight: 500;
+    animation: fadeInUp 1.6s var(--ease-luxury);
+}
+
+/* Luxury Countdown */
+.wedding-countdown {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-top: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.wedding-countdown-item {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(255, 248, 243, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: var(--space-md);
+    border-radius: 20px;
+    min-width: 120px;
+    box-shadow: 
+        0 8px 32px rgba(149, 98, 108, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: all var(--duration-normal) var(--ease-luxury);
+    position: relative;
+    overflow: hidden;
+}
+
+.wedding-countdown-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(212, 175, 55, 0.1),
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+.wedding-countdown-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 12px 40px rgba(149, 98, 108, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.wedding-countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--wedding-mauve);
+    line-height: 1;
+}
+
+.wedding-countdown-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--wedding-gold);
+    margin-top: var(--space-xs);
+}
+
+/* Our Story Timeline - Luxury Version */
+.wedding-timeline {
+    position: relative;
+    padding: var(--space-xxl) 0;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.wedding-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--wedding-gold) 20%,
+        var(--wedding-gold) 80%,
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    position: relative;
+    padding: var(--space-lg) 0;
+    display: flex;
+    align-items: center;
+}
+
+.timeline-item:nth-child(odd) {
+    flex-direction: row-reverse;
+}
+
+.timeline-content {
+    width: 45%;
+    padding: var(--space-lg);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: all var(--duration-normal) var(--ease-luxury);
+}
+
+.timeline-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    background: var(--wedding-gold);
+    border: 4px solid white;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 8px rgba(212, 175, 55, 0.1);
+    z-index: 10;
+}
+
+.timeline-dot::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--wedding-gold);
+    animation: pulse-glow 2s infinite;
+}
+
+/* Wedding Party Cards - Premium */
+.wedding-party-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+}
+
+.party-member-card {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all var(--duration-normal) var(--ease-luxury);
+    cursor: pointer;
+}
+
+.party-member-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.party-member-photo {
+    position: relative;
+    height: 300px;
+    background: linear-gradient(135deg, var(--wedding-blush), var(--wedding-pearl));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: white;
+    overflow: hidden;
+}
+
+.party-member-photo::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+}
+
+.party-member-info {
+    padding: var(--space-md);
+    text-align: center;
+}
+
+.party-member-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--wedding-mauve);
+    margin-bottom: var(--space-xs);
+}
+
+.party-member-role {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--wedding-gold);
+}
+
+/* Details Cards - Glassmorphism */
+.wedding-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-xl) 0;
+}
+
+.wedding-detail-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.8) 0%, 
+        rgba(255, 248, 243, 0.6) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 24px;
+    padding: var(--space-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-luxury);
+}
+
+.wedding-detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(212, 175, 55, 0.1),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity var(--duration-normal);
+}
+
+.wedding-detail-card:hover::before {
+    opacity: 1;
+}
+
+.wedding-detail-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(149, 98, 108, 0.2);
+}
+
+.detail-icon-elegant {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--space-md);
+    background: linear-gradient(135deg, var(--wedding-gold), var(--wedding-rose));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+}
+
+/* RSVP Form - Luxury Style */
+.wedding-rsvp-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 30px;
+    padding: var(--space-xl);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.wedding-form-group {
+    margin-bottom: var(--space-md);
+}
+
+.wedding-form-label {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--wedding-mauve);
+    margin-bottom: var(--space-xs);
+}
+
+.wedding-form-input,
+.wedding-form-select,
+.wedding-form-textarea {
+    width: 100%;
+    padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    background: rgba(255, 248, 243, 0.3);
+    transition: all var(--duration-fast) var(--ease-luxury);
+}
+
+.wedding-form-input:focus,
+.wedding-form-select:focus,
+.wedding-form-textarea:focus {
+    outline: none;
+    border-color: var(--wedding-gold);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.wedding-form-submit {
+    width: 100%;
+    padding: 1.25rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: white;
+    background: linear-gradient(135deg, var(--wedding-gold), var(--wedding-rose));
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-luxury);
+    position: relative;
+    overflow: hidden;
+}
+
+.wedding-form-submit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.8s;
+}
+
+.wedding-form-submit:hover::before {
+    left: 100%;
+}
+
+.wedding-form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+/* Mobile Responsive Luxury */
+@media (max-width: 768px) {
+    .wedding-timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-item {
+        flex-direction: column !important;
+    }
+    
+    .timeline-content {
+        width: calc(100% - 60px);
+        margin-left: 60px;
+    }
+    
+    .timeline-dot {
+        left: 30px;
+    }
+}

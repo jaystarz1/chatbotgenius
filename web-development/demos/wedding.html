@@ -3,730 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah & Michael | June 15, 2026 | Ottawa Wedding</title>
+    <meta name="description" content="Join us as we celebrate the wedding of Sarah Thompson and Michael Chen on June 15, 2026 at the Château Laurier, Ottawa.">
     
-    <!-- SEO Meta Tags -->
-    <title>Sarah & Michael's Wedding | June 15, 2025 | Ottawa</title>
-    <meta name="description" content="Join us for the wedding celebration of Sarah Thompson and Michael Chen on June 15, 2025 at the Château Laurier in Ottawa. RSVP and find all event details here.">
-    <meta name="keywords" content="Sarah Michael wedding, Ottawa wedding June 2025, Château Laurier wedding">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Sarah & Michael's Wedding - June 15, 2025">
-    <meta property="og:description" content="We're getting married! Join us for our special day in Ottawa.">
-    <meta property="og:image" content="https://example.com/couple-photo.jpg">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Main Navigation */
-        .navbar {
-            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
-            color: white;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1001;
-        }
-        
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-        
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-            align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        .nav-links a:hover {
-            opacity: 0.8;
-        }
-        
-        .btn-nav-cta {
-            background: #f9c74f;
-            color: #1a1f71;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .btn-nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
-        }
-        
-        /* Web Dev Sub-Navigation */
-        .web-dev-nav {
-            background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
-            border-bottom: 1px solid #dee2e6;
-            padding: 10px 0;
-            position: sticky;
-            top: 70px;
-            z-index: 1000;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .web-dev-menu {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            justify-content: center;
-        }
-
-        .web-nav-link {
-            color: #1a1f71;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .web-nav-link:hover {
-            background: rgba(26, 31, 113, 0.1);
-            color: #4c5fd5;
-        }
-        
-        .web-nav-link.active {
-            background: rgba(26, 31, 113, 0.15);
-            color: #1a1f71;
-        }
-
-        .web-nav-dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-radius: 10px;
-            padding: 10px;
-            min-width: 220px;
-            margin-top: 5px;
-        }
-
-        .web-nav-dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-content a {
-            display: block;
-            padding: 10px 15px;
-            color: #495057;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .dropdown-content a:hover {
-            background: #f8f9fa;
-            color: #1a1f71;
-        }
-
-        .web-nav-cta {
-            background: linear-gradient(135deg, #f9c74f 0%, #f39c12 100%);
-            color: #1a1f71;
-            padding: 10px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-left: auto;
-            transition: all 0.3s;
-        }
-
-        .web-nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.3);
-        }
-        
-        .arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 0.8em;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #f5d0d0 0%, #ffefd5 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50%" y="50%" font-size="80" fill="%23ffffff10" text-anchor="middle">💕</text></svg>') repeat;
-            animation: float 20s linear infinite;
-            opacity: 0.1;
-        }
-        
-        @keyframes float {
-            to { transform: translate(50px, 50px); }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-        }
-        
-        .couple-names {
-            font-size: 4rem;
-            color: #d4756b;
-            margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-        }
-        
-        .wedding-date {
-            font-size: 1.8rem;
-            color: #666;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-        
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-20px); }
-        }
-        
-        /* Section Styles */
-        .section {
-            padding: 80px 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .section h2 {
-            font-size: 2.5rem;
-            color: #d4756b;
-            margin-bottom: 2rem;
-            text-align: center;
-            font-weight: 300;
-        }
-        
-        .section-alt {
-            background: #fafafa;
-        }
-        
-        /* Details Grid */
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .detail-card {
-            text-align: center;
-        }
-        
-        .detail-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .detail-card h3 {
-            color: #d4756b;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            font-weight: 300;
-        }
-        
-        /* RSVP Form */
-        .rsvp-form {
-            background: white;
-            padding: 3rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-family: inherit;
-        }
-        
-        .btn {
-            background: #d4756b;
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .btn:hover {
-            background: #c06057;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-        
-        .timeline-item {
-            display: flex;
-            margin-bottom: 2rem;
-            align-items: flex-start;
-        }
-        
-        .timeline-time {
-            min-width: 100px;
-            text-align: right;
-            padding-right: 2rem;
-            color: #d4756b;
-            font-weight: bold;
-        }
-        
-        .timeline-content {
-            flex: 1;
-            padding-left: 2rem;
-            border-left: 2px solid #f5d0d0;
-        }
-        
-        /* Map */
-        .map-container {
-            margin-top: 2rem;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        /* Footer */
-        .footer {
-            background: #d4756b;
-            color: white;
-            text-align: center;
-            padding: 3rem;
-        }
-        
-        .footer h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .couple-names {
-                font-size: 2.5rem;
-            }
-            
-            .wedding-date {
-                font-size: 1.3rem;
-            }
-            
-            .timeline-item {
-                flex-direction: column;
-            }
-            
-            .timeline-time {
-                text-align: left;
-                padding-right: 0;
-                margin-bottom: 0.5rem;
-            }
-            
-            .timeline-content {
-                padding-left: 0;
-                border-left: none;
-                padding-top: 1rem;
-            }
-        }
-    </style>
+    <!-- CONSOLIDATED WEDDING THEME -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/themes/wedding-master.css">
 </head>
 <body>
-    <!-- Main Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="/" class="nav-brand">The Chatbot Genius</a>
-                <ul class="nav-links">
-                    <li><a href="/ai-insights.html">AI Insights</a></li>
-                    <li><a href="/books.html">Books</a></li>
-                    <li><a href="/projects.html">Projects</a></li>
-                    <li><a href="/web-development/">Web Dev</a></li>
-                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn-nav-cta">Book Consultation</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
     
-    <!-- Web Dev Sub-Navigation -->
-    <nav class="web-dev-nav" aria-label="Web Development Services Navigation">
-        <div class="container">
-            <div class="web-dev-menu">
-                <!-- Overview -->
-                <a href="/web-development/" class="web-nav-link">Overview</a>
-                
-                <!-- Demos Dropdown -->
-                <div class="web-nav-dropdown">
-                    <button class="web-nav-link dropdown-toggle active">
-                        Demos <span class="arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="/web-development/demos/showcase.html">🎨 View All Demos</a>
-                        <a href="/web-development/demos/wedding.html">💑 Wedding</a>
-                        <a href="/web-development/demos/birthday.html">🎂 Birthday</a>
-                        <a href="/web-development/demos/anniversary.html">💝 Anniversary</a>
-                        <a href="/web-development/demos/fundraiser.html">💖 Fundraiser</a>
-                        <a href="/web-development/demos/garage-sale.html">🏷️ Garage Sale</a>
-                        <a href="/web-development/demos/corporate-event.html">🏢 Corporate</a>
-                    </div>
-                </div>
-                
-                <!-- Packages Dropdown -->
-                <div class="web-nav-dropdown">
-                    <button class="web-nav-link dropdown-toggle">
-                        Packages <span class="arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="/web-development/packages/event-page.html">🎯 Event Page - $97</a>
-                        <a href="/web-development/packages/landing-package.html">🚀 Landing - $297</a>
-                        <a href="/web-development/packages/standard-package.html">💼 Standard - $497</a>
-                        <a href="/web-development/packages/complete-package.html">⭐ Complete - $997</a>
-                    </div>
-                </div>
-                
-                <!-- Maintenance Dropdown -->
-                <div class="web-nav-dropdown">
-                    <button class="web-nav-link dropdown-toggle">
-                        Maintenance <span class="arrow">▼</span>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="/web-development/maintenance/monthly-monitoring.html">📅 Monthly - $97/mo</a>
-                        <a href="/web-development/maintenance/pay-as-you-go.html">💳 Pay As You Go - $15</a>
-                        <a href="/web-development/maintenance/diy-ai-training.html">🎓 DIY Training - $497</a>
-                    </div>
-                </div>
-                
-                <!-- CTA Button -->
-                <a href="https://calendly.com/jay-barkerhrs/30min" class="web-nav-cta">Get Free Quote →</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Demo Control -->
+    <a href="../packages/complete-package.html" class="demo-return">
+        ← Back to Package
+    </a>
     
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="couple-names">Sarah & Michael</h1>
-            <p class="wedding-date">June 15, 2025</p>
-            <p style="font-size: 1.2rem; color: #888;">Ottawa, Ontario</p>
+    <!-- Share Buttons -->
+    <div class="share-buttons">
+        <button class="share-toggle" onclick="toggleShareMenu()" aria-label="Share this page">
+            SHARE
+        </button>
+        <div class="share-menu" id="shareMenu">
+            <a href="#" onclick="shareOnFacebook(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a href="#" onclick="shareOnTwitter(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span>X / Twitter</span>
+            </a>
+            <a href="#" onclick="shareOnLinkedIn(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="#" onclick="shareViaEmail(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>Email</span>
+            </a>
+            <a href="#" onclick="copyLink(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+                <span>Copy Link</span>
+            </a>
         </div>
-        <div class="scroll-indicator">
-            <svg width="30" height="30" viewBox="0 0 30 30">
-                <path d="M15 20 L8 13 L10 11 L15 16 L20 11 L22 13 Z" fill="#d4756b"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- Our Story -->
-    <section class="section">
-        <h2>Our Story</h2>
-        <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; color: #666;">
-            We met at a coffee shop on Sparks Street five years ago. What started as a chance encounter 
-            over spilled lattes turned into the love story of our lives. Now we're ready to celebrate 
-            this next chapter with all of you – our cherished family and friends.
-        </p>
-    </section>
-
-    <!-- Event Details -->
-    <section class="section section-alt">
-        <h2>Event Details</h2>
-        <div class="details-grid">
-            <div class="detail-card">
-                <div class="detail-icon">⛪</div>
-                <h3>Ceremony</h3>
-                <p>4:00 PM</p>
-                <p>St. Andrew's Church</p>
-                <p>82 Kent Street, Ottawa</p>
-            </div>
-            <div class="detail-card">
-                <div class="detail-icon">🥂</div>
-                <h3>Reception</h3>
-                <p>6:00 PM</p>
-                <p>Château Laurier Ballroom</p>
-                <p>1 Rideau Street, Ottawa</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Schedule -->
-    <section class="section">
-        <h2>Wedding Day Schedule</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-time">3:30 PM</div>
-                <div class="timeline-content">
-                    <strong>Guest Arrival</strong>
-                    <p>Please arrive at St. Andrew's Church</p>
+    </div>
+    
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-names">Sarah & Michael</h1>
+                <div class="hero-date">JUNE 15, 2026</div>
+                <div class="hero-location">Château Laurier • Ottawa</div>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="countdown-days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="countdown-hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="countdown-minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="countdown-seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
                 </div>
+                
+                <a href="#rsvp" class="btn btn-primary btn-lg">RSVP Now</a>
+                <a href="#" class="btn btn-secondary add-to-calendar" onclick="alert('Calendar integration would open here')">📅 Add to Calendar</a>
             </div>
-            <div class="timeline-item">
-                <div class="timeline-time">4:00 PM</div>
-                <div class="timeline-content">
-                    <strong>Ceremony Begins</strong>
-                    <p>Exchange of vows and rings</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">5:00 PM</div>
-                <div class="timeline-content">
-                    <strong>Cocktail Hour</strong>
-                    <p>Drinks and appetizers at Château Laurier</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">6:00 PM</div>
-                <div class="timeline-content">
-                    <strong>Reception & Dinner</strong>
-                    <p>Dinner, speeches, and dancing</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">11:00 PM</div>
-                <div class="timeline-content">
-                    <strong>Late Night Snacks</strong>
-                    <p>Poutine bar and sweet treats</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- RSVP Section -->
-    <section class="section section-alt">
-        <h2>RSVP</h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666;">Please respond by May 1, 2025</p>
+        </section>
         
-        <form class="rsvp-form">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required>
+        <!-- Our Story with Timeline -->
+        <section id="story" class="our-story">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Love Story</h2>
+                    <p class="section-subtitle">The journey that brought us together</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>First Meeting</h3>
+                            <div class="timeline-date">September 2019</div>
+                            <p>We met at a coffee shop in the ByWard Market. Sarah spilled her latte, Michael offered napkins, and the rest is history.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>First Date</h3>
+                            <div class="timeline-date">October 2019</div>
+                            <p>Dinner at Play Food & Wine, followed by a moonlit walk along the Rideau Canal.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>Moving In Together</h3>
+                            <div class="timeline-date">March 2021</div>
+                            <p>We found our perfect little apartment in the Glebe, complete with a balcony garden.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>The Proposal</h3>
+                            <div class="timeline-date">December 2023</div>
+                            <p>Under the Christmas lights at Lansdowne Park, Michael got down on one knee. Sarah said yes before he could finish asking!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="attending">Will you be attending?</label>
-                <select id="attending" name="attending" required>
-                    <option value="">Please select...</option>
-                    <option value="yes">Joyfully Accept</option>
-                    <option value="no">Regretfully Decline</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="guests">Number of Guests</label>
-                <select id="guests" name="guests">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="dietary">Dietary Restrictions</label>
-                <textarea id="dietary" name="dietary" rows="3" placeholder="Please let us know of any allergies or dietary needs"></textarea>
-            </div>
-            
-            <button type="submit" class="btn">Send RSVP</button>
-        </form>
-    </section>
-
-    <!-- Accommodations -->
-    <section class="section">
-        <h2>Accommodations</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">We have room blocks at the following hotels:</p>
+        </section>
         
-        <div class="details-grid">
-            <div class="detail-card">
-                <h3>Château Laurier</h3>
-                <p>1 Rideau Street</p>
-                <p>Use code: THOMPSON-CHEN</p>
-                <p>$189/night</p>
+        <!-- Wedding Party -->
+        <section id="wedding-party" class="wedding-party-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Wedding Party</h2>
+                    <p class="section-subtitle">Our favorite people</p>
+                </div>
+                
+                <div class="grid grid-sm-2">
+                    <div class="party-group">
+                        <h3>Bridesmaids</h3>
+                        <div class="party-members">
+                            <div class="party-member">
+                                <h4>Jessica Thompson</h4>
+                                <p class="role">Maid of Honor</p>
+                                <p>Sarah's sister and best friend</p>
+                            </div>
+                            <div class="party-member">
+                                <h4>Amanda Chen</h4>
+                                <p class="role">Bridesmaid</p>
+                                <p>Michael's sister</p>
+                            </div>
+                            <div class="party-member">
+                                <h4>Rachel Morrison</h4>
+                                <p class="role">Bridesmaid</p>
+                                <p>College roommate</p>
+                            </div>
+                            <div class="party-member">
+                                <h4>Emily Davis</h4>
+                                <p class="role">Bridesmaid</p>
+                                <p>Childhood friend</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="party-group">
+                        <h3>Groomsmen</h3>
+                        <div class="party-members">
+                            <div class="party-member">
+                                <h4>David Chen</h4>
+                                <p class="role">Best Man</p>
+                                <p>Michael's brother</p>
+                            </div>
+                            <div class="party-member">
+                                <h4>James Wilson</h4>
+                                <p class="role">Groomsman</p>
+                                <p>University friend</p>
+                            </div>
+                            <div class="party-member">
+                                <h4>Alex Thompson</h4>
+                                <p class="role">Groomsman</p>
+                                <p>Sarah's brother</p>
+                            </div>
+                            <div class="party-member">
+                                <h4>Ryan Park</h4>
+                                <p class="role">Groomsman</p>
+                                <p>Work colleague</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="detail-card">
-                <h3>Lord Elgin Hotel</h3>
-                <p>100 Elgin Street</p>
-                <p>Use code: SARAHMIKE2025</p>
-                <p>$159/night</p>
+        </section>
+        
+        <!-- Wedding Details -->
+        <section id="details" class="details-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Wedding Details</h2>
+                    <p class="section-subtitle">Everything you need to know</p>
+                </div>
+                
+                <div class="grid grid-sm-3">
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <div class="detail-icon-text">VOWS</div>
+                        </div>
+                        <h3>Ceremony</h3>
+                        <p class="detail-time">3:00 PM</p>
+                        <p>St. Andrew's Church</p>
+                        <p>82 Kent Street</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-secondary btn-sm">Get Directions</a>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <div class="detail-icon-text">PARTY</div>
+                        </div>
+                        <h3>Reception</h3>
+                        <p class="detail-time">5:00 PM</p>
+                        <p>Château Laurier Ballroom</p>
+                        <p>1 Rideau Street</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-secondary btn-sm">Get Directions</a>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <div class="detail-icon-text">ATTIRE</div>
+                        </div>
+                        <h3>Dress Code</h3>
+                        <p class="detail-time">Formal Attire</p>
+                        <p>Black tie optional</p>
+                        <p>Garden party chic</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Registry -->
-    <section class="section section-alt">
-        <h2>Gift Registry</h2>
-        <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; color: #666; max-width: 600px; margin: 0 auto;">
-            Your presence at our wedding is the greatest gift of all. However, if you wish to honour us 
-            with a gift, we have registries at the following stores:
-        </p>
-        <div style="text-align: center; margin-top: 2rem;">
-            <p style="font-size: 1.2rem;">Hudson's Bay | Williams Sonoma | Amazon</p>
-        </div>
-    </section>
-
-    <!-- Map -->
-    <section class="section">
-        <h2>Locations</h2>
-        <div class="map-container">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2800.575667328942!2d-75.69719668444666!3d45.42114797910046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cce05b25f5113af%3A0x8a6a51e131dd15ed!2sFairmont%20Château%20Laurier!5e0!3m2!1sen!2sca!4v1234567890" 
-                width="100%" 
-                height="400" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
-    </section>
-
+        </section>
+        
+        <!-- Accommodations -->
+        <section id="accommodations" class="accommodations-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Accommodations</h2>
+                    <p class="section-subtitle">Where to stay in Ottawa</p>
+                </div>
+                
+                <div class="grid grid-sm-3">
+                    <div class="hotel-card">
+                        <h3>Château Laurier</h3>
+                        <p class="hotel-discount">Wedding Rate Available</p>
+                        <p>1 Rideau Street</p>
+                        <p>Ottawa, ON K1N 8S7</p>
+                        <p class="hotel-price">From $289/night</p>
+                        <p>Use code: SARAHMICHAEL2026</p>
+                        <a href="tel:+16132411414" class="btn btn-secondary btn-sm">Call to Book</a>
+                    </div>
+                    <div class="hotel-card">
+                        <h3>Lord Elgin Hotel</h3>
+                        <p class="hotel-discount">10% Discount</p>
+                        <p>100 Elgin Street</p>
+                        <p>Ottawa, ON K1P 5K8</p>
+                        <p class="hotel-price">From $189/night</p>
+                        <a href="tel:+16132353333" class="btn btn-secondary btn-sm">Call to Book</a>
+                    </div>
+                    <div class="hotel-card">
+                        <h3>The Westin Ottawa</h3>
+                        <p class="hotel-discount">Group Rate</p>
+                        <p>11 Colonel By Drive</p>
+                        <p>Ottawa, ON K1N 9H4</p>
+                        <p class="hotel-price">From $229/night</p>
+                        <a href="tel:+16135601001" class="btn btn-secondary btn-sm">Call to Book</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Things to Do in Ottawa -->
+        <section id="tourism" class="tourism-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Explore Ottawa</h2>
+                    <p class="section-subtitle">Make a weekend of it!</p>
+                </div>
+                
+                <div class="grid grid-sm-4">
+                    <a href="https://www.parl.ca/visit" target="_blank" class="tourism-card">
+                        <h3>Parliament Hill</h3>
+                        <p>Free tours of Canada's iconic government buildings</p>
+                    </a>
+                    <a href="https://byward-market.com" target="_blank" class="tourism-card">
+                        <h3>ByWard Market</h3>
+                        <p>Historic farmers' market with restaurants and shops</p>
+                    </a>
+                    <a href="https://www.gallery.ca" target="_blank" class="tourism-card">
+                        <h3>National Gallery</h3>
+                        <p>World-class art collection including Group of Seven</p>
+                    </a>
+                    <a href="https://www.pc.gc.ca/en/lhn-nhs/on/rideau" target="_blank" class="tourism-card">
+                        <h3>Rideau Canal</h3>
+                        <p>UNESCO World Heritage Site, perfect for walking</p>
+                    </a>
+                    <a href="https://www.historymuseum.ca" target="_blank" class="tourism-card">
+                        <h3>Canadian Museum of History</h3>
+                        <p>Just across the river in Gatineau</p>
+                    </a>
+                    <a href="https://ncc-ccn.gc.ca/places/gatineau-park" target="_blank" class="tourism-card">
+                        <h3>Gatineau Park</h3>
+                        <p>Beautiful hiking trails and lookouts</p>
+                    </a>
+                    <a href="https://www.warmuseum.ca" target="_blank" class="tourism-card">
+                        <h3>Canadian War Museum</h3>
+                        <p>Military history and remembrance</p>
+                    </a>
+                    <a href="https://www.lansdownepark.ca" target="_blank" class="tourism-card">
+                        <h3>Lansdowne Park</h3>
+                        <p>Shopping, dining, and entertainment</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RSVP Section -->
+        <section id="rsvp" class="rsvp-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">RSVP</h2>
+                    <p class="section-subtitle">We can't wait to celebrate with you</p>
+                </div>
+                
+                <form class="event-form" data-validate="true">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name <span class="required">*</span></label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="attendance" class="form-label">Will you attend? <span class="required">*</span></label>
+                            <select id="attendance" name="attendance" class="form-select" required>
+                                <option value="">Select...</option>
+                                <option value="yes">Joyfully Accept</option>
+                                <option value="no">Regretfully Decline</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests" class="form-label">Number of Guests</label>
+                            <select id="guests" name="guests" class="form-select">
+                                <option value="1">Just me</option>
+                                <option value="2">2 guests</option>
+                                <option value="3">3 guests</option>
+                                <option value="4">4 guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dietary" class="form-label">Dietary Restrictions</label>
+                        <textarea id="dietary" name="dietary" class="form-textarea" rows="3" placeholder="Please let us know of any dietary restrictions or allergies"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="song" class="form-label">Song Request</label>
+                        <input type="text" id="song" name="song" class="form-input" placeholder="What song will get you on the dance floor?">
+                    </div>
+                    <button type="submit" class="form-submit">Send RSVP</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Registry -->
+        <section id="registry" class="registry-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Registry</h2>
+                    <p class="section-subtitle">Your presence is the greatest gift</p>
+                </div>
+                
+                <div class="registry-content">
+                    <p>We're so excited to celebrate with you! If you'd like to give a gift, we've registered at the following stores:</p>
+                    <div class="grid grid-sm-3">
+                        <a href="#" class="registry-link">
+                            <h3>Hudson's Bay</h3>
+                            <p>Registry #12345</p>
+                        </a>
+                        <a href="#" class="registry-link">
+                            <h3>Williams Sonoma</h3>
+                            <p>Registry #67890</p>
+                        </a>
+                        <a href="#" class="registry-link">
+                            <h3>Honeymoon Fund</h3>
+                            <p>Help us explore Italy!</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
     <!-- Footer -->
-    <footer class="footer">
-        <h3>#SarahAndMike2025</h3>
-        <p>We can't wait to celebrate with you!</p>
-        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">
-            Website created in 24 hours by The Chatbot Genius<br>
-            <a href="https://thechatbotgenius.com" style="color: white;">Get your event website for $97</a>
-        </p>
-    </footer>
-
-    <script>
-        // Handle RSVP form submission
-        document.querySelector('.rsvp-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const attending = formData.get('attending');
-            const guests = formData.get('guests');
-            const dietary = formData.get('dietary');
-            
-            // Build email body
-            let emailBody = `RSVP from ${name}\n\n`;
-            emailBody += `Email: ${email}\n`;
-            emailBody += `Attending: ${attending === 'yes' ? 'Yes' : 'No'}\n`;
-            emailBody += `Number of Guests: ${guests}\n`;
-            if (dietary) {
-                emailBody += `Dietary Restrictions: ${dietary}\n`;
-            }
-            
-            // Create mailto link
-            const subject = `Wedding RSVP from ${name}`;
-            const mailtoLink = `mailto:sarah.and.mike@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
-            
-            // Open email client
-            window.location.href = mailtoLink;
-            
-            // Show confirmation
-            this.innerHTML = `
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">💕</div>
-                    <h3 style="color: #d4756b; margin-bottom: 1rem;">Thank You!</h3>
-                    <p>Your RSVP has been prepared. Please send the email to confirm.</p>
+    <footer class="footer-event">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sarah & Michael</h4>
+                    <p>June 15, 2026</p>
+                    <p>Forever Begins</p>
                 </div>
-            `;
-        });
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><a href="mailto:sarah.michael.wedding@gmail.com">sarah.michael.wedding@gmail.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="#rsvp">RSVP</a></p>
+                    <p><a href="#details">Event Details</a></p>
+                    <p><a href="#accommodations">Hotels</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>#SarahAndMichaelSayIDo</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- USING THE FUCKING JAVASCRIPT SYSTEM -->
+    <script src="assets/js/accessibility.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/share-buttons.js"></script>
+    <script src="assets/js/forms.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/animations.js"></script>
+    
+    <script>
+        // Initialize countdown for wedding date
+        initCountdown('June 15, 2026 15:00:00');
     </script>
 </body>
 </html>

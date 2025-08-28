@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah & Michael | June 15, 2026</title>
+    <meta name="description" content="Join us as we celebrate the wedding of Sarah Thompson and Michael Chen on June 15, 2026 at the Château Laurier, Ottawa.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Basic Reset and Colors */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --wedding-cream: #FFF8F3;
+            --wedding-mauve: #6B4550;
+            --wedding-gold: #B8860B;
+            --wedding-rose: #E8B4B8;
+            --wedding-text: #3A2429;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--wedding-text);
+            background: var(--wedding-cream);
+        }
+        
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 10px;
+            background: #000;
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 0 0 8px 0;
+            z-index: 100000;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Demo Control */
+        .demo-return {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            transition: all 0.3s;
+        }
+        
+        .demo-return:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateX(5px);
+        }
+        
+        /* Share Button */
+        .share-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9998;
+        }
+        
+        .share-toggle {
+            background: linear-gradient(135deg, var(--wedding-mauve), var(--wedding-rose));
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 8px 30px rgba(107, 69, 80, 0.3);
+        }
+        
+        .share-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(107, 69, 80, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFFAF8 100%);
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .hero-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            color: var(--wedding-text);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+        
+        .hero-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--wedding-gold);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-location {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--wedding-mauve);
+            margin-bottom: 3rem;
+        }
+        
+        /* Countdown */
+        .countdown {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(232, 180, 184, 0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            min-width: 100px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+        
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--wedding-text);
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--wedding-gold);
+            margin-top: 0.5rem;
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 1rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--wedding-text);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--wedding-mauve);
+            font-style: italic;
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-item h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--wedding-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            color: var(--wedding-gold);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        
+        /* Details Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .detail-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+        
+        .detail-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--wedding-gold), var(--wedding-rose));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        /* RSVP Form */
+        .rsvp-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--wedding-text);
+            font-weight: 500;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid rgba(232, 180, 184, 0.3);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--wedding-rose);
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--wedding-gold), var(--wedding-rose));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 180, 184, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--wedding-text);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+        
+        .footer h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+        
+        .footer a {
+            color: var(--wedding-rose);
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Demo Control -->
+    <a href="../packages/complete-package.html" class="demo-return">
+        ← Back to Package
+    </a>
+    
+    <!-- Share Button -->
+    <div class="share-button">
+        <button class="share-toggle" onclick="alert('Share functionality would go here')">
+            SHARE
+        </button>
+    </div>
+    
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-names">Sarah & Michael</h1>
+                <div class="hero-date">JUNE 15, 2026</div>
+                <div class="hero-location">Château Laurier • Ottawa</div>
+                
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">365</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">12</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">30</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">45</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Our Story -->
+        <section class="our-story">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Our Love Story</h2>
+                    <p class="section-subtitle">The journey that brought us together</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>First Meeting</h3>
+                        <div class="timeline-date">September 2019</div>
+                        <p>We met at a coffee shop in the ByWard Market. Sarah spilled her latte, Michael offered napkins, and the rest is history.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h3>The Proposal</h3>
+                        <div class="timeline-date">December 2023</div>
+                        <p>Under the Christmas lights at Lansdowne Park, Michael got down on one knee. Sarah said yes before he could finish asking!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Wedding Details -->
+        <section class="details">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Wedding Details</h2>
+                    <p class="section-subtitle">Everything you need to know</p>
+                </div>
+                
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-icon">VOWS</div>
+                        <h3>Ceremony</h3>
+                        <p>3:00 PM</p>
+                        <p>St. Andrew's Church</p>
+                        <p>82 Kent Street</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">PARTY</div>
+                        <h3>Reception</h3>
+                        <p>5:00 PM</p>
+                        <p>Château Laurier Ballroom</p>
+                        <p>1 Rideau Street</p>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">ATTIRE</div>
+                        <h3>Dress Code</h3>
+                        <p>Formal Attire</p>
+                        <p>Black tie optional</p>
+                        <p>Garden party chic</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RSVP -->
+        <section class="rsvp">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">RSVP</h2>
+                    <p class="section-subtitle">We can't wait to celebrate with you</p>
+                </div>
+                
+                <form class="rsvp-form">
+                    <div class="form-group">
+                        <label class="form-label">Your Name</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Will you attend?</label>
+                        <select class="form-select" required>
+                            <option value="">Select...</option>
+                            <option value="yes">Joyfully Accept</option>
+                            <option value="no">Regretfully Decline</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Dietary Restrictions</label>
+                        <textarea class="form-textarea" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Send RSVP</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h4>Sarah & Michael</h4>
+            <p>June 15, 2026</p>
+            <p>#SarahAndMichaelSayIDo</p>
+            <p style="margin-top: 2rem;">
+                <a href="mailto:sarah.michael.wedding@gmail.com">sarah.michael.wedding@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple countdown (would need proper date calculation)
+        function updateCountdown() {
+            const wedding = new Date('June 15, 2026 15:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = wedding - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

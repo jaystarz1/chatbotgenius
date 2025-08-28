@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Premium Event Website Demos | $997 Luxury Sites - The Chatbot Genius</title>
+    <meta name="description" content="Experience our premium $997 event websites. Luxury wedding, corporate, and celebration sites with advanced animations, conversion tools, and stunning design.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Premium Styles -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/premium-base.css">
+    <link rel="stylesheet" href="assets/css/premium-animations.css">
+    <link rel="stylesheet" href="assets/css/premium-components.css">
+    
+    <style>
+        /* Premium Showcase Specific Styles */
+        :root {
+            --luxury-gold: linear-gradient(135deg, #f9c74f 0%, #f8961e 100%);
+            --luxury-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --luxury-rose: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --luxury-teal: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .showcase-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .showcase-hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') repeat-x;
+            animation: wave 20s linear infinite;
+        }
+        
+        @keyframes wave {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Floating Elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            animation: float-random 20s infinite;
+        }
+        
+        .floating-element:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { left: 80%; top: 30%; animation-delay: 3s; width: 40px; height: 40px; }
+        .floating-element:nth-child(3) { left: 60%; top: 70%; animation-delay: 5s; width: 80px; height: 80px; }
+        .floating-element:nth-child(4) { left: 20%; top: 80%; animation-delay: 7s; }
+        .floating-element:nth-child(5) { left: 90%; top: 10%; animation-delay: 10s; width: 30px; height: 30px; }
+        
+        @keyframes float-random {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(40px, 10px) rotate(270deg);
+            }
+        }
+        
+        /* Demo Grid */
+        .demos-section {
+            padding: 5rem 0;
+            background: white;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+        }
+        
+        .demos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .demo-card {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .demo-image {
+            position: relative;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .demo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .demo-card:hover .demo-image img {
+            transform: scale(1.1);
+        }
+        
+        .demo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .demo-card:hover .demo-overlay {
+            opacity: 1;
+        }
+        
+        .demo-overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: transform 0.3s ease 0.1s;
+        }
+        
+        .demo-card:hover .demo-overlay-content {
+            transform: translateY(0);
+        }
+        
+        .view-demo-btn {
+            background: white;
+            color: #667eea;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .view-demo-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .demo-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+        
+        .demo-badge.new {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+        }
+        
+        .demo-content {
+            padding: 2rem;
+        }
+        
+        .demo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .demo-price {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-features {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+        
+        .demo-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .demo-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .demo-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .demo-btn {
+            flex: 1;
+            padding: 0.75rem;
+            text-align: center;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-btn.primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .demo-btn.secondary {
+            border: 2px solid #667eea;
+            color: #667eea;
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 2rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-description {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* Comparison Table */
+        .comparison-section {
+            padding: 5rem 0;
+            background: #f8f9fa;
+        }
+        
+        .comparison-table {
+            max-width: 1000px;
+            margin: 3rem auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1.5rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table th:first-child {
+            width: 40%;
+        }
+        
+        .comparison-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .check {
+            color: #4ade80;
+            font-size: 1.5rem;
+        }
+        
+        .cross {
+            color: #f5576c;
+            font-size: 1.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 2rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .demos-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .comparison-table {
+                overflow-x: auto;
+            }
+            
+            .comparison-table table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Showcase Hero -->
+    <section class="showcase-hero">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">Premium Collection</div>
+            <h1 class="hero-title">Luxury Event Websites That Convert</h1>
+            <p class="hero-subtitle">Experience the difference premium design makes. Interactive demos that showcase the $997 value.</p>
+            <div class="hero-cta">
+                <a href="#demos" class="btn-luxury gold">View Premium Demos</a>
+                <a href="/web-development/compare-packages.html" class="btn-luxury">Compare Packages</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Premium Demos Section -->
+    <section id="demos" class="demos-section">
+        <div class="container">
+            <div class="section-header" data-reveal="fade-up">
+                <h2 class="section-title">Premium Demo Collection</h2>
+                <p class="section-subtitle">Click any demo to experience the full interactive version</p>
+            </div>
+            
+            <div class="demos-grid">
+                <!-- Wedding Premium Demo -->
+                <div class="demo-card" data-reveal="scale" data-reveal-delay="1">
+                    <div class="demo-badge">Most Popular</div>
+                    <div class="demo-image">
+                        <img src="https://picsum.photos/400/250?random=100" alt="Luxury Wedding Demo">
+                        <div class="demo-overlay">
+                            <div class="demo-overlay-content">
+                                <h3>Interactive Preview</h3>
+                                <p>Experience rose petal animations, countdown timer, and more</p>
+                                <a href="wedding-premium.html" class="view-demo-btn">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Luxury Wedding</h3>
+                        <div class="demo-price">$997</div>
+                        <ul class="demo-features">
+                            <li>Rose petal animations</li>
+                            <li>Interactive timeline</li>
+                            <li>RSVP with validation</li>
+                            <li>Photo gallery lightbox</li>
+                            <li>Social proof notifications</li>
+                        </ul>
+                        <div class="demo-actions">
+                            <a href="wedding-premium.html" class="demo-btn primary">Live Demo</a>
+                            <a href="/web-development/packages/complete-package.html" class="demo-btn secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Corporate Event Premium Demo -->
+                <div class="demo-card" data-reveal="scale" data-reveal-delay="2">
+                    <div class="demo-badge new">New</div>
+                    <div class="demo-image">
+                        <img src="https://picsum.photos/400/250?random=101" alt="Corporate Event Demo">
+                        <div class="demo-overlay">
+                            <div class="demo-overlay-content">
+                                <h3>Professional Excellence</h3>
+                                <p>Registration forms, speaker profiles, agenda timeline</p>
+                                <a href="corporate-event.html" class="view-demo-btn">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Corporate Event</h3>
+                        <div class="demo-price">$997</div>
+                        <ul class="demo-features">
+                            <li>Multi-track agenda</li>
+                            <li>Speaker showcase</li>
+                            <li>Sponsor recognition</li>
+                            <li>Networking features</li>
+                            <li>Live chat widget</li>
+                        </ul>
+                        <div class="demo-actions">
+                            <a href="corporate-event.html" class="demo-btn primary">Live Demo</a>
+                            <a href="/web-development/packages/complete-package.html" class="demo-btn secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Birthday Premium Demo -->
+                <div class="demo-card" data-reveal="scale" data-reveal-delay="3">
+                    <div class="demo-image">
+                        <img src="https://picsum.photos/400/250?random=102" alt="Birthday Celebration Demo">
+                        <div class="demo-overlay">
+                            <div class="demo-overlay-content">
+                                <h3>Celebration Magic</h3>
+                                <p>Confetti animations, wish wall, memory timeline</p>
+                                <a href="birthday.html" class="view-demo-btn">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Birthday Celebration</h3>
+                        <div class="demo-price">$997</div>
+                        <ul class="demo-features">
+                            <li>Confetti effects</li>
+                            <li>Virtual wish wall</li>
+                            <li>Photo memories</li>
+                            <li>Gift registry</li>
+                            <li>Party games</li>
+                        </ul>
+                        <div class="demo-actions">
+                            <a href="birthday.html" class="demo-btn primary">Live Demo</a>
+                            <a href="/web-development/packages/complete-package.html" class="demo-btn secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fundraiser Premium Demo -->
+                <div class="demo-card" data-reveal="scale" data-reveal-delay="4">
+                    <div class="demo-image">
+                        <img src="https://picsum.photos/400/250?random=103" alt="Fundraiser Demo">
+                        <div class="demo-overlay">
+                            <div class="demo-overlay-content">
+                                <h3>Impact Driven</h3>
+                                <p>Progress tracking, donor wall, impact stories</p>
+                                <a href="fundraiser.html" class="view-demo-btn">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Fundraiser Campaign</h3>
+                        <div class="demo-price">$997</div>
+                        <ul class="demo-features">
+                            <li>Live donation tracker</li>
+                            <li>Donor recognition wall</li>
+                            <li>Impact calculator</li>
+                            <li>Social sharing</li>
+                            <li>Progress animations</li>
+                        </ul>
+                        <div class="demo-actions">
+                            <a href="fundraiser.html" class="demo-btn primary">Live Demo</a>
+                            <a href="/web-development/packages/complete-package.html" class="demo-btn secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Anniversary Premium Demo -->
+                <div class="demo-card" data-reveal="scale" data-reveal-delay="5">
+                    <div class="demo-image">
+                        <img src="https://picsum.photos/400/250?random=104" alt="Anniversary Demo">
+                        <div class="demo-overlay">
+                            <div class="demo-overlay-content">
+                                <h3>Timeless Romance</h3>
+                                <p>Love story timeline, photo journey, guest messages</p>
+                                <a href="anniversary.html" class="view-demo-btn">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Anniversary Celebration</h3>
+                        <div class="demo-price">$997</div>
+                        <ul class="demo-features">
+                            <li>Interactive timeline</li>
+                            <li>Photo memories</li>
+                            <li>Guest book</li>
+                            <li>Love quotes</li>
+                            <li>Music player</li>
+                        </ul>
+                        <div class="demo-actions">
+                            <a href="anniversary.html" class="demo-btn primary">Live Demo</a>
+                            <a href="/web-development/packages/complete-package.html" class="demo-btn secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Garage Sale Premium Demo -->
+                <div class="demo-card" data-reveal="scale" data-reveal-delay="6">
+                    <div class="demo-image">
+                        <img src="https://picsum.photos/400/250?random=105" alt="Garage Sale Demo">
+                        <div class="demo-overlay">
+                            <div class="demo-overlay-content">
+                                <h3>Smart Commerce</h3>
+                                <p>Item catalog, map integration, early bird offers</p>
+                                <a href="garage-sale.html" class="view-demo-btn">View Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-content">
+                        <h3 class="demo-title">Community Sale</h3>
+                        <div class="demo-price">$997</div>
+                        <ul class="demo-features">
+                            <li>Item showcase</li>
+                            <li>Interactive map</li>
+                            <li>Early bird list</li>
+                            <li>Category filters</li>
+                            <li>Contact form</li>
+                        </ul>
+                        <div class="demo-actions">
+                            <a href="garage-sale.html" class="demo-btn primary">Live Demo</a>
+                            <a href="/web-development/packages/complete-package.html" class="demo-btn secondary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Premium Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header" data-reveal="fade-up">
+                <h2 class="section-title" style="color: white;">Premium Features Included</h2>
+                <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Every site includes these conversion-optimized features</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="1">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Micro Interactions</h3>
+                    <p class="feature-description">Delightful animations and hover effects that engage visitors</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="2">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Conversion Tools</h3>
+                    <p class="feature-description">Exit intent popups, urgency timers, and social proof</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="3">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Premium Design</h3>
+                    <p class="feature-description">Glass morphism, gradients, and luxury aesthetics</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="4">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">Live Chat</h3>
+                    <p class="feature-description">Built-in chat widget for instant visitor engagement</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="5">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Mobile Perfect</h3>
+                    <p class="feature-description">Flawless experience on all devices and screen sizes</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="6">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-description">Optimized performance with lazy loading and caching</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="7">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">SEO Ready</h3>
+                    <p class="feature-description">Structured data and meta tags for search visibility</p>
+                </div>
+                
+                <div class="feature-card" data-reveal="fade-up" data-reveal-delay="8">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Analytics</h3>
+                    <p class="feature-description">Track visitors, conversions, and engagement metrics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header" data-reveal="fade-up">
+                <h2 class="section-title">Why Choose Premium?</h2>
+                <p class="section-subtitle">See the difference our premium package makes</p>
+            </div>
+            
+            <div class="comparison-table" data-reveal="fade-up" data-reveal-delay="2">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Basic ($97)</th>
+                            <th>Standard ($297)</th>
+                            <th>Premium ($997)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Custom Design</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile Responsive</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Contact Form</td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Advanced Animations</td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Interactive Elements</td>
+                            <td><span class="cross">✕</span></td>
+                            <td>Limited</td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Conversion Tools</td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Live Chat Widget</td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Social Proof Notifications</td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Exit Intent Popups</td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>A/B Testing Ready</td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="cross">✕</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Priority Support</td>
+                            <td>Email</td>
+                            <td>Email + Phone</td>
+                            <td>24/7 Priority</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery Time</td>
+                            <td>24 hours</td>
+                            <td>48 hours</td>
+                            <td>72 hours</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header" data-reveal="fade-up">
+                <h2 class="section-title">Client Success Stories</h2>
+                <p class="section-subtitle">Real results from real events</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-premium" data-reveal="fade-up" data-reveal-delay="1">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The wedding site was absolutely stunning! We received so many compliments, and the RSVP system worked flawlessly. Worth every penny!"</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">SM</div>
+                            <div class="testimonial-info">
+                                <h4>Sarah & Michael</h4>
+                                <p>Wedding Client</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-premium" data-reveal="fade-up" data-reveal-delay="2">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Our corporate event registration increased by 40% with the new site. The professional design really elevated our brand."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">JD</div>
+                            <div class="testimonial-info">
+                                <h4>Jennifer Davis</h4>
+                                <p>Event Coordinator</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-premium" data-reveal="fade-up" data-reveal-delay="3">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The fundraiser site helped us exceed our goal by 150%! The progress tracker and donor wall really motivated people."</p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">RC</div>
+                            <div class="testimonial-info">
+                                <h4>Robert Chen</h4>
+                                <p>Nonprofit Director</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content" data-reveal="fade-up">
+            <h2 class="cta-title">Ready to Elevate Your Event?</h2>
+            <p class="cta-subtitle">Get a premium website that converts visitors into attendees</p>
+            <div class="cta-buttons">
+                <a href="/web-development/packages/complete-package.html" class="btn-luxury gold">Get Started - $997</a>
+                <a href="https://calendly.com/jay-barkerhrs/30min" class="btn-luxury">Schedule Consultation</a>
+            </div>
+            
+            <!-- Urgency element -->
+            <div style="margin-top: 2rem; color: #f5576c;" data-urgency="countdown"></div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="background: #1a1f71; color: white; padding: 2rem 0; text-align: center;">
+        <div class="container">
+            <p style="margin-bottom: 1rem;">© 2024 The Chatbot Genius. Premium Web Development.</p>
+            <p style="opacity: 0.8;">Crafted with precision in Ottawa, Canada</p>
+        </div>
+    </footer>
+    
+    <!-- Premium JavaScript -->
+    <script src="assets/js/premium-loader.js"></script>
+    <script src="assets/js/micro-interactions.js"></script>
+    <script src="assets/js/conversion-tools.js"></script>
+    
+    <script>
+        // Initialize premium features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll to demos
+            document.querySelector('a[href="#demos"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('#demos').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Add hover sound effects (optional)
+            const cards = document.querySelectorAll('.demo-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Could add subtle sound effect here
+                    card.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+            });
+            
+            // Initialize conversion tracking
+            if (window.conversionTools) {
+                // Track demo views
+                const demoLinks = document.querySelectorAll('.view-demo-btn, .demo-btn.primary');
+                demoLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        const demoName = this.closest('.demo-card').querySelector('.demo-title').textContent;
+                        window.conversionTools.trackConversion('demo_view', {
+                            demo: demoName,
+                            timestamp: new Date().toISOString()
+                        });
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

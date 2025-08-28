@@ -1,0 +1,705 @@
+/* =================================================================
+   BIRTHDAY PREMIUM THEME - SOPHISTICATED MILESTONE CELEBRATION
+   
+   Premium birthday theme with depth, texture, and visual sophistication
+   ================================================================= */
+
+/* =================================================================
+   COLOR SYSTEM - PREMIUM 30TH BIRTHDAY PALETTE
+   ================================================================= */
+:root {
+    /* Primary Jewel Tones */
+    --birthday-primary: #E91E63;        /* Rich magenta pink */
+    --birthday-secondary: #FFB300;      /* Golden amber */
+    --birthday-tertiary: #7C4DFF;       /* Deep purple */
+    
+    /* Luxury Accents */
+    --birthday-gold: linear-gradient(135deg, #FFD700 0%, #FFA000 50%, #FFD700 100%);
+    --birthday-rose-gold: linear-gradient(135deg, #E8B4B8 0%, #EED2AE 50%, #E8B4B8 100%);
+    --birthday-platinum: linear-gradient(135deg, #E5E5E5 0%, #B8B8B8 50%, #E5E5E5 100%);
+    
+    /* Rich Background Colors */
+    --birthday-dark: #1A0033;           /* Deep midnight purple */
+    --birthday-midnight: #2E1A47;       /* Royal purple */
+    --birthday-accent-blue: #00BCD4;    /* Cyan accent */
+    --birthday-warm: #FF5722;           /* Deep orange */
+    
+    /* Gradients */
+    --birthday-gradient-primary: linear-gradient(135deg, #E91E63 0%, #7C4DFF 100%);
+    --birthday-gradient-warm: linear-gradient(135deg, #FF5722 0%, #FFB300 100%);
+    --birthday-gradient-cool: linear-gradient(135deg, #7C4DFF 0%, #00BCD4 100%);
+    --birthday-gradient-luxury: linear-gradient(135deg, #FFD700 0%, #E91E63 25%, #7C4DFF 50%, #00BCD4 75%, #FFB300 100%);
+    
+    /* Subtle Patterns */
+    --birthday-noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    --birthday-geometric: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23E91E63' stroke-width='0.5' stroke-opacity='0.1'%3E%3Cpath d='M36 34v-4l-2-2-6-6-4-4-6-6L0 0M60 60L48 48l-4-4-6-6-2-2v-4'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* =================================================================
+   BODY & PREMIUM BACKGROUND
+   ================================================================= */
+body {
+    font-family: 'Montserrat', -apple-system, sans-serif !important;
+    color: #333 !important;
+    background: #1A0033 !important;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Multi-layer background for depth */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        var(--birthday-gradient-primary),
+        var(--birthday-noise);
+    opacity: 0.9;
+    z-index: 0;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--birthday-geometric);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+/* =================================================================
+   NAVIGATION - PREMIUM GLASS EFFECT
+   ================================================================= */
+.event-nav {
+    background: rgba(26, 0, 51, 0.95) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(233, 30, 99, 0.2);
+    box-shadow: 0 4px 30px rgba(233, 30, 99, 0.3);
+}
+
+.nav-link {
+    position: relative;
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--birthday-gradient-warm);
+    transform: translateX(-50%);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* =================================================================
+   HERO SECTION - PREMIUM DEPTH
+   ================================================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background: 
+        linear-gradient(180deg, rgba(26, 0, 51, 0.8) 0%, rgba(46, 26, 71, 0.9) 100%),
+        radial-gradient(circle at 20% 50%, rgba(233, 30, 99, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 179, 0, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(124, 77, 255, 0.2) 0%, transparent 70%);
+    z-index: 2;
+}
+
+/* Animated gradient overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--birthday-gradient-luxury);
+    opacity: 0.1;
+    animation: gradient-shift 10s ease infinite;
+    z-index: 1;
+}
+
+@keyframes gradient-shift {
+    0%, 100% { opacity: 0.1; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.2; transform: scale(1.1) rotate(1deg); }
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+/* Premium age display */
+.age-display {
+    font-size: clamp(6rem, 12vw, 10rem);
+    font-weight: 900;
+    background: var(--birthday-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 1rem;
+    text-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+    animation: float-subtle 4s ease-in-out infinite;
+    position: relative;
+}
+
+.age-display::before {
+    content: attr(data-age);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    font-size: inherit;
+    font-weight: inherit;
+    background: var(--birthday-rose-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.5;
+    filter: blur(30px);
+}
+
+@keyframes float-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.milestone-badge {
+    display: inline-block;
+    background: var(--birthday-gold);
+    color: var(--birthday-dark);
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    box-shadow: 
+        0 4px 15px rgba(255, 215, 0, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.1); }
+    50% { box-shadow: 0 4px 25px rgba(255, 215, 0, 0.6), inset 0 -2px 4px rgba(0, 0, 0, 0.1); }
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem) !important;
+    font-weight: 300 !important;
+    letter-spacing: 4px !important;
+    color: white !important;
+    text-transform: uppercase;
+    margin: 2rem 0 !important;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.4rem !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 1rem !important;
+}
+
+.hero-location {
+    font-size: 1.1rem !important;
+    color: var(--birthday-secondary) !important;
+    font-weight: 500 !important;
+    opacity: 0.9;
+}
+
+/* =================================================================
+   SECTIONS WITH TEXTURE & DEPTH
+   ================================================================= */
+.section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+/* Alternating premium backgrounds */
+.section:nth-child(even) {
+    background: 
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 249, 236, 0.98) 100%),
+        var(--birthday-noise);
+}
+
+.section:nth-child(odd) {
+    background: 
+        linear-gradient(180deg, rgba(252, 248, 255, 0.98) 0%, rgba(255, 245, 250, 0.98) 100%),
+        var(--birthday-noise);
+}
+
+.section-title {
+    font-size: 3rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+    background: var(--birthday-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Decorative underline for section titles */
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--birthday-gradient-warm);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.3rem !important;
+    color: #666 !important;
+    text-align: center !important;
+    margin-bottom: 3rem !important;
+    font-weight: 300 !important;
+}
+
+/* =================================================================
+   CARDS - MINIMAL WHITESPACE, MAXIMUM IMPACT
+   ================================================================= */
+.card {
+    background: white !important;
+    border-radius: 20px !important;
+    padding: 1.75rem !important;
+    box-shadow: 
+        0 10px 40px rgba(233, 30, 99, 0.08),
+        0 2px 10px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Gradient border effect */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: var(--birthday-gradient-primary);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 
+        0 20px 60px rgba(233, 30, 99, 0.15),
+        0 10px 30px rgba(124, 77, 255, 0.1) !important;
+}
+
+/* Premium card icon */
+.card-icon {
+    font-size: 3rem !important;
+    margin-bottom: 1rem !important;
+    display: inline-block;
+    animation: bounce-icon 4s ease-in-out infinite;
+}
+
+@keyframes bounce-icon {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    75% { transform: scale(0.95) rotate(-5deg); }
+}
+
+.card h3 {
+    font-size: 1.5rem !important;
+    font-weight: 700 !important;
+    color: var(--birthday-primary) !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.card-time {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: var(--birthday-tertiary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 1rem !important;
+}
+
+.card p {
+    color: #555 !important;
+    line-height: 1.6 !important;
+    font-size: 1rem !important;
+}
+
+/* =================================================================
+   BUTTONS - PREMIUM DEPTH & EFFECTS
+   ================================================================= */
+.btn {
+    padding: 18px 45px !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    border: none !important;
+    border-radius: 50px !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn-primary {
+    background: var(--birthday-gradient-primary) !important;
+    color: white !important;
+    box-shadow: 
+        0 4px 15px rgba(233, 30, 99, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Shimmer effect on hover */
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent);
+    transition: left 0.6s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 
+        0 8px 25px rgba(233, 30, 99, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* =================================================================
+   COUNTDOWN - PREMIUM GLASS CARDS
+   ================================================================= */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.95) 0%, 
+            rgba(255, 255, 255, 0.85) 100%);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 2rem 1.75rem;
+    min-width: 130px;
+    box-shadow: 
+        0 15px 35px rgba(233, 30, 99, 0.15),
+        inset 0 2px 10px rgba(255, 255, 255, 0.9),
+        inset 0 -2px 10px rgba(233, 30, 99, 0.05);
+    border: 1px solid rgba(233, 30, 99, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated gradient border */
+.countdown-item::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--birthday-gradient-primary);
+    border-radius: 25px;
+    opacity: 0.5;
+    z-index: -1;
+    animation: rotate-gradient 3s linear infinite;
+}
+
+@keyframes rotate-gradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.countdown-value {
+    font-size: 3.5rem !important;
+    font-weight: 900 !important;
+    background: var(--birthday-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Bebas Neue', 'Montserrat', sans-serif !important;
+    display: block !important;
+}
+
+.countdown-label {
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: var(--birthday-tertiary) !important;
+    margin-top: 0.5rem !important;
+    font-weight: 600 !important;
+}
+
+/* =================================================================
+   TIMELINE - PREMIUM DESIGN
+   ================================================================= */
+.timeline-item {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid;
+    border-image: var(--birthday-gradient-primary) 1;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 30px rgba(233, 30, 99, 0.15);
+}
+
+.timeline-time {
+    font-weight: 700;
+    color: var(--birthday-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* =================================================================
+   PHOTO GALLERY - PREMIUM GRID
+   ================================================================= */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--birthday-gradient-primary);
+    padding: 3px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 20px 50px rgba(233, 30, 99, 0.25);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* =================================================================
+   FORM - PREMIUM STYLING
+   ================================================================= */
+.event-form {
+    background: white;
+    border-radius: 25px;
+    padding: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 
+        0 20px 60px rgba(233, 30, 99, 0.1),
+        inset 0 2px 10px rgba(255, 255, 255, 1);
+}
+
+.form-group label {
+    color: var(--birthday-tertiary) !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+    display: block !important;
+    font-size: 0.95rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100% !important;
+    padding: 12px 15px !important;
+    border: 2px solid rgba(233, 30, 99, 0.1) !important;
+    border-radius: 10px !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none !important;
+    border-color: var(--birthday-primary) !important;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1) !important;
+    background: white !important;
+}
+
+/* =================================================================
+   FOOTER - PREMIUM DARK
+   ================================================================= */
+.footer {
+    background: 
+        linear-gradient(180deg, var(--birthday-dark) 0%, #0A0015 100%),
+        var(--birthday-noise);
+    color: white !important;
+    padding: 4rem 0 2rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--birthday-gradient-primary);
+}
+
+.footer h3 {
+    color: var(--birthday-secondary) !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 1.1rem !important;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color 0.3s ease !important;
+}
+
+.footer a:hover {
+    color: var(--birthday-secondary) !important;
+}
+
+/* =================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+@media (max-width: 768px) {
+    .card {
+        padding: 1.25rem !important;
+    }
+    
+    .countdown-item {
+        min-width: 100px;
+        padding: 1.5rem 1.25rem;
+    }
+    
+    .countdown-value {
+        font-size: 2.5rem !important;
+    }
+    
+    .age-display {
+        font-size: 5rem !important;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .event-form {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* =================================================================
+   ACCESSIBILITY & REDUCED MOTION
+   ================================================================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .card {
+        border: 2px solid var(--birthday-primary) !important;
+    }
+    
+    .btn-primary {
+        background: var(--birthday-primary) !important;
+        border: 2px solid white !important;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+    outline: 3px solid var(--birthday-secondary) !important;
+    outline-offset: 3px !important;
+}

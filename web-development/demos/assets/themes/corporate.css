@@ -1,0 +1,1344 @@
+/* =================================================================
+   CORPORATE EVENT THEME - PROFESSIONAL EXCELLENCE
+   
+   Premium corporate theme with sophisticated business aesthetics
+   ================================================================= */
+
+/* =================================================================
+   COLOR SYSTEM - CORPORATE PALETTE
+   ================================================================= */
+:root {
+    --corporate-navy: #0D47A1;          /* Deep professional blue */
+    --corporate-teal: #00897B;          /* Modern teal accent */
+    --corporate-gold: #FFC107;          /* Premium gold accent */
+    --corporate-charcoal: #37474F;      /* Dark text */
+    --corporate-silver: #B0BEC5;        /* Light accent */
+    --corporate-slate: #455A64;         /* Medium gray */
+    --corporate-ice: #ECEFF1;           /* Light background */
+    --corporate-white: #FFFFFF;
+    --corporate-gradient: linear-gradient(135deg, #0D47A1 0%, #00897B 100%);
+    --corporate-dark-gradient: linear-gradient(135deg, #37474F 0%, #455A64 100%);
+}
+
+/* =================================================================
+   BODY & BACKGROUND
+   ================================================================= */
+body {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+    color: var(--corporate-charcoal) !important;
+    background: var(--corporate-white) !important;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* =================================================================
+   HERO SECTION - EXECUTIVE PRESENCE
+   ================================================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: var(--corporate-gradient);
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(255,255,255,0.03) 2px,
+            rgba(255,255,255,0.03) 4px
+        );
+    pointer-events: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.3) 100%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 6vw, 4rem) !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 1rem !important;
+    line-height: 1.2;
+}
+
+.hero h1 strong {
+    font-weight: 700 !important;
+    display: block;
+    font-size: 1.2em;
+    background: linear-gradient(90deg, white, var(--corporate-gold), white);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    0% {
+        background-position: -200%;
+    }
+    100% {
+        background-position: 200%;
+    }
+}
+
+.hero-subtitle {
+    font-size: 1.3rem !important;
+    font-weight: 400 !important;
+    opacity: 0.95;
+    margin-bottom: 2rem !important;
+    letter-spacing: 0.05em;
+}
+
+.hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* =================================================================
+   SECTIONS - CORPORATE STRUCTURE
+   ================================================================= */
+.section {
+    padding: 5rem 0;
+    position: relative;
+}
+
+.section:nth-child(even) {
+    background: var(--corporate-ice);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--corporate-navy);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--corporate-slate);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* =================================================================
+   AGENDA - PROFESSIONAL SCHEDULE
+   ================================================================= */
+.agenda {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.agenda-header {
+    background: var(--corporate-gradient);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+.agenda-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.agenda-date {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.agenda-timeline {
+    padding: 0;
+}
+
+.agenda-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    border-bottom: 1px solid var(--corporate-ice);
+    transition: background 0.3s ease;
+}
+
+.agenda-item:hover {
+    background: var(--corporate-ice);
+}
+
+.agenda-time {
+    background: var(--corporate-navy);
+    color: white;
+    padding: 1.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agenda-content {
+    padding: 1.5rem;
+}
+
+.agenda-event {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--corporate-charcoal);
+    margin-bottom: 0.5rem;
+}
+
+.agenda-speaker {
+    color: var(--corporate-teal);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.agenda-description {
+    color: var(--corporate-slate);
+    line-height: 1.6;
+}
+
+/* =================================================================
+   SPEAKERS - EXECUTIVE PROFILES
+   ================================================================= */
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.speaker-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.speaker-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    background: var(--corporate-gradient);
+}
+
+.speaker-info {
+    padding: 1.5rem;
+}
+
+.speaker-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--corporate-navy);
+    margin-bottom: 0.3rem;
+}
+
+.speaker-title {
+    color: var(--corporate-teal);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.speaker-company {
+    color: var(--corporate-slate);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.speaker-bio {
+    color: var(--corporate-charcoal);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* =================================================================
+   BUTTONS - CORPORATE CTAs
+   ================================================================= */
+.btn {
+    padding: 15px 40px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--corporate-gradient);
+    color: white;
+    border-radius: 0;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--corporate-navy);
+    border: 2px solid var(--corporate-navy);
+}
+
+.btn-secondary:hover {
+    background: var(--corporate-navy);
+    color: white;
+}
+
+.btn-register {
+    background: var(--corporate-gold);
+    color: var(--corporate-charcoal);
+    font-size: 1.2rem;
+    padding: 18px 50px;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(255, 193, 7, 0.3);
+}
+
+.btn-register:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 193, 7, 0.4);
+}
+
+/* =================================================================
+   STATS - CORPORATE METRICS
+   ================================================================= */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--corporate-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 1rem;
+    color: var(--corporate-slate);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* =================================================================
+   COUNTDOWN TIMER - EVENT START
+   ================================================================= */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: var(--corporate-dark-gradient);
+    color: white;
+    padding: 2rem 1.5rem;
+    min-width: 120px;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+}
+
+.countdown-number {
+    font-size: 3rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.countdown-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+/* =================================================================
+   SPONSORS - PARTNER SHOWCASE
+   ================================================================= */
+.sponsors {
+    padding: 3rem 0;
+    background: white;
+}
+
+.sponsors-tier {
+    margin-bottom: 3rem;
+}
+
+.tier-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--corporate-gold);
+    margin-bottom: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.sponsors-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.sponsor-logo {
+    height: 80px;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* =================================================================
+   AGENDA TABS - DAY NAVIGATION
+   ================================================================= */
+.agenda-section {
+    padding: 5rem 0;
+    background: var(--corporate-ice);
+}
+
+.agenda-tabs {
+    margin-top: 3rem;
+}
+
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.tab-button {
+    padding: 12px 30px;
+    background: white;
+    border: 2px solid var(--corporate-navy);
+    color: var(--corporate-navy);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.tab-button:hover {
+    background: var(--corporate-navy);
+    color: white;
+}
+
+.tab-button.active {
+    background: var(--corporate-gradient);
+    color: white;
+    border-color: transparent;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.day-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.day-header h3 {
+    font-size: 2rem;
+    color: var(--corporate-navy);
+    margin-bottom: 0.5rem;
+}
+
+.schedule {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.schedule-item {
+    display: flex;
+    background: white;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--corporate-silver);
+    transition: all 0.3s ease;
+}
+
+.schedule-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.schedule-item.keynote {
+    border-left-color: var(--corporate-gold);
+}
+
+.schedule-item.workshop {
+    border-left-color: var(--corporate-teal);
+}
+
+.schedule-item.networking {
+    border-left-color: var(--corporate-navy);
+}
+
+.schedule-item .time {
+    width: 140px;
+    padding: 1.5rem;
+    background: var(--corporate-gradient);
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.schedule-item .session {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.session h4 {
+    color: var(--corporate-charcoal);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.session .speaker {
+    color: var(--corporate-teal);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+}
+
+.session .location {
+    color: var(--corporate-slate);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* =================================================================
+   WORKSHOP SECTION
+   ================================================================= */
+.workshops-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.workshop-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    color: var(--corporate-slate);
+    font-size: 1.1rem;
+}
+
+.workshop-blocks {
+    margin-bottom: 3rem;
+}
+
+.workshop-block {
+    margin-bottom: 4rem;
+}
+
+.workshop-block h3 {
+    text-align: center;
+    color: var(--corporate-navy);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.workshop-card {
+    background: white;
+    border: 1px solid var(--corporate-ice);
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.workshop-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+}
+
+.workshop-header h4 {
+    color: var(--corporate-navy);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.workshop-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.skill-level {
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.skill-level.beginner {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.skill-level.intermediate {
+    background: #E3F2FD;
+    color: #1565C0;
+}
+
+.skill-level.advanced {
+    background: #FCE4EC;
+    color: #C2185B;
+}
+
+.capacity {
+    color: var(--corporate-slate);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.workshop-instructor {
+    color: var(--corporate-teal);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.workshop-description {
+    color: var(--corporate-charcoal);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.workshop-topics h5,
+.workshop-requirements h5 {
+    color: var(--corporate-navy);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.workshop-topics ul {
+    list-style: none;
+    padding: 0;
+}
+
+.workshop-topics li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--corporate-charcoal);
+}
+
+.workshop-topics li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--corporate-teal);
+}
+
+.workshop-registration {
+    background: var(--corporate-ice);
+    padding: 3rem;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+.workshop-registration h3 {
+    text-align: center;
+    color: var(--corporate-navy);
+    margin-bottom: 2rem;
+}
+
+.reg-info h4,
+.workshop-benefits h4 {
+    color: var(--corporate-navy);
+    margin-bottom: 1rem;
+}
+
+.workshop-benefits ul {
+    list-style: none;
+    padding: 0;
+}
+
+.workshop-benefits li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.workshop-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--corporate-teal);
+    font-weight: bold;
+}
+
+/* =================================================================
+   INNOVATION SHOWCASE
+   ================================================================= */
+.innovation-section {
+    padding: 5rem 0;
+    background: var(--corporate-ice);
+}
+
+.showcase-highlight {
+    margin-bottom: 4rem;
+}
+
+.showcase-feature {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.showcase-feature h3 {
+    color: var(--corporate-navy);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.prize-pool {
+    background: var(--corporate-gradient);
+    color: white;
+    padding: 10px 20px;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.judge-note {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--corporate-ice);
+    color: var(--corporate-slate);
+    font-style: italic;
+}
+
+.participating-startups h3 {
+    text-align: center;
+    color: var(--corporate-navy);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.startup-intro {
+    text-align: center;
+    color: var(--corporate-slate);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.startup-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--corporate-ice);
+    transition: all 0.3s ease;
+}
+
+.startup-card:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+    border-color: var(--corporate-teal);
+}
+
+.startup-card h4 {
+    color: var(--corporate-navy);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+}
+
+.startup-category {
+    color: var(--corporate-teal);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.showcase-schedule {
+    margin-top: 4rem;
+}
+
+.showcase-schedule h3 {
+    text-align: center;
+    color: var(--corporate-navy);
+    margin-bottom: 2rem;
+}
+
+.schedule-block {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+}
+
+.schedule-block h4 {
+    color: var(--corporate-navy);
+    margin-bottom: 1rem;
+}
+
+.awards-ceremony {
+    background: var(--corporate-gradient);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.awards-ceremony h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* =================================================================
+   SPONSORS SECTION ENHANCED
+   ================================================================= */
+.sponsors-section {
+    padding: 5rem 0;
+    background: white;
+}
+
+.sponsor-tier {
+    margin-bottom: 3rem;
+}
+
+.sponsor-card {
+    background: white;
+    border: 2px solid var(--corporate-ice);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sponsor-card.platinum {
+    border-color: var(--corporate-gold);
+}
+
+.sponsor-card.gold {
+    border-color: var(--corporate-teal);
+}
+
+.sponsor-card.silver {
+    border-color: var(--corporate-silver);
+}
+
+.sponsor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.sponsor-logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--corporate-navy);
+    margin-bottom: 0.5rem;
+}
+
+.sponsor-card.platinum .sponsor-logo {
+    font-size: 1.4rem;
+    color: transparent;
+    background: var(--corporate-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.sponsor-cta {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 3rem;
+    background: var(--corporate-ice);
+    border-radius: 10px;
+}
+
+.sponsor-cta h3 {
+    color: var(--corporate-navy);
+    margin-bottom: 1rem;
+}
+
+/* =================================================================
+   VENUE SECTION
+   ================================================================= */
+.venue-section {
+    padding: 5rem 0;
+    background: var(--corporate-ice);
+}
+
+.venue-highlight {
+    margin-bottom: 4rem;
+}
+
+.venue-info h3 {
+    color: var(--corporate-navy);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.venue-address {
+    color: var(--corporate-teal);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.venue-features h4,
+.venue-contact h4,
+.transportation h4 {
+    color: var(--corporate-navy);
+    margin: 2rem 0 1rem;
+    font-size: 1.3rem;
+}
+
+.map-placeholder {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    border: 2px solid var(--corporate-navy);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.transport-option {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.transport-option h5 {
+    color: var(--corporate-teal);
+    margin-bottom: 0.5rem;
+}
+
+/* Hotels */
+.hotel-grid {
+    margin-bottom: 3rem;
+}
+
+.hotel-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    position: relative;
+}
+
+.hotel-card.premium {
+    border: 2px solid var(--corporate-gold);
+}
+
+.hotel-badge {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--corporate-gold);
+    color: white;
+    padding: 5px 15px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+}
+
+.hotel-card h4 {
+    color: var(--corporate-navy);
+    margin-bottom: 0.5rem;
+}
+
+.hotel-distance {
+    color: var(--corporate-teal);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.hotel-rate {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--corporate-navy);
+    margin-bottom: 1rem;
+}
+
+.original-rate {
+    text-decoration: line-through;
+    color: var(--corporate-silver);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.hotel-amenities {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.hotel-amenities li {
+    padding: 0.3rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.hotel-amenities li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--corporate-teal);
+}
+
+.hotel-booking {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--corporate-ice);
+}
+
+.hotel-card.compact {
+    padding: 1.5rem;
+}
+
+.booking-notes {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.booking-notes h4 {
+    color: var(--corporate-navy);
+    margin-bottom: 1rem;
+}
+
+/* Attractions */
+.local-attractions h3 {
+    color: var(--corporate-navy);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.attraction-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.attraction-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.attraction-card h4 {
+    color: var(--corporate-navy);
+    margin-bottom: 0.3rem;
+}
+
+.attraction-card .distance {
+    color: var(--corporate-teal);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.family-activities {
+    margin-top: 3rem;
+}
+
+.family-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--corporate-gold);
+}
+
+.family-card h5 {
+    color: var(--corporate-navy);
+    margin-bottom: 0.3rem;
+}
+
+/* =================================================================
+   TICKET TIERS
+   ================================================================= */
+.ticket-tiers {
+    margin-bottom: 3rem;
+}
+
+.ticket-card {
+    background: white;
+    border: 2px solid var(--corporate-ice);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.ticket-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.ticket-card.featured {
+    border-color: var(--corporate-gold);
+    transform: scale(1.05);
+}
+
+.ticket-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--corporate-teal);
+    color: white;
+    padding: 5px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ticket-card.featured .ticket-badge {
+    background: var(--corporate-gold);
+}
+
+.ticket-card h3 {
+    color: var(--corporate-navy);
+    margin: 1rem 0;
+}
+
+.ticket-price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--corporate-navy);
+    margin-bottom: 0.5rem;
+}
+
+.ticket-note {
+    color: var(--corporate-slate);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.ticket-features li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    color: var(--corporate-charcoal);
+}
+
+.ticket-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--corporate-teal);
+    font-weight: bold;
+}
+
+/* =================================================================
+   HERO ADJUSTMENTS FOR OTTAWA SUMMIT
+   ================================================================= */
+.hero-badge {
+    background: var(--corporate-gold);
+    color: var(--corporate-charcoal);
+    padding: 8px 20px;
+    display: inline-block;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-location {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.95;
+}
+
+.hero-attendees {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: var(--corporate-gold);
+}
+
+/* =================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    
+    .agenda-item {
+        grid-template-columns: 1fr;
+    }
+    
+    .agenda-time {
+        padding: 1rem;
+    }
+    
+    .countdown-item {
+        min-width: 100px;
+        padding: 1.5rem 1rem;
+    }
+    
+    .countdown-number {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+/* =================================================================
+   ACCESSIBILITY OVERRIDES
+   ================================================================= */
+*:focus-visible {
+    outline: 3px solid var(--corporate-teal) !important;
+    outline-offset: 3px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero {
+        background: var(--corporate-charcoal);
+    }
+    
+    .btn-register {
+        background: var(--corporate-gold);
+        color: black;
+        font-weight: 700;
+    }
+}

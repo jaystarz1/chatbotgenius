@@ -1,0 +1,423 @@
+/* =================================================================
+   ANNIVERSARY THEME - ELEGANT CELEBRATION
+   
+   Premium anniversary theme with sophisticated colors and romantic elements
+   ================================================================= */
+
+/* =================================================================
+   COLOR SYSTEM - ANNIVERSARY PALETTE
+   ================================================================= */
+:root {
+    --anniversary-gold: #D4AF37;
+    --anniversary-rose-gold: #E8B4B8;
+    --anniversary-burgundy: #800020;
+    --anniversary-champagne: #F7E7CE;
+    --anniversary-ivory: #FFFFF0;
+    --anniversary-pearl: #F8F6F0;
+    --anniversary-charcoal: #36454F;
+    --anniversary-silver: #C0C0C0;
+    --anniversary-gradient: linear-gradient(135deg, #D4AF37 0%, #E8B4B8 100%);
+}
+
+/* =================================================================
+   BODY & BACKGROUND
+   ================================================================= */
+body {
+    font-family: 'Playfair Display', serif !important;
+    color: var(--anniversary-charcoal) !important;
+    background: var(--anniversary-pearl) !important;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(232, 180, 184, 0.05) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* =================================================================
+   HERO SECTION - ANNIVERSARY ELEGANCE
+   ================================================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    background: 
+        linear-gradient(rgba(255, 255, 240, 0.9), rgba(248, 246, 240, 0.9)),
+        url('https://picsum.photos/1920/1080?random=anniversary') center/cover;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: clamp(3.5rem, 9vw, 7rem) !important;
+    background: var(--anniversary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem !important;
+    font-weight: 400;
+}
+
+.hero-subtitle {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.3rem !important;
+    font-weight: 300 !important;
+    letter-spacing: 0.3em !important;
+    text-transform: uppercase !important;
+    color: var(--anniversary-burgundy) !important;
+    margin-bottom: 2rem !important;
+}
+
+.hero-years {
+    font-size: 5rem !important;
+    font-weight: 700 !important;
+    background: var(--anniversary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 2rem 0 !important;
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* =================================================================
+   SECTIONS - ANNIVERSARY THEMED
+   ================================================================= */
+.section {
+    padding: 5rem 0;
+    position: relative;
+    z-index: 2;
+}
+
+.section:nth-child(even) {
+    background: var(--anniversary-ivory);
+}
+
+.section:nth-child(odd) {
+    background: white;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 3rem !important;
+    color: var(--anniversary-gold) !important;
+    text-align: center;
+    margin-bottom: 3rem !important;
+}
+
+/* =================================================================
+   TIMELINE - ANNIVERSARY SPECIAL
+   ================================================================= */
+.timeline {
+    position: relative;
+    padding: 3rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--anniversary-gradient);
+    transform: translateX(-50%);
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.timeline-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(212, 175, 55, 0.15);
+    max-width: 500px;
+    position: relative;
+}
+
+.timeline-year {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--anniversary-gold);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.timeline-description {
+    color: var(--anniversary-charcoal);
+    line-height: 1.8;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =================================================================
+   BUTTONS - ANNIVERSARY STYLE
+   ================================================================= */
+.btn {
+    padding: 18px 45px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.btn-primary {
+    background: var(--anniversary-gradient);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #E8B4B8 0%, #D4AF37 100%);
+    transition: left 0.4s ease;
+}
+
+.btn-primary:hover::before {
+    left: 0;
+}
+
+.btn-primary span {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--anniversary-gold);
+    border: 2px solid var(--anniversary-gold);
+}
+
+.btn-secondary:hover {
+    background: var(--anniversary-gold);
+    color: white;
+}
+
+/* =================================================================
+   COUNTDOWN TIMER - ANNIVERSARY SPECIAL
+   ================================================================= */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 4rem 0;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: white;
+    border: 2px solid var(--anniversary-gold);
+    padding: 2.5rem 2rem;
+    min-width: 140px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.countdown-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--anniversary-gradient);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.countdown-item:hover {
+    transform: translateY(-5px);
+}
+
+.countdown-item:hover::before {
+    opacity: 1;
+}
+
+.countdown-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    background: var(--anniversary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Playfair Display', serif;
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--anniversary-charcoal);
+    margin-top: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* =================================================================
+   GALLERY - ANNIVERSARY MEMORIES
+   ================================================================= */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(212, 175, 55, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(128, 0, 32, 0.9), transparent);
+    color: white;
+    padding: 1.5rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0);
+}
+
+/* =================================================================
+   HEARTS FLOATING ANIMATION
+   ================================================================= */
+.hearts-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    color: var(--anniversary-rose-gold);
+    font-size: 20px;
+    animation: float-heart 10s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float-heart {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =================================================================
+   RESPONSIVE ADJUSTMENTS
+   ================================================================= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem !important;
+    }
+    
+    .hero-years {
+        font-size: 3rem !important;
+    }
+    
+    .timeline::before {
+        left: 30px;
+    }
+    
+    .timeline-content {
+        margin-left: 60px;
+    }
+    
+    .countdown-item {
+        min-width: 110px;
+        padding: 2rem 1.5rem;
+    }
+    
+    .countdown-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* =================================================================
+   ACCESSIBILITY OVERRIDES
+   ================================================================= */
+*:focus-visible {
+    outline: 3px solid var(--anniversary-gold) !important;
+    outline-offset: 3px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .hero h1,
+    .countdown-number {
+        -webkit-text-fill-color: var(--anniversary-burgundy) !important;
+    }
+    
+    .btn-primary {
+        background: var(--anniversary-burgundy);
+        color: white;
+    }
+}

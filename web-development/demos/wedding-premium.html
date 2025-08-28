@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah & Michael | June 15, 2026 | Ottawa Wedding</title>
+    <meta name="description" content="Join us as we celebrate the wedding of Sarah Thompson and Michael Chen on June 15, 2026 at the Château Laurier, Ottawa.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Base Styles -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/themes/wedding-master.css">
+    <link rel="stylesheet" href="assets/themes/wedding-premium.css">
+    
+    <!-- Inline styles for critical adjustments only -->
+    <style>
+        /* All styles moved to wedding-premium.css - minimal overrides only if needed */
+        /* Smooth scrolling for the entire page */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="luxury-cursor">
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Fixed Navigation Header -->
+    <header class="wedding-header">
+        <nav class="wedding-nav">
+            <div class="nav-container">
+                <a href="#home" class="nav-brand">S&M</a>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#story" class="nav-link">Our Story</a></li>
+                    <li><a href="#wedding-party" class="nav-link">Wedding Party</a></li>
+                    <li><a href="#details" class="nav-link">Details</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#rsvp" class="nav-link nav-cta">RSVP</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Demo Control -->
+    <a href="../packages/complete-package.html" class="demo-return" style="top: 80px;">
+        ← Back to Package
+    </a>
+    
+    <!-- Share Buttons -->
+    <div class="share-buttons">
+        <button class="share-toggle" onclick="toggleShareMenu()" aria-label="Share this page">
+            SHARE
+        </button>
+        <div class="share-menu" id="shareMenu">
+            <a href="#" onclick="shareOnFacebook(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a href="#" onclick="shareOnTwitter(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <span>X / Twitter</span>
+            </a>
+            <a href="#" onclick="shareOnLinkedIn(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <a href="#" onclick="shareViaEmail(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>Email</span>
+            </a>
+            <a href="#" onclick="copyLink(event)" class="share-option">
+                <svg class="share-icon" viewBox="0 0 24 24" width="18" height="18">
+                    <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                </svg>
+                <span>Copy Link</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Music Player -->
+    <!-- Music Player - Add your song URL to enable -->
+    <!-- 
+    <div class="music-player">
+        <button class="music-toggle" onclick="toggleMusic()">🎵 Our Song</button>
+        <audio id="weddingSong" loop>
+            <source src="your-wedding-song.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    -->
+    
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section with Rose Petals -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 class="hero-names split-text" data-animate="fade-up">Sarah & Michael</h1>
+                <div class="hero-date">JUNE 15, 2026</div>
+                <div class="hero-location">Château Laurier • Ottawa</div>
+                
+                <!-- Custom SVG Monogram -->
+                <div class="monogram-container">
+                    <svg class="monogram" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="95" class="monogram-circle"/>
+                        <text x="50%" y="50%" class="monogram-text">S&M</text>
+                        <circle cx="100" cy="100" r="85" class="monogram-circle" style="stroke-dasharray: 5,5"/>
+                    </svg>
+                </div>
+                
+                <div class="countdown-premium">
+                    <div class="countdown-block">
+                        <div class="countdown-value">
+                            <div class="countdown-number" id="countdown-days">00</div>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                    </div>
+                    <div class="countdown-block">
+                        <div class="countdown-value">
+                            <div class="countdown-number" id="countdown-hours">00</div>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                    </div>
+                    <div class="countdown-block">
+                        <div class="countdown-value">
+                            <div class="countdown-number" id="countdown-minutes">00</div>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                    </div>
+                    <div class="countdown-block">
+                        <div class="countdown-value">
+                            <div class="countdown-number" id="countdown-seconds">00</div>
+                            <span class="countdown-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#rsvp" class="btn-luxury gold">RSVP Now</a>
+                <a href="#" class="btn-luxury" onclick="alert('Calendar integration would open here')">📅 Add to Calendar</a>
+                
+                <!-- Premium urgency timer -->
+                <div class="urgency-banner" data-urgency="countdown" style="margin-top: 2rem; font-size: 1.2rem; color: #f5576c;"></div>
+            </div>
+        </section>
+        
+        <!-- Premium Notification Area -->
+        <div class="toast-container" id="toastContainer"></div>
+        
+        <!-- Photo Gallery Section -->
+        <section id="gallery" class="photo-gallery" data-reveal="fade-up">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title gradient-text">Gallery of Love</h2>
+                    <p class="section-subtitle">Moments that define us</p>
+                </div>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/gallery1/600/800" alt="Sarah and Michael - Our First Dance">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/gallery2/600/800" alt="Wedding Rings">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/gallery3/600/800" alt="Bridal Bouquet">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/gallery4/600/800" alt="Wedding Venue">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/gallery5/600/800" alt="Ceremony Setup">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/gallery6/600/800" alt="Reception">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Decorative Divider -->
+        <div class="divider">
+            <svg viewBox="0 0 200 40">
+                <path d="M0,20 Q50,0 100,20 T200,20" stroke="currentColor" fill="none" stroke-width="2"/>
+                <circle cx="100" cy="20" r="5" fill="currentColor"/>
+            </svg>
+        </div>
+        
+        <!-- Our Story with Enhanced Timeline -->
+        <section id="story" class="our-story">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Our Love Story</h2>
+                    <p class="section-subtitle">The journey that brought us together</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content luxury-shadow">
+                            <div class="timeline-image">
+                                <img src="https://picsum.photos/seed/timeline1/400/300" alt="Coffee Shop">
+                            </div>
+                            <h3>First Meeting</h3>
+                            <div class="timeline-date">September 2019</div>
+                            <p>We met at a coffee shop in the ByWard Market. Sarah spilled her latte, Michael offered napkins, and the rest is history.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal">
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5.8 21L7.4 14L2 9.2L9.2 8.6L12 2L14.8 8.6L22 9.2L16.6 14L18.2 21L12 17.3L5.8 21Z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content luxury-shadow">
+                            <div class="timeline-image">
+                                <img src="https://picsum.photos/seed/timeline2/400/300" alt="First Date">
+                            </div>
+                            <h3>First Date</h3>
+                            <div class="timeline-date">October 2019</div>
+                            <p>Dinner at Play Food & Wine, followed by a moonlit walk along the Rideau Canal.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal">
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content luxury-shadow">
+                            <div class="timeline-image">
+                                <img src="https://picsum.photos/seed/timeline3/400/300" alt="Our Home">
+                            </div>
+                            <h3>Moving In Together</h3>
+                            <div class="timeline-date">March 2021</div>
+                            <p>We found our perfect little apartment in the Glebe, complete with a balcony garden.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item reveal">
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                            </svg>
+                        </div>
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content luxury-shadow">
+                            <div class="timeline-image">
+                                <img src="https://picsum.photos/seed/timeline4/400/300" alt="The Proposal">
+                            </div>
+                            <h3>The Proposal</h3>
+                            <div class="timeline-date">December 2023</div>
+                            <p>Under the Christmas lights at Lansdowne Park, Michael got down on one knee. Sarah said yes before he could finish asking!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Love Quotes Section -->
+        <section class="love-quotes">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Words of Love</h2>
+                </div>
+                <div class="quote-slider">
+                    <div class="quote">"Sarah makes every day feel like a celebration. Her laugh is my favorite sound in the world." - Michael</div>
+                    <div class="quote">"Michael is my best friend, my safe place, and my greatest adventure all in one." - Sarah</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Wedding Party with Avatar Photos -->
+        <section id="wedding-party" class="wedding-party-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Wedding Party</h2>
+                    <p class="section-subtitle">Our favorite people</p>
+                </div>
+                
+                <div class="grid grid-sm-2">
+                    <div class="party-group luxury-shadow">
+                        <h3>Bridesmaids</h3>
+                        <div class="party-members">
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=Jessica+Thompson&background=E8B4B8&color=fff&size=150" 
+                                     class="party-photo" alt="Jessica Thompson">
+                                <h4>Jessica Thompson</h4>
+                                <p class="role">Maid of Honor</p>
+                                <p>Sarah's sister and best friend</p>
+                            </div>
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=Amanda+Chen&background=E8B4B8&color=fff&size=150" 
+                                     class="party-photo" alt="Amanda Chen">
+                                <h4>Amanda Chen</h4>
+                                <p class="role">Bridesmaid</p>
+                                <p>Michael's sister</p>
+                            </div>
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=Rachel+Morrison&background=E8B4B8&color=fff&size=150" 
+                                     class="party-photo" alt="Rachel Morrison">
+                                <h4>Rachel Morrison</h4>
+                                <p class="role">Bridesmaid</p>
+                                <p>College roommate</p>
+                            </div>
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=Emily+Davis&background=E8B4B8&color=fff&size=150" 
+                                     class="party-photo" alt="Emily Davis">
+                                <h4>Emily Davis</h4>
+                                <p class="role">Bridesmaid</p>
+                                <p>Childhood friend</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="party-group luxury-shadow">
+                        <h3>Groomsmen</h3>
+                        <div class="party-members">
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=David+Chen&background=6B4550&color=fff&size=150" 
+                                     class="party-photo" alt="David Chen">
+                                <h4>David Chen</h4>
+                                <p class="role">Best Man</p>
+                                <p>Michael's brother</p>
+                            </div>
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=James+Wilson&background=6B4550&color=fff&size=150" 
+                                     class="party-photo" alt="James Wilson">
+                                <h4>James Wilson</h4>
+                                <p class="role">Groomsman</p>
+                                <p>University friend</p>
+                            </div>
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=Alex+Thompson&background=6B4550&color=fff&size=150" 
+                                     class="party-photo" alt="Alex Thompson">
+                                <h4>Alex Thompson</h4>
+                                <p class="role">Groomsman</p>
+                                <p>Sarah's brother</p>
+                            </div>
+                            <div class="party-member">
+                                <img src="https://ui-avatars.com/api/?name=Ryan+Park&background=6B4550&color=fff&size=150" 
+                                     class="party-photo" alt="Ryan Park">
+                                <h4>Ryan Park</h4>
+                                <p class="role">Groomsman</p>
+                                <p>Work colleague</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Wedding Details -->
+        <section id="details" class="details-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Wedding Details</h2>
+                    <p class="section-subtitle">Everything you need to know</p>
+                </div>
+                
+                <div class="grid grid-sm-3">
+                    <div class="premium-card detail-card" data-reveal="scale" data-reveal-delay="1">
+                        <div class="detail-icon">
+                            <div class="detail-icon-text">VOWS</div>
+                        </div>
+                        <h3>Ceremony</h3>
+                        <p class="detail-time">3:00 PM</p>
+                        <p>St. Andrew's Church</p>
+                        <p>82 Kent Street</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-secondary btn-sm">Get Directions</a>
+                    </div>
+                    <div class="detail-card luxury-shadow">
+                        <div class="detail-icon">
+                            <div class="detail-icon-text">PARTY</div>
+                        </div>
+                        <h3>Reception</h3>
+                        <p class="detail-time">5:00 PM</p>
+                        <p>Château Laurier Ballroom</p>
+                        <p>1 Rideau Street</p>
+                        <a href="https://maps.google.com" target="_blank" class="btn btn-secondary btn-sm">Get Directions</a>
+                    </div>
+                    <div class="detail-card luxury-shadow">
+                        <div class="detail-icon">
+                            <div class="detail-icon-text">ATTIRE</div>
+                        </div>
+                        <h3>Dress Code</h3>
+                        <p class="detail-time">Formal Attire</p>
+                        <p>Black tie optional</p>
+                        <p>Garden party chic</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Accommodations -->
+        <section id="accommodations" class="accommodations-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Accommodations</h2>
+                    <p class="section-subtitle">Where to stay in Ottawa</p>
+                </div>
+                
+                <div class="grid grid-sm-3">
+                    <div class="hotel-card luxury-shadow">
+                        <h3>Château Laurier</h3>
+                        <p class="hotel-discount">Wedding Rate Available</p>
+                        <p>1 Rideau Street</p>
+                        <p>Ottawa, ON K1N 8S7</p>
+                        <p class="hotel-price">From $289/night</p>
+                        <p>Use code: SARAHMICHAEL2026</p>
+                        <a href="tel:+16132411414" class="btn btn-secondary btn-sm">Call to Book</a>
+                    </div>
+                    <div class="hotel-card luxury-shadow">
+                        <h3>Lord Elgin Hotel</h3>
+                        <p class="hotel-discount">10% Discount</p>
+                        <p>100 Elgin Street</p>
+                        <p>Ottawa, ON K1P 5K8</p>
+                        <p class="hotel-price">From $189/night</p>
+                        <a href="tel:+16132353333" class="btn btn-secondary btn-sm">Call to Book</a>
+                    </div>
+                    <div class="hotel-card luxury-shadow">
+                        <h3>The Westin Ottawa</h3>
+                        <p class="hotel-discount">Group Rate</p>
+                        <p>11 Colonel By Drive</p>
+                        <p>Ottawa, ON K1N 9H4</p>
+                        <p class="hotel-price">From $229/night</p>
+                        <a href="tel:+16135601001" class="btn btn-secondary btn-sm">Call to Book</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Things to Do in Ottawa with Images -->
+        <section id="tourism" class="tourism-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Explore Ottawa</h2>
+                    <p class="section-subtitle">Make a weekend of it!</p>
+                </div>
+                
+                <div class="grid grid-sm-4">
+                    <a href="https://www.parl.ca/visit" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <path d="M10 40 L10 25 L15 20 L20 25 L20 40 M25 40 L25 25 L30 15 L35 25 L35 40 M40 40 L40 25 L45 20 L50 25 L50 40 M5 40 L55 40 M30 10 L30 15" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Parliament Hill</h3>
+                        <p>Free tours of Canada's iconic government buildings</p>
+                        <span class="tourism-distance">1.5 KM</span>
+                    </a>
+                    <a href="https://byward-market.com" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <path d="M15 35 L15 25 L30 15 L45 25 L45 35 M10 35 L50 35 L50 45 L10 45 Z M20 35 L20 45 M30 35 L30 45 M40 35 L40 45" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>ByWard Market</h3>
+                        <p>Historic farmers' market with restaurants and shops</p>
+                        <span class="tourism-distance">0.8 KM</span>
+                    </a>
+                    <a href="https://www.gallery.ca" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <rect x="15" y="15" width="30" height="35" stroke="currentColor" stroke-width="1.5" fill="none" rx="2"/>
+                                <rect x="20" y="20" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <circle cx="35" cy="35" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <path d="M20 40 L25 35 L30 38 L40 28" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>National Gallery</h3>
+                        <p>World-class art collection including Group of Seven</p>
+                        <span class="tourism-distance">1.2 KM</span>
+                    </a>
+                    <a href="https://www.pc.gc.ca/en/lhn-nhs/on/rideau" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <path d="M10 30 Q20 25 30 30 T50 30 M10 35 Q20 30 30 35 T50 35 M15 40 L15 45 L20 45 L20 40 M40 40 L40 45 L45 45 L45 40" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Rideau Canal</h3>
+                        <p>UNESCO World Heritage Site, perfect for walking</p>
+                        <span class="tourism-distance">0.5 KM</span>
+                    </a>
+                    <a href="https://www.historymuseum.ca" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <path d="M20 45 L20 20 Q30 15 40 20 L40 45 M15 45 L45 45 M25 25 L25 30 M35 25 L35 30 M25 35 L25 40 M35 35 L35 40" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Museum of History</h3>
+                        <p>Canada's most visited museum, just across the river</p>
+                        <span class="tourism-distance">2.0 KM</span>
+                    </a>
+                    <a href="https://ncc-ccn.gc.ca/places/gatineau-park" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <path d="M20 45 L20 30 L15 35 L20 30 L25 35 M30 45 L30 25 L25 30 L30 25 L35 30 M40 45 L40 30 L35 35 L40 30 L45 35" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Gatineau Park</h3>
+                        <p>Beautiful hiking trails and scenic lookouts</p>
+                        <span class="tourism-distance">15 KM</span>
+                    </a>
+                    <a href="https://www.warmuseum.ca" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <path d="M30 15 L35 25 L45 25 L37 32 L40 42 L30 35 L20 42 L23 32 L15 25 L25 25 Z" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>War Museum</h3>
+                        <p>Military history and remembrance exhibits</p>
+                        <span class="tourism-distance">3.0 KM</span>
+                    </a>
+                    <a href="https://www.lansdownepark.ca" target="_blank" class="tourism-card luxury-shadow">
+                        <div class="tourism-icon">
+                            <svg viewBox="0 0 60 60" width="50" height="50">
+                                <circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                                <path d="M20 30 L25 25 L30 30 L35 25 L40 30 M15 35 Q30 40 45 35" 
+                                      stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3>Lansdowne Park</h3>
+                        <p>Shopping, dining, and entertainment district</p>
+                        <span class="tourism-distance">4.0 KM</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Instagram Feed Section -->
+        <section class="social-feed">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Share the Love</h2>
+                    <p class="hashtag">#SarahAndMichaelSayIDo</p>
+                </div>
+                <div class="instagram-grid">
+                    <div class="instagram-post">
+                        <img src="https://picsum.photos/seed/wedding1/400/400" alt="Wedding moment">
+                    </div>
+                    <div class="instagram-post">
+                        <img src="https://picsum.photos/seed/wedding2/400/400" alt="Couple photo">
+                    </div>
+                    <div class="instagram-post">
+                        <img src="https://picsum.photos/seed/wedding3/400/400" alt="Wedding celebration">
+                    </div>
+                    <div class="instagram-post">
+                        <img src="https://picsum.photos/seed/wedding4/400/400" alt="Wedding flowers">
+                    </div>
+                    <div class="instagram-post">
+                        <img src="https://picsum.photos/seed/wedding5/400/400" alt="Wedding rings">
+                    </div>
+                    <div class="instagram-post">
+                        <img src="https://picsum.photos/seed/wedding6/400/400" alt="Wedding party">
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; color: var(--wedding-text-medium);">
+                    Tag your photos with our hashtag to see them here!
+                </p>
+            </div>
+        </section>
+        
+        <!-- RSVP Section -->
+        <section id="rsvp" class="rsvp-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">RSVP</h2>
+                    <p class="section-subtitle">We can't wait to celebrate with you</p>
+                </div>
+                
+                <form class="form-premium" data-validate="true">
+                    <div class="form-row">
+                        <div class="form-group-premium">
+                            <input type="text" id="name" name="name" class="form-input-premium" placeholder=" " required>
+                            <label for="name" class="form-label-premium">Your Name <span class="required">*</span></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="attendance" class="form-label">Will you attend? <span class="required">*</span></label>
+                            <select id="attendance" name="attendance" class="form-select" required>
+                                <option value="">Select...</option>
+                                <option value="yes">Joyfully Accept</option>
+                                <option value="no">Regretfully Decline</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests" class="form-label">Number of Guests</label>
+                            <select id="guests" name="guests" class="form-select">
+                                <option value="1">Just me</option>
+                                <option value="2">2 guests</option>
+                                <option value="3">3 guests</option>
+                                <option value="4">4 guests</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dietary" class="form-label">Dietary Restrictions</label>
+                        <textarea id="dietary" name="dietary" class="form-textarea" rows="3" placeholder="Please let us know of any dietary restrictions or allergies"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="song" class="form-label">Song Request</label>
+                        <input type="text" id="song" name="song" class="form-input" placeholder="What song will get you on the dance floor?">
+                    </div>
+                    <button type="submit" class="form-submit">Send RSVP</button>
+                </form>
+            </div>
+        </section>
+        
+        <!-- Registry -->
+        <section id="registry" class="registry-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Registry</h2>
+                    <p class="section-subtitle">Your presence is the greatest gift</p>
+                </div>
+                
+                <div class="registry-content">
+                    <p>We're so excited to celebrate with you! If you'd like to give a gift, we've registered at the following stores:</p>
+                    <div class="grid grid-sm-3">
+                        <a href="#" class="registry-link luxury-shadow">
+                            <h3>Hudson's Bay</h3>
+                            <p>Registry #12345</p>
+                        </a>
+                        <a href="#" class="registry-link luxury-shadow">
+                            <h3>Williams Sonoma</h3>
+                            <p>Registry #67890</p>
+                        </a>
+                        <a href="#" class="registry-link luxury-shadow">
+                            <h3>Honeymoon Fund</h3>
+                            <p>Help us explore Italy!</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer-event">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sarah & Michael</h4>
+                    <p>June 15, 2026</p>
+                    <p>Forever Begins</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p><a href="mailto:sarah.michael.wedding@gmail.com">sarah.michael.wedding@gmail.com</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <p><a href="#rsvp">RSVP</a></p>
+                    <p><a href="#details">Event Details</a></p>
+                    <p><a href="#accommodations">Hotels</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>#SarahAndMichaelSayIDo</p>
+            </div>
+            <div class="footer-attribution" style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); text-align: center; opacity: 0.8;">
+                <p style="margin: 0; font-size: 0.9rem;">Website created by <a href="https://thechatbotgenius.com" style="color: var(--wedding-gold); text-decoration: none;">The Chatbot Genius</a> - Premium Event Websites</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Files -->
+    <script src="assets/js/accessibility.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/share-buttons.js"></script>
+    <script src="assets/js/forms.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/luxury-animations.js"></script>
+    
+    <!-- Premium JavaScript -->
+    <script src="assets/js/premium-loader.js"></script>
+    <script src="assets/js/micro-interactions.js"></script>
+    <script src="assets/js/conversion-tools.js"></script>
+    
+    <script>
+        // Initialize countdown for wedding date
+        initCountdown('June 15, 2026 15:00:00');
+        
+        // Header scroll effect
+        const header = document.querySelector('.wedding-header');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            // Add scrolled class when scrolled down
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Active navigation state
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Music toggle function
+        function toggleMusic() {
+            const audio = document.getElementById('weddingSong');
+            const button = document.querySelector('.music-toggle');
+            
+            if (!audio || !button) {
+                console.log('Music player not configured');
+                return;
+            }
+            
+            if (audio.paused) {
+                // Note: Modern browsers require user interaction to play audio
+                audio.play().catch(e => {
+                    console.log('Audio playback requires user interaction');
+                    alert('Please click again to play our song');
+                });
+                button.textContent = '⏸️ Pause';
+            } else {
+                audio.pause();
+                button.textContent = '🎵 Our Song';
+            }
+        }
+        
+        // Enhanced reveal animations
+        window.addEventListener('scroll', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

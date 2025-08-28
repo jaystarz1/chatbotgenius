@@ -1,0 +1,648 @@
+/* =================================================================
+   WEDDING MASTER THEME - CONSOLIDATED FIX FOR ALL ISSUES
+   
+   This file overrides base.css and components.css with wedding-specific
+   styles to ensure consistent theming and fix all conflicts.
+   ================================================================= */
+
+/* =================================================================
+   COLOR SYSTEM - WEDDING PALETTE
+   ================================================================= */
+:root {
+    --wedding-rose: #E8B4B8;
+    --wedding-gold: #D4AF37;
+    --wedding-champagne: #F7E7CE;
+    --wedding-mauve: #95626C;
+    --wedding-deep-rose: #6B4550;
+    --wedding-cream: #FFF8F3;
+    --wedding-text-dark: #3A2429;
+    --wedding-text-medium: #4A3038;
+    --wedding-gold-dark: #8B6914;
+    --glass-white: rgba(255, 255, 255, 0.95);
+    --glass-blur: blur(10px);
+}
+
+/* =================================================================
+   BODY & BACKGROUND
+   ================================================================= */
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    color: var(--wedding-text-dark) !important;
+    background: var(--wedding-cream) !important;
+    line-height: 1.6;
+}
+
+/* =================================================================
+   WCAG COMPLIANCE - FOCUS STATES & CONTRAST
+   ================================================================= */
+*:focus-visible {
+    outline: 3px solid var(--wedding-deep-rose) !important;
+    outline-offset: 3px !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--wedding-deep-rose) !important;
+    outline-offset: 2px !important;
+}
+
+/* Minimum touch targets */
+.btn, button, a.btn {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =================================================================
+   HERO SECTION - PROPER CONTRAST
+   ================================================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #FFF5F5 0%, #FFFAF8 100%);
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 10;
+    position: relative;
+}
+
+.hero-names {
+    font-family: 'Great Vibes', cursive !important;
+    font-size: clamp(3rem, 8vw, 6rem) !important;
+    color: var(--wedding-text-dark) !important; /* Dark for contrast */
+    margin-bottom: 1rem !important;
+    font-weight: 400 !important;
+}
+
+.hero-date {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.5rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.3em !important;
+    text-transform: uppercase !important;
+    color: var(--wedding-gold-dark) !important; /* Darker gold for WCAG */
+    margin-bottom: 0.5rem !important;
+}
+
+.hero-location {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.25rem !important;
+    color: var(--wedding-text-medium) !important; /* Darker mauve for WCAG */
+    margin-bottom: 3rem !important;
+}
+
+/* Hero button positioning fix */
+.hero .btn-primary {
+    position: relative !important;
+    z-index: 10 !important;
+    margin-top: 2rem !important;
+}
+
+/* =================================================================
+   BUTTONS - OVERRIDE BLUE WITH WEDDING COLORS
+   ================================================================= */
+.btn-primary,
+.form-submit {
+    background: linear-gradient(135deg, var(--wedding-mauve), var(--wedding-rose)) !important;
+    color: white !important;
+    border: none !important;
+    padding: 14px 32px !important;
+    border-radius: 30px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s !important;
+    box-shadow: 0 8px 30px rgba(107, 69, 80, 0.3) !important;
+}
+
+.btn-primary:hover,
+.form-submit:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 40px rgba(107, 69, 80, 0.4) !important;
+}
+
+.btn-secondary {
+    background: white !important;
+    color: var(--wedding-mauve) !important;
+    border: 2px solid var(--wedding-rose) !important;
+    padding: 12px 28px !important;
+    border-radius: 25px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s !important;
+}
+
+.btn-secondary:hover {
+    background: var(--wedding-rose) !important;
+    color: white !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Add to Calendar Button */
+.add-to-calendar {
+    background: linear-gradient(135deg, var(--wedding-gold), var(--wedding-champagne)) !important;
+    color: var(--wedding-text-dark) !important;
+    border: none !important;
+    padding: 12px 28px !important;
+    margin-left: 1rem;
+}
+
+.add-to-calendar:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3) !important;
+}
+
+/* =================================================================
+   SHARE BUTTONS - PROPER POSITIONING
+   ================================================================= */
+.share-buttons {
+    position: fixed !important;
+    bottom: 80px !important; /* Move up to avoid overlaps */
+    right: 20px !important;
+    z-index: 1000 !important;
+}
+
+.share-toggle {
+    background: linear-gradient(135deg, var(--wedding-mauve), var(--wedding-rose)) !important;
+    color: white !important;
+    border: none !important;
+    padding: 14px 32px !important;
+    border-radius: 30px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    transition: all 0.3s !important;
+    box-shadow: 0 8px 30px rgba(107, 69, 80, 0.3) !important;
+}
+
+.share-toggle:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 40px rgba(107, 69, 80, 0.4) !important;
+}
+
+/* =================================================================
+   TIMELINE - PROPER PADDING
+   ================================================================= */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem !important;
+}
+
+.timeline-content {
+    background: white !important;
+    padding: 2.5rem !important; /* Fixed padding issue */
+    border-radius: 15px !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+    margin-left: 60px !important;
+    position: relative !important;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 1rem;
+    width: 20px;
+    height: 20px;
+    background: var(--wedding-rose);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.timeline-date {
+    color: var(--wedding-gold-dark) !important;
+    font-size: 0.875rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    margin-bottom: 1rem !important;
+}
+
+/* =================================================================
+   WEDDING PARTY - FIX OVERLAPPING
+   ================================================================= */
+.party-group {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.party-group h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--wedding-mauve);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.party-members {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+}
+
+.party-member {
+    background: var(--wedding-cream) !important;
+    padding: 1.5rem !important;
+    border-radius: 12px !important;
+    display: block !important;
+    margin-bottom: 0 !important; /* Gap handles spacing */
+}
+
+.party-member h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    color: var(--wedding-deep-rose);
+    margin-bottom: 0.25rem;
+}
+
+.party-member .role {
+    color: var(--wedding-gold-dark);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.party-member p:last-child {
+    color: var(--wedding-text-medium);
+    font-style: italic;
+    margin: 0;
+}
+
+/* =================================================================
+   TOURISM SECTION - ADD MISSING STYLES
+   ================================================================= */
+.tourism-section {
+    background: white;
+    padding: 5rem 0;
+}
+
+.tourism-card {
+    background: white !important;
+    padding: 1.5rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+    transition: transform 0.3s !important;
+    text-align: center !important;
+    border: 1px solid rgba(232, 180, 184, 0.2) !important;
+}
+
+.tourism-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+.tourism-card h3 {
+    font-family: 'Playfair Display', serif !important;
+    color: var(--wedding-mauve) !important;
+    margin-bottom: 0.5rem !important;
+    font-size: 1.25rem !important;
+}
+
+.tourism-card p {
+    color: var(--wedding-text-medium) !important;
+    font-size: 0.9rem !important;
+    margin: 0 !important;
+}
+
+/* =================================================================
+   HOTEL CARDS - ENHANCE
+   ================================================================= */
+.hotel-card {
+    background: white !important;
+    border-radius: 20px !important;
+    padding: 2rem !important;
+    text-align: center !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    transition: all 0.3s !important;
+    position: relative !important;
+}
+
+.hotel-card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12) !important;
+}
+
+.hotel-discount {
+    background: var(--wedding-rose);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.hotel-price {
+    color: var(--wedding-gold-dark);
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin: 0.5rem 0;
+}
+
+/* =================================================================
+   FOOTER - FIX BLACK BACKGROUND
+   ================================================================= */
+.footer-event {
+    background: linear-gradient(135deg, var(--wedding-mauve), var(--wedding-rose)) !important;
+    color: white !important;
+    padding: 4rem 0 2rem !important;
+    margin-top: 0 !important;
+}
+
+.footer-content {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 2rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 2rem !important;
+}
+
+.footer-section h4 {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+    color: white !important;
+}
+
+.footer-section p,
+.footer-section a {
+    color: rgba(255,255,255,0.9) !important;
+    text-decoration: none !important;
+}
+
+.footer-section a:hover {
+    color: white !important;
+    text-decoration: underline !important;
+}
+
+.footer-bottom {
+    text-align: center !important;
+    padding: 2rem !important;
+    border-top: 1px solid rgba(255,255,255,0.2) !important;
+    margin-top: 2rem !important;
+}
+
+.footer-bottom p {
+    color: rgba(255,255,255,0.9) !important;
+    margin: 0.5rem 0 !important;
+}
+
+/* =================================================================
+   FORMS - WEDDING STYLING
+   ================================================================= */
+.event-form {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    background: white !important;
+    padding: 3rem !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1) !important;
+}
+
+.form-group {
+    margin-bottom: 1.5rem !important;
+}
+
+.form-label {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    color: var(--wedding-text-dark) !important;
+    font-weight: 500 !important;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    border: 2px solid rgba(232, 180, 184, 0.3) !important;
+    border-radius: 8px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    transition: border-color 0.3s !important;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none !important;
+    border-color: var(--wedding-rose) !important;
+}
+
+/* Required asterisk */
+.required {
+    color: var(--wedding-deep-rose) !important;
+}
+
+/* =================================================================
+   COUNTDOWN TIMER
+   ================================================================= */
+.countdown {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(232, 180, 184, 0.3);
+    padding: 1.5rem;
+    border-radius: 15px;
+    min-width: 100px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--wedding-text-dark);
+    line-height: 1;
+}
+
+.countdown-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--wedding-gold-dark);
+    margin-top: 0.5rem;
+}
+
+/* =================================================================
+   DETAIL CARDS
+   ================================================================= */
+.detail-card {
+    background: white !important;
+    padding: 2rem !important;
+    border-radius: 15px !important;
+    text-align: center !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08) !important;
+    transition: transform 0.3s !important;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
+}
+
+.detail-icon {
+    width: 60px !important;
+    height: 60px !important;
+    background: linear-gradient(135deg, var(--wedding-gold), var(--wedding-rose)) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 1rem !important;
+}
+
+.detail-icon-text {
+    color: white !important;
+    font-size: 0.75rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+}
+
+.detail-time {
+    color: var(--wedding-gold-dark) !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* =================================================================
+   REGISTRY SECTION
+   ================================================================= */
+.registry-link {
+    display: block;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--wedding-text-dark);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.registry-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.registry-link h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--wedding-mauve);
+    margin-bottom: 0.5rem;
+}
+
+.registry-link p {
+    color: var(--wedding-text-medium);
+    margin: 0;
+}
+
+/* =================================================================
+   RESPONSIVE FIXES
+   ================================================================= */
+@media (max-width: 768px) {
+    .timeline-content {
+        margin-left: 40px !important;
+        padding: 1.5rem !important;
+    }
+    
+    .party-members {
+        gap: 1rem !important;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+    }
+    
+    .share-buttons {
+        bottom: 60px !important;
+    }
+}
+
+/* =================================================================
+   DEMO RETURN BUTTON
+   ================================================================= */
+.demo-return {
+    position: fixed !important;
+    top: 20px !important;
+    left: 20px !important;
+    background: rgba(0,0,0,0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+    padding: 12px 20px !important;
+    border-radius: 30px !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    z-index: 9999 !important;
+    transition: all 0.3s !important;
+}
+
+.demo-return:hover {
+    background: rgba(0,0,0,0.8) !important;
+    transform: translateX(5px) !important;
+}
+
+/* =================================================================
+   ACCESSIBILITY - SKIP LINK
+   ================================================================= */
+.skip-link {
+    position: absolute !important;
+    top: -100px !important;
+    left: 10px !important;
+    background: #000 !important;
+    color: #fff !important;
+    padding: 12px 24px !important;
+    text-decoration: none !important;
+    border-radius: 0 0 8px 0 !important;
+    z-index: 100000 !important;
+}
+
+.skip-link:focus {
+    top: 0 !important;
+}
+
+/* =================================================================
+   REMOVE ANIMATIONS FOR REDUCED MOTION
+   ================================================================= */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
