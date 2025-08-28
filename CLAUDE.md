@@ -3,7 +3,7 @@
 ## Project Overview
 **Website**: https://thechatbotgenius.com  
 **Owner**: Jay Tarzwell  
-**Purpose**: Professional AI expertise platform featuring blog, books, projects, and medical transcription API  
+**Purpose**: Professional AI expertise platform featuring blog, books, and projects  
 **Hosting**: Netlify (with automatic deployments from GitHub)  
 **Repository**: chatbotgenius (jaytarzwell)  
 
@@ -69,29 +69,6 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 - Logo: 🤖 emoji + "The Chatbot Genius"
 - Menu items: Home, About, Books, Blog, Projects, AI News, Contact
 
-## Medical Transcription API
-
-### Production Endpoint
-```
-POST https://thechatbotgenius.com/.netlify/functions/medical-transcription
-```
-
-### Features
-- Converts medical dictation to formatted PET/CT reports
-- Pure JavaScript processing (no external dependencies)
-- Supports multiple tracers (FDG, Ga-68-PSMA, Ga-68-DOTATATE)
-- Automatic measurement conversion (cm to mm)
-- Medical terminology correction
-- Six-section report structure
-- ChatGPT Custom Actions compatible
-
-### Report Structure
-1. History
-2. Comparison
-3. Technique
-4. Findings (with 4 subcategories)
-5. Impression
-6. Alternate Impression for Comparison
 
 ## Development Workflow
 
@@ -302,12 +279,6 @@ All blog posts MUST include proper navigation matching the main site.
 
 ## Testing Commands
 
-### Test Medical API
-```bash
-curl -X POST https://thechatbotgenius.com/.netlify/functions/medical-transcription \
-  -H "Content-Type: application/json" \
-  -d '{"dictation": "Test dictation text"}'
-```
 
 ### Check Site Status
 ```bash
@@ -453,7 +424,6 @@ cp -r demos/assets clients/smith-assets/
 - **Share buttons broken**: JavaScript must load at end of body
 
 ## Recent Updates
-- Medical transcription API fully operational
 - Blog system with proper navigation templates
 - RSS feed automation
 - Google Analytics integration

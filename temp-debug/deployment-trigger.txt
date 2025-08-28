@@ -1,3 +1,0 @@
-Force deployment trigger - testing medical transcription API
-Timestamp: 2025-01-27 
-Issue: Function endpoint not responding, forcing redeploy
