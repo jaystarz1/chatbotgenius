@@ -1,0 +1,177 @@
+/* ===================================
+   Books Page Specific Styles - The Chatbot Genius
+   =================================== */
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: var(--text-white);
+    padding: 100px 0 60px;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: var(--font-weight-bold);
+}
+
+.page-header p {
+    font-size: var(--font-size-xl);
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Book Sections */
+.book-section {
+    padding: 80px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.book-section:nth-child(even) {
+    background: var(--bg-light);
+}
+
+.book-section:last-child {
+    border-bottom: none;
+}
+
+.book-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Book Grid Layout */
+.book-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 50px;
+}
+
+/* Book Cover */
+.book-cover {
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+}
+
+.book-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Book Info Section */
+.book-info {
+    max-width: 600px;
+}
+
+.book-info h2 {
+    color: var(--primary-dark);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.book-info h3 {
+    color: var(--primary-dark);
+    font-size: var(--font-size-xl);
+    margin: 30px 0 15px 0;
+}
+
+/* Book Tagline */
+.book-tagline {
+    color: var(--primary-blue);
+    font-size: var(--font-size-xl);
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+/* Book Meta Information */
+.book-meta {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.book-meta span {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Book Description */
+.book-description {
+    margin-bottom: 30px;
+}
+
+.book-description p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* Purchase Links Section */
+.purchase-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+/* Book Reviews Container */
+.book-reviews {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: var(--font-size-lg);
+        padding: 0 20px;
+    }
+    
+    .book-section {
+        padding: 60px 0;
+    }
+    
+    .book-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .book-info {
+        max-width: 100%;
+    }
+    
+    .book-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .book-cover {
+        max-width: 250px;
+        margin: 0 auto 30px;
+    }
+    
+    .purchase-links {
+        justify-content: center;
+    }
+    
+    .book-meta {
+        justify-content: center;
+    }
+    
+    .book-tagline {
+        font-size: var(--font-size-lg);
+    }
+}
