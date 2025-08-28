@@ -1,0 +1,88 @@
+/* ===================================
+   Projects Page Specific Styles - The Chatbot Genius
+   =================================== */
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: var(--text-white);
+    padding: 80px 0 var(--spacing-3xl);
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.3rem;
+    opacity: 0.95;
+}
+
+/* Projects Section */
+.projects-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+/* Section Intro */
+.section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-3xl);
+}
+
+.section-intro h2 {
+    font-size: var(--font-size-4xl);
+    color: var(--primary-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-intro p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* Projects Container */
+.projects-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Footer Override for Projects Page */
+.footer {
+    background: var(--primary-dark);
+    color: var(--text-white);
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .page-header {
+        padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+    }
+    
+    .page-header h1 {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .page-header p {
+        font-size: 1.1rem;
+    }
+    
+    .projects-section {
+        padding: var(--spacing-3xl) 0;
+    }
+    
+    .section-intro h2 {
+        font-size: 1.8rem;
+    }
+    
+    .section-intro p {
+        font-size: 1.1rem;
+    }
+}

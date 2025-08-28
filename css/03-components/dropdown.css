@@ -1,0 +1,121 @@
+/* ===================================
+   Dropdown Component - The Chatbot Genius
+   =================================== */
+
+/* Base Dropdown Container */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Toggle Button/Link */
+.nav-dropdown-toggle {
+    color: var(--text-white);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color var(--transition-base);
+}
+
+/* Dropdown Arrow Indicator */
+.nav-dropdown-toggle::after {
+    content: '▼';
+    font-size: 0.8em;
+    transition: transform var(--transition-base);
+}
+
+/* Rotate arrow on hover */
+.nav-dropdown:hover .nav-dropdown-toggle::after {
+    transform: rotate(180deg);
+}
+
+.nav-dropdown-toggle:hover {
+    color: var(--accent-gold);
+}
+
+/* Dropdown Menu */
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    background: var(--bg-white);
+    min-width: 250px;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-lg);
+    top: 100%;
+    margin-top: 0;
+    padding-top: 10px;
+    z-index: var(--z-dropdown);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+/* Invisible bridge to prevent menu from closing on hover gap */
+.nav-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+}
+
+/* Show dropdown on hover with animation */
+.nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Dropdown Menu Links */
+.nav-dropdown-menu a {
+    color: var(--text-dark);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-decoration: none;
+    display: block;
+    transition: all var(--transition-base);
+    border-bottom: 1px solid var(--bg-gray);
+}
+
+/* First and last item border radius */
+.nav-dropdown-menu a:first-child {
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.nav-dropdown-menu a:last-child {
+    border-bottom: none;
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+}
+
+/* Dropdown link hover effect */
+.nav-dropdown-menu a:hover {
+    background: var(--bg-light);
+    color: var(--primary-dark);
+    padding-left: 25px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    /* On mobile, dropdowns might need different behavior */
+    .nav-dropdown-menu {
+        position: static;
+        width: 100%;
+        margin-top: var(--spacing-sm);
+        box-shadow: none;
+        border-left: 3px solid var(--primary-blue);
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .nav-dropdown-menu a {
+        color: var(--text-white);
+        padding-left: var(--spacing-xl);
+    }
+    
+    .nav-dropdown-menu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        padding-left: 35px;
+    }
+}
