@@ -647,46 +647,52 @@
                     <p class="section-subtitle">We can't wait to celebrate with you</p>
                 </div>
                 
-                <form class="form-premium" data-validate="true">
-                    <div class="form-row">
-                        <div class="form-group-premium">
-                            <input type="text" id="name" name="name" class="form-input-premium" placeholder=" " required>
-                            <label for="name" class="form-label-premium">Your Name <span class="required">*</span></label>
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">Email <span class="required">*</span></label>
-                            <input type="email" id="email" name="email" class="form-input" required>
-                        </div>
+                <div style="max-width: 650px; margin: 0 auto;">
+                    <div class="luxury-shadow" style="background: white; padding: 50px 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                        <form class="form-premium" data-validate="true">
+                            <div class="form-row">
+                                <div class="form-group-premium">
+                                    <input type="text" id="name" name="name" class="form-input-premium" placeholder=" " required>
+                                    <label for="name" class="form-label-premium">Your Name <span class="required">*</span></label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-input" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="attendance" class="form-label">Will you attend? <span class="required">*</span></label>
+                                    <select id="attendance" name="attendance" class="form-select" required>
+                                        <option value="">Select...</option>
+                                        <option value="yes">Joyfully Accept</option>
+                                        <option value="no">Regretfully Decline</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="guests" class="form-label">Number of Guests</label>
+                                    <select id="guests" name="guests" class="form-select">
+                                        <option value="1">Just me</option>
+                                        <option value="2">2 guests</option>
+                                        <option value="3">3 guests</option>
+                                        <option value="4">4 guests</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dietary" class="form-label">Dietary Restrictions</label>
+                                <textarea id="dietary" name="dietary" class="form-textarea" rows="3" placeholder="Please let us know of any dietary restrictions or allergies"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="song" class="form-label">Song Request</label>
+                                <input type="text" id="song" name="song" class="form-input" placeholder="What song will get you on the dance floor?">
+                            </div>
+                            <div style="text-align: center; margin-top: 30px;">
+                                <button type="submit" class="form-submit" style="max-width: 280px; padding: 15px 40px; display: inline-block; width: auto;">Send RSVP</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="attendance" class="form-label">Will you attend? <span class="required">*</span></label>
-                            <select id="attendance" name="attendance" class="form-select" required>
-                                <option value="">Select...</option>
-                                <option value="yes">Joyfully Accept</option>
-                                <option value="no">Regretfully Decline</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="guests" class="form-label">Number of Guests</label>
-                            <select id="guests" name="guests" class="form-select">
-                                <option value="1">Just me</option>
-                                <option value="2">2 guests</option>
-                                <option value="3">3 guests</option>
-                                <option value="4">4 guests</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="dietary" class="form-label">Dietary Restrictions</label>
-                        <textarea id="dietary" name="dietary" class="form-textarea" rows="3" placeholder="Please let us know of any dietary restrictions or allergies"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="song" class="form-label">Song Request</label>
-                        <input type="text" id="song" name="song" class="form-input" placeholder="What song will get you on the dance floor?">
-                    </div>
-                    <button type="submit" class="form-submit">Send RSVP</button>
-                </form>
+                </div>
             </div>
         </section>
         
