@@ -109,6 +109,37 @@ Date format in files:
 - HTML meta tag: `<meta property="article:published_time" content="2025-08-29">`
 - Article display: `By Jay Tarzwell CD | August 29, 2025`
 
+### AI Image Generation for Blog Posts
+
+**Automatically generate unique, relevant images for blog posts using AI:**
+
+```bash
+# Generate AI image for a blog post
+./generate-blog-image.sh blog/your-post.html
+
+# Or use directly with Node
+node generate-blog-image.js blog/your-post.html
+```
+
+**Features:**
+- Analyzes blog content to create relevant prompts
+- Supports OpenAI DALL-E 3 (recommended), Stability AI, Replicate
+- Automatically downloads and optimizes images
+- Updates blog post HTML with new image
+- Adds proper meta tags for social sharing
+
+**Setup:**
+1. Copy `.env.local.example` to `.env.local`
+2. Add your OpenAI API key (get from https://platform.openai.com/api-keys)
+3. Run the script on any blog post HTML file
+
+**How it works:**
+1. Extracts title, description, and content from blog post
+2. Generates intelligent image prompt based on themes
+3. Creates unique AI image (no stock photos!)
+4. Downloads and saves to `blog/images/`
+5. Updates all image references in the HTML
+
 ### Important Scripts
 - `new-blog-post.sh` - Create new blog post
 - `update-navigation.js` - Update navigation across site
