@@ -301,14 +301,25 @@ function prompt(question) {
 // Main function
 async function main() {
     try {
-        console.log(`${colors.cyan}${colors.bright}🎨 AI Blog Image Generator${colors.reset}`);
-        console.log(`${colors.cyan}${'='.repeat(50)}${colors.reset}\n`);
+        // Check if running in automatic mode (from git hook)
+        const autoMode = process.env.AUTO_MODE === 'true';
+        
+        if (!autoMode) {
+            console.log(`${colors.cyan}${colors.bright}🎨 AI Blog Image Generator${colors.reset}`);
+            console.log(`${colors.cyan}${'='.repeat(50)}${colors.reset}\n`);
+        }
         
         // Load configuration
         let config = await loadConfig();
         
         // Check for API key
         if (!config.AI_IMAGE_API_KEY) {
+            if (autoMode) {
+                // In auto mode, skip if no API key
+                console.log('No API key configured. Skipping image generation.');
+                process.exit(0);
+            }
+            
             console.log(`${colors.yellow}No API key found. Let's set one up.${colors.reset}`);
             console.log('\nSupported services:');
             Object.entries(SUPPORTED_APIS).forEach(([key, name]) => {
@@ -340,29 +351,41 @@ async function main() {
         }
         
         // Extract blog content
-        console.log(`\n${colors.blue}📄 Analyzing blog post...${colors.reset}`);
+        if (!autoMode) {
+            console.log(`\n${colors.blue}📄 Analyzing blog post...${colors.reset}`);
+        }
         const blogData = await extractBlogContent(blogFile);
-        console.log(`Title: ${blogData.title}`);
+        if (!autoMode) {
+            console.log(`Title: ${blogData.title}`);
+        }
         
         // Generate prompt
-        console.log(`\n${colors.blue}🤖 Generating image prompt...${colors.reset}`);
+        if (!autoMode) {
+            console.log(`\n${colors.blue}🤖 Generating image prompt...${colors.reset}`);
+        }
         const imagePrompt = generateImagePrompt(blogData);
-        console.log(`Prompt preview: ${imagePrompt.substring(0, 150)}...`);
+        if (!autoMode) {
+            console.log(`Prompt preview: ${imagePrompt.substring(0, 150)}...`);
+        }
         
-        // Allow user to customize
-        const customize = await prompt('\nCustomize prompt? (y/N): ');
+        // Allow user to customize (skip in auto mode)
         let finalPrompt = imagePrompt;
-        if (customize.toLowerCase() === 'y') {
-            console.log('\nCurrent prompt:');
-            console.log(imagePrompt);
-            const customPrompt = await prompt('\nEnter custom prompt (or press Enter to keep current): ');
-            if (customPrompt) {
-                finalPrompt = customPrompt;
+        if (!autoMode) {
+            const customize = await prompt('\nCustomize prompt? (y/N): ');
+            if (customize.toLowerCase() === 'y') {
+                console.log('\nCurrent prompt:');
+                console.log(imagePrompt);
+                const customPrompt = await prompt('\nEnter custom prompt (or press Enter to keep current): ');
+                if (customPrompt) {
+                    finalPrompt = customPrompt;
+                }
             }
         }
         
         // Generate image
-        console.log(`\n${colors.blue}🎨 Generating image with ${config.AI_IMAGE_API_TYPE}...${colors.reset}`);
+        if (!autoMode) {
+            console.log(`\n${colors.blue}🎨 Generating image with ${config.AI_IMAGE_API_TYPE}...${colors.reset}`);
+        }
         
         let imageResult;
         switch (config.AI_IMAGE_API_TYPE) {
@@ -374,35 +397,47 @@ async function main() {
                 imageResult = await generateWithOpenAI(finalPrompt, config.AI_IMAGE_API_KEY);
         }
         
-        console.log(`${colors.green}✓ Image generated successfully${colors.reset}`);
-        if (imageResult.revisedPrompt) {
-            console.log(`Revised prompt: ${imageResult.revisedPrompt.substring(0, 150)}...`);
+        if (!autoMode) {
+            console.log(`${colors.green}✓ Image generated successfully${colors.reset}`);
+            if (imageResult.revisedPrompt) {
+                console.log(`Revised prompt: ${imageResult.revisedPrompt.substring(0, 150)}...`);
+            }
         }
         
         // Download image
-        console.log(`\n${colors.blue}📥 Downloading image...${colors.reset}`);
+        if (!autoMode) {
+            console.log(`\n${colors.blue}📥 Downloading image...${colors.reset}`);
+        }
         const timestamp = new Date().toISOString().replace(/[:.]/g, '-').substring(0, 19);
         const imageName = path.basename(blogFile, '.html') + `-ai-${timestamp}.png`;
         const imagePath = path.join('blog/images', imageName);
         
         await downloadImage(imageResult.url, imagePath);
-        console.log(`${colors.green}✓ Image saved to ${imagePath}${colors.reset}`);
+        if (!autoMode) {
+            console.log(`${colors.green}✓ Image saved to ${imagePath}${colors.reset}`);
+        }
         
         // Optimize image
         await optimizeImage(imagePath);
         
-        // Update blog post
-        const updatePost = await prompt('\nUpdate blog post with new image? (Y/n): ');
-        if (updatePost.toLowerCase() !== 'n') {
+        // Update blog post (automatic in auto mode)
+        if (autoMode) {
             await updateBlogPost(blogFile, imagePath);
+        } else {
+            const updatePost = await prompt('\nUpdate blog post with new image? (Y/n): ');
+            if (updatePost.toLowerCase() !== 'n') {
+                await updateBlogPost(blogFile, imagePath);
+            }
         }
         
-        console.log(`\n${colors.green}${colors.bright}✨ Complete! Your AI-generated blog image is ready.${colors.reset}`);
-        console.log(`Image location: ${imagePath}`);
-        console.log('\nNext steps:');
-        console.log('1. Review the image in your blog post');
-        console.log('2. Commit and push changes to deploy');
-        console.log('3. The image will be live at: https://thechatbotgenius.com/' + imagePath);
+        if (!autoMode) {
+            console.log(`\n${colors.green}${colors.bright}✨ Complete! Your AI-generated blog image is ready.${colors.reset}`);
+            console.log(`Image location: ${imagePath}`);
+            console.log('\nNext steps:');
+            console.log('1. Review the image in your blog post');
+            console.log('2. Commit and push changes to deploy');
+            console.log('3. The image will be live at: https://thechatbotgenius.com/' + imagePath);
+        }
         
     } catch (error) {
         console.error(`${colors.red}Error: ${error.message}${colors.reset}`);

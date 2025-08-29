@@ -111,10 +111,20 @@ Date format in files:
 
 ### AI Image Generation for Blog Posts
 
-**Automatically generate unique, relevant images for blog posts using AI:**
+**🎯 FULLY AUTOMATED - Images generate automatically before git commits!**
 
+#### Automatic Mode (Default)
+When you commit any new blog post, the system automatically:
+1. Detects new blog HTML files
+2. Generates AI images using your content
+3. Updates the blog post with the image
+4. Adds everything to your commit
+
+**No manual steps required!** Just create your blog post and commit.
+
+#### Manual Mode (Optional)
 ```bash
-# Generate AI image for a blog post
+# Generate AI image for a specific blog post
 ./generate-blog-image.sh blog/your-post.html
 
 # Or use directly with Node
@@ -122,23 +132,28 @@ node generate-blog-image.js blog/your-post.html
 ```
 
 **Features:**
+- ✅ **Fully automated via git hooks**
 - Analyzes blog content to create relevant prompts
-- Supports OpenAI DALL-E 3 (recommended), Stability AI, Replicate
+- Supports OpenAI DALL-E 3 (using your existing API key from .env)
 - Automatically downloads and optimizes images
 - Updates blog post HTML with new image
 - Adds proper meta tags for social sharing
 
-**Setup:**
-1. Copy `.env.local.example` to `.env.local`
-2. Add your OpenAI API key (get from https://platform.openai.com/api-keys)
-3. Run the script on any blog post HTML file
+**Setup (Already Done):**
+- Uses your existing OpenAI API key from `.env`
+- Git pre-commit hook installed at `.git/hooks/pre-commit`
+- Runs automatically on `git commit` for new blog posts
 
 **How it works:**
-1. Extracts title, description, and content from blog post
-2. Generates intelligent image prompt based on themes
-3. Creates unique AI image (no stock photos!)
-4. Downloads and saves to `blog/images/`
-5. Updates all image references in the HTML
+1. Pre-commit hook detects new blog posts
+2. Extracts title, description, and content from blog post
+3. Generates intelligent image prompt based on themes
+4. Creates unique AI image with DALL-E 3
+5. Downloads and saves to `blog/images/`
+6. Updates all image references in the HTML
+7. Adds image to the commit automatically
+
+**Cost:** ~$0.08 per image (DALL-E 3 HD quality)
 
 ### Important Scripts
 - `new-blog-post.sh` - Create new blog post
