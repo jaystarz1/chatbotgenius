@@ -98,58 +98,50 @@ async function extractBlogContent(filePath) {
     return { title, description, context };
 }
 
-// Generate prompt from blog content - INFOGRAPHICS ONLY
-function generateImagePrompt(blogData, style = 'infographic') {
+// Generate prompt from blog content - DRAMATIC COMIC STYLE
+function generateImagePrompt(blogData, style = 'comic') {
     const { title, description, context } = blogData;
     
-    // Extract SPECIFIC statistics with their context
-    const stats = [];
-    
-    // Look for percentage patterns WITH their context (e.g., "53% of workers hide")
-    const percentageMatches = context.match(/(\d+%)\s+(?:of\s+)?([^.]+?)(?:\.|,)/gi) || [];
-    const keyStats = percentageMatches.slice(0, 4).map(match => {
-        const [, percent, description] = match.match(/(\d+%)\s+(?:of\s+)?([^.]+?)(?:\.|,)/i) || [];
-        if (percent && description) {
-            // Clean up the description to be concise
-            const cleanDesc = description.trim()
-                .replace(/\s+/g, ' ')
-                .substring(0, 40);
-            return { value: percent, label: cleanDesc };
+    // Extract the core theme/subject from the title
+    let theme = 'business mystery';
+    if (title.toLowerCase().includes('ai')) {
+        if (title.toLowerCase().includes('shame') || title.toLowerCase().includes('hide')) {
+            theme = 'executive in shadow hiding something';
+        } else if (title.toLowerCase().includes('job') || title.toLowerCase().includes('work')) {
+            theme = 'office workers looking worried';
+        } else if (title.toLowerCase().includes('drive') || title.toLowerCase().includes('taco')) {
+            theme = 'chaotic fast food restaurant';
         }
-        return null;
-    }).filter(Boolean);
-    
-    // If we didn't find good contextual stats, fall back to raw percentages
-    if (keyStats.length < 3) {
-        const rawPercentages = context.match(/\d+%/g) || [];
-        rawPercentages.slice(0, 3).forEach(pct => {
-            keyStats.push({ value: pct, label: 'of respondents' });
-        });
     }
     
-    // Sanitize title - make it SHORT for the infographic
-    const shortTitle = title
+    // Sanitize title for safety
+    const cleanTitle = title
         .replace(/threat|crisis|problem|failure|gap|risk|danger|fiasco|disaster|wrong/gi, 'challenge')
         .replace(/stupid|fucking|shit|damn|hell/gi, '')
-        .substring(0, 50);
+        .substring(0, 60);
     
-    // Build a MINIMAL infographic prompt
-    let prompt = `Infographic showing these statistics:\n\n`;
+    // Build a DRAMATIC COMIC prompt
+    let prompt = `1960s pulp detective novel cover illustration. `;
     
-    // Add the specific statistics we found
-    if (keyStats.length > 0) {
-        keyStats.forEach((stat, index) => {
-            prompt += `${stat.value} - ${stat.label}\n`;
-        });
+    // Add specific scene based on content
+    if (title.toLowerCase().includes('shame') || title.toLowerCase().includes('hide')) {
+        prompt += `Businessman in suit looking over shoulder nervously in dark office. `;
+        prompt += `Dramatic shadows, venetian blind lighting. `;
+    } else if (title.toLowerCase().includes('workforce') || title.toLowerCase().includes('prepared')) {
+        prompt += `Group of office workers looking up at giant computer screen with concern. `;
+        prompt += `Dramatic perspective, film noir lighting. `;
+    } else if (title.toLowerCase().includes('expectation') || title.toLowerCase().includes('reality')) {
+        prompt += `Split scene showing optimistic vision vs harsh reality. `;
+        prompt += `Dramatic contrast, noir style. `;
     } else {
-        // Fallback if no stats found
-        prompt += `72% - executives using AI daily\n`;
-        prompt += `53% - workers hiding AI use\n`;
-        prompt += `33% - employees receiving training\n`;
+        prompt += `Office scene with dramatic tension and mystery. `;
+        prompt += `Film noir lighting through venetian blinds. `;
     }
     
-    prompt += `\nPresent these numbers on a dark blue background with gold accents. `;
-    prompt += `Large white numbers. Clean minimal design. `;
+    prompt += `Style: 1960s comic book art, bold colors, dramatic angles. `;
+    prompt += `Color palette: deep blues, gold yellows, high contrast. `;
+    prompt += `Pulp fiction aesthetic, vintage poster style. `;
+    prompt += `Title text: "${cleanTitle.substring(0, 30)}" in bold retro font. `;
     prompt += `Aspect ratio 16:9.`;
     
     return prompt;
