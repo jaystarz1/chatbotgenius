@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "Why Personal Injury Lawyers Beat BigLaw at AI: 37% Adoption Rate Reveals Legal Tech's Surprising Leaders",
+        excerpt: "Personal injury lawyers lead legal AI adoption at 37% vs 31% overall. Research reveals why PI attorneys embrace AI for medical records while BigLaw hesitates.",
+        extendedExcerpt: "While BigLaw debates AI policies in committee rooms, personal injury lawyers quietly lead the profession with 37% AI adoption vs 31% overall. New research from Above the Law, ABA, and Thomson Reuters shows PI attorneys using AI to analyze thousands of medical records, saving 5 hours weekly while prestigious firms remain paralyzed by governance concerns.",
+        date: "August 2025",
+        image: "blog/images/personal-injury-lawyers-ai-adoption-leaders-ai-2025-08-29T16-41-58.png",
+        imageAlt: "Dramatic comic-style illustration of PI lawyers using AI",
+        url: "blog/personal-injury-lawyers-ai-adoption-leaders.html",
+        sortDate: new Date("2025-08-29"),
+        readingTime: "11 min read"
+    },
+    {
         title: "AI Shame in the C-Suite: Why 53% of Workers Hide Their AI Use While Leaders Secretly Struggle",
         excerpt: "53% of employees hide AI use from employers while 72% of C-suite executives use AI daily. Research reveals the dangerous phenomenon of 'AI shame' creating workplace divides.",
         extendedExcerpt: "New research from Fortune, Microsoft/LinkedIn, and BCG reveals a stunning 'AI shame' phenomenon: while 72% of executives use AI daily, only 33% of employees receive training. With 53% of workers hiding AI usage and 54% willing to use unauthorized tools, organizations face a crisis of trust, training, and transparency that's tearing companies apart from the inside.",
