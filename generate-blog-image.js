@@ -113,17 +113,17 @@ function generateImagePrompt(blogData, style = 'infographic') {
         .replace(/stupid|fucking|shit|damn|hell/gi, '')
         .substring(0, 100);
     
-    // Build the INFOGRAPHIC prompt - SAFE VERSION
-    let prompt = `Create a simple, scientific infographic that communicates data clearly at a glance. `;
+    // Build the INFOGRAPHIC prompt - ULTRA SIMPLE VERSION
+    let prompt = `Create an extremely simple infographic showing ONLY large numbers and percentages. `;
     prompt += `Title: "${cleanTitle}". `;
     
-    prompt += 'Design requirements: ';
-    prompt += 'SIMPLE and CLEAR data visualization - easy to understand in 3 seconds. ';
-    prompt += 'Scientific approach: clean charts, minimal text, large numbers. ';
-    prompt += 'Maximum clarity: high contrast, no decorative elements, focus on data. ';
-    prompt += 'Use basic shapes: bar charts, pie charts, or simple icons. ';
-    prompt += 'Color scheme: 2-3 colors maximum, high contrast for readability. ';
-    prompt += 'Think "scientific journal figure" not "corporate presentation". ';
+    prompt += 'STRICT requirements: ';
+    prompt += 'Display ONLY 3-5 key statistics as HUGE numbers (like 53%, 72%, 33%). ';
+    prompt += 'White background with black text. One accent color maximum. ';
+    prompt += 'NO decorative elements, NO icons, NO illustrations, NO complex charts. ';
+    prompt += 'Just BIG NUMBERS with small labels underneath. ';
+    prompt += 'Like a minimalist dashboard showing only the most important metrics. ';
+    prompt += 'Think "sports scoreboard" or "stock ticker" - just the numbers. ';
     
     // Add specific data if found
     if (percentages.length > 0) {
@@ -137,10 +137,10 @@ function generateImagePrompt(blogData, style = 'infographic') {
     }
     
     // Positive framing to avoid rejection
-    prompt += 'Style: Simple scientific data visualization. ';
-    prompt += 'Like figures from Nature or Science journals - clear, minimal, factual. ';
-    prompt += 'One main message that can be understood immediately. ';
-    prompt += 'Aspect ratio 16:9. Accessibility-first design with maximum readability.';
+    prompt += 'Style: Ultra-minimalist number display. ';
+    prompt += 'Like a simple statistics report - just numbers and labels. ';
+    prompt += 'No visual complexity. Clean, stark, numerical. ';
+    prompt += 'Aspect ratio 16:9. Maximum legibility and instant comprehension.';
     
     return prompt;
 }
