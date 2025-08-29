@@ -5,7 +5,7 @@ const blogPostsData = [
         excerpt: "While tech leaders debate AI job replacement, research reveals the real crisis: 59% of workers need reskilling by 2030 but most won't get it. The workforce preparedness gap threatens economic stability more than automation.",
         extendedExcerpt: "McKinsey and World Economic Forum data exposes a workforce crisis hiding in plain sight: while 92% of companies are investing in AI, only 16% of leaders feel prepared for the skills gap. With 59% of workers needing reskilling by 2030 and 120 million at risk without training, the real threat isn't AI replacing jobs—it's leaving millions of workers behind without the skills to adapt.",
         date: "August 2025",
-        image: "blog/images/ai-workforce-preparedness-crisis-header.svg",
+        image: "blog/images/ai-workforce-preparedness-crisis-infographic.png",
         imageAlt: "Infographic showing 59% workforce reskilling statistics",
         url: "blog/ai-workforce-preparedness-crisis.html",
         sortDate: new Date("2025-08-29"),

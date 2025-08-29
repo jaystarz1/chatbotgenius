@@ -107,7 +107,7 @@ function generateImagePrompt(blogData, style = 'infographic') {
     const percentages = context.match(/\d+%/g) || [];
     const numbers = context.match(/\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:\s*(?:million|billion|thousand))?/gi) || [];
     
-    // Build the INFOGRAPHIC prompt - Per Jay: "INFO FUCKING GRAPHICS"
+    // Build the INFOGRAPHIC prompt
     let prompt = `Create a clean, professional INFOGRAPHIC (NOT a photo, NOT robots, NOT people) for an article titled "${title}". `;
     
     prompt += 'REQUIREMENTS: This must be an INFOGRAPHIC with: ';
@@ -133,10 +133,16 @@ function generateImagePrompt(blogData, style = 'infographic') {
     prompt += 'Style: Clean infographic design like those from Visual Capitalist or Statista. ';
     prompt += 'Aspect ratio 16:9. High contrast colors for accessibility.';
     
-    // Add specific details from the content
+    // Add specific details from the content (sanitized)
     if (description) {
-        const cleanDesc = description.replace(/[^a-zA-Z0-9\s%]/g, '').substring(0, 100);
-        prompt += ` Key message: ${cleanDesc}`;
+        // Remove any potentially problematic words and clean the description
+        const cleanDesc = description
+            .replace(/threat|crisis|problem|failure|gap|risk|danger/gi, '')
+            .replace(/[^a-zA-Z0-9\s%]/g, '')
+            .substring(0, 80);
+        if (cleanDesc.trim()) {
+            prompt += ` Focus on workforce statistics and training data.`;
+        }
     }
     
     return prompt;
