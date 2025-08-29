@@ -45,37 +45,37 @@ const DEMO_CONFIGS = {
     'wedding-premium.html': {
         type: 'wedding',
         images: [
-            // Gallery Section - Engagement Photos (6 images)
-            { name: 'engagement-1', prompt: 'Photorealistic happy engaged couple in casual elegant clothes, walking hand in hand through Major\'s Hill Park Ottawa, autumn colors, golden hour photography' },
-            { name: 'engagement-2', prompt: 'Photorealistic engaged couple laughing together on a picnic blanket, Dow\'s Lake Ottawa, summer day, candid moment, natural lighting' },
-            { name: 'engagement-3', prompt: 'Photorealistic romantic couple embracing by the Rideau Canal Ottawa, sunset lighting, woman showing engagement ring, professional portrait' },
-            { name: 'venue-empty', prompt: 'Photorealistic empty Château Laurier Ottawa ballroom, elegant architecture, crystal chandeliers, ready for event setup, daytime lighting' },
-            { name: 'inspiration-decor', prompt: 'Photorealistic wedding inspiration flat lay with gold and ivory color swatches, rose samples, invitation mockups, planning materials' },
-            { name: 'engagement-ring', prompt: 'Photorealistic close-up of engagement ring on woman\'s hand, diamond solitaire, soft natural lighting, blurred garden background' },
+            // Gallery Section - Watercolor Illustrations (6 images)
+            { name: 'couple-park', prompt: 'Watercolor and ink line drawing illustration of couple walking in autumn park, soft romantic colors, loose artistic style, gold and rose tones' },
+            { name: 'couple-picnic', prompt: 'Watercolor illustration with pen lines of couple having picnic by lake, impressionistic style, summer colors, romantic scene' },
+            { name: 'couple-sunset', prompt: 'Watercolor and ink sketch of couple silhouettes by water at sunset, artistic loose brushstrokes, warm orange and pink tones' },
+            { name: 'venue-empty', prompt: 'Watercolor architectural illustration of elegant ballroom interior, soft washes of gold and ivory, crystal chandelier details in ink' },
+            { name: 'wedding-details', prompt: 'Watercolor flat lay illustration of wedding rings, roses, and invitation, delicate pen details, gold and blush pink palette' },
+            { name: 'engagement-ring', prompt: 'Watercolor and ink drawing of engagement ring with roses, artistic style, soft romantic colors, elegant composition' },
             
-            // Timeline Section - Our Story (4 images)
-            { name: 'coffee-shop', prompt: 'Photorealistic cozy coffee shop interior in ByWard Market Ottawa, warm atmosphere, empty table for two by window, autumn afternoon' },
-            { name: 'first-date', prompt: 'Photorealistic romantic restaurant table setting for two, candlelit, wine glasses, upscale Ottawa restaurant ambiance' },
-            { name: 'our-home', prompt: 'Photorealistic modern apartment balcony in the Glebe Ottawa with garden plants, two coffee cups on table, morning sunlight, city view' },
-            { name: 'proposal', prompt: 'Photorealistic Lansdowne Park Ottawa decorated with Christmas lights at dusk, romantic winter evening atmosphere, empty pathway' },
+            // Timeline Section - Story Illustrations (4 images)
+            { name: 'coffee-shop', prompt: 'Watercolor illustration of cozy coffee shop interior, warm browns and oranges, ink line details, romantic table for two by window' },
+            { name: 'first-date', prompt: 'Watercolor painting of elegant restaurant table, candlelit ambiance, wine glasses, soft romantic lighting, ink pen details' },
+            { name: 'our-home', prompt: 'Watercolor illustration of apartment balcony with plants, two coffee cups, city skyline, morning light, loose artistic style' },
+            { name: 'proposal', prompt: 'Watercolor and ink illustration of park with Christmas lights, romantic winter scene, soft blues and warm yellows, artistic style' },
             
-            // Bottom Gallery - More Engagement/Planning (6 images)
-            { name: 'engagement-4', prompt: 'Photorealistic engaged couple cooking together in modern kitchen, laughing, casual home moment, warm lighting' },
-            { name: 'engagement-5', prompt: 'Photorealistic couple hiking on trail in Gatineau Park, autumn colors, holding hands, back view, nature setting' },
-            { name: 'wedding-planning', prompt: 'Photorealistic wedding planning scene with magazines, laptop, coffee, notebook with checklist, flowers samples on table' },
-            { name: 'save-the-date', prompt: 'Photorealistic save the date card mockup with "Sarah & Michael June 15 2026" in elegant gold lettering on ivory paper' },
-            { name: 'engagement-6', prompt: 'Photorealistic couple at winter skating rink, Rideau Canal Ottawa, holding hands, winter clothes, festive atmosphere' },
-            { name: 'venue-sunset', prompt: 'Photorealistic exterior view of Château Laurier Ottawa at golden hour, prestigious building, romantic lighting' },
+            // Bottom Gallery - More Illustrations (6 images)
+            { name: 'couple-cooking', prompt: 'Watercolor illustration of couple cooking in kitchen, warm homey colors, loose brushwork, pen and ink details' },
+            { name: 'couple-hiking', prompt: 'Watercolor landscape with small couple figures hiking, autumn forest colors, impressionistic style, Gatineau Park setting' },
+            { name: 'wedding-planning', prompt: 'Watercolor flat lay of wedding planning materials, magazines, flowers, notebooks, soft pastel colors, delicate ink details' },
+            { name: 'save-the-date', prompt: 'Elegant watercolor save the date card design with "Sarah & Michael June 15 2026", gold and blush tones, calligraphy style' },
+            { name: 'couple-skating', prompt: 'Watercolor winter scene of skating rink, couple silhouettes, soft blues and purples, Rideau Canal setting, artistic style' },
+            { name: 'venue-sunset', prompt: 'Watercolor architectural sketch of Château Laurier at sunset, warm golden washes, ink pen architectural details' },
             
-            // Wedding Party Headshots (8 images)
-            { name: 'bridesmaid-1', prompt: 'Photorealistic professional headshot of smiling woman age 28, brunette hair, wearing dusty rose dress, soft makeup, white background, maid of honor' },
-            { name: 'bridesmaid-2', prompt: 'Photorealistic professional headshot of smiling Asian woman age 26, black hair in updo, wearing dusty rose dress, elegant makeup, white background' },
-            { name: 'bridesmaid-3', prompt: 'Photorealistic professional headshot of smiling woman age 27, blonde wavy hair, wearing dusty rose dress, natural makeup, white background' },
-            { name: 'bridesmaid-4', prompt: 'Photorealistic professional headshot of smiling woman age 25, red curly hair, wearing dusty rose dress, soft glam makeup, white background' },
-            { name: 'groomsman-1', prompt: 'Photorealistic professional headshot of smiling Asian man age 30, short black hair, wearing black suit with bow tie, clean shaven, white background, best man' },
-            { name: 'groomsman-2', prompt: 'Photorealistic professional headshot of smiling man age 28, brown hair, wearing black suit with bow tie, light stubble, white background' },
-            { name: 'groomsman-3', prompt: 'Photorealistic professional headshot of smiling Black man age 29, short hair, wearing black suit with bow tie, neat beard, white background' },
-            { name: 'groomsman-4', prompt: 'Photorealistic professional headshot of smiling man age 27, sandy blonde hair, wearing black suit with bow tie, clean shaven, white background' }
+            // Wedding Party Portraits - Illustrated (8 images)
+            { name: 'bridesmaid-1', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, brunette hair, soft artistic style, white background' },
+            { name: 'bridesmaid-2', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, black hair updo, elegant artistic style, white background' },
+            { name: 'bridesmaid-3', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, blonde wavy hair, romantic artistic style, white background' },
+            { name: 'bridesmaid-4', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, red curly hair, soft artistic style, white background' },
+            { name: 'groomsman-1', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, clean shaven, artistic style, white background' },
+            { name: 'groomsman-2', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, brown hair, artistic style, white background' },
+            { name: 'groomsman-3', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, neat beard, artistic style, white background' },
+            { name: 'groomsman-4', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, sandy hair, artistic style, white background' }
         ]
     },
     'birthday.html': {
