@@ -45,10 +45,37 @@ const DEMO_CONFIGS = {
     'wedding-premium.html': {
         type: 'wedding',
         images: [
-            { name: 'hero-premium', prompt: 'Ultra-luxury wedding venue, crystal chandeliers, marble floors, opulent gold and ivory decor' },
-            { name: 'gallery1', prompt: 'Romantic couple portrait in garden, soft focus, dreamy atmosphere' },
-            { name: 'gallery2', prompt: 'Close-up of wedding rings on white roses, elegant jewelry photography' },
-            { name: 'gallery3', prompt: 'Wedding cake with gold leaf details and white flowers, luxury dessert' }
+            // Gallery Section - Engagement Photos (6 images)
+            { name: 'engagement-1', prompt: 'Photorealistic happy engaged couple in casual elegant clothes, walking hand in hand through Major\'s Hill Park Ottawa, autumn colors, golden hour photography' },
+            { name: 'engagement-2', prompt: 'Photorealistic engaged couple laughing together on a picnic blanket, Dow\'s Lake Ottawa, summer day, candid moment, natural lighting' },
+            { name: 'engagement-3', prompt: 'Photorealistic romantic couple embracing by the Rideau Canal Ottawa, sunset lighting, woman showing engagement ring, professional portrait' },
+            { name: 'venue-empty', prompt: 'Photorealistic empty Château Laurier Ottawa ballroom, elegant architecture, crystal chandeliers, ready for event setup, daytime lighting' },
+            { name: 'inspiration-decor', prompt: 'Photorealistic wedding inspiration flat lay with gold and ivory color swatches, rose samples, invitation mockups, planning materials' },
+            { name: 'engagement-ring', prompt: 'Photorealistic close-up of engagement ring on woman\'s hand, diamond solitaire, soft natural lighting, blurred garden background' },
+            
+            // Timeline Section - Our Story (4 images)
+            { name: 'coffee-shop', prompt: 'Photorealistic cozy coffee shop interior in ByWard Market Ottawa, warm atmosphere, empty table for two by window, autumn afternoon' },
+            { name: 'first-date', prompt: 'Photorealistic romantic restaurant table setting for two, candlelit, wine glasses, upscale Ottawa restaurant ambiance' },
+            { name: 'our-home', prompt: 'Photorealistic modern apartment balcony in the Glebe Ottawa with garden plants, two coffee cups on table, morning sunlight, city view' },
+            { name: 'proposal', prompt: 'Photorealistic Lansdowne Park Ottawa decorated with Christmas lights at dusk, romantic winter evening atmosphere, empty pathway' },
+            
+            // Bottom Gallery - More Engagement/Planning (6 images)
+            { name: 'engagement-4', prompt: 'Photorealistic engaged couple cooking together in modern kitchen, laughing, casual home moment, warm lighting' },
+            { name: 'engagement-5', prompt: 'Photorealistic couple hiking on trail in Gatineau Park, autumn colors, holding hands, back view, nature setting' },
+            { name: 'wedding-planning', prompt: 'Photorealistic wedding planning scene with magazines, laptop, coffee, notebook with checklist, flowers samples on table' },
+            { name: 'save-the-date', prompt: 'Photorealistic save the date card mockup with "Sarah & Michael June 15 2026" in elegant gold lettering on ivory paper' },
+            { name: 'engagement-6', prompt: 'Photorealistic couple at winter skating rink, Rideau Canal Ottawa, holding hands, winter clothes, festive atmosphere' },
+            { name: 'venue-sunset', prompt: 'Photorealistic exterior view of Château Laurier Ottawa at golden hour, prestigious building, romantic lighting' },
+            
+            // Wedding Party Headshots (8 images)
+            { name: 'bridesmaid-1', prompt: 'Photorealistic professional headshot of smiling woman age 28, brunette hair, wearing dusty rose dress, soft makeup, white background, maid of honor' },
+            { name: 'bridesmaid-2', prompt: 'Photorealistic professional headshot of smiling Asian woman age 26, black hair in updo, wearing dusty rose dress, elegant makeup, white background' },
+            { name: 'bridesmaid-3', prompt: 'Photorealistic professional headshot of smiling woman age 27, blonde wavy hair, wearing dusty rose dress, natural makeup, white background' },
+            { name: 'bridesmaid-4', prompt: 'Photorealistic professional headshot of smiling woman age 25, red curly hair, wearing dusty rose dress, soft glam makeup, white background' },
+            { name: 'groomsman-1', prompt: 'Photorealistic professional headshot of smiling Asian man age 30, short black hair, wearing black suit with bow tie, clean shaven, white background, best man' },
+            { name: 'groomsman-2', prompt: 'Photorealistic professional headshot of smiling man age 28, brown hair, wearing black suit with bow tie, light stubble, white background' },
+            { name: 'groomsman-3', prompt: 'Photorealistic professional headshot of smiling Black man age 29, short hair, wearing black suit with bow tie, neat beard, white background' },
+            { name: 'groomsman-4', prompt: 'Photorealistic professional headshot of smiling man age 27, sandy blonde hair, wearing black suit with bow tie, clean shaven, white background' }
         ]
     },
     'birthday.html': {
