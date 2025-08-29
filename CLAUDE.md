@@ -90,13 +90,35 @@ git push
 
 ### Creating New Blog Posts
 
-**⚠️ CRITICAL DATE REQUIREMENT ⚠️**
-Per Jay: "The blog post must include the actual current date, not just some fucking date it pulls out of its ass."
+**⚠️ CRITICAL REQUIREMENTS ⚠️**
 
-When creating blog posts:
-1. **ALWAYS use TODAY'S ACTUAL DATE** (check <env> tag for current date)
-2. **NEVER use arbitrary dates like "January 2025" when it's actually August**
-3. The date affects the blog post ordering - wrong dates make posts appear in wrong positions
+#### 1. DATE REQUIREMENT
+Per Jay: "The blog post must include the actual current date, not just some fucking date it pulls out of its ass."
+- **ALWAYS use TODAY'S ACTUAL DATE** (check <env> tag for current date)
+- **NEVER use arbitrary dates like "January 2025" when it's actually August**
+- The date affects the blog post ordering - wrong dates make posts appear in wrong positions
+
+#### 2. ACCESSIBILITY REQUIREMENT (MANDATORY)
+Per Jay: "We need to ensure the accessibility of the stuff we put into the blog posts"
+
+**COLOR CONTRAST RULES (WCAG AA Compliance):**
+- ✅ **APPROVED**: Dark blue (#1a1f71) on white, white on dark blue, dark text (#333) on light backgrounds
+- ❌ **FORBIDDEN**: Gradients with text, light gray on colors, purple/blue gradients with any text
+- **Minimum contrast ratios**: 4.5:1 for normal text, 3:1 for large text (18pt+)
+
+**COMPONENT RULES:**
+- **Stat boxes**: Solid colors ONLY (no gradients), high contrast
+- **Tables**: Dark headers with white text, alternating light row colors
+- **Highlights**: Yellow background (#fff3cd) with dark text (#333)
+- **Quotes**: Light blue background (#f0f8ff) with dark text (#333)
+
+**ACCESSIBILITY CHECKLIST:**
+- [ ] All text passes contrast checker (4.5:1 minimum)
+- [ ] No information conveyed by color alone
+- [ ] Proper alt text for all images
+- [ ] Semantic HTML structure (h1→h2→h3, proper lists)
+- [ ] Tables have proper headers
+- [ ] Focus indicators for interactive elements
 
 ```bash
 ./new-blog-post.sh

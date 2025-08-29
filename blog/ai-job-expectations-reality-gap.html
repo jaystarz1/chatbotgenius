@@ -60,14 +60,16 @@
             transition: none !important;
         }
         
-        /* Data table styling */
+        /* Data table styling - Accessible */
         .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 2rem 0;
-            background: #f8f9fa;
+            background: #ffffff;
+            border: 2px solid #1a1f71;
             border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .data-table th,
@@ -79,32 +81,67 @@
         
         .data-table th {
             background: #1a1f71;
-            color: white;
+            color: #ffffff;
             font-weight: bold;
+            font-size: 1rem;
         }
         
-        .data-table tr:hover {
-            background: #f0f0f0;
+        .data-table td {
+            color: #333333;
+            background: #ffffff;
         }
         
+        .data-table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+        
+        .data-table tr:hover td {
+            background: #e8f4f8;
+        }
+        
+        /* Stat box - High contrast for accessibility */
         .stat-box {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #1a1f71;
+            color: #ffffff;
             padding: 2rem;
             border-radius: 10px;
             margin: 2rem 0;
             text-align: center;
+            border: 3px solid #f9c74f;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
             margin: 0.5rem 0;
+            color: #f9c74f;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .stat-label {
             font-size: 1.2rem;
-            opacity: 0.95;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        
+        /* Ensure all text meets WCAG AA contrast standards */
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #f9c74f;
+            color: #333333;
+        }
+        
+        .quote-box {
+            background: #f0f8ff;
+            border-left: 4px solid #1a1f71;
+            color: #333333;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
         }
     </style>
 </head>

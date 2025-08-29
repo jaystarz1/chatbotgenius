@@ -132,6 +132,40 @@
         <div class="article-container">
             <!-- 
             ============================================
+            ACCESSIBILITY REQUIREMENTS (MANDATORY):
+            ============================================
+            
+            1. COLOR CONTRAST (WCAG AA Standards):
+            - Text on backgrounds MUST have contrast ratio of at least 4.5:1
+            - Large text (18pt+) needs 3:1 minimum
+            - NEVER use light gray text on colored backgrounds
+            - Test all color combinations for readability
+            
+            2. APPROVED COLOR COMBINATIONS:
+            - Dark blue (#1a1f71) on white (#ffffff) ✓
+            - White text on dark blue background ✓  
+            - Dark text (#333) on light backgrounds (#f8f9fa) ✓
+            - Gold (#f9c74f) ONLY for borders/accents, NOT body text
+            
+            3. FORBIDDEN COMBINATIONS:
+            - Gray text on gradients ✗
+            - Light colors on light backgrounds ✗
+            - Purple/blue gradients with any text color ✗
+            
+            4. COMPONENT STYLING RULES:
+            - Tables: Dark headers with white text, light rows
+            - Stat boxes: Solid colors only, NO gradients
+            - Quotes: Light background with dark text
+            - Highlights: Yellow background with dark text
+            
+            5. ACCESSIBILITY CHECKLIST:
+            ☐ All text readable without squinting
+            ☐ No color-only information (use labels too)
+            ☐ Alt text for all images
+            ☐ Semantic HTML (proper headings, lists)
+            ☐ Focus indicators for interactive elements
+            
+            ============================================
             CONTENT STRUCTURE GUIDELINES:
             ============================================
             
