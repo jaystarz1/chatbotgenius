@@ -1,0 +1,240 @@
+/* Hero Spotlight Carousel Styles */
+
+.hero-spotlight {
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0a0f51 0%, #1a1f71 50%, #4c5fd5 100%);
+}
+
+.spotlight-carousel {
+    position: relative;
+    height: 100%;
+}
+
+.spotlight-track {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.spotlight-slide {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 60px 0;
+    color: white;
+}
+
+.spotlight-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.spotlight-text {
+    animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.spotlight-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff8c42, #f9c74f);
+    color: #1a1f71;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.spotlight-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #f9c74f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.spotlight-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    opacity: 0.95;
+    line-height: 1.5;
+}
+
+.spotlight-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.spotlight-cta {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.spotlight-visual {
+    position: relative;
+    animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.spotlight-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.3s ease;
+}
+
+.spotlight-visual:hover .spotlight-image {
+    transform: perspective(1000px) rotateY(0deg) scale(1.05);
+}
+
+.spotlight-book-cover {
+    width: 280px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+.spotlight-testimonial {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 15px;
+    border-left: 4px solid #f9c74f;
+    backdrop-filter: blur(10px);
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.testimonial-author {
+    text-align: right;
+    font-weight: 600;
+    color: #f9c74f;
+}
+
+/* Navigation Controls */
+.spotlight-nav {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    z-index: 10;
+}
+
+.spotlight-nav-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.spotlight-nav-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.spotlight-indicators {
+    display: flex;
+    gap: 10px;
+}
+
+.spotlight-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.spotlight-dot.active {
+    background: #f9c74f;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .spotlight-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .spotlight-title {
+        font-size: 2rem;
+    }
+    
+    .spotlight-visual {
+        order: -1;
+        margin-bottom: 30px;
+    }
+    
+    .spotlight-image {
+        transform: none;
+    }
+    
+    .spotlight-visual:hover .spotlight-image {
+        transform: scale(1.05);
+    }
+}

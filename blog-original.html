@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Insights - Weekly Analysis | The Chatbot Genius</title>
-    <meta name="description" content="Weekly AI industry analysis and insights by The Chatbot Genius. Stay ahead with comprehensive reports on AI trends, key players, and strategic implications.">
+    
+    <!-- Primary SEO Tags -->
+    <title>AI Blog Ottawa | ChatGPT Tutorials & Claude Insights - Jay Tarzwell</title>
+    <meta name="description" content="Expert AI insights from Ottawa consultant Jay Tarzwell. ChatGPT tutorials, Claude guides, AI ethics, privacy tips, and practical implementation strategies for Canadian businesses.">
+    <meta name="keywords" content="AI blog, ChatGPT tutorials, Claude AI guides, Ottawa AI expert, AI implementation, AI privacy, Jay Tarzwell blog">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://thechatbotgenius.com/blog.html">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Blog - ChatGPT & Claude Insights from Ottawa Expert">
+    <meta property="og:description" content="Expert AI insights, tutorials, and implementation guides from Jay Tarzwell.">
+    <meta property="og:image" content="https://thechatbotgenius.com/blog/images/ai-jobs-paradox-header.svg">
+    <meta property="og:url" content="https://thechatbotgenius.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="The Chatbot Genius">
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI Blog - Expert Insights from Ottawa">
+    <meta name="twitter:description" content="ChatGPT tutorials, Claude guides, and AI implementation strategies">
+    <meta name="twitter:image" content="https://thechatbotgenius.com/blog/images/ai-jobs-paradox-header.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+    <link rel="mask-icon" href="/favicon.svg" color="#1a1f71">
+    <link rel="apple-touch-icon" href="/favicon.svg">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
@@ -14,9 +40,8 @@
       gtag('js', new Date());
       gtag('config', 'G-R76R0B7J9B');
     </script>
-    
-    <!-- Inline CSS for reliability -->
     <style>
+        /* Inline CSS to ensure styles load */
         * {
             margin: 0;
             padding: 0;
@@ -24,10 +49,9 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f5f5f5;
         }
         
         /* Top Banner */
@@ -59,7 +83,6 @@
             font-weight: bold;
         }
         
-        /* Navigation */
         .navbar {
             background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
             color: white;
@@ -69,6 +92,12 @@
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
         .nav-content {
@@ -197,6 +226,21 @@
             padding-left: 25px;
         }
         
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
         .btn-book {
             background: #ff8c42;
             color: white;
@@ -225,157 +269,191 @@
             cursor: pointer;
         }
         
-        /* Main Content */
-        main {
-            padding: 2rem 0;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
         .page-header {
             background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
             color: white;
-            padding: 3rem 0;
+            padding: 100px 0 60px;
             text-align: center;
-            margin-bottom: 3rem;
         }
         
         .page-header h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #f9c74f;
         }
         
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .writings-section {
+            padding: 80px 0;
         }
         
-        /* Weekly Reports Container */
-        #weekly-reports {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .weekly-report {
+        .article-card {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .report-header {
-            border-bottom: 3px solid #f9c74f;
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .report-date {
-            color: #666;
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .article-content {
+            padding: 25px;
+        }
+        
+        .article-card h3 {
+            color: #1a1f71;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        
+        .article-date {
+            color: #f9c74f;
             font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 15px;
         }
         
-        .report-headline {
-            font-size: 2rem;
-            color: #1a1f71;
-            margin-bottom: 1rem;
+        .article-card p {
+            margin-bottom: 20px;
+            line-height: 1.6;
         }
         
-        .executive-summary {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #4c5fd5;
-        }
-        
-        .report-section {
-            margin-bottom: 2rem;
-        }
-        
-        .report-section h3 {
-            color: #1a1f71;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .theme-item, .player-item {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-        
-        .theme-item h4, .player-item h4 {
-            color: #4c5fd5;
-            margin-bottom: 0.5rem;
-        }
-        
-        .chart-container {
-            text-align: center;
-            margin: 2rem 0;
-        }
-        
-        .chart-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        /* RSS Feed Link */
-        .rss-link {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-        
-        .rss-link a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .read-more {
             color: #4c5fd5;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-weight: 600;
         }
         
-        .rss-link a:hover {
+        .read-more:hover {
             color: #1a1f71;
         }
         
-        /* Footer */
-        footer {
+        .footer {
             background: #1a1f71;
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            padding: 30px 0;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
-            nav ul {
+            .banner-content {
+                font-size: 0.85rem;
+            }
+            
+            .banner-separator {
                 display: none;
             }
             
-            .page-header h1 {
-                font-size: 2rem;
+            .banner-item {
+                width: 100%;
+                padding: 2px 0;
             }
             
-            .report-headline {
-                font-size: 1.5rem;
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1f71;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                height: auto;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                height: auto;
+            }
+            
+            .nav-links a:not(.btn) {
+                width: 100%;
+                justify-content: center;
+                padding: 10px;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .articles-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "The Chatbot Genius Blog",
+      "description": "Expert AI insights, ChatGPT tutorials, and Claude implementation guides from Ottawa consultant Jay Tarzwell",
+      "url": "https://thechatbotgenius.com/blog.html",
+      "author": {
+        "@type": "Person",
+        "name": "Jay Tarzwell",
+        "url": "https://thechatbotgenius.com/about.html",
+        "jobTitle": "AI Consultant",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Ottawa",
+          "addressRegion": "Ontario",
+          "addressCountry": "CA"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "The Chatbot Genius",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://thechatbotgenius.com/favicon.svg"
+        }
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://thechatbotgenius.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://thechatbotgenius.com/blog.html"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Top Banner -->
@@ -396,6 +474,7 @@
             </div>
         </div>
     </div>
+
     <!-- Navigation -->
     <nav class="navbar" aria-label="Main navigation">
         <div class="container">
@@ -427,48 +506,102 @@
             </div>
         </div>
     </nav>
-    
-    <!-- Main Content -->
-    <main>
-        <div class="page-header">
-            <div class="container">
-                <h1>AI Insights</h1>
-                <p>Weekly Analysis of AI Industry Trends and Developments</p>
-            </div>
-        </div>
-        
+
+    <!-- Page Header -->
+    <div class="page-header">
         <div class="container">
-            <!-- Weekly Reports Container -->
-            <div id="weekly-reports">
-                <!-- Reports will be inserted here -->
-                <div style="text-align: center; padding: 4rem 0; color: #666;">
-                    <h2>Weekly reports will appear here starting this Sunday!</h2>
-                    <p>Check back soon for comprehensive AI industry analysis.</p>
-                </div>
-            </div>
+            <h1>AI Blog Ottawa - ChatGPT & Claude Expert Insights</h1>
+            <p>Practical AI Tutorials, Implementation Guides & Industry Analysis from Jay Tarzwell</p>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="writings-section">
+        <div class="container">
+            <h2 style="text-align: center; color: #1a1f71; margin-bottom: 50px;">Recent Blog Posts</h2>
             
-            <!-- RSS Feed Link -->
-            <div class="rss-link">
-                <a href="insights-feed.xml">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M3.75 3.75v2.5A10.003 10.003 0 0113.75 16.25h2.5A12.503 12.503 0 003.75 3.75z"/>
-                        <path d="M3.75 8.75v2.5c2.9 0 5 2.1 5 5h2.5c0-4.1-3.4-7.5-7.5-7.5z"/>
-                        <circle cx="5" cy="15" r="1.25"/>
-                    </svg>
-                    Subscribe to Weekly AI Insights RSS Feed
-                </a>
+            <div class="articles-grid" id="blog-posts-container">
+                <!-- Blog posts will be dynamically loaded here -->
             </div>
         </div>
-    </main>
-    
+    </section>
+
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p>Building the future of conversational AI, one chatbot at a time.</p>
         </div>
     </footer>
-    <!-- Universal Share Button -->
-    <script src="/js/share-button.js"></script></body>
+    
+    <!-- Load blog posts data -->
+    <script src="/blog-posts-data.js?v=2"></script>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-content') && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close mobile menu when pressing Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.focus();
+            }
+        });
+        
+        // Load blog posts dynamically
+        function loadBlogPosts() {
+            const container = document.getElementById('blog-posts-container');
+            
+            // Debug log
+            console.log('Loading blog posts...');
+            console.log('blogPostsData:', typeof blogPostsData !== 'undefined' ? blogPostsData : 'undefined');
+            
+            // Check if blogPostsData exists
+            if (typeof blogPostsData === 'undefined') {
+                container.innerHTML = '<p style="text-align: center; color: #666;">No blog posts found.</p>';
+                console.error('blogPostsData is undefined');
+                return;
+            }
+            
+            // Sort posts by sortDate in descending order (newest first)
+            const sortedPosts = [...blogPostsData].sort((a, b) => b.sortDate - a.sortDate);
+            
+            // Generate HTML for each post
+            sortedPosts.forEach(post => {
+                const article = document.createElement('article');
+                article.className = 'article-card';
+                article.innerHTML = `
+                    <img src="${post.image}" alt="${post.imageAlt}" class="article-image">
+                    <div class="article-content">
+                        <h3>${post.title}</h3>
+                        <p class="article-date">${post.date}</p>
+                        <p>${post.excerpt}</p>
+                        <a href="${post.url}" class="read-more">Read More →</a>
+                    </div>
+                `;
+                container.appendChild(article);
+            });
+        }
+        
+        // Load posts when page is ready
+        document.addEventListener('DOMContentLoaded', loadBlogPosts);
         
         // Animations toggle functionality
         const animationsToggle = document.getElementById('toggle-animations');

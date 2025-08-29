@@ -1,0 +1,119 @@
+/* Time-Based Content Section Styles */
+
+.time-content {
+    padding: 60px 0;
+    background: white;
+}
+
+.time-content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.time-greeting {
+    font-size: 2rem;
+    color: #1a1f71;
+    margin-bottom: 10px;
+}
+
+.time-suggestion {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.time-content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.time-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.time-card:hover {
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.time-card h3 {
+    color: #1a1f71;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.time-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.time-card a {
+    color: #4c5fd5;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.time-card a:hover {
+    color: #1a1f71;
+}
+
+/* Books Grid for Time Content */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.book-card {
+    text-align: center;
+}
+
+.book-cover {
+    width: 200px;
+    height: 300px;
+    margin: 0 auto 20px;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Book Featured Grid */
+.book-featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.book-featured-grid img {
+    width: 280px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .time-content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .book-featured-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+    
+    .book-featured-grid img {
+        width: 220px !important;
+    }
+}

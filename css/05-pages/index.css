@@ -1,0 +1,152 @@
+/* Homepage-Specific Styles */
+
+/* Hero section adjustments */
+.hero {
+    background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+    color: white;
+    padding: 40px 0 40px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.tagline-banner {
+    padding: 15px 30px;
+    margin: 0 auto 20px;
+    max-width: 800px;
+}
+
+.hero h2 {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: normal;
+}
+
+/* Special button styles for hero section */
+.hero .btn-primary {
+    background: #ff8c42;
+    color: white;
+    border: 2px solid #ff8c42;
+}
+
+.hero .btn-primary:hover {
+    background: #ff7329;
+    border-color: #ff7329;
+}
+
+/* Latest Insights Section */
+.latest-insights {
+    margin-top: 30px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.insight-item {
+    text-align: left;
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.insight-item h3 {
+    margin-bottom: 5px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.insight-item p {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Tagline rotation */
+.tagline-rotation {
+    height: 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Stats bar */
+.stats-bar {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.stats-bar p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Star rating for accessibility */
+.star-rating {
+    color: #f9c74f;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+/* Accessibility helpers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip Navigation Link */
+.skip-nav {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #1a1f71;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 9999;
+}
+
+.skip-nav:focus {
+    top: 0;
+}
+
+/* Focus Indicators for Accessibility */
+a:focus, 
+button:focus, 
+input:focus, 
+select:focus, 
+textarea:focus {
+    outline: 3px solid #f9c74f;
+    outline-offset: 2px;
+}
+
+/* Hide decorative emoji from screen readers */
+.decorative-emoji {
+    aria-hidden: true;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 30px;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.1rem;
+    }
+}

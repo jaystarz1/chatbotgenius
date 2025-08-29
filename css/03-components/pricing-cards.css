@@ -1,0 +1,303 @@
+/* ===================================
+   Pricing Cards Component - The Chatbot Genius
+   =================================== */
+
+/* Pricing Grid Container */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Individual Pricing Card */
+.pricing-card {
+    background: var(--text-white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Featured Card */
+.pricing-card.featured {
+    border: 3px solid var(--accent-gold);
+}
+
+/* Badge for Featured Items */
+.badge {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Card Heading */
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+/* Pricing Display */
+.price {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin: 1rem 0;
+}
+
+.price-period {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-weight: normal;
+}
+
+/* Features List */
+.pricing-features {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.pricing-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--bg-light);
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* Add-ons Section */
+.pricing-addons {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bg-light);
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.pricing-addons strong {
+    color: var(--text-dark);
+}
+
+/* CTA Button in Card */
+.pricing-card .btn {
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Comparison Table */
+.comparison-table {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--text-white);
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table h3 {
+    color: var(--primary-dark);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table thead {
+    background: var(--bg-light);
+}
+
+.comparison-table th {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid var(--primary-blue);
+}
+
+.comparison-table th:not(:first-child) {
+    text-align: center;
+}
+
+.comparison-table tbody tr {
+    border-bottom: 1px solid var(--bg-light);
+}
+
+.comparison-table tbody tr:nth-child(odd) {
+    background: var(--bg-light);
+}
+
+.comparison-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--bg-light);
+}
+
+.comparison-table td:not(:first-child) {
+    text-align: center;
+}
+
+.comparison-table td strong {
+    color: var(--primary-dark);
+}
+
+/* Checkmark styling */
+.comparison-table .yes {
+    color: #4caf50;
+}
+
+.comparison-table .no {
+    color: #999;
+}
+
+/* Maintenance Section */
+.maintenance-section {
+    margin-top: 4rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--text-white) 100%);
+    border-radius: 10px;
+    border: 2px solid var(--primary-blue);
+}
+
+.maintenance-section h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.maintenance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.maintenance-option {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f0f8ff;
+    border-radius: 8px;
+}
+
+.maintenance-option h4 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.maintenance-price {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.maintenance-period {
+    color: var(--text-light);
+    margin-top: 0.5rem;
+}
+
+.maintenance-features {
+    list-style: none;
+    text-align: left;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.maintenance-features li {
+    padding: 0.25rem 0;
+}
+
+/* Update Counts Box */
+.update-counts {
+    background: var(--text-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.update-counts h4 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.update-counts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    font-size: 0.95rem;
+}
+
+.update-counts-grid strong {
+    color: var(--primary-dark);
+}
+
+/* AI Advantage Box */
+.ai-advantage {
+    background: #fff8e1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border: 2px solid var(--accent-gold);
+}
+
+.ai-advantage h4 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.ai-advantage p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Add-ons Grid */
+.addons-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+
+.addons-section h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.addons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .maintenance-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-table {
+        overflow-x: auto;
+    }
+    
+    .comparison-table table {
+        min-width: 500px;
+    }
+}

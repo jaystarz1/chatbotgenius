@@ -1,0 +1,108 @@
+/* ===================================
+   Testimonials Component - The Chatbot Genius
+   =================================== */
+
+/* Testimonials Section */
+.testimonials-section {
+    padding: var(--spacing-2xl) 0;
+}
+
+/* Testimonials Grid */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+/* Individual Testimonial Card */
+.testimonial-card {
+    background: var(--text-white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Star Rating */
+.testimonial-rating {
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Testimonial Quote */
+.testimonial-quote {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.05rem;
+}
+
+/* Testimonial Attribution */
+.testimonial-attribution {
+    border-top: 1px solid var(--bg-light);
+    padding-top: 1rem;
+}
+
+.testimonial-author {
+    color: var(--primary-dark);
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-company {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.testimonial-link {
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-top: 0.5rem;
+    transition: color var(--transition-base);
+}
+
+.testimonial-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* Testimonial CTA Box */
+.testimonial-cta {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--bg-light);
+    border-radius: 10px;
+}
+
+.testimonial-cta-title {
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.testimonial-cta-text {
+    color: var(--text-light);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-quote {
+        font-size: 1rem;
+    }
+}

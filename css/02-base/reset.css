@@ -91,3 +91,34 @@ select {
     animation: none !important;
     transition: none !important;
 }
+
+/* Skip Navigation Link - Accessibility */
+.skip-nav {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-dark);
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 9999;
+}
+
+.skip-nav:focus {
+    top: 0;
+}
+
+/* Focus Indicators for Accessibility */
+a:focus, 
+button:focus, 
+input:focus, 
+select:focus, 
+textarea:focus {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+/* Hide decorative emoji from screen readers */
+.decorative-emoji {
+    aria-hidden: true;
+}

@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Tags -->
+    <title>AI Projects & Tools Ottawa | Legal Search & Custom Solutions - Jay Tarzwell</title>
+    <meta name="description" content="Innovative AI tools built in Ottawa. CanLII legal search, ChatGPT solutions for Canadian professionals. Free tools & custom development.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.svg">
+    <link rel="mask-icon" href="/favicon.svg" color="#6B7280">
+    <link rel="apple-touch-icon" href="/favicon.svg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-R76R0B7J9B');
+    </script>
+    <style>
+        /* Inline CSS to ensure styles load */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        
+        .logo {
+            font-size: 2rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: #f9c74f;
+        }
+        
+        /* Services Dropdown */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .nav-dropdown-toggle {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s;
+        }
+        
+        .nav-dropdown-toggle::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-toggle::after {
+            transform: rotate(180deg);
+        }
+        
+        .nav-dropdown-toggle:hover {
+            color: #f9c74f;
+        }
+        
+        .nav-dropdown-menu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 250px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            top: 100%;
+            margin-top: 0;
+            padding-top: 10px;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .nav-dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-dropdown-menu a {
+            color: #333;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .nav-dropdown-menu a:first-child {
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .nav-dropdown-menu a:last-child {
+            border-bottom: none;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1a1f71;
+            padding-left: 25px;
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .projects-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .section-intro h2 {
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 20px;
+        }
+        
+        .section-intro p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .project-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+        
+        /* Alternate layout for every other card */
+        .project-card:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .project-card:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        /* Preview Section */
+        .project-preview-section {
+            position: relative;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            overflow: hidden;
+        }
+        
+        .project-preview-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Screenshot fallback for sites that block iframes */
+        .project-screenshot {
+            width: 90%;
+            height: auto;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .project-preview-iframe {
+            width: 200%;
+            height: 1000px;
+            border: none;
+            transform: scale(0.5);
+            transform-origin: top left;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0) 0%, 
+                rgba(26, 31, 113, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .preview-overlay:hover {
+            background: linear-gradient(to bottom, 
+                rgba(26, 31, 113, 0.1) 0%, 
+                rgba(26, 31, 113, 0.2) 100%);
+        }
+        
+        .view-live-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .view-live-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 95, 213, 0.4);
+        }
+        
+        /* Content Section */
+        .project-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .project-header {
+            margin-bottom: 25px;
+        }
+        
+        .project-badges {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .project-type {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .project-price {
+            display: inline-block;
+            background: #f9c74f;
+            color: #1a1f71;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+        
+        .project-content h3 {
+            font-size: 1.8rem;
+            color: #1a1f71;
+            margin-bottom: 15px;
+        }
+        
+        .project-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .project-features {
+            margin-bottom: 25px;
+        }
+        
+        .project-features h4 {
+            color: #1a1f71;
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+        
+        .project-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .project-features li {
+            padding: 6px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .project-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        .project-impact {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #f9c74f;
+            margin-bottom: 20px;
+        }
+        
+        .project-impact strong {
+            color: #1a1f71;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            align-self: flex-start;
+        }
+        
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 95, 213, 0.3);
+        }
+        
+        .section-divider {
+            text-align: center;
+            margin: 80px 0 60px;
+            position: relative;
+        }
+        
+        .section-divider h2 {
+            display: inline-block;
+            background: #f8f9fa;
+            padding: 0 30px;
+            color: #1a1f71;
+            font-size: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-divider:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4c5fd5, transparent);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #f9c74f;
+            color: #1a1f71;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
+        }
+        
+        .footer {
+            background: #1a1f71;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: 600;
+            border: 2px solid #ff8c42;
+            padding: 8px 20px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+        
+        .btn-book:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            padding: 8px 20px;
+            border-radius: 5px;
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 968px) {
+            .project-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-preview-section {
+                min-height: 300px;
+            }
+            
+            .project-card:nth-child(even) {
+                direction: ltr;
+            }
+            
+            .view-live-button {
+                bottom: 10px;
+                right: 10px;
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-intro h2 {
+                font-size: 1.8rem;
+            }
+            
+            .project-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <div class="container">
+            <div class="banner-content">
+                <span class="banner-item">
+                    <span aria-hidden="true">✍️</span> Writer & Publisher
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🤖</span> Custom GPT & App Vibe Coder
+                </span>
+                <span class="banner-separator" aria-hidden="true">•</span>
+                <span class="banner-item">
+                    <span aria-hidden="true">🎓</span> Generative AI Trainer
+                </span>
+            </div>
+        </div>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="container">
+            <div class="nav-content">
+                <a href="/" class="nav-brand" aria-label="The Chatbot Genius - Home">
+                    <span class="logo" aria-hidden="true">🤖</span>
+                    <span>The Chatbot Genius</span>
+                </a>
+                <nav class="nav-menu" role="navigation">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/about.html" class="nav-link">About</a>
+                    <a href="/books.html" class="nav-link">Books</a>
+                    <a href="/blog.html" class="nav-link">Blog</a>
+                    <div class="nav-dropdown">
+                        <a href="#" class="nav-dropdown-toggle" onclick="return false;">Services</a>
+                        <div class="nav-dropdown-menu">
+                            <a href="/web-development/">Custom Website Building</a>
+                            <a href="/services/training.html">AI Training & Workshops</a>
+                            <a href="/services/consulting.html">AI Consulting</a>
+                            <a href="/services/app-development.html">Custom App Development</a>
+                            <a href="/projects.html">Projects Portfolio</a>
+                        </div>
+                    </div>
+                    <a href="/ai-news.html" class="nav-link">AI News</a>
+                    <a href="/#contact" class="nav-link">Contact</a>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>My Projects</h1>
+            <p>AI-Powered Solutions & Custom Web Development</p>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="projects-container">
+            <div class="section-intro">
+                <h2>Showcasing AI Innovation</h2>
+                <p>From intelligent web applications to custom business websites, these projects demonstrate the power of AI-driven development. Each solution is crafted to solve real problems and deliver measurable results.</p>
+            </div>
+
+            <!-- AI Tools Section -->
+            <div class="section-divider">
+                <h2>🤖 AI-Powered Tools</h2>
+            </div>
+
+            <!-- CanLII Boolean Search Tool -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
+                        <!-- Using a screenshot as fallback since the site might block iframes -->
+                        <img src="images/canlii-search-screenshot.svg" 
+                             alt="CanLII Boolean Search Tool Interface" 
+                             class="project-screenshot"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div style="display:none; width: 90%; padding: 40px; background: linear-gradient(135deg, #1a1f71, #4c5fd5); border-radius: 10px; text-align: center; color: white;">
+                            <h3 style="margin-bottom: 15px;">CanLII Boolean Search Tool</h3>
+                            <p style="margin-bottom: 20px;">Advanced legal search interface</p>
+                            <div style="background: white; color: #1a1f71; padding: 20px; border-radius: 5px;">
+                                <p>🔍 Visual Query Builder</p>
+                                <p>⚡ Real-time Validation</p>
+                                <p>📚 Legal Database Integration</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="project-type">Legal Tech Tool</span>
+                        </div>
+                        <h3>CanLII Boolean Search Tool</h3>
+                    </div>
+                    <p class="project-description">
+                        An advanced Boolean search interface for the CanLII legal database, designed to help legal professionals and researchers craft precise, complex searches. This tool transforms the way users interact with Canada's largest legal information database.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Intuitive visual Boolean query builder</li>
+                            <li>Real-time syntax validation</li>
+                            <li>Smart auto-suggestions for legal terms</li>
+                            <li>Save and share complex queries</li>
+                            <li>Direct CanLII integration</li>
+                            <li>Mobile-responsive design</li>
+                        </ul>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Reduces legal research time by up to 70% by eliminating syntax errors and enabling complex multi-condition searches.
+                    </div>
+                    <a href="https://canliisearch.thechatbotgenius.com/" target="_blank" class="project-link">
+                        Explore the Tool →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grievances Book Landing Page -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
+                        <iframe 
+                            src="https://grievances.thechatbotgenius.com/" 
+                            class="project-preview-iframe"
+                            title="Grievances Book Landing Page Preview"
+                            loading="lazy">
+                        </iframe>
+                        <div class="preview-overlay"></div>
+                    </div>
+                    <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="project-type">Book Landing Page</span>
+                        </div>
+                        <h3>Grievances: Interactive Book Experience</h3>
+                    </div>
+                    <p class="project-description">
+                        A compelling, AI-enhanced landing page featuring dynamic content presentation, reader engagement tools, and conversion optimization. This project showcases how AI can transform a simple book landing page into an interactive experience.
+                    </p>
+                    <div class="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>AI-powered excerpt recommendations</li>
+                            <li>Interactive chapter previews</li>
+                            <li>Integrated review aggregation</li>
+                            <li>Smart call-to-action placement</li>
+                            <li>SEO optimization for book searches</li>
+                            <li>Mobile-first responsive design</li>
+                        </ul>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Impact:</strong> Achieved 40% higher conversion rates compared to traditional book landing pages through AI-driven personalization.
+                    </div>
+                    <a href="https://grievances.thechatbotgenius.com/" target="_blank" class="project-link">
+                        Visit Page →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Client Websites Section -->
+            <div class="section-divider">
+                <h2>🌐 Client Websites</h2>
+            </div>
+
+            <!-- The British Nanny -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
+                        <iframe 
+                            src="https://thebritishnanny.ca/" 
+                            class="project-preview-iframe"
+                            title="The British Nanny Website Preview"
+                            loading="lazy">
+                        </iframe>
+                        <div class="preview-overlay"></div>
+                    </div>
+                    <a href="https://thebritishnanny.ca/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="project-type">Business Website</span>
+                            <span class="project-price">$1,000</span>
+                        </div>
+                        <h3>The British Nanny</h3>
+                    </div>
+                    <p class="project-description">
+                        A premium multi-page website for an established childcare service in Ottawa. Built entirely with AI assistance and client collaboration, this SEO-enhanced site showcases professional nanny services with a warm, trustworthy design.
+                    </p>
+                    <div class="project-features">
+                        <h4>Delivered Features:</h4>
+                        <ul>
+                            <li>5+ professionally designed pages</li>
+                            <li>Advanced SEO for local search</li>
+                            <li>Perfect mobile responsiveness</li>
+                            <li>Contact form with spam protection</li>
+                            <li>Service showcase sections</li>
+                            <li>Testimonials with trust indicators</li>
+                        </ul>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Client Result:</strong> 150% increase in qualified inquiries within the first month. Now ranks #1 for "British nanny Ottawa".
+                    </div>
+                    <a href="https://thebritishnanny.ca/" target="_blank" class="project-link">
+                        Visit Website →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Ottawa Handyman -->
+            <div class="project-card">
+                <div class="project-preview-section">
+                    <div class="project-preview-wrapper">
+                        <iframe 
+                            src="https://ottawahandiman.ca/" 
+                            class="project-preview-iframe"
+                            title="Ottawa Handyman Website Preview"
+                            loading="lazy">
+                        </iframe>
+                        <div class="preview-overlay"></div>
+                    </div>
+                    <a href="https://ottawahandiman.ca/" target="_blank" class="view-live-button">
+                        View Live →
+                    </a>
+                </div>
+                <div class="project-content">
+                    <div class="project-header">
+                        <div class="project-badges">
+                            <span class="project-type">Business Website</span>
+                            <span class="project-price">$500</span>
+                        </div>
+                        <h3>Ottawa Handyman</h3>
+                    </div>
+                    <p class="project-description">
+                        A streamlined single-page website for a local handyman service, demonstrating that powerful web presence doesn't require complexity. This AI-crafted site delivers maximum impact with focused messaging and clear calls-to-action.
+                    </p>
+                    <div class="project-features">
+                        <h4>Delivered Features:</h4>
+                        <ul>
+                            <li>Single-page smooth scroll design</li>
+                            <li>Service menu with pricing</li>
+                            <li>Click-to-call for mobile</li>
+                            <li>Local SEO optimization</li>
+                            <li>Project gallery showcase</li>
+                            <li>Instant quote request form</li>
+                        </ul>
+                    </div>
+                    <div class="project-impact">
+                        <strong>Client Result:</strong> Website paid for itself within two weeks. Consistent lead generation of 10+ inquiries per week.
+                    </div>
+                    <a href="https://ottawahandiman.ca/" target="_blank" class="project-link">
+                        Visit Website →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Build Your AI-Powered Solution?</h2>
+                <p>Whether you need a custom AI tool, a professional website, or innovative automation, let's create something amazing together.</p>
+                <a href="index.html#contact" class="cta-button">Start Your Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
+            <p>Building the future with AI, one project at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.display = 'none';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '70px';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%)';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '15px';
+            }
+        }
+        
+        // Animations toggle functionality
+        const animationsToggle = document.getElementById('toggle-animations');
+        if (animationsToggle) {
+            const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
+            
+            // Apply initial state
+            if (!animationsEnabled) {
+                document.body.classList.add('no-animations');
+                animationsToggle.textContent = 'Turn on animations';
+            }
+            
+            // Toggle animations
+            animationsToggle.addEventListener('click', function() {
+                const isEnabled = !document.body.classList.contains('no-animations');
+                
+                if (isEnabled) {
+                    document.body.classList.add('no-animations');
+                    localStorage.setItem('animationsEnabled', 'false');
+                    this.textContent = 'Turn on animations';
+                } else {
+                    document.body.classList.remove('no-animations');
+                    localStorage.setItem('animationsEnabled', 'true');
+                    this.textContent = 'Turn off animations';
+                }
+            });
+        }
+    </script>
+    
+    <style>
+        /* Disable animations when toggled off */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
+    </style>
+    <!-- Universal Share Button -->
+    <script src="/js/share-button.js"></script></body>
+</html>

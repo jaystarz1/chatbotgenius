@@ -46,27 +46,18 @@
       gtag('config', 'G-R76R0B7J9B');
     </script>
     
-    <!-- Modular CSS Architecture -->
-    <link rel="stylesheet" href="css/01-settings/variables.css">
-    <link rel="stylesheet" href="css/02-base/reset.css">
-    <link rel="stylesheet" href="css/02-base/typography.css">
-    <link rel="stylesheet" href="css/03-components/top-banner.css">
-    <link rel="stylesheet" href="css/03-components/navigation.css">
-    <link rel="stylesheet" href="css/03-components/buttons.css">
-    <link rel="stylesheet" href="css/03-components/pricing-cards.css">
-    <link rel="stylesheet" href="css/03-components/service-cards.css">
-    <link rel="stylesheet" href="css/03-components/portfolio-grid.css">
-    <link rel="stylesheet" href="css/03-components/testimonials.css">
-    <link rel="stylesheet" href="css/04-layouts/container.css">
-    <link rel="stylesheet" href="css/05-pages/web-development.css">
-    <link rel="stylesheet" href="css/03-components/footer.css">
-    <link rel="stylesheet" href="css/06-utilities/responsive.css">
-    
     <style>
-        /* Minimal inline CSS for animations toggle */
-        .no-animations * {
-            animation: none !important;
-            transition: none !important;
+        /* Base styles matching main site */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
         
         /* Skip Navigation Link - Accessibility */
@@ -74,8 +65,8 @@
             position: absolute;
             top: -40px;
             left: 0;
-            background: var(--primary-dark);
-            color: var(--text-white);
+            background: #1a1f71;
+            color: white;
             padding: 8px;
             text-decoration: none;
             z-index: 9999;
@@ -85,29 +76,118 @@
             top: 0;
         }
         
-        /* Mobile menu specific styles */
+        /* Focus Indicators */
+        a:focus, 
+        button:focus, 
+        input:focus, 
+        select:focus, 
+        textarea:focus {
+            outline: 3px solid #f9c74f;
+            outline-offset: 2px;
+        }
+        
+        /* Top Banner */
+        .top-banner {
+            background: #0a0f51;
+            color: white;
+            padding: 12px 0;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 1001;
+        }
+        
+        .banner-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .banner-item {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        
+        .banner-separator {
+            color: #4c5fd5;
+            font-weight: bold;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 0;
+            position: sticky;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
         .mobile-menu-toggle {
             display: none;
             background: none;
-            border: 2px solid var(--text-white);
-            color: var(--text-white);
+            border: 2px solid white;
+            color: white;
             padding: 8px 12px;
             cursor: pointer;
             font-size: 1rem;
             border-radius: 4px;
         }
         
-        /* Animations toggle button */
-        #toggle-animations {
-            padding: 8px 20px;
-            border-radius: 5px;
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            cursor: pointer;
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+            height: 100%;
         }
         
-        /* Dropdown styles (future use) */
+        .nav-links li {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn) {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        
+        .nav-links a:not(.btn):hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Web Services Dropdown Structure (for future expansion) */
         .nav-dropdown {
             position: relative;
         }
@@ -117,7 +197,7 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--primary-dark);
+            background: #1a1f71;
             min-width: 250px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             border-radius: 0 0 5px 5px;
@@ -130,13 +210,371 @@
         .dropdown-menu a {
             display: block;
             padding: 10px 20px;
-            color: var(--text-white);
+            color: white;
             text-decoration: none;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         .dropdown-menu a:hover {
-            background: var(--primary-blue);
+            background: #4c5fd5;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 100px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .subheading {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-primary {
+            background: #ff8c42;
+            color: white;
+            border: 2px solid #ff8c42;
+        }
+        
+        .btn-primary:hover {
+            background: #ff7329;
+            border-color: #ff7329;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #1a1f71;
+        }
+        
+        .btn-book {
+            background: #ff8c42;
+            color: white;
+            font-weight: 600;
+            border: 2px solid #ff8c42;
+            padding: 8px 20px;
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+        
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1f71;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            text-align: center;
+        }
+        
+        .trust-badge-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4c5fd5;
+        }
+        
+        .trust-badge-label {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #1a1f71;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #f9c74f;
+        }
+        
+        .badge {
+            background: #f9c74f;
+            color: #1a1f71;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #1a1f71;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4c5fd5;
+            margin: 1rem 0;
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        /* Process Timeline */
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+        
+        .timeline-marker {
+            background: #4c5fd5;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content {
+            margin-left: 2rem;
+            flex: 1;
+        }
+        
+        .timeline-content h3 {
+            color: #1a1f71;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background: white;
+            margin-top: 3rem;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            color: #1a1f71;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a1f71;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .footer-contact a {
+            color: white;
+            text-decoration: underline;
+            font-size: 1.1rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
         }
         
         /* Mobile Responsive */
@@ -145,13 +583,13 @@
                 display: block;
             }
             
-            .nav-menu {
+            .nav-links {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: var(--primary-dark);
+                background: #1a1f71;
                 flex-direction: column;
                 padding: 20px;
                 gap: 10px;
@@ -159,8 +597,30 @@
                 height: auto;
             }
             
-            .nav-menu.show {
+            .nav-links.show {
                 display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subheading {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .trust-badges {
+                gap: 2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
         }
     </style>
@@ -217,24 +677,34 @@
     <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <div class="nav-content">
-                <a href="/" class="nav-brand" aria-label="The Chatbot Genius - Home">
-                    <span class="logo" aria-hidden="true">🤖</span>
-                    <span>The Chatbot Genius</span>
+                <a href="/" class="nav-brand">
+                    <span aria-hidden="true">🤖</span> The Chatbot Genius
                 </a>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-links">
                     Menu
                 </button>
-                <nav class="nav-menu" role="navigation">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="/about.html" class="nav-link">About</a>
-                    <a href="/books.html" class="nav-link">Books</a>
-                    <a href="/blog.html" class="nav-link">Blog</a>
-                    <a href="/projects.html" class="nav-link">Projects</a>
-                    <a href="/ai-news.html" class="nav-link">AI News</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" target="_blank">Book a Call</a>
-                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
-                </nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="nav-dropdown">
+                        <a href="web-development.html" aria-current="page">Web Services</a>
+                        <!-- Future dropdown menu structure
+                        <div class="dropdown-menu">
+                            <a href="/web-design-ottawa">Ottawa Web Design</a>
+                            <a href="/web-design-kanata">Kanata Web Design</a>
+                            <a href="/web-design-orleans">Orleans Web Design</a>
+                            <a href="/restaurant-websites">Restaurant Websites</a>
+                            <a href="/contractor-websites">Contractor Websites</a>
+                        </div>
+                        -->
+                    </li>
+                    <li><a href="ai-news.html">AI News</a></li>
+                    <li><a href="books.html">Books</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" target="_blank">Book a Call</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -276,60 +746,60 @@
                 </div>
                 
                 <!-- SEO Comparison Table -->
-                <div class="comparison-table">
-                    <h3>Basic vs Premier: What's the Difference?</h3>
-                    <table>
+                <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1a1f71; text-align: center; margin-bottom: 2rem;">Basic vs Premier: What's the Difference?</h3>
+                    <table style="width: 100%; border-collapse: collapse;">
                         <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Basic Event ($97)</th>
-                                <th>Premier Event ($197)</th>
+                            <tr style="background: #f8f9fa;">
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid #4c5fd5;">Feature</th>
+                                <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #4c5fd5;">Basic Event ($97)</th>
+                                <th style="padding: 1rem; text-align: center; border-bottom: 2px solid #4c5fd5;">Premier Event ($197)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><strong>Best For</strong></td>
-                                <td>Private events<br><small>(weddings, birthdays)</small></td>
-                                <td>Public events<br><small>(conferences, fundraisers)</small></td>
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Best For</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">Private events<br><small>(weddings, birthdays)</small></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">Public events<br><small>(conferences, fundraisers)</small></td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Google Visibility</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #999;">Not needed</td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #4caf50;">✓ Full SEO</td>
                             </tr>
                             <tr>
-                                <td><strong>Google Visibility</strong></td>
-                                <td class="no">Not needed</td>
-                                <td class="yes">✓ Full SEO</td>
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Search Indexing</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">No (private)</td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #4caf50;">✓ Yes</td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Event Schema</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">—</td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #4caf50;">✓ Google Event Cards</td>
                             </tr>
                             <tr>
-                                <td><strong>Search Indexing</strong></td>
-                                <td>No (private)</td>
-                                <td class="yes">✓ Yes</td>
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Sitemap Entry</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">No</td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #4caf50;">✓ Yes</td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Keywords</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">Basic content</td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #4caf50;">✓ Keyword optimized</td>
                             </tr>
                             <tr>
-                                <td><strong>Event Schema</strong></td>
-                                <td>—</td>
-                                <td class="yes">✓ Google Event Cards</td>
+                                <td style="padding: 0.8rem; border-bottom: 1px solid #eee;"><strong>Meta Tags</strong></td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee;">Basic</td>
+                                <td style="padding: 0.8rem; text-align: center; border-bottom: 1px solid #eee; color: #4caf50;">✓ SEO optimized</td>
                             </tr>
-                            <tr>
-                                <td><strong>Sitemap Entry</strong></td>
-                                <td>No</td>
-                                <td class="yes">✓ Yes</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Keywords</strong></td>
-                                <td>Basic content</td>
-                                <td class="yes">✓ Keyword optimized</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Meta Tags</strong></td>
-                                <td>Basic</td>
-                                <td class="yes">✓ SEO optimized</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Hosting</strong></td>
-                                <td>14 days post-event</td>
-                                <td>Full year included</td>
+                            <tr style="background: #f8f9fa;">
+                                <td style="padding: 0.8rem;"><strong>Hosting</strong></td>
+                                <td style="padding: 0.8rem; text-align: center;">14 days post-event</td>
+                                <td style="padding: 0.8rem; text-align: center;">Full year included</td>
                             </tr>
                         </tbody>
                     </table>
-                    <p class="comparison-note" style="text-align: center; margin-top: 1.5rem; color: #666; font-style: italic;">
+                    <p style="text-align: center; margin-top: 1.5rem; color: #666; font-style: italic;">
                         "Most events don't need SEO - they just need a beautiful page to share. But when you DO need Google visibility, Premier delivers."
                     </p>
                 </div>
@@ -337,7 +807,7 @@
         </section>
 
         <!-- Why Different Section -->
-        <section class="section bg-light">
+        <section class="section" style="background: #f8f9fa;">
             <div class="container">
                 <h2>Built for Ottawa Small Businesses</h2>
                 <p class="section-subtitle">While traditional agencies take 8-12 weeks and charge thousands, we use AI-powered development to deliver quality websites in days, not months.</p>
@@ -389,7 +859,7 @@
                     <br>Every package includes aggressive SEO to dominate local search.
                 </p>
                 
-                <div class="pricing-grid">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
                     <div class="pricing-card">
                         <h3>Basic Event Page</h3>
                         <div class="price">$97 <span class="price-period">one time</span></div>
@@ -404,12 +874,12 @@
                             <li>✗ No SEO (not needed)</li>
                             <li>✗ Not in sitemap (private)</li>
                         </ul>
-                        <div class="pricing-addons">
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: #666;">
                             <strong>Add-ons:</strong><br>
                             Memory Archive: +$25/year<br>
                             Custom Domain: +$50 setup
                         </div>
-                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Get Started</a>
                     </div>
                     
                     <div class="pricing-card">
@@ -424,15 +894,15 @@
                             <li>✓ Keep same URL all year</li>
                             <li>✓ Perfect for repeat events</li>
                         </ul>
-                        <div class="pricing-addons">
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: #666;">
                             <strong>Updates:</strong><br>
                             Refurbish: $47 per update<br>
                             Design refresh: $97
                         </div>
-                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Get Started</a>
                     </div>
                     
-                    <div class="pricing-card featured">
+                    <div class="pricing-card featured" style="grid-column: span 1;">
                         <span class="badge">BEST FOR PUBLIC EVENTS</span>
                         <h3>Premier Event Page</h3>
                         <div class="price">$197 <span class="price-period">first year</span></div>
@@ -449,12 +919,12 @@
                             <li>✓ Priority 48-hour delivery</li>
                             <li>✓ Custom domain setup included</li>
                         </ul>
-                        <div class="pricing-addons">
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.9rem; color: #666;">
                             <strong>Then $10/month or $99/year</strong><br>
                             Additional refurb: $25<br>
                             Design refresh: $97
                         </div>
-                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; margin-top: 1rem;">Get Started</a>
                     </div>
                     
                     <div class="pricing-card">
@@ -509,15 +979,15 @@
                 </div>
                 
                 <!-- Maintenance Section -->
-                <div class="maintenance-section">
-                    <h3>Keep Your Site Fresh & Ranking</h3>
+                <div style="margin-top: 4rem; padding: 2.5rem; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%); border-radius: 10px; border: 2px solid #4c5fd5;">
+                    <h3 style="color: #1a1f71; margin-bottom: 1.5rem; text-align: center;">Keep Your Site Fresh & Ranking</h3>
                     
-                    <div class="maintenance-grid">
-                        <div class="maintenance-option">
-                            <h4>DIY with AI Training</h4>
-                            <div class="maintenance-price">$497</div>
-                            <p class="maintenance-period">One-time training package</p>
-                            <ul class="maintenance-features">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                        <div style="text-align: center; padding: 1.5rem; background: #f0f8ff; border-radius: 8px;">
+                            <h4 style="color: #4c5fd5; margin-bottom: 1rem;">DIY with AI Training</h4>
+                            <div style="font-size: 2rem; font-weight: bold; color: #1a1f71;">$497</div>
+                            <p style="color: #666; margin-top: 0.5rem;">One-time training package</p>
+                            <ul style="list-style: none; text-align: left; padding: 1rem; margin-top: 1rem;">
                                 <li>✓ Claude Desktop setup & config</li>
                                 <li>✓ Custom AI prompt playbook</li>
                                 <li>✓ 2-hour hands-on training</li>
@@ -527,11 +997,11 @@
                             </ul>
                         </div>
                         
-                        <div class="maintenance-option" style="background: white;">
-                            <h4>Monthly Monitoring</h4>
-                            <div class="maintenance-price">$97/month</div>
-                            <p class="maintenance-period">20 updates included each month</p>
-                            <ul class="maintenance-features">
+                        <div style="text-align: center;">
+                            <h4 style="color: #4c5fd5; margin-bottom: 1rem;">Monthly Monitoring</h4>
+                            <div style="font-size: 2rem; font-weight: bold; color: #1a1f71;">$97/month</div>
+                            <p style="color: #666; margin-top: 0.5rem;">20 updates included each month</p>
+                            <ul style="list-style: none; text-align: left; padding: 1rem; margin-top: 1rem;">
                                 <li>✓ Content updates & changes</li>
                                 <li>✓ SEO monitoring & adjustments</li>
                                 <li>✓ Performance optimization</li>
@@ -539,11 +1009,11 @@
                             </ul>
                         </div>
                         
-                        <div class="maintenance-option" style="background: white;">
-                            <h4>Pay-As-You-Go</h4>
-                            <div class="maintenance-price">$15/update</div>
-                            <p class="maintenance-period">Only pay for what you need</p>
-                            <ul class="maintenance-features">
+                        <div style="text-align: center;">
+                            <h4 style="color: #4c5fd5; margin-bottom: 1rem;">Pay-As-You-Go</h4>
+                            <div style="font-size: 2rem; font-weight: bold; color: #1a1f71;">$15/update</div>
+                            <p style="color: #666; margin-top: 0.5rem;">Only pay for what you need</p>
+                            <ul style="list-style: none; text-align: left; padding: 1rem; margin-top: 1rem;">
                                 <li>✓ No monthly commitment</li>
                                 <li>✓ Perfect for occasional changes</li>
                                 <li>✓ Same-day service available</li>
@@ -552,9 +1022,9 @@
                         </div>
                     </div>
                     
-                    <div class="update-counts">
-                        <h4>What Counts as Updates?</h4>
-                        <div class="update-counts-grid">
+                    <div style="background: white; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
+                        <h4 style="color: #1a1f71; margin-bottom: 1rem;">What Counts as Updates?</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; font-size: 0.95rem;">
                             <div><strong>1 Update:</strong> Text changes, image swaps, minor UI tweaks</div>
                             <div><strong>2 Updates:</strong> New blog post with image, form changes</div>
                             <div><strong>3 Updates:</strong> New section on existing page, gallery additions</div>
@@ -562,15 +1032,15 @@
                         </div>
                     </div>
                     
-                    <div class="ai-advantage">
-                        <h4>🚀 The AI Advantage</h4>
-                        <p>Unlike other developers who disappear after launch, we can teach you to update your own website using AI. With Claude Desktop and our custom playbooks, you'll be able to make changes, add content, and maintain your site - all with AI assistance. It's like having a web developer on your computer!</p>
+                    <div style="background: #fff8e1; padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem; border: 2px solid #f9c74f;">
+                        <h4 style="color: #1a1f71; margin-bottom: 1rem;">🚀 The AI Advantage</h4>
+                        <p style="color: #666; line-height: 1.6;">Unlike other developers who disappear after launch, we can teach you to update your own website using AI. With Claude Desktop and our custom playbooks, you'll be able to make changes, add content, and maintain your site - all with AI assistance. It's like having a web developer on your computer!</p>
                     </div>
                 </div>
                 
-                <div class="addons-section">
-                    <h3>Optional Add-Ons</h3>
-                    <div class="addons-grid">
+                <div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
+                    <h3 style="color: #1a1f71; margin-bottom: 1rem;">Optional Add-Ons</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
                         <div>📦 E-commerce Setup: +$297</div>
                         <div>💳 Payment Processing: +$197</div>
                         <div>📅 Booking System: +$297</div>
@@ -588,41 +1058,41 @@
                 <h2>Real Results for Ottawa Businesses</h2>
                 <p class="section-subtitle">Our websites start generating leads immediately</p>
                 
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <blockquote class="testimonial-quote">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <div style="color: #f9c74f; font-size: 1.5rem; margin-bottom: 1rem;">★★★★★</div>
+                        <blockquote style="font-style: italic; color: #666; margin-bottom: 1.5rem; line-height: 1.6;">
                             "We received our first inquiry email the very first day the website went live! The SEO optimization really works - parents are finding us through Google searches and reaching out immediately."
                         </blockquote>
-                        <div class="testimonial-attribution">
-                            <div class="testimonial-author">The British Nanny's Daycare</div>
-                            <div class="testimonial-company">Ottawa Daycare Service</div>
-                            <a href="https://thebritishnanny.ca" target="_blank" class="testimonial-link">View Website →</a>
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem;">
+                            <strong style="color: #1a1f71;">The British Nanny's Daycare</strong><br>
+                            <span style="color: #666; font-size: 0.9rem;">Ottawa Daycare Service</span><br>
+                            <a href="https://thebritishnanny.ca" target="_blank" style="color: #4c5fd5; text-decoration: none; font-size: 0.9rem;">View Website →</a>
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-rating">★★★★★</div>
-                        <blockquote class="testimonial-quote">
+                    <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+                        <div style="color: #f9c74f; font-size: 1.5rem; margin-bottom: 1rem;">★★★★★</div>
+                        <blockquote style="font-style: italic; color: #666; margin-bottom: 1.5rem; line-height: 1.6;">
                             "Got my first $300 job through the website just a couple days after launch. That single job paid for the entire website! Now I'm getting steady inquiries from people who found me on Google."
                         </blockquote>
-                        <div class="testimonial-attribution">
-                            <div class="testimonial-author">Ottawa Handyman</div>
-                            <div class="testimonial-company">Home Repair Services</div>
-                            <a href="https://ottawahandiman.ca" target="_blank" class="testimonial-link">View Website →</a>
+                        <div style="border-top: 1px solid #eee; padding-top: 1rem;">
+                            <strong style="color: #1a1f71;">Ottawa Handyman</strong><br>
+                            <span style="color: #666; font-size: 0.9rem;">Home Repair Services</span><br>
+                            <a href="https://ottawahandiman.ca" target="_blank" style="color: #4c5fd5; text-decoration: none; font-size: 0.9rem;">View Website →</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="testimonial-cta">
-                    <p class="testimonial-cta-title">Your Website Could Be Generating Leads This Week</p>
-                    <p class="testimonial-cta-text">Both of these sites were built in under 5 days and started ranking on Google immediately.</p>
+                <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 10px;">
+                    <p style="font-size: 1.1rem; color: #1a1f71; font-weight: 600; margin-bottom: 1rem;">Your Website Could Be Generating Leads This Week</p>
+                    <p style="color: #666;">Both of these sites were built in under 5 days and started ranking on Google immediately.</p>
                 </div>
             </div>
         </section>
 
         <!-- Process Section -->
-        <section class="section bg-light">
+        <section class="section" style="background: #f8f9fa;">
             <div class="container">
                 <h2>Your Website in 5 Days: Here's How</h2>
                 <p class="section-subtitle">Our streamlined process eliminates the delays of traditional web design</p>
@@ -714,77 +1184,77 @@
                     <p>Tell us what you need and get a custom quote in 24 hours</p>
                     
                     <!-- Interactive Contact Form -->
-                    <div class="contact-form-container">
-                        <h3>What Would You Like on Your Website?</h3>
+                    <div style="max-width: 800px; margin: 2rem auto; background: white; border-radius: 10px; padding: 2rem; text-align: left;">
+                        <h3 style="color: #1a1f71; margin-bottom: 1.5rem; text-align: center;">What Would You Like on Your Website?</h3>
                         
                         <form id="website-inquiry-form" style="display: grid; gap: 1.5rem;">
                             <!-- Features Grid -->
-                            <div class="feature-checkboxes">
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="contact-forms">
-                                    <span>📝 Contact Forms</span>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="contact-forms" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">📝 Contact Forms</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="photo-gallery">
-                                    <span>🖼️ Photo Gallery</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="photo-gallery" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">🖼️ Photo Gallery</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="service-pages">
-                                    <span>🔧 Service Pages</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="service-pages" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">🔧 Service Pages</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="about-page">
-                                    <span>👤 About Us Page</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="about-page" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">👤 About Us Page</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="testimonials">
-                                    <span>⭐ Testimonials Section</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="testimonials" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">⭐ Testimonials Section</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="service-areas">
-                                    <span>📍 Service Area Pages</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="service-areas" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">📍 Service Area Pages</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="price-lists">
-                                    <span>💰 Price Lists/Menu</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="price-lists" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">💰 Price Lists/Menu</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="team-profiles">
-                                    <span>👥 Team Profiles</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="team-profiles" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">👥 Team Profiles</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="social-media">
-                                    <span>📱 Social Media Links</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="social-media" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">📱 Social Media Links</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="google-maps">
-                                    <span>🗺️ Google Maps</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="google-maps" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">🗺️ Google Maps</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="faq-section">
-                                    <span>❓ FAQ Section</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="faq-section" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">❓ FAQ Section</span>
                                 </label>
-                                <label class="feature-checkbox">
-                                    <input type="checkbox" name="features" value="hours-location">
-                                    <span>🕐 Hours & Location</span>
+                                <label style="display: flex; align-items: center; cursor: pointer; font-size: 1.1rem; padding: 5px 0;">
+                                    <input type="checkbox" name="features" value="hours-location" style="margin-right: 8px; width: 18px; height: 18px;">
+                                    <span style="color: #333; font-weight: 600;">🕐 Hours & Location</span>
                                 </label>
                             </div>
                             
                             <!-- Contact Fields -->
-                            <div class="form-grid">
-                                <input type="text" name="name" placeholder="Your Name" required>
-                                <input type="text" name="business" placeholder="Business Name" required>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                <input type="text" name="name" placeholder="Your Name" required style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                                <input type="text" name="business" placeholder="Business Name" required style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
                             </div>
                             
-                            <div class="form-grid">
-                                <input type="email" name="email" placeholder="Email Address" required>
-                                <input type="tel" name="phone" placeholder="Phone Number">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                <input type="email" name="email" placeholder="Email Address" required style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                                <input type="tel" name="phone" placeholder="Phone Number" style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
                             </div>
                             
                             <!-- Website Type -->
-                            <div class="form-group">
-                                <label>What type of website do you need?</label>
-                                <select name="website-type" required>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; color: #1a1f71; font-weight: 600;">What type of website do you need?</label>
+                                <select name="website-type" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
                                     <option value="">Select a type...</option>
                                     <option value="new-business">Brand new business website</option>
                                     <option value="new-modern">New modern website (we'll point your URL to it)</option>
@@ -794,9 +1264,9 @@
                             </div>
                             
                             <!-- Timeline -->
-                            <div class="form-group">
-                                <label>When do you need it?</label>
-                                <select name="timeline" required>
+                            <div>
+                                <label style="display: block; margin-bottom: 0.5rem; color: #1a1f71; font-weight: 600;">When do you need it?</label>
+                                <select name="timeline" required style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
                                     <option value="">Select timeline...</option>
                                     <option value="asap">ASAP (within a week)</option>
                                     <option value="2-weeks">Within 2 weeks</option>
@@ -806,18 +1276,18 @@
                             </div>
                             
                             <!-- Additional Notes -->
-                            <textarea name="message" placeholder="Tell us more about your project (optional)" rows="4"></textarea>
+                            <textarea name="message" placeholder="Tell us more about your project (optional)" rows="4" style="padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; resize: vertical;"></textarea>
                             
                             <!-- Submit Button -->
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn btn-primary" style="font-size: 1.1rem; padding: 15px 40px; cursor: pointer; border: none;">
                                 Get My Custom Quote →
                             </button>
                         </form>
                         
                         <!-- Alternative Contact -->
-                        <div class="alternative-contact">
-                            <p>Prefer to talk? Call us directly:</p>
-                            <a href="tel:343-597-5646">343-597-5646</a>
+                        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee;">
+                            <p style="color: #666;">Prefer to talk? Call us directly:</p>
+                            <a href="tel:343-597-5646" style="font-size: 1.5rem; color: #4c5fd5; text-decoration: none; font-weight: bold;">343-597-5646</a>
                         </div>
                     </div>
                     
@@ -851,52 +1321,23 @@
     </footer>
     
     <script>
-        // Animations toggle functionality
-        const animationsToggle = document.getElementById('toggle-animations');
-        if (animationsToggle) {
-            const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
-            
-            // Apply initial state
-            if (!animationsEnabled) {
-                document.body.classList.add('no-animations');
-                animationsToggle.textContent = 'Turn on animations';
-            }
-            
-            // Toggle animations
-            animationsToggle.addEventListener('click', function() {
-                const isEnabled = !document.body.classList.contains('no-animations');
-                
-                if (isEnabled) {
-                    document.body.classList.add('no-animations');
-                    localStorage.setItem('animationsEnabled', 'false');
-                    this.textContent = 'Turn on animations';
-                } else {
-                    document.body.classList.remove('no-animations');
-                    localStorage.setItem('animationsEnabled', 'true');
-                    this.textContent = 'Turn off animations';
-                }
-            });
-        }
-        
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
+        const navLinks = document.getElementById('nav-links');
         
-        if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', function() {
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !isExpanded);
-                navMenu.classList.toggle('show');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.nav-content') && navMenu.classList.contains('show')) {
-                    navMenu.classList.remove('show');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
+        mobileMenuToggle.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('show');
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.nav-content') && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
         
         // Handle contact form submission
         const contactForm = document.getElementById('website-inquiry-form');
@@ -944,9 +1385,9 @@
                 
                 // Show confirmation
                 this.innerHTML = `
-                    <div class="form-confirmation">
-                        <h3>✓ Quote Request Prepared!</h3>
-                        <p>Your email client should open now. Just hit send!</p>
+                    <div style="text-align: center; padding: 3rem;">
+                        <h3 style="color: #4c5fd5; margin-bottom: 1rem;">✓ Quote Request Prepared!</h3>
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Your email client should open now. Just hit send!</p>
                         <p style="color: #666;">If your email didn't open, please call us at:</p>
                         <a href="tel:343-597-5646" style="font-size: 1.5rem; color: #1a1f71; text-decoration: none; font-weight: bold;">343-597-5646</a>
                         <p style="margin-top: 2rem;">

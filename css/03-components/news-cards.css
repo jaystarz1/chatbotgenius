@@ -1,0 +1,123 @@
+/* News Cards Component Styles */
+
+/* News Card Base */
+.news-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.news-card.hidden {
+    display: none;
+}
+
+/* News Card Content */
+.news-card-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card h3 {
+    color: var(--primary-dark);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.news-card h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-card h3 a:hover {
+    color: var(--primary-blue);
+}
+
+/* News Card Excerpt */
+.news-card-excerpt {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex: 1;
+}
+
+/* News Card Meta */
+.news-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.news-source {
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 60%;
+}
+
+.news-date {
+    color: var(--primary-blue);
+    font-weight: 500;
+}
+
+/* Category Badges */
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Category Colors - All 17 categories */
+.category-business { background: #2c3e50; }
+.category-hr { background: #27ae60; }
+.category-jobs { background: #16a085; }
+.category-tech { background: #8e44ad; }
+.category-microsoft { background: #0078d4; }
+.category-meta { background: #1877f2; }
+.category-openai { background: #412991; }
+.category-nvidia { background: #76b900; }
+.category-ycombinator { background: #ff6600; }
+.category-ml { background: #e67e22; }
+.category-ethics { background: #c0392b; }
+.category-privacy { background: #9b59b6; }
+.category-security { background: #34495e; }
+.category-policy { background: #d35400; }
+.category-legal { background: #7f8c8d; }
+.category-healthcare { background: #e74c3c; }
+.category-education { background: #3498db; }
+.category-stocks { background: #f39c12; }
+.category-general { background: #95a5a6; }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .news-card-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .news-source {
+        max-width: 100%;
+    }
+}
