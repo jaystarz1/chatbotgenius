@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "AI Shame in the C-Suite: Why 53% of Workers Hide Their AI Use While Leaders Secretly Struggle",
+        excerpt: "53% of employees hide AI use from employers while 72% of C-suite executives use AI daily. Research reveals the dangerous phenomenon of 'AI shame' creating workplace divides.",
+        extendedExcerpt: "New research from Fortune, Microsoft/LinkedIn, and BCG reveals a stunning 'AI shame' phenomenon: while 72% of executives use AI daily, only 33% of employees receive training. With 53% of workers hiding AI usage and 54% willing to use unauthorized tools, organizations face a crisis of trust, training, and transparency that's tearing companies apart from the inside.",
+        date: "August 2025",
+        image: "blog/images/ai-shame-workplace-readiness-gap-ai-2025-08-29T16-12-05.png",
+        imageAlt: "Infographic showing AI shame statistics in the workplace",
+        url: "blog/ai-shame-workplace-readiness-gap.html",
+        sortDate: new Date("2025-08-29"),
+        readingTime: "10 min read"
+    },
+    {
         title: "The 59% Problem: Why Workforce Unpreparedness is AI's Real Threat, Not Job Replacement",
         excerpt: "While tech leaders debate AI job replacement, research reveals the real crisis: 59% of workers need reskilling by 2030 but most won't get it. The workforce preparedness gap threatens economic stability more than automation.",
         extendedExcerpt: "McKinsey and World Economic Forum data exposes a workforce crisis hiding in plain sight: while 92% of companies are investing in AI, only 16% of leaders feel prepared for the skills gap. With 59% of workers needing reskilling by 2030 and 120 million at risk without training, the real threat isn't AI replacing jobs—it's leaving millions of workers behind without the skills to adapt.",
