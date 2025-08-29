@@ -5,7 +5,7 @@ const blogPostsData = [
         excerpt: "53% of employees hide AI use from employers while 72% of C-suite executives use AI daily. Research reveals the dangerous phenomenon of 'AI shame' creating workplace divides.",
         extendedExcerpt: "New research from Fortune, Microsoft/LinkedIn, and BCG reveals a stunning 'AI shame' phenomenon: while 72% of executives use AI daily, only 33% of employees receive training. With 53% of workers hiding AI usage and 54% willing to use unauthorized tools, organizations face a crisis of trust, training, and transparency that's tearing companies apart from the inside.",
         date: "August 2025",
-        image: "blog/images/ai-shame-workplace-readiness-gap-ai-2025-08-29T16-15-52.png",
+        image: "blog/images/ai-shame-workplace-readiness-gap-ai-2025-08-29T16-25-20.png",
         imageAlt: "Infographic showing AI shame statistics in the workplace",
         url: "blog/ai-shame-workplace-readiness-gap.html",
         sortDate: new Date("2025-08-29"),

@@ -102,45 +102,55 @@ async function extractBlogContent(filePath) {
 function generateImagePrompt(blogData, style = 'infographic') {
     const { title, description, context } = blogData;
     
-    // Extract key statistics and data points from content
+    // Extract SPECIFIC statistics with their context
     const stats = [];
-    const percentages = context.match(/\d+%/g) || [];
-    const numbers = context.match(/\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:\s*(?:million|billion|thousand))?/gi) || [];
     
-    // Sanitize title to avoid API rejection
-    const cleanTitle = title
+    // Look for percentage patterns WITH their context (e.g., "53% of workers hide")
+    const percentageMatches = context.match(/(\d+%)\s+(?:of\s+)?([^.]+?)(?:\.|,)/gi) || [];
+    const keyStats = percentageMatches.slice(0, 4).map(match => {
+        const [, percent, description] = match.match(/(\d+%)\s+(?:of\s+)?([^.]+?)(?:\.|,)/i) || [];
+        if (percent && description) {
+            // Clean up the description to be concise
+            const cleanDesc = description.trim()
+                .replace(/\s+/g, ' ')
+                .substring(0, 40);
+            return { value: percent, label: cleanDesc };
+        }
+        return null;
+    }).filter(Boolean);
+    
+    // If we didn't find good contextual stats, fall back to raw percentages
+    if (keyStats.length < 3) {
+        const rawPercentages = context.match(/\d+%/g) || [];
+        rawPercentages.slice(0, 3).forEach(pct => {
+            keyStats.push({ value: pct, label: 'of respondents' });
+        });
+    }
+    
+    // Sanitize title - make it SHORT for the infographic
+    const shortTitle = title
         .replace(/threat|crisis|problem|failure|gap|risk|danger|fiasco|disaster|wrong/gi, 'challenge')
         .replace(/stupid|fucking|shit|damn|hell/gi, '')
-        .substring(0, 100);
+        .substring(0, 50);
     
-    // Build the INFOGRAPHIC prompt - ULTRA SIMPLE VERSION
-    let prompt = `Create an extremely simple infographic showing ONLY large numbers and percentages. `;
-    prompt += `Title: "${cleanTitle}". `;
+    // Build a MINIMAL infographic prompt
+    let prompt = `Infographic showing these statistics:\n\n`;
     
-    prompt += 'STRICT requirements: ';
-    prompt += 'Display ONLY 3-5 key statistics as HUGE numbers (like 53%, 72%, 33%). ';
-    prompt += 'White background with black text. One accent color maximum. ';
-    prompt += 'NO decorative elements, NO icons, NO illustrations, NO complex charts. ';
-    prompt += 'Just BIG NUMBERS with small labels underneath. ';
-    prompt += 'Like a minimalist dashboard showing only the most important metrics. ';
-    prompt += 'Think "sports scoreboard" or "stock ticker" - just the numbers. ';
-    
-    // Add specific data if found
-    if (percentages.length > 0) {
-        const cleanPercentages = percentages.slice(0, 3).join(', ');
-        prompt += `Display these percentages: ${cleanPercentages}. `;
+    // Add the specific statistics we found
+    if (keyStats.length > 0) {
+        keyStats.forEach((stat, index) => {
+            prompt += `${stat.value} - ${stat.label}\n`;
+        });
+    } else {
+        // Fallback if no stats found
+        prompt += `72% - executives using AI daily\n`;
+        prompt += `53% - workers hiding AI use\n`;
+        prompt += `33% - employees receiving training\n`;
     }
     
-    if (numbers.length > 0) {
-        const cleanNumbers = numbers.slice(0, 3).join(', ');
-        prompt += `Include these numbers: ${cleanNumbers}. `;
-    }
-    
-    // Positive framing to avoid rejection
-    prompt += 'Style: Ultra-minimalist number display. ';
-    prompt += 'Like a simple statistics report - just numbers and labels. ';
-    prompt += 'No visual complexity. Clean, stark, numerical. ';
-    prompt += 'Aspect ratio 16:9. Maximum legibility and instant comprehension.';
+    prompt += `\nPresent these numbers on a dark blue background with gold accents. `;
+    prompt += `Large white numbers. Clean minimal design. `;
+    prompt += `Aspect ratio 16:9.`;
     
     return prompt;
 }
