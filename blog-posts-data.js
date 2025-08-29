@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "When AI Orders 18,000 Water Cups: The Taco Bell Drive-Through Fiasco",
+        excerpt: "Taco Bell's AI drive-through crashed after ordering 18,000 water cups. Explore the viral failures, McDonald's bacon ice cream incident, and why AI struggles with human chaos.",
+        extendedExcerpt: "The fast food industry's rush to automate hit a wall when Taco Bell's AI drive-through system was defeated by a simple prank: ordering 18,000 water cups. This deep dive explores the viral failures at Taco Bell and McDonald's, revealing the fundamental challenges of AI automation in customer service and why the future lies in human-AI collaboration, not replacement.",
+        date: "January 2025",
+        image: "blog/images/ai-drive-through-fiasco-header.svg",
+        imageAlt: "AI robot confused at drive-through with overflowing water cups",
+        url: "blog/ai-drive-through-fiasco.html",
+        sortDate: new Date("2025-01-29"),
+        readingTime: "10 min read"
+    },
+    {
         title: "An Airing of Grievances: The Essential Guide Every CAF Grievance Analyst Needs",
         excerpt: "After five years analyzing hundreds of grievances at CFGA, Jay Tarzwell shares essential knowledge for CAF and DND analysts in this comprehensive guide to military grievance management.",
         extendedExcerpt: "Drawing from five years of hands-on experience at the Canadian Forces Grievance Authority, this comprehensive guide provides essential knowledge that every CAF and DND grievance analyst needs. From understanding procedural fairness to navigating complex regulatory frameworks, this book demystifies the grievance process and offers practical strategies for effective case management.",
