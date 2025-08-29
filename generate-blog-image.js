@@ -11,8 +11,8 @@ const path = require('path');
 const https = require('https');
 const readline = require('readline');
 
-// Configuration
-const CONFIG_FILE = '.env.local';
+// Configuration - check both .env and .env.local
+const CONFIG_FILES = ['.env', '.env.local'];
 const SUPPORTED_APIS = {
     OPENAI: 'OpenAI DALL-E 3',
     STABILITY: 'Stability AI (Stable Diffusion)',
@@ -32,29 +32,47 @@ const colors = {
 
 // Read configuration
 async function loadConfig() {
-    try {
-        const configContent = await fs.readFile(CONFIG_FILE, 'utf-8');
-        const config = {};
-        configContent.split('\n').forEach(line => {
-            const [key, value] = line.split('=');
-            if (key && value) {
-                config[key.trim()] = value.trim().replace(/^["']|["']$/g, '');
+    let config = {};
+    
+    // Try to read from existing config files
+    for (const configFile of CONFIG_FILES) {
+        try {
+            const configContent = await fs.readFile(configFile, 'utf-8');
+            configContent.split('\n').forEach(line => {
+                if (line.trim() && !line.trim().startsWith('#')) {
+                    const [key, value] = line.split('=');
+                    if (key && value) {
+                        config[key.trim()] = value.trim().replace(/^["']|["']$/g, '');
+                    }
+                }
+            });
+            console.log(`${colors.green}✓ Loaded configuration from ${configFile}${colors.reset}`);
+            
+            // Map OPENAI_API_KEY to AI_IMAGE_API_KEY if not set
+            if (!config.AI_IMAGE_API_KEY && config.OPENAI_API_KEY) {
+                config.AI_IMAGE_API_KEY = config.OPENAI_API_KEY;
+                config.AI_IMAGE_API_TYPE = 'OPENAI';
+                console.log(`${colors.cyan}Using existing OpenAI API key from ${configFile}${colors.reset}`);
             }
-        });
-        return config;
-    } catch (error) {
-        console.log(`${colors.yellow}No configuration file found. Creating one...${colors.reset}`);
-        return {};
+            
+            return config;
+        } catch (error) {
+            // Try next file
+        }
     }
+    
+    console.log(`${colors.yellow}No configuration file found. You'll need to set up API keys.${colors.reset}`);
+    return config;
 }
 
 // Save configuration
 async function saveConfig(config) {
+    const configFile = CONFIG_FILES[0]; // Save to .env by default
     const configContent = Object.entries(config)
         .map(([key, value]) => `${key}="${value}"`)
         .join('\n');
-    await fs.writeFile(CONFIG_FILE, configContent);
-    console.log(`${colors.green}✓ Configuration saved to ${CONFIG_FILE}${colors.reset}`);
+    await fs.writeFile(configFile, configContent);
+    console.log(`${colors.green}✓ Configuration saved to ${configFile}${colors.reset}`);
 }
 
 // Extract content from blog post
