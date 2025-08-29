@@ -10,6 +10,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const https = require('https');
 const readline = require('readline');
+const sharp = require('sharp');
 
 // Configuration - check both .env and .env.local
 const CONFIG_FILES = ['.env', '.env.local'];
@@ -222,12 +223,43 @@ async function downloadImage(url, outputPath) {
     });
 }
 
-// Convert image to optimized format (requires separate tool)
+// Convert image to optimized format using Sharp
 async function optimizeImage(imagePath) {
-    // For now, we'll keep the original
-    // In production, you'd use sharp or imagemin here
-    console.log(`${colors.yellow}Note: Image optimization can be added with 'sharp' npm package${colors.reset}`);
-    return imagePath;
+    try {
+        const originalStats = await fs.stat(imagePath);
+        const originalSizeKB = (originalStats.size / 1024).toFixed(2);
+        
+        // Read the original image
+        const imageBuffer = await fs.readFile(imagePath);
+        
+        // Optimize with Sharp
+        const optimizedBuffer = await sharp(imageBuffer)
+            .png({
+                quality: 85,  // Slightly reduce quality for smaller file size
+                compressionLevel: 9,  // Maximum compression
+                effort: 10  // Maximum effort for compression
+            })
+            .resize(1792, 1024, {  // Ensure consistent size (16:9 ratio)
+                fit: 'inside',
+                withoutEnlargement: true
+            })
+            .toBuffer();
+        
+        // Write the optimized image back
+        await fs.writeFile(imagePath, optimizedBuffer);
+        
+        const optimizedStats = await fs.stat(imagePath);
+        const optimizedSizeKB = (optimizedStats.size / 1024).toFixed(2);
+        const savings = ((1 - optimizedStats.size / originalStats.size) * 100).toFixed(1);
+        
+        console.log(`${colors.green}✓ Image optimized: ${originalSizeKB}KB → ${optimizedSizeKB}KB (${savings}% reduction)${colors.reset}`);
+        
+        return imagePath;
+    } catch (error) {
+        console.log(`${colors.yellow}Warning: Image optimization failed, keeping original${colors.reset}`);
+        console.error(error.message);
+        return imagePath;
+    }
 }
 
 // Update blog post with new image
@@ -412,6 +444,9 @@ async function main() {
         }
         
         // Optimize image
+        if (!autoMode) {
+            console.log(`\n${colors.blue}🔧 Optimizing image...${colors.reset}`);
+        }
         await optimizeImage(imagePath);
         
         // Update blog post (automatic in auto mode)

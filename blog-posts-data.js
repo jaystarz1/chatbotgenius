@@ -5,7 +5,7 @@ const blogPostsData = [
         excerpt: "Personal injury lawyers lead legal AI adoption at 37% vs 31% overall. Research reveals why PI attorneys embrace AI for medical records while BigLaw hesitates.",
         extendedExcerpt: "While BigLaw debates AI policies in committee rooms, personal injury lawyers quietly lead the profession with 37% AI adoption vs 31% overall. New research from Above the Law, ABA, and Thomson Reuters shows PI attorneys using AI to analyze thousands of medical records, saving 5 hours weekly while prestigious firms remain paralyzed by governance concerns.",
         date: "August 2025",
-        image: "blog/images/personal-injury-lawyers-ai-adoption-leaders-ai-2025-08-29T16-41-58.png",
+        image: "blog/images/personal-injury-lawyers-ai-adoption-leaders-ai-2025-08-29T16-47-27.png",
         imageAlt: "Dramatic comic-style illustration of PI lawyers using AI",
         url: "blog/personal-injury-lawyers-ai-adoption-leaders.html",
         sortDate: new Date("2025-08-29"),
