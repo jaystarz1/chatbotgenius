@@ -19,7 +19,7 @@ class ConversionTools {
         this.initExitIntent();
         this.initUrgencyTimers();
         this.initSocialProof();
-        this.initLiveChat();
+        // this.initLiveChat(); // Disabled chatbot
         this.initABTesting();
         this.initFormValidation();
         this.initProgressTracking();
@@ -520,13 +520,13 @@ class ConversionTools {
         
         let index = 0;
         
-        // Show first notification after 5 seconds
+        // Show first notification after 20 seconds
         setTimeout(() => {
             setInterval(() => {
                 this.showSocialProof(notifications[index]);
                 index = (index + 1) % notifications.length;
-            }, 15000);
-        }, 5000);
+            }, 45000); // Changed from 15 seconds to 45 seconds
+        }, 20000); // Changed from 5 seconds to 20 seconds
     }
     
     getSocialProofNotifications() {

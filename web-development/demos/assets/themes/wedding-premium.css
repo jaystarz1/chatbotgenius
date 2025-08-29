@@ -135,9 +135,7 @@ body {
 
 /* Premium Enhancements */
 .hero {
-    background: 
-        linear-gradient(135deg, rgba(255,245,245,0.92), rgba(255,250,248,0.88)),
-        url('https://picsum.photos/1920/1080?random=100') center/cover fixed;
+    background: linear-gradient(135deg, rgba(255,245,245,0.92), rgba(255,250,248,0.88));
     position: relative;
     overflow: hidden;
 }
