@@ -114,15 +114,16 @@ function generateImagePrompt(blogData, style = 'infographic') {
         .substring(0, 100);
     
     // Build the INFOGRAPHIC prompt - SAFE VERSION
-    let prompt = `Create a professional business infographic visualization. `;
+    let prompt = `Create a simple, scientific infographic that communicates data clearly at a glance. `;
     prompt += `Title: "${cleanTitle}". `;
     
     prompt += 'Design requirements: ';
-    prompt += 'Professional data visualization with charts, graphs, and statistics. ';
-    prompt += 'Clean typography with numerical data points. ';
-    prompt += 'Business icons and symbols only (no people or robots). ';
-    prompt += 'Color scheme: blue, gold, white with high contrast. ';
-    prompt += 'Minimalist design focusing on information display. ';
+    prompt += 'SIMPLE and CLEAR data visualization - easy to understand in 3 seconds. ';
+    prompt += 'Scientific approach: clean charts, minimal text, large numbers. ';
+    prompt += 'Maximum clarity: high contrast, no decorative elements, focus on data. ';
+    prompt += 'Use basic shapes: bar charts, pie charts, or simple icons. ';
+    prompt += 'Color scheme: 2-3 colors maximum, high contrast for readability. ';
+    prompt += 'Think "scientific journal figure" not "corporate presentation". ';
     
     // Add specific data if found
     if (percentages.length > 0) {
@@ -136,10 +137,10 @@ function generateImagePrompt(blogData, style = 'infographic') {
     }
     
     // Positive framing to avoid rejection
-    prompt += 'Style: Professional business report visualization. ';
-    prompt += 'Similar to charts from consulting firms or financial reports. ';
-    prompt += 'Use bar charts, pie charts, or timeline graphics. ';
-    prompt += 'Aspect ratio 16:9. Clear and accessible design.';
+    prompt += 'Style: Simple scientific data visualization. ';
+    prompt += 'Like figures from Nature or Science journals - clear, minimal, factual. ';
+    prompt += 'One main message that can be understood immediately. ';
+    prompt += 'Aspect ratio 16:9. Accessibility-first design with maximum readability.';
     
     return prompt;
 }
