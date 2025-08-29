@@ -50,16 +50,16 @@ class ConversionTools {
         if (path.includes('wedding') || title.includes('wedding')) {
             return {
                 icon: '💍',
-                headline: 'Planning Your Dream Wedding?',
-                offer: 'Save 25% on Our Exclusive Wedding Package!',
+                headline: 'Interactive Demo Feature',
+                offer: 'This popup can be customized for your event!',
                 features: [
-                    'Custom wedding website design',
-                    'Guest RSVP management system',
-                    'Professional photo galleries',
-                    'Lifetime hosting included'
+                    'RSVP collection forms',
+                    'Guest information gathering',
+                    'Special announcements',
+                    'Last-minute updates'
                 ],
-                buttonText: 'Get Your Wedding Discount',
-                disclaimer: 'Limited offer for engaged couples - Valid for 48 hours'
+                buttonText: 'Try Demo RSVP Form',
+                disclaimer: 'Example: Use popups for important wedding updates or RSVP reminders'
             };
         }
         
@@ -536,11 +536,11 @@ class ConversionTools {
         // Wedding specific notifications
         if (path.includes('wedding') || title.includes('wedding')) {
             return [
-                { name: 'Emma & James', location: 'New York', action: 'just booked', product: 'Dream Wedding Package' },
-                { name: 'Sarah M.', location: 'Los Angeles', action: 'saved $2,000 with', product: 'Wedding Bundle' },
-                { name: 'The Johnsons', location: 'Chicago', action: 'are celebrating with', product: 'Premium Wedding Site' },
-                { name: 'Rachel K.', location: 'Miami', action: 'just reserved', product: 'Platinum Wedding Package' },
-                { name: 'David & Maria', location: 'Boston', action: 'just upgraded to', product: 'All-Inclusive Package' }
+                { name: 'Emma & James', location: 'Ottawa', action: 'just submitted their', product: 'RSVP confirmation' },
+                { name: 'Sarah M.', location: 'Kanata', action: 'viewed the', product: 'venue directions' },
+                { name: 'The Johnsons', location: 'Orleans', action: 'confirmed attendance for', product: '4 guests' },
+                { name: 'Rachel K.', location: 'Barrhaven', action: 'just checked the', product: 'gift registry' },
+                { name: 'David & Maria', location: 'Nepean', action: 'added a note to their', product: 'RSVP' }
             ];
         }
         
