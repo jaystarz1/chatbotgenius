@@ -98,7 +98,23 @@ Per Jay: "The blog post must include the actual current date, not just some fuck
 - **NEVER use arbitrary dates like "January 2025" when it's actually August**
 - The date affects the blog post ordering - wrong dates make posts appear in wrong positions
 
-#### 2. ACCESSIBILITY REQUIREMENT (MANDATORY)
+#### 2. IMAGE REQUIREMENT - INFOGRAPHICS ONLY
+Per Jay: "I want all images going forward to be infographics. I do not want images of people or shitty looking blue ai kind of things pretending to be robots or whatever - INFO FUCKING GRAPHICS - feel me?"
+
+**ALL blog images MUST be INFOGRAPHICS:**
+- ✅ **REQUIRED**: Data visualizations, charts, graphs, statistics, flowcharts, timelines
+- ✅ **STYLE**: Clean, professional like Visual Capitalist or Statista
+- ✅ **INCLUDE**: Numbers, percentages, key data points from the article
+- ❌ **FORBIDDEN**: People, faces, robots, blue AI orbs, cyborgs, photorealistic anything
+- ❌ **NO**: Generic AI art, abstract tech backgrounds, stock photo style images
+
+**The AI prompt generator will automatically:**
+- Extract statistics and numbers from your content
+- Create infographic-specific prompts
+- Explicitly forbid human/robot imagery
+- Request data visualization elements
+
+#### 3. ACCESSIBILITY REQUIREMENT (MANDATORY)
 Per Jay: "We need to ensure the accessibility of the stuff we put into the blog posts"
 
 **COLOR CONTRAST RULES (WCAG AA Compliance):**

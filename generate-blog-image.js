@@ -98,56 +98,45 @@ async function extractBlogContent(filePath) {
     return { title, description, context };
 }
 
-// Generate prompt from blog content
-function generateImagePrompt(blogData, style = 'modern') {
+// Generate prompt from blog content - INFOGRAPHICS ONLY
+function generateImagePrompt(blogData, style = 'infographic') {
     const { title, description, context } = blogData;
     
-    // Analyze content for key themes
-    const themes = [];
+    // Extract key statistics and data points from content
+    const stats = [];
+    const percentages = context.match(/\d+%/g) || [];
+    const numbers = context.match(/\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:\s*(?:million|billion|thousand))?/gi) || [];
     
-    // Tech/AI themes
-    if (/AI|artificial intelligence|robot|automation/i.test(context)) {
-        themes.push('futuristic', 'technology', 'digital');
+    // Build the INFOGRAPHIC prompt - Per Jay: "INFO FUCKING GRAPHICS"
+    let prompt = `Create a clean, professional INFOGRAPHIC (NOT a photo, NOT robots, NOT people) for an article titled "${title}". `;
+    
+    prompt += 'REQUIREMENTS: This must be an INFOGRAPHIC with: ';
+    prompt += '1. Data visualizations (charts, graphs, or statistics) ';
+    prompt += '2. Clear typography with key points and numbers ';
+    prompt += '3. Icons or symbols (NO human figures, NO robot characters) ';
+    prompt += '4. Professional color scheme with high contrast ';
+    prompt += '5. Clean, minimalist design focusing on INFORMATION ';
+    
+    // Add specific data if found
+    if (percentages.length > 0) {
+        prompt += `Include these key statistics: ${percentages.slice(0, 3).join(', ')}. `;
     }
     
-    // Business themes
-    if (/business|corporate|company|CEO/i.test(context)) {
-        themes.push('professional', 'corporate');
+    if (numbers.length > 0) {
+        prompt += `Feature these important numbers: ${numbers.slice(0, 3).join(', ')}. `;
     }
     
-    // Food/Restaurant themes
-    if (/food|restaurant|drive.?through|fast food|Taco|McDonald/i.test(context)) {
-        themes.push('restaurant', 'food service');
-    }
-    
-    // Failure/Error themes
-    if (/fail|error|mistake|wrong|crash|problem/i.test(context)) {
-        themes.push('malfunction', 'chaos', 'confusion');
-    }
-    
-    // Build the prompt
-    let prompt = `Create a modern, eye-catching blog header image for an article titled "${title}". `;
-    
-    if (themes.length > 0) {
-        prompt += `The image should convey themes of ${themes.join(', ')}. `;
-    }
-    
-    // Add style preferences
-    const styleGuides = {
-        modern: 'Use a clean, modern design with bold colors and geometric shapes. Professional but engaging.',
-        illustration: 'Create a stylized illustration with vibrant colors and creative visual metaphors.',
-        photorealistic: 'Generate a photorealistic image with dramatic lighting and composition.',
-        minimalist: 'Use minimalist design with plenty of white space and simple, iconic elements.',
-        retro: 'Apply a retro-futuristic style with vintage colors and nostalgic tech aesthetics.'
-    };
-    
-    prompt += styleGuides[style] || styleGuides.modern;
-    prompt += ' The image should be suitable for a professional blog and work well as a social media preview.';
-    prompt += ' Aspect ratio should be 16:9 for optimal display.';
+    // Explicitly forbid what we don't want
+    prompt += 'DO NOT include: human faces, robot characters, blue AI orbs, cyborg imagery, or photorealistic elements. ';
+    prompt += 'This should look like a professional data visualization from a business report or academic paper. ';
+    prompt += 'Use charts, graphs, flowcharts, timelines, or comparison tables. ';
+    prompt += 'Style: Clean infographic design like those from Visual Capitalist or Statista. ';
+    prompt += 'Aspect ratio 16:9. High contrast colors for accessibility.';
     
     // Add specific details from the content
     if (description) {
-        prompt += ` Context: ${description.substring(0, 150)}`;
+        const cleanDesc = description.replace(/[^a-zA-Z0-9\s%]/g, '').substring(0, 100);
+        prompt += ` Key message: ${cleanDesc}`;
     }
     
     return prompt;
