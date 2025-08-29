@@ -89,10 +89,25 @@ git push
 ```
 
 ### Creating New Blog Posts
+
+**⚠️ CRITICAL DATE REQUIREMENT ⚠️**
+Per Jay: "The blog post must include the actual current date, not just some fucking date it pulls out of its ass."
+
+When creating blog posts:
+1. **ALWAYS use TODAY'S ACTUAL DATE** (check <env> tag for current date)
+2. **NEVER use arbitrary dates like "January 2025" when it's actually August**
+3. The date affects the blog post ordering - wrong dates make posts appear in wrong positions
+
 ```bash
 ./new-blog-post.sh
 # Follow prompts for title, excerpt, date
+# Or manually create with CORRECT CURRENT DATE
 ```
+
+Date format in files:
+- `blog-posts-data.js`: `date: "August 2025"`, `sortDate: new Date("2025-08-29")`
+- HTML meta tag: `<meta property="article:published_time" content="2025-08-29">`
+- Article display: `By Jay Tarzwell CD | August 29, 2025`
 
 ### Important Scripts
 - `new-blog-post.sh` - Create new blog post
