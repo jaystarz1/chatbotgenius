@@ -5,7 +5,7 @@ const blogPostsData = [
         excerpt: "Workers expect AI to replace 20-30% of jobs in 5-10 years, but Stanford data shows entry-level workers already face 13% decline. The gap between perception and reality reveals we're preparing for tomorrow's disruption while today's transformation reshapes the workforce.",
         extendedExcerpt: "New research from Indeed Hiring Lab, Stanford, and Goldman Sachs reveals a dangerous disconnect: while workers expect gradual AI job displacement over 10 years, entry-level positions have already declined 13% in just 2 years. With 300 million jobs at risk globally and 491 people losing jobs to AI daily, the future isn't coming—it's here, and most are still looking at the horizon.",
         date: "August 2025",
-        image: "blog/images/ai-job-expectations-reality-gap-header.svg",
+        image: "blog/images/ai-job-expectations-reality-gap-ai-2025-08-29T15-11-49.png",
         imageAlt: "AI job displacement infographic showing expectation vs reality gap",
         url: "blog/ai-job-expectations-reality-gap.html",
         sortDate: new Date("2025-08-29"),
