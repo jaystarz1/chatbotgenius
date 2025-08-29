@@ -67,15 +67,15 @@ const DEMO_CONFIGS = {
             { name: 'couple-skating', prompt: 'Watercolor winter scene of skating rink, couple silhouettes, soft blues and purples, Rideau Canal setting, artistic style' },
             { name: 'venue-sunset', prompt: 'Watercolor architectural sketch of Château Laurier at sunset, warm golden washes, ink pen architectural details' },
             
-            // Wedding Party Portraits - Illustrated (8 images)
-            { name: 'bridesmaid-1', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, brunette hair, soft artistic style, white background' },
-            { name: 'bridesmaid-2', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, black hair updo, elegant artistic style, white background' },
-            { name: 'bridesmaid-3', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, blonde wavy hair, romantic artistic style, white background' },
-            { name: 'bridesmaid-4', prompt: 'Watercolor portrait illustration of bridesmaid, dusty rose dress, red curly hair, soft artistic style, white background' },
-            { name: 'groomsman-1', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, clean shaven, artistic style, white background' },
-            { name: 'groomsman-2', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, brown hair, artistic style, white background' },
-            { name: 'groomsman-3', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, neat beard, artistic style, white background' },
-            { name: 'groomsman-4', prompt: 'Watercolor portrait illustration of groomsman, black suit and bow tie, sandy hair, artistic style, white background' }
+            // Wedding Party Portraits - Diverse & Illustrated (8 images)
+            { name: 'bridesmaid-1', prompt: 'Watercolor portrait of Caucasian woman bridesmaid, dusty rose dress, brunette hair, soft artistic style, white background' },
+            { name: 'bridesmaid-2', prompt: 'Watercolor portrait of Asian woman bridesmaid, dusty rose dress, black hair updo, elegant artistic style, white background' },
+            { name: 'bridesmaid-3', prompt: 'Watercolor portrait of Black woman bridesmaid, dusty rose dress, natural hair style, romantic artistic style, white background' },
+            { name: 'bridesmaid-4', prompt: 'Watercolor portrait of Caucasian woman bridesmaid, dusty rose dress, red curly hair, soft artistic style, white background' },
+            { name: 'groomsman-1', prompt: 'Watercolor portrait of Asian man groomsman, black suit and bow tie, clean shaven, artistic style, white background' },
+            { name: 'groomsman-2', prompt: 'Watercolor portrait of Caucasian man groomsman, black suit and bow tie, brown hair, light stubble, artistic style, white background' },
+            { name: 'groomsman-3', prompt: 'Watercolor portrait of Black man groomsman, black suit and bow tie, neat beard, artistic style, white background' },
+            { name: 'groomsman-4', prompt: 'Watercolor portrait of Caucasian man groomsman, black suit and bow tie, blonde hair, clean shaven, artistic style, white background' }
         ]
     },
     'birthday.html': {
