@@ -90,71 +90,20 @@ git push
 
 ### Creating New Blog Posts
 
-**⚠️ CRITICAL REQUIREMENTS ⚠️**
+**📝 ALL blog post requirements are in the blog post template:**
+→ `/Users/jaytarzwell/chatbotgenius/blog-post-template.html`
 
-#### 1. ANTI-PLAGIARISM & RESEARCH REQUIREMENT
-Per Jay: "I never want anything from a story copied into my blog"
+**The template contains ALL requirements including:**
+- Anti-plagiarism & research requirements (minimum 3 sources, contrary viewpoints)
+- Date requirements (use actual current date)
+- Image requirements (infographics only, no people/robots)
+- Accessibility requirements (WCAG AA compliance)
+- Content structure guidelines
 
-**Research-Based Blog Posts MUST:**
-- Use source articles as **reference points only** - never copy text
-- Find **minimum 3 additional sources**: academic papers, public statements, policies, research reports
-- **Synthesize and rewrite everything** - no direct quotes unless attributed
-- Include **contrary viewpoints** for balance (but no conspiracies)
-- Create **original analysis** that adds value beyond source material
-
-**Research Process:**
-1. Read reference article to understand the topic
-2. Search for 3+ authoritative sources (McKinsey, WEF, universities, government data)
-3. Find at least one credible contrary viewpoint
-4. Synthesize all sources into original narrative
-5. Add data visualizations and statistics from research
-6. Credit ideas to sources without copying text
-
-**Example:** "While Analyst X argues [position], Research Institution Y's data suggests [contrary view]"
-
-#### 2. DATE REQUIREMENT
-Per Jay: "The blog post must include the actual current date, not just some fucking date it pulls out of its ass."
-- **ALWAYS use TODAY'S ACTUAL DATE** (check <env> tag for current date)
-- **NEVER use arbitrary dates like "January 2025" when it's actually August**
-- The date affects the blog post ordering - wrong dates make posts appear in wrong positions
-
-#### 3. IMAGE REQUIREMENT - INFOGRAPHICS ONLY
-Per Jay: "I want all images going forward to be infographics. I do not want images of people or shitty looking blue ai kind of things pretending to be robots or whatever - INFO FUCKING GRAPHICS - feel me?"
-
-**ALL blog images MUST be INFOGRAPHICS:**
-- ✅ **REQUIRED**: Data visualizations, charts, graphs, statistics, flowcharts, timelines
-- ✅ **STYLE**: Clean, professional like Visual Capitalist or Statista
-- ✅ **INCLUDE**: Numbers, percentages, key data points from the article
-- ❌ **FORBIDDEN**: People, faces, robots, blue AI orbs, cyborgs, photorealistic anything
-- ❌ **NO**: Generic AI art, abstract tech backgrounds, stock photo style images
-
-**The AI prompt generator will automatically:**
-- Extract statistics and numbers from your content
-- Create infographic-specific prompts
-- Explicitly forbid human/robot imagery
-- Request data visualization elements
-
-#### 4. ACCESSIBILITY REQUIREMENT (MANDATORY)
-Per Jay: "We need to ensure the accessibility of the stuff we put into the blog posts"
-
-**COLOR CONTRAST RULES (WCAG AA Compliance):**
-- ✅ **APPROVED**: Dark blue (#1a1f71) on white, white on dark blue, dark text (#333) on light backgrounds
-- ❌ **FORBIDDEN**: Gradients with text, light gray on colors, purple/blue gradients with any text
-- **Minimum contrast ratios**: 4.5:1 for normal text, 3:1 for large text (18pt+)
-
-**COMPONENT RULES:**
-- **Stat boxes**: Solid colors ONLY (no gradients), high contrast
-- **Tables**: Dark headers with white text, alternating light row colors
-- **Highlights**: Yellow background (#fff3cd) with dark text (#333)
-- **Quotes**: Light blue background (#f0f8ff) with dark text (#333)
-
-**ACCESSIBILITY CHECKLIST:**
-- [ ] All text passes contrast checker (4.5:1 minimum)
-- [ ] No information conveyed by color alone
-- [ ] Proper alt text for all images
-- [ ] Semantic HTML structure (h1→h2→h3, proper lists)
-- [ ] Tables have proper headers
-- [ ] Focus indicators for interactive elements
+**When creating a blog post:**
+1. Read the blog post template FIRST for all requirements
+2. Follow ALL guidelines in the template comments
+3. Use the template structure for consistency
 
 ```bash
 ./new-blog-post.sh

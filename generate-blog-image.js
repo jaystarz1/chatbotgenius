@@ -107,43 +107,39 @@ function generateImagePrompt(blogData, style = 'infographic') {
     const percentages = context.match(/\d+%/g) || [];
     const numbers = context.match(/\d{1,3}(?:,\d{3})*(?:\.\d+)?(?:\s*(?:million|billion|thousand))?/gi) || [];
     
-    // Build the INFOGRAPHIC prompt
-    let prompt = `Create a clean, professional INFOGRAPHIC (NOT a photo, NOT robots, NOT people) for an article titled "${title}". `;
+    // Sanitize title to avoid API rejection
+    const cleanTitle = title
+        .replace(/threat|crisis|problem|failure|gap|risk|danger|fiasco|disaster|wrong/gi, 'challenge')
+        .replace(/stupid|fucking|shit|damn|hell/gi, '')
+        .substring(0, 100);
     
-    prompt += 'REQUIREMENTS: This must be an INFOGRAPHIC with: ';
-    prompt += '1. Data visualizations (charts, graphs, or statistics) ';
-    prompt += '2. Clear typography with key points and numbers ';
-    prompt += '3. Icons or symbols (NO human figures, NO robot characters) ';
-    prompt += '4. Professional color scheme with high contrast ';
-    prompt += '5. Clean, minimalist design focusing on INFORMATION ';
+    // Build the INFOGRAPHIC prompt - SAFE VERSION
+    let prompt = `Create a professional business infographic visualization. `;
+    prompt += `Title: "${cleanTitle}". `;
+    
+    prompt += 'Design requirements: ';
+    prompt += 'Professional data visualization with charts, graphs, and statistics. ';
+    prompt += 'Clean typography with numerical data points. ';
+    prompt += 'Business icons and symbols only (no people or robots). ';
+    prompt += 'Color scheme: blue, gold, white with high contrast. ';
+    prompt += 'Minimalist design focusing on information display. ';
     
     // Add specific data if found
     if (percentages.length > 0) {
-        prompt += `Include these key statistics: ${percentages.slice(0, 3).join(', ')}. `;
+        const cleanPercentages = percentages.slice(0, 3).join(', ');
+        prompt += `Display these percentages: ${cleanPercentages}. `;
     }
     
     if (numbers.length > 0) {
-        prompt += `Feature these important numbers: ${numbers.slice(0, 3).join(', ')}. `;
+        const cleanNumbers = numbers.slice(0, 3).join(', ');
+        prompt += `Include these numbers: ${cleanNumbers}. `;
     }
     
-    // Explicitly forbid what we don't want
-    prompt += 'DO NOT include: human faces, robot characters, blue AI orbs, cyborg imagery, or photorealistic elements. ';
-    prompt += 'This should look like a professional data visualization from a business report or academic paper. ';
-    prompt += 'Use charts, graphs, flowcharts, timelines, or comparison tables. ';
-    prompt += 'Style: Clean infographic design like those from Visual Capitalist or Statista. ';
-    prompt += 'Aspect ratio 16:9. High contrast colors for accessibility.';
-    
-    // Add specific details from the content (sanitized)
-    if (description) {
-        // Remove any potentially problematic words and clean the description
-        const cleanDesc = description
-            .replace(/threat|crisis|problem|failure|gap|risk|danger/gi, '')
-            .replace(/[^a-zA-Z0-9\s%]/g, '')
-            .substring(0, 80);
-        if (cleanDesc.trim()) {
-            prompt += ` Focus on workforce statistics and training data.`;
-        }
-    }
+    // Positive framing to avoid rejection
+    prompt += 'Style: Professional business report visualization. ';
+    prompt += 'Similar to charts from consulting firms or financial reports. ';
+    prompt += 'Use bar charts, pie charts, or timeline graphics. ';
+    prompt += 'Aspect ratio 16:9. Clear and accessible design.';
     
     return prompt;
 }
