@@ -265,7 +265,7 @@ async function updateBlogPost(blogPath, imagePath) {
             const imageHTML = `
             <!-- AI-Generated Header Image -->
             <div class="article-image-container" style="margin: 2rem 0;">
-                <img src="../images/${imageFileName}" 
+                <img src="images/${imageFileName}" 
                      alt="AI-generated illustration for this article" 
                      class="article-image"
                      style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
