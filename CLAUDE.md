@@ -92,13 +92,33 @@ git push
 
 **⚠️ CRITICAL REQUIREMENTS ⚠️**
 
-#### 1. DATE REQUIREMENT
+#### 1. ANTI-PLAGIARISM & RESEARCH REQUIREMENT
+Per Jay: "I never want anything from a story copied into my blog"
+
+**Research-Based Blog Posts MUST:**
+- Use source articles as **reference points only** - never copy text
+- Find **minimum 3 additional sources**: academic papers, public statements, policies, research reports
+- **Synthesize and rewrite everything** - no direct quotes unless attributed
+- Include **contrary viewpoints** for balance (but no conspiracies)
+- Create **original analysis** that adds value beyond source material
+
+**Research Process:**
+1. Read reference article to understand the topic
+2. Search for 3+ authoritative sources (McKinsey, WEF, universities, government data)
+3. Find at least one credible contrary viewpoint
+4. Synthesize all sources into original narrative
+5. Add data visualizations and statistics from research
+6. Credit ideas to sources without copying text
+
+**Example:** "While Analyst X argues [position], Research Institution Y's data suggests [contrary view]"
+
+#### 2. DATE REQUIREMENT
 Per Jay: "The blog post must include the actual current date, not just some fucking date it pulls out of its ass."
 - **ALWAYS use TODAY'S ACTUAL DATE** (check <env> tag for current date)
 - **NEVER use arbitrary dates like "January 2025" when it's actually August**
 - The date affects the blog post ordering - wrong dates make posts appear in wrong positions
 
-#### 2. IMAGE REQUIREMENT - INFOGRAPHICS ONLY
+#### 3. IMAGE REQUIREMENT - INFOGRAPHICS ONLY
 Per Jay: "I want all images going forward to be infographics. I do not want images of people or shitty looking blue ai kind of things pretending to be robots or whatever - INFO FUCKING GRAPHICS - feel me?"
 
 **ALL blog images MUST be INFOGRAPHICS:**
@@ -114,7 +134,7 @@ Per Jay: "I want all images going forward to be infographics. I do not want imag
 - Explicitly forbid human/robot imagery
 - Request data visualization elements
 
-#### 3. ACCESSIBILITY REQUIREMENT (MANDATORY)
+#### 4. ACCESSIBILITY REQUIREMENT (MANDATORY)
 Per Jay: "We need to ensure the accessibility of the stuff we put into the blog posts"
 
 **COLOR CONTRAST RULES (WCAG AA Compliance):**

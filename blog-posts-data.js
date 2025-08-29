@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "The 59% Problem: Why Workforce Unpreparedness is AI's Real Threat, Not Job Replacement",
+        excerpt: "While tech leaders debate AI job replacement, research reveals the real crisis: 59% of workers need reskilling by 2030 but most won't get it. The workforce preparedness gap threatens economic stability more than automation.",
+        extendedExcerpt: "McKinsey and World Economic Forum data exposes a workforce crisis hiding in plain sight: while 92% of companies are investing in AI, only 16% of leaders feel prepared for the skills gap. With 59% of workers needing reskilling by 2030 and 120 million at risk without training, the real threat isn't AI replacing jobs—it's leaving millions of workers behind without the skills to adapt.",
+        date: "August 2025",
+        image: "blog/images/ai-workforce-preparedness-crisis-header.svg",
+        imageAlt: "Infographic showing 59% workforce reskilling statistics",
+        url: "blog/ai-workforce-preparedness-crisis.html",
+        sortDate: new Date("2025-08-29"),
+        readingTime: "11 min read"
+    },
+    {
         title: "The AI Jobs Expectation Gap: Workers Think 30% Job Loss is Coming, But It's Already Here",
         excerpt: "Workers expect AI to replace 20-30% of jobs in 5-10 years, but Stanford data shows entry-level workers already face 13% decline. The gap between perception and reality reveals we're preparing for tomorrow's disruption while today's transformation reshapes the workforce.",
         extendedExcerpt: "New research from Indeed Hiring Lab, Stanford, and Goldman Sachs reveals a dangerous disconnect: while workers expect gradual AI job displacement over 10 years, entry-level positions have already declined 13% in just 2 years. With 300 million jobs at risk globally and 491 people losing jobs to AI daily, the future isn't coming—it's here, and most are still looking at the horizon.",
