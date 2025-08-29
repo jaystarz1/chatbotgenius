@@ -24,6 +24,19 @@
         html {
             scroll-behavior: smooth;
         }
+        
+        /* Disable hero animations/movement */
+        .hero,
+        .hero * {
+            transform: none !important;
+            animation: none !important;
+            transition: opacity 0.3s ease !important; /* Keep only opacity transitions */
+        }
+        
+        .hero-content {
+            position: relative !important;
+            transform: none !important;
+        }
     </style>
 </head>
 <body class="luxury-cursor">
@@ -184,8 +197,13 @@
                     <div class="gallery-item">
                         <img src="assets/images/wedding-wedding-details.jpg" alt="Watercolor wedding details" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
                     </div>
-                    <div class="gallery-item">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Reception]</div>
+                    <div class="gallery-item" style="position: relative;">
+                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                            <div style="text-align: center;">
+                                <div style="font-family: 'Great Vibes', cursive; font-size: 2rem; color: white; margin-bottom: 10px;">Your Photos Here</div>
+                                <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: rgba(255,255,255,0.9); letter-spacing: 1px;">Add your favorite engagement photos</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -565,22 +583,22 @@
                 </div>
                 <div class="instagram-grid">
                     <div class="instagram-post">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Wedding moment]</div>
+                        <img src="assets/images/wedding-engagement-1.jpg" alt="Engagement photo" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="instagram-post">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Couple photo]</div>
+                        <img src="assets/images/wedding-engagement-2.jpg" alt="Engagement photo" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="instagram-post">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Wedding celebration]</div>
+                        <img src="assets/images/wedding-engagement-3.jpg" alt="Engagement photo" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="instagram-post">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Wedding flowers]</div>
+                        <img src="assets/images/wedding-first-dance.jpg" alt="First dance illustration" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="instagram-post">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Wedding rings]</div>
+                        <img src="assets/images/wedding-hero.jpg" alt="Wedding venue" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="instagram-post">
-                        <div style="background: linear-gradient(135deg, #f4e5b2 0%, #d4af37 100%); min-height: 300px; display: flex; align-items: center; justify-content: center; color: #1a1a1a; font-size: 1.1rem; border-radius: 8px;">[Image: Wedding party]</div>
+                        <img src="assets/images/wedding-inspiration-decor.jpg" alt="Wedding inspiration" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
                     </div>
                 </div>
                 <p style="text-align: center; margin-top: 2rem; color: var(--wedding-text-medium);">
