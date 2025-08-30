@@ -60,6 +60,7 @@
             background: white;
             border-radius: 2px;
             transition: all 0.3s ease;
+            position: relative;
         }
         
         .hamburger.active .hamburger-line:nth-child(1) {
@@ -77,51 +78,56 @@
         /* Mobile Menu Styles */
         @media (max-width: 768px) {
             .hamburger {
-                display: flex;
+                display: flex !important;
             }
             
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: 50px;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                overflow-y: auto;
+            .wedding-nav .nav-container {
+                padding: 0 20px !important;
             }
             
-            .nav-menu.active {
-                right: 0;
+            .wedding-nav .nav-menu {
+                position: fixed !important;
+                top: 70px !important;
+                right: -100% !important;
+                width: 100% !important;
+                height: calc(100vh - 70px) !important;
+                background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%) !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                padding-top: 50px !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+                overflow-y: auto !important;
+                gap: 0 !important;
+                margin: 0 !important;
+                padding-left: 0 !important;
             }
             
-            .nav-menu li {
-                margin: 20px 0;
+            .wedding-nav .nav-menu.active {
+                right: 0 !important;
             }
             
-            .nav-link {
-                font-size: 1.2rem;
-                padding: 10px 20px;
-                display: block;
-                text-align: center;
+            .wedding-nav .nav-menu li {
+                margin: 20px 0 !important;
+                width: 100% !important;
+                text-align: center !important;
             }
             
-            .nav-cta {
-                margin-top: 20px;
-                padding: 12px 30px;
-                background: linear-gradient(135deg, #d4af37 0%, #f4e5b2 100%);
-                color: #1a1a1a;
-                border-radius: 25px;
+            .wedding-nav .nav-link {
+                font-size: 1.2rem !important;
+                padding: 10px 20px !important;
+                display: block !important;
+                text-align: center !important;
+                color: white !important;
             }
             
-            /* Adjust nav container for mobile */
-            .nav-container {
-                padding: 0 20px;
+            .wedding-nav .nav-cta {
+                margin-top: 20px !important;
+                padding: 12px 30px !important;
+                background: linear-gradient(135deg, #d4af37 0%, #f4e5b2 100%) !important;
+                color: #1a1a1a !important;
+                border-radius: 25px !important;
             }
         }
     </style>
