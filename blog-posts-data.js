@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "How to Optimize Your Website for AI Search: A Complete Guide to LLM-Friendly Web Design",
+        excerpt: "Learn how to optimize your website for AI search engines and LLMs. Comprehensive guide covering technical setup, schema markup, content structure, and future-proofing strategies.",
+        extendedExcerpt: "Artificial intelligence has fundamentally transformed how people search for and discover information online. This comprehensive guide explores how to make your website highly visible to AI crawlers and large language models (LLMs) while still appealing to human users. Learn the essential technical foundations, semantic HTML structures, schema markup strategies, and content optimization techniques that will position your site as a go-to resource for AI-driven search.",
+        date: "August 2025",
+        image: "blog/images/llm-optimization-guide-ai-2025-08-30T18-51-54.png",
+        imageAlt: "Dramatic comic-style illustration of AI search optimization",
+        url: "blog/llm-optimization-guide.html",
+        sortDate: new Date("2025-08-30"),
+        readingTime: "25 min read"
+    },
+    {
         title: "Why Personal Injury Lawyers Beat BigLaw at AI: 37% Adoption Rate Reveals Legal Tech's Surprising Leaders",
         excerpt: "Personal injury lawyers lead legal AI adoption at 37% vs 31% overall. Research reveals why PI attorneys embrace AI for medical records while BigLaw hesitates.",
         extendedExcerpt: "While BigLaw debates AI policies in committee rooms, personal injury lawyers quietly lead the profession with 37% AI adoption vs 31% overall. New research from Above the Law, ABA, and Thomson Reuters shows PI attorneys using AI to analyze thousands of medical records, saving 5 hours weekly while prestigious firms remain paralyzed by governance concerns.",
