@@ -64,15 +64,28 @@
             position: relative;
         }
         
-        /* Make hamburger white on mobile where header is dark */
+        /* Make hamburger visible on mobile */
         @media (max-width: 768px) {
             .hamburger-line {
-                background: white !important;
+                background: #3A2429 !important; /* Dark brown for visibility */
+                height: 4px !important; /* Thicker lines for better visibility */
+                box-shadow: 0 1px 3px rgba(0,0,0,0.2); /* Add shadow for contrast */
+            }
+            
+            /* Ensure header has proper height */
+            .wedding-header {
+                min-height: 70px !important;
+            }
+            
+            .wedding-nav {
+                min-height: 70px !important;
+                display: flex !important;
+                align-items: center !important;
             }
         }
         
         .hamburger.active .hamburger-line:nth-child(1) {
-            transform: translateY(10.5px) rotate(45deg);
+            transform: translateY(10px) rotate(45deg);
         }
         
         .hamburger.active .hamburger-line:nth-child(2) {
@@ -80,23 +93,35 @@
         }
         
         .hamburger.active .hamburger-line:nth-child(3) {
-            transform: translateY(-10.5px) rotate(-45deg);
+            transform: translateY(-10px) rotate(-45deg);
         }
         
         /* Mobile Menu Styles */
         @media (max-width: 768px) {
             .hamburger {
                 display: flex !important;
+                position: absolute !important;
+                right: 20px !important;
+                top: 50% !important;
+                transform: translateY(-50%) !important;
             }
             
             .wedding-nav .nav-container {
                 padding: 0 20px !important;
+                position: relative !important;
             }
             
+            /* Hide nav menu by default on mobile */
             .wedding-nav .nav-menu {
+                display: none !important;
+            }
+            
+            /* Show and position nav menu when active */
+            .wedding-nav .nav-menu.active {
+                display: flex !important;
                 position: fixed !important;
                 top: 70px !important;
-                right: -100% !important;
+                right: 0 !important;
                 width: 100% !important;
                 height: calc(100vh - 70px) !important;
                 background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%) !important;
@@ -104,16 +129,11 @@
                 align-items: center !important;
                 justify-content: flex-start !important;
                 padding-top: 50px !important;
-                transition: right 0.3s ease !important;
-                z-index: 1000 !important;
+                z-index: 999 !important;
                 overflow-y: auto !important;
                 gap: 0 !important;
                 margin: 0 !important;
                 padding-left: 0 !important;
-            }
-            
-            .wedding-nav .nav-menu.active {
-                right: 0 !important;
             }
             
             .wedding-nav .nav-menu li {
