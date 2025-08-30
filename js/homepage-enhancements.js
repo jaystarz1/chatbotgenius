@@ -382,13 +382,17 @@ function initializeHeroSpotlight() {
             visual: 'images/jay-tarzwell-photo-new.jpg'
         },
         {
-            type: 'news',
-            badge: 'Breaking AI News',
-            title: 'Claude 3.5 Sonnet Changes Everything',
-            subtitle: 'The New Standard in AI Assistance',
-            description: 'Anthropic\'s latest model sets new benchmarks for coding, analysis, and creative tasks. Here\'s what it means for your business.',
-            cta: [{text: 'Read Analysis', url: 'ai-news.html', primary: true}],
-            visual: 'blog/images/claude-desktop-mcp-header.svg'
+            type: 'blog',
+            badge: blogPostsData[1] ? '📰 Recent Insight' : 'Featured Article',
+            title: blogPostsData[1] ? blogPostsData[1].title : 'Explore Our Latest Insights',
+            subtitle: blogPostsData[1] ? 'Essential Reading from The Chatbot Genius' : 'Practical AI Implementation Strategies',
+            description: blogPostsData[1] ? blogPostsData[1].excerpt : 'Discover how AI is transforming businesses with practical, actionable insights from real-world implementations.',
+            cta: [{
+                text: 'Read Article', 
+                url: blogPostsData[1] ? blogPostsData[1].url : 'blog.html', 
+                primary: true
+            }],
+            visual: blogPostsData[1] ? blogPostsData[1].image : 'images/jay-tarzwell-photo-new.jpg'
         }
     ];
     
