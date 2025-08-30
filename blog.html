@@ -40,6 +40,19 @@
       gtag('js', new Date());
       gtag('config', 'G-R76R0B7J9B');
     </script>
+
+    <!-- Base WebPage node for Blog listing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://thechatbotgenius.com/blog.html#webpage",
+      "url": "https://thechatbotgenius.com/blog.html",
+      "name": "The Chatbot Genius Blog — AI Insights",
+      "isPartOf": { "@type": "WebSite", "url": "https://thechatbotgenius.com" },
+      "about": { "@type": "Organization", "name": "The Chatbot Genius", "url": "https://thechatbotgenius.com" }
+    }
+    </script>
     
     <!-- External CSS Files -->
     <link rel="stylesheet" href="css/01-settings/variables.css">
@@ -48,6 +61,7 @@
     <link rel="stylesheet" href="css/03-components/navigation.css">
     <link rel="stylesheet" href="css/03-components/dropdown.css">
     <link rel="stylesheet" href="css/03-components/buttons.css">
+    <link rel="stylesheet" href="css/03-components/cards.css">
     <link rel="stylesheet" href="css/03-components/footer.css">
     <link rel="stylesheet" href="css/04-layouts/container.css">
     <link rel="stylesheet" href="css/05-pages/blog.css">
@@ -163,6 +177,19 @@
         </div>
     </nav>
 
+    <!-- At a Glance -->
+    <section class="section" aria-labelledby="blog-glance" style="padding: 24px 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="summary-card">
+                <h2 id="blog-glance" class="summary-title">At a Glance</h2>
+                <ul class="summary-list">
+                    <li>Practical posts on implementing AI in real teams.</li>
+                    <li>Clear, short reads with examples and templates.</li>
+                    <li>New articles added regularly; browse recent below.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <!-- Page Header -->
     <div class="page-header">
         <div class="container">

@@ -1,6 +1,6 @@
 # LLM Optimization Rollout Plan (Site: thechatbotgenius.com)
 
-Status: COMPLETE v1.0 (implemented for The Chatbot Genius)
+Status: In Progress v0.3 (site-wide rollout + fixes)
 Owner: Jay (jay@barkerhrs.com)
 Scope: Public pages in this repo (root + subfolders), excluding archives and demo sites noted below (see CLAUDE.md)
 
@@ -49,16 +49,20 @@ Project Checklist
   - [x] Add `/llms.txt` highlighting key pages with one-line summaries and canonical URLs
   - [x] Ensure `robots.txt` includes `Sitemap: https://thechatbotgenius.com/sitemap.xml` and AI bot policies
 
-- [x] Phase 4 — Schema JSON-LD (connected graph) [COMPLETE]
+- [~] Phase 4 — Schema JSON-LD (connected graph)
   - [x] Site-wide base graph: Organization (LocalBusiness) + Person + WebSite + WebPage (page-specific) - Added to all main pages
   - [x] Blog posts: Article - All 13 blog posts have Article schema
   - [x] Books page: Book (with offers linking to Amazon where relevant) - Completed earlier
   - [x] Web Development/Services: Service (and Offer where applicable) - Enhanced Service schema with detailed offers
   - [x] BreadcrumbList where helpful - Added to projects and ai-news
   - [~] Validate with Rich Results Test / Schema.org validator - Ready for testing
+  - [ ] Add explicit WebPage node to `index.html`
+  - [ ] Add base graph (WebPage) alongside CollectionPage on `books.html`
 
-- [x] Phase 5 — Page Structure Improvements [COMPLETE]
+- [~] Phase 5 — Page Structure Improvements
   - [x] Add "Key Takeaways" near the top of core pages (Home, About, Books, Blog listing, Projects, Web Dev, AI News)
+  - [ ] Add At a Glance to `index.html` (home)
+  - [ ] Add At a Glance to `blog.html` (listing) (optional)
   - [~] Use question-forward headings with short, direct answers where helpful - Partial, can enhance later
   - [x] Add context-setting intros or TL;DR blocks for longer pages
 
@@ -118,8 +122,20 @@ Progress Log
 - [2025-08-30] v0.2 plan created and adapted for The Chatbot Genius (scope, deliverables, exclusions). File added to repo.
 - [2025-08-30] Mobile navigation fixes completed across pages; not part of LLMO scope but improves crawlable content access on mobile.
 - [2025-08-30] Test run on about.html: added Key Takeaways section, internal links block, visible Last updated timestamp, and connected JSON-LD graph (Organization, Person, WebSite, WebPage). Validated structure & no functional regressions.
-- [2025-08-30] UI polish: Renamed summaries to "At a Glance" (core pages) and "TL;DR" (blog); centralized card styles in `css/03-components/cards.css`; removed inline duplicates; refined copy per page.
-- [2025-08-30] Footer block rollout: Added dynamic "Last updated" + "Explore" to core pages and all blog posts. Pending on web-dev subpages (maintenance/packages/compare).
+- [2025-08-30] UI polish: Renamed summaries to “At a Glance” (core pages) and “TL;DR” (blog); centralized card styles in `css/03-components/cards.css`; removed inline duplicates; refined copy per page.
+- [2025-08-30] Footer block rollout: Added dynamic “Last updated” + “Explore” to core pages and all blog posts. Pending on web-dev subpages (maintenance/packages/compare).
+- [2025-08-30] Added shared `/js/last-updated.js` and replaced inline date logic on core pages; rolled footer to maintenance + compare pages; package pages still need script include.
+- [2025-08-30] Added `/js/last-updated.js` to all 4 package pages; footer dates now render across web-dev subpages.
+- [2025-08-30] Added At a Glance to `index.html` and `blog.html` (listing); linked shared card styles.
+- [2025-08-30] Added WebPage JSON-LD to `index.html` and base WebPage node to `books.html` alongside CollectionPage.
+- [2025-08-30] Tailored TL;DR bullets across all 13 blog posts for specificity (kept 3 concise points each).
+- [2025-08-30] Link health: Services pages exist and are linked correctly; no placeholder redirects required.
+
+Work Remaining (tracked)
+- Footer: add `/js/last-updated.js` to web-dev packages (standard, event, landing, complete) — DONE
+- Structure: add At a Glance to `index.html` and `blog.html` — DONE
+- Schema: add WebPage JSON-LD to `index.html`; add base WebPage alongside CollectionPage on `books.html` — DONE
+- Optional: tailor TL;DR bullets per post; link-health pass for Services
 - [2025-08-30 15:30] Major LLMO implementation completed:
   - ✅ Created `/llms.txt` with comprehensive page listings and summaries
   - ✅ Updated `robots.txt` with Sitemap directive
