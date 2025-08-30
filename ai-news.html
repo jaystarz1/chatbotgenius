@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/03-components/top-banner.css">
     <link rel="stylesheet" href="css/03-components/navigation.css">
     <link rel="stylesheet" href="css/03-components/buttons.css">
+    <link rel="stylesheet" href="css/03-components/cards.css">
     <link rel="stylesheet" href="css/03-components/news-cards.css">
     <link rel="stylesheet" href="css/03-components/news-grid.css">
     <link rel="stylesheet" href="css/03-components/news-filters.css">
@@ -81,6 +82,19 @@
         </div>
     </nav>
 
+    <!-- At a Glance -->
+    <section class="section" aria-labelledby="ainews-glance" style="padding: 24px 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="summary-card">
+                <h2 id="ainews-glance" class="summary-title">At a Glance</h2>
+                <ul class="summary-list">
+                    <li>Curated AI headlines with digest and charts.</li>
+                    <li>Source-linked summaries, updated regularly.</li>
+                    <li>Scan by category on desktop and mobile.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
     <!-- Page Header -->
     <header class="page-header">
         <div class="container">
@@ -1154,6 +1168,9 @@
         // Refresh every 3 hours
         setInterval(loadAndGenerateDigest, 3 * 60 * 60 * 1000);
     </script>
+    <style>
+        /* summary-card styles now in css/03-components/cards.css */
+    </style>
     
     <script>
         // Animations toggle functionality

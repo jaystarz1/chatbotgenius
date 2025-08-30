@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="css/03-components/top-banner.css">
     <link rel="stylesheet" href="css/03-components/navigation.css">
     <link rel="stylesheet" href="css/03-components/buttons.css">
+    <link rel="stylesheet" href="css/03-components/cards.css">
     <link rel="stylesheet" href="css/04-layouts/container.css">
     <link rel="stylesheet" href="css/05-pages/about.css">
     <link rel="stylesheet" href="css/03-components/footer.css">
@@ -198,16 +199,18 @@
         </div>
     </div>
 
-    <!-- Key Takeaways -->
-    <section class="section" aria-labelledby="about-takeaways" style="padding: 24px 0; background: #f8f9fa;">
+    <!-- At a Glance -->
+    <section class="section" aria-labelledby="about-glance" style="padding: 24px 0; background: #f8f9fa;">
         <div class="container">
-            <h2 id="about-takeaways" style="margin-bottom: 12px; color: #1a1f71;">Key Takeaways</h2>
-            <ul style="margin: 0; padding-left: 20px; line-height: 1.8; color: #333;">
-                <li>Ottawa-based AI consultant focused on practical, privacy-first solutions.</li>
-                <li>Expertise with ChatGPT, Claude, and secure AI implementation.</li>
-                <li>Author of books and creator of hands-on AI tools and demos.</li>
-                <li>Works locally and remotely with clients across Canada and worldwide.</li>
-            </ul>
+            <div class="summary-card">
+                <h2 id="about-glance" class="summary-title">At a Glance</h2>
+                <ul class="summary-list">
+                    <li>Ottawa-based AI consultant delivering privacy-first, practical solutions.</li>
+                    <li>Deep experience with ChatGPT, Claude, and secure deployment.</li>
+                    <li>Author, trainer, and builder of practical AI tools and demos.</li>
+                    <li>Work with clients across Canada and internationally.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -337,6 +340,7 @@
             animation: none !important;
             transition: none !important;
         }
+        /* summary-card styles now in css/03-components/cards.css */
     </style>
     <!-- Universal Share Button -->
     <script src="/js/share-button.js"></script></body>

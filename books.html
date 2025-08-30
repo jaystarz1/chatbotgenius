@@ -46,6 +46,7 @@
     <link rel="stylesheet" href="css/03-components/top-banner.css">
     <link rel="stylesheet" href="css/03-components/navigation.css">
     <link rel="stylesheet" href="css/03-components/buttons.css">
+    <link rel="stylesheet" href="css/03-components/cards.css">
     <link rel="stylesheet" href="css/03-components/review-cards.css">
     <link rel="stylesheet" href="css/04-layouts/container.css">
     <link rel="stylesheet" href="css/05-pages/books.css">
@@ -253,6 +254,20 @@
             <p>Guides on ChatGPT, AI Implementation & Sci-Fi Fiction</p>
         </div>
     </div>
+
+    <!-- At a Glance -->
+    <section class="section" aria-labelledby="books-glance" style="padding: 24px 0; background: #f8f9fa;">
+        <div class="container">
+            <div class="summary-card">
+                <h2 id="books-glance" class="summary-title">At a Glance</h2>
+                <ul class="summary-list">
+                    <li>Practical guides for fast, real-world AI adoption.</li>
+                    <li>Clear, non-technical explanations with working examples.</li>
+                    <li>Available on Amazon (US and Canada).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <!-- Book 1 -->
     <section class="book-section" id="book1">
@@ -519,5 +534,8 @@
     
     <!-- Universal Share Button -->
     <script src="/js/share-button.js"></script>
+    <style>
+        /* summary-card styles now in css/03-components/cards.css */
+    </style>
 </body>
 </html>

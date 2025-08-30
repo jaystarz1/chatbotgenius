@@ -118,6 +118,7 @@ Progress Log
 - [2025-08-30] v0.2 plan created and adapted for The Chatbot Genius (scope, deliverables, exclusions). File added to repo.
 - [2025-08-30] Mobile navigation fixes completed across pages; not part of LLMO scope but improves crawlable content access on mobile.
 - [2025-08-30] Test run on about.html: added Key Takeaways section, internal links block, visible Last updated timestamp, and connected JSON-LD graph (Organization, Person, WebSite, WebPage). Validated structure & no functional regressions.
+- [2025-08-30] UI polish: Renamed summaries to “At a Glance” (core pages) and “TL;DR” (blog); centralized card styles in `css/03-components/cards.css`; removed inline duplicates; refined copy per page.
 
 Next Actions
 - Inventory pages and draft initial `/llms.txt` candidates with one-line summaries.
