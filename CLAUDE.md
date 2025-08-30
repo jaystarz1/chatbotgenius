@@ -181,6 +181,12 @@ node generate-blog-image.js blog/your-post.html
 - `STYLE-GUIDE.md` - Complete style guide
 - `BLOG-POST-GUIDE.md` - Blog post creation guide
 - `CLAUDE-PROJECT-INSTRUCTIONS.md` - Claude-specific instructions
+- `LLMO-THECHATBOTGENIUS-ROLLOUT-PLAN.md` - Live plan for LLM Optimization (kept updated as work progresses)
+
+### Agent Collaboration Note (Codex-first)
+- Primary implementation agent: Codex CLI.
+- If Claude Code initiates or attempts to execute plan tasks, it must first explicitly confirm with the user before making any changes.
+- Claude may read and reference the plan, but should defer execution to Codex unless the user grants permission.
 
 ### Data Files
 - `blog-posts-data.js` - Central blog post registry
