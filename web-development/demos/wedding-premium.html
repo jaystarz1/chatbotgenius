@@ -38,84 +38,73 @@
             transform: none !important;
         }
         
-        /* COMPREHENSIVE Mobile Navigation Fix */
+        /* CRITICAL FIX: nav-toggle styles MUST be OUTSIDE media query */
+        
+        /* Always apply these styles - not just on mobile */
+        .wedding-nav .nav-container {
+            position: relative !important; /* Critical for nav-toggle positioning */
+        }
+        
+        /* Fix the hamburger button visibility - NO MEDIA QUERY */
+        .nav-toggle {
+            color: #3A2429 !important; /* Sets currentColor for children */
+        }
+        
+        .nav-toggle span {
+            background: #3A2429 !important; /* Override currentColor with explicit dark color */
+            width: 28px !important;
+            height: 3px !important;
+            display: block !important;
+            margin: 6px 0 !important;
+        }
+        
+        /* Only control menu visibility with media query */
         @media (max-width: 768px) {
-            /* 1. Fix nav-container positioning */
-            .wedding-nav .nav-container {
-                position: relative !important; /* Critical: nav-toggle needs this */
-            }
-            
-            /* 2. Hide nav-menu by default on mobile */
+            /* Hide menu by default on mobile */
             .wedding-nav .nav-menu {
-                display: none !important; /* Override wedding-premium.css display: flex */
+                display: none !important;
             }
             
-            /* 3. Show and style nav-menu only when active */
+            /* Show menu when active */
             .wedding-nav .nav-menu.active {
                 display: block !important;
-                position: absolute !important;
-                top: 100% !important;
+                position: fixed !important;
+                top: 70px !important;
                 left: 0 !important;
                 right: 0 !important;
+                bottom: 0 !important;
                 background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%) !important;
-                padding: 50px 20px !important;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.3) !important;
+                padding: 20px !important;
                 z-index: 999 !important;
+                overflow-y: auto !important;
             }
             
-            /* 4. Ensure nav-toggle is visible and positioned correctly */
-            .nav-toggle {
-                display: block !important;
-                position: absolute !important;
-                right: 1rem !important;
-                top: 50% !important;
-                transform: translateY(-50%) !important;
-                z-index: 1002 !important;
-                padding: 0.5rem !important;
-                background: transparent !important;
-                border: none !important;
-                cursor: pointer !important;
-            }
-            
-            /* 5. Make toggle lines clearly visible */
-            .nav-toggle span {
-                display: block !important;
-                width: 28px !important;
-                height: 3px !important;
-                background: #3A2429 !important; /* Dark brown for white header */
-                margin: 6px 0 !important;
-                border-radius: 2px !important;
-                transition: all 0.3s ease !important;
-            }
-            
-            /* 6. Style menu items */
+            /* Style menu items */
             .wedding-nav .nav-menu li {
-                margin: 20px 0 !important;
-                width: 100% !important;
-                text-align: center !important;
                 list-style: none !important;
+                margin: 20px 0 !important;
+                text-align: center !important;
             }
             
             .wedding-nav .nav-link {
-                font-size: 1.2rem !important;
-                padding: 10px 20px !important;
-                display: block !important;
-                text-align: center !important;
                 color: white !important;
+                display: block !important;
+                padding: 10px 20px !important;
+                font-size: 1.2rem !important;
                 text-decoration: none !important;
             }
             
             .wedding-nav .nav-link:hover {
-                color: #d4af37 !important; /* Gold on hover */
+                color: #d4af37 !important;
             }
             
             .wedding-nav .nav-cta {
-                margin-top: 20px !important;
-                padding: 12px 30px !important;
                 background: linear-gradient(135deg, #d4af37 0%, #f4e5b2 100%) !important;
                 color: #1a1a1a !important;
+                padding: 12px 30px !important;
                 border-radius: 25px !important;
                 display: inline-block !important;
+                margin-top: 20px !important;
             }
         }
     </style>
