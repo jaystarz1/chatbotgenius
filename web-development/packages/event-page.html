@@ -90,6 +90,58 @@
             box-shadow: 0 5px 15px rgba(249, 199, 79, 0.4);
         }
         
+        /* Mobile navigation helper (normalized to main theme) */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: inline-block;
+                background: transparent;
+                border: 2px solid #ffffff;
+                color: #ffffff;
+                padding: 8px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 1.2rem;
+            }
+            .mobile-menu-toggle span {
+                display: block;
+                width: 20px;
+                height: 2px;
+                background: #ffffff;
+                margin: 4px 0;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a1f71;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+            .nav-links.show { display: flex; }
+            .nav-links a,
+            .nav-links .btn-nav-cta {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                padding: 10px;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-menu-toggle { display: none; }
+            .nav-links {
+                display: flex;
+                position: static;
+                background: transparent;
+                flex-direction: row;
+                padding: 0;
+            }
+        }
+        
         /* Web Dev Sub-Navigation */
         .web-dev-nav {
             background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 100%);
@@ -688,7 +740,12 @@
         <div class="container">
             <div class="nav-content">
                 <a href="/" class="nav-brand">The Chatbot Genius</a>
-                <ul class="nav-links">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="/ai-insights.html">AI Insights</a></li>
                     <li><a href="/books.html">Books</a></li>
                     <li><a href="/projects.html">Projects</a></li>
@@ -698,6 +755,8 @@
             </div>
         </div>
     </nav>
+    
+    <script src="/js/navigation.js"></script>
     
     <!-- Web Dev Sub-Navigation -->
     <nav class="web-dev-nav" aria-label="Web Development Services Navigation">

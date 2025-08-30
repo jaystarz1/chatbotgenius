@@ -342,7 +342,12 @@
                     <span class="logo" aria-hidden="true">🤖</span>
                     <span>The Chatbot Genius</span>
                 </a>
-                <nav class="nav-menu" role="navigation">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-menu" id="nav-links" role="navigation">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>
@@ -418,6 +423,8 @@
             </div>
         </div>
     </section>
+
+    <script src="/js/navigation.js"></script>
     
     <!-- Dynamic Metrics Dashboard -->
     <section class="metrics-dashboard" id="metrics-dashboard">

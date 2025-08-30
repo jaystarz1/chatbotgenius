@@ -82,7 +82,12 @@
                     <span class="logo" aria-hidden="true">🤖</span>
                     <span>The Chatbot Genius</span>
                 </a>
-                <nav class="nav-menu" role="navigation">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-menu" id="nav-links" role="navigation">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>
@@ -338,24 +343,8 @@
         </div>
     </footer>
 
+    <script src="/js/navigation.js"></script>
     <script>
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%)';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '20px';
-                navLinks.style.gap = '15px';
-            }
-        }
-        
         // Animations toggle functionality
         const animationsToggle = document.getElementById('toggle-animations');
         if (animationsToggle) {

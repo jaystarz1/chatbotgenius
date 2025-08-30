@@ -236,10 +236,12 @@
                     <span class="logo" aria-hidden="true">🤖</span>
                     <span>The Chatbot Genius</span>
                 </a>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="nav-menu">
-                    Menu
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </button>
-                <nav class="nav-menu" role="navigation">
+                <nav class="nav-menu" id="nav-links" role="navigation">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>
@@ -952,26 +954,7 @@
                 }
             });
         }
-        
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        if (mobileMenuToggle && navMenu) {
-            mobileMenuToggle.addEventListener('click', function() {
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !isExpanded);
-                navMenu.classList.toggle('show');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.nav-content') && navMenu.classList.contains('show')) {
-                    navMenu.classList.remove('show');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-        }
+        // Mobile navigation handled by /js/navigation.js
         
         // Handle contact form submission
         const contactForm = document.getElementById('website-inquiry-form');
@@ -1060,5 +1043,7 @@
             }, 3000);
         }
     </script>
+    
+    <script src="/js/navigation.js"></script>
 </body>
 </html>

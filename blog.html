@@ -133,7 +133,12 @@
                     <span class="logo" aria-hidden="true">🤖</span>
                     <span>The Chatbot Genius</span>
                 </a>
-                <nav class="nav-menu" role="navigation">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle menu" aria-controls="nav-links" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="nav-menu" id="nav-links" role="navigation">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>
@@ -188,36 +193,8 @@
     <!-- Load blog posts data -->
     <script src="/blog-posts-data.js?v=2"></script>
     
+    <script src="/js/navigation.js"></script>
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-        
-        if (mobileMenuToggle && navLinks) {
-            mobileMenuToggle.addEventListener('click', function() {
-                const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', !isExpanded);
-                navLinks.classList.toggle('show');
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.nav-content') && navLinks && navLinks.classList.contains('show')) {
-                    navLinks.classList.remove('show');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                }
-            });
-            
-            // Close mobile menu when pressing Escape
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && navLinks && navLinks.classList.contains('show')) {
-                    navLinks.classList.remove('show');
-                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenuToggle.focus();
-                }
-            });
-        }
-        
         // Load blog posts dynamically
         function loadBlogPosts() {
             const container = document.getElementById('blog-posts-container');
