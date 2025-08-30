@@ -58,10 +58,17 @@
             display: block;
             width: 100%;
             height: 3px;
-            background: #3A2429; /* Dark brown to match nav text */
+            background: #3A2429; /* Dark brown for desktop */
             border-radius: 2px;
             transition: all 0.3s ease;
             position: relative;
+        }
+        
+        /* Make hamburger white on mobile where header is dark */
+        @media (max-width: 768px) {
+            .hamburger-line {
+                background: white !important;
+            }
         }
         
         .hamburger.active .hamburger-line:nth-child(1) {
