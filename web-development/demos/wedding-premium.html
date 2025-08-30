@@ -45,29 +45,42 @@
             position: relative !important;
         }
         
-        /* 2. Style the hamburger button (mobile first approach) */
+        /* 2. DEBUG: Make hamburger IMPOSSIBLE to miss */
         .nav-toggle {
-            display: block !important; /* Show by default on mobile */
-            position: absolute !important;
-            right: 1rem !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            background: transparent !important;
-            border: none !important;
-            padding: 0.5rem !important;
+            display: block !important;
+            position: fixed !important; /* Fixed to rule out container issues */
+            top: 10px !important;
+            right: 10px !important;
+            width: 60px !important;
+            height: 60px !important;
+            background: red !important; /* Bright red background */
+            border: 3px solid yellow !important; /* Yellow border */
+            padding: 10px !important;
             cursor: pointer !important;
-            z-index: 1002 !important;
+            z-index: 99999 !important; /* Absolutely on top */
+            transform: none !important; /* Remove transforms */
         }
         
-        /* 3. Style the three lines */
+        /* 3. Make lines bright white on red */
         .nav-toggle span {
             display: block !important;
-            width: 25px !important; /* Match working example */
-            height: 3px !important;
-            background: #3A2429 !important; /* Dark color for visibility */
-            margin: 3px 0 !important; /* Match working example spacing */
+            width: 30px !important;
+            height: 5px !important;
+            background: white !important; /* White lines on red */
+            margin: 5px auto !important;
             border-radius: 2px !important;
-            transition: all 0.3s ease !important;
+        }
+        
+        /* Add text label to button */
+        .nav-toggle::after {
+            content: "MENU" !important;
+            color: white !important;
+            font-size: 10px !important;
+            font-weight: bold !important;
+            position: absolute !important;
+            bottom: 5px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
         }
         
         /* 4. Hide hamburger on desktop */
@@ -944,6 +957,28 @@
                 button.textContent = '🎵 Our Song';
             }
         }
+        
+        // DEBUG: Check if nav-toggle exists
+        window.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.querySelector('.nav-toggle');
+            console.log('=== HAMBURGER DEBUG ===');
+            console.log('Nav toggle element:', navToggle);
+            if (navToggle) {
+                const styles = window.getComputedStyle(navToggle);
+                console.log('Display:', styles.display);
+                console.log('Visibility:', styles.visibility);
+                console.log('Position:', styles.position);
+                console.log('Top:', styles.top);
+                console.log('Right:', styles.right);
+                console.log('Z-index:', styles.zIndex);
+                console.log('Background:', styles.background);
+                console.log('Width:', styles.width);
+                console.log('Height:', styles.height);
+            } else {
+                console.log('NAV TOGGLE NOT FOUND IN DOM!');
+            }
+            console.log('======================');
+        });
         
         // Enhanced reveal animations
         window.addEventListener('scroll', () => {
