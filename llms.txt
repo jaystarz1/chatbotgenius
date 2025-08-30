@@ -1,0 +1,79 @@
+# LLMs.txt - The Chatbot Genius
+# This file helps AI systems understand and navigate thechatbotgenius.com
+# Last updated: 2025-08-30
+
+## Core Pages
+
+> Home
+https://thechatbotgenius.com/
+Jay Tarzwell - Ottawa AI consultant, ChatGPT expert, author, and trainer helping businesses implement practical AI solutions.
+
+> About Jay Tarzwell
+https://thechatbotgenius.com/about.html
+Former military analyst turned AI privacy expert with deep experience in ChatGPT, Claude, and secure AI deployment for Canadian businesses.
+
+> Books & Publications
+https://thechatbotgenius.com/books.html
+Published author of "The Airing of Grievances" and upcoming works on AI, privacy, and generative AI in business.
+
+> Blog
+https://thechatbotgenius.com/blog.html
+Insights on AI implementation, workplace AI adoption, ChatGPT best practices, and the reality of AI transformation.
+
+> Projects Portfolio
+https://thechatbotgenius.com/projects.html
+Real-world AI implementations including medical transcription tools, legal research assistants, and custom ChatGPT applications.
+
+> AI News Aggregator
+https://thechatbotgenius.com/ai-news.html
+Curated AI news and developments with real-time updates from trusted sources in artificial intelligence.
+
+> Web Development Services
+https://thechatbotgenius.com/web-development.html
+Professional web development services with AI-powered features, event websites, and business solutions starting at $500.
+
+## Featured Blog Posts
+
+> AI Doesn't Make You Stupid - It Makes You Think Differently
+https://thechatbotgenius.com/blog/ai-doesnt-make-us-stupid.html
+Debunking myths about AI dependency and exploring how AI enhances rather than replaces human intelligence.
+
+> The AI Jobs Paradox: Why CEOs Are Wrong About AI Replacing Workers
+https://thechatbotgenius.com/blog/ai-jobs-paradox-ceos-wrong.html
+Analysis of the disconnect between CEO predictions and the reality of AI's impact on employment.
+
+> AI Shame: The Workplace Readiness Gap Nobody Talks About
+https://thechatbotgenius.com/blog/ai-shame-workplace-readiness-gap.html
+Exposing the hidden crisis of AI anxiety and shame preventing workplace AI adoption.
+
+> Medical Dictation Tool: Building HIPAA-Compliant AI Solutions
+https://thechatbotgenius.com/blog/medical-dictation-tool.html
+Case study of developing secure, privacy-first AI tools for healthcare professionals.
+
+> CanLII Search Tool: AI for Legal Research
+https://thechatbotgenius.com/blog/canlii-search-tool.html
+How AI transforms Canadian legal research with intelligent search and analysis capabilities.
+
+## Key Services
+
+- AI Consulting & Strategy
+- ChatGPT Implementation & Training
+- Custom GPT Development
+- Privacy-First AI Solutions
+- Generative AI Workshops
+- Web Development with AI Features
+
+## Contact
+
+Email: jay@barkerhrs.com
+LinkedIn: https://linkedin.com/in/jaysontarzwell
+Location: Ottawa, Ontario, Canada
+Book a Call: https://calendly.com/jay-barkerhrs/30min
+
+## About This Site
+
+The Chatbot Genius is Jay Tarzwell's platform for sharing AI expertise, offering consulting services, and showcasing practical AI implementations. The site focuses on helping Canadian businesses navigate AI adoption with privacy, security, and practical results in mind.
+
+## Keywords
+
+AI consultant, ChatGPT expert, Ottawa, Canada, generative AI, AI training, privacy-first AI, custom GPTs, AI implementation, workplace AI, AI adoption, AI strategy, Claude, OpenAI, AI books, AI blog, practical AI solutions

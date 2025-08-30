@@ -187,6 +187,14 @@
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
             <p>Building the future of conversational AI, one chatbot at a time.</p>
+            <p id="last-updated" style="margin-top: 8px; color: #999;">Last updated: </p>
+            <p style="margin-top: 8px;">
+                Explore: 
+                <a href="/books.html" class="nav-link" style="color:#4c5fd5;">Books</a> ·
+                <a href="/blog.html" class="nav-link" style="color:#4c5fd5;">Blog</a> ·
+                <a href="/projects.html" class="nav-link" style="color:#4c5fd5;">Projects</a> ·
+                <a href="/web-development.html" class="nav-link" style="color:#4c5fd5;">Web Development</a>
+            </p>
         </div>
     </footer>
     
@@ -194,6 +202,7 @@
     <script src="/blog-posts-data.js?v=2"></script>
     
     <script src="/js/navigation.js"></script>
+    <script src="/js/last-updated.js"></script>
     <script>
         // Load blog posts dynamically
         function loadBlogPosts() {
@@ -229,6 +238,7 @@
                 container.appendChild(article);
             });
         }
+        
         
         // Load posts when page is ready
         document.addEventListener('DOMContentLoaded', loadBlogPosts);

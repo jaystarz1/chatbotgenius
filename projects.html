@@ -55,6 +55,80 @@
             transition: none !important;
         }
     </style>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://thechatbotgenius.com/#organization",
+                "name": "The Chatbot Genius",
+                "url": "https://thechatbotgenius.com",
+                "logo": "https://thechatbotgenius.com/favicon.svg",
+                "sameAs": [
+                    "https://linkedin.com/in/jaysontarzwell",
+                    "https://github.com/jaytarzwell"
+                ]
+            },
+            {
+                "@type": "Person",
+                "@id": "https://thechatbotgenius.com/#jay-tarzwell",
+                "name": "Jay Tarzwell",
+                "jobTitle": "AI Consultant & ChatGPT Expert",
+                "url": "https://thechatbotgenius.com/about.html",
+                "sameAs": [
+                    "https://linkedin.com/in/jaysontarzwell",
+                    "https://github.com/jaytarzwell"
+                ],
+                "worksFor": {
+                    "@id": "https://thechatbotgenius.com/#organization"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://thechatbotgenius.com/#website",
+                "url": "https://thechatbotgenius.com",
+                "name": "The Chatbot Genius",
+                "description": "AI consulting, ChatGPT expertise, and practical AI solutions for Canadian businesses",
+                "publisher": {
+                    "@id": "https://thechatbotgenius.com/#organization"
+                }
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://thechatbotgenius.com/projects.html",
+                "url": "https://thechatbotgenius.com/projects.html",
+                "name": "AI Projects & Tools Ottawa | Legal Search & Custom Solutions",
+                "description": "Innovative AI tools built in Ottawa. CanLII legal search, ChatGPT solutions for Canadian professionals. Free tools & custom development.",
+                "isPartOf": {
+                    "@id": "https://thechatbotgenius.com/#website"
+                },
+                "author": {
+                    "@id": "https://thechatbotgenius.com/#jay-tarzwell"
+                },
+                "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "Home",
+                            "item": "https://thechatbotgenius.com/"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "Projects",
+                            "item": "https://thechatbotgenius.com/projects.html"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Top Banner -->
@@ -355,6 +429,14 @@
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
             <p>Building the future with AI, one project at a time.</p>
+            <p id="last-updated" style="margin-top: 8px; color: #999;">Last updated: </p>
+            <p style="margin-top: 8px;">
+                Explore: 
+                <a href="/books.html" class="nav-link" style="color:#4c5fd5;">Books</a> ·
+                <a href="/blog.html" class="nav-link" style="color:#4c5fd5;">Blog</a> ·
+                <a href="/projects.html" class="nav-link" style="color:#4c5fd5;">Projects</a> ·
+                <a href="/web-development.html" class="nav-link" style="color:#4c5fd5;">Web Development</a>
+            </p>
         </div>
     </footer>
 
@@ -387,6 +469,7 @@
             });
         }
     </script>
+    <script src="/js/last-updated.js"></script>
 
     <style>
         /* summary-card styles now in css/03-components/cards.css */

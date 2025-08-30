@@ -41,6 +41,49 @@
             transition: none !important;
         }
     </style>
+    
+    <!-- Schema.org Article Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "CanLII Search: AI-Powered Boolean Search for Canadian Legal Research",
+        "description": "Discover CanLII Search, an AI-powered tool that transforms plain English or French queries into precise Boolean searches for Canadian case law and legislation.",
+        "datePublished": "2025-08",
+        "dateModified": "2025-08-30",
+        "author": {
+            "@type": "Person",
+            "name": "Jay Tarzwell",
+            "url": "https://thechatbotgenius.com/about.html",
+            "sameAs": [
+                "https://linkedin.com/in/jaysontarzwell",
+                "https://github.com/jaytarzwell"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "The Chatbot Genius",
+            "url": "https://thechatbotgenius.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://thechatbotgenius.com/favicon.svg"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://thechatbotgenius.com/blog/canlii-search-tool.html"
+        },
+        "image": "https://thechatbotgenius.com/blog/images/canlii-search-tool-header.svg",
+        "keywords": "CanLII search, Boolean search, Canadian law, legal research, AI legal tools, bilingual legal search, case law search",
+        "articleSection": "AI Tools",
+        "inLanguage": "en-CA",
+        "isPartOf": {
+            "@type": "Blog",
+            "name": "The Chatbot Genius Blog",
+            "url": "https://thechatbotgenius.com/blog.html"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Top Banner -->
@@ -277,6 +320,14 @@
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
             <p>Building the future of conversational AI, one chatbot at a time.</p>
+            <p id="last-updated" style="margin-top: 8px; color: #999;">Last updated: </p>
+            <p style="margin-top: 8px;">
+                Explore: 
+                <a href="/books.html" style="color:#4c5fd5;">Books</a> ·
+                <a href="/blog.html" style="color:#4c5fd5;">Blog</a> ·
+                <a href="/projects.html" style="color:#4c5fd5;">Projects</a> ·
+                <a href="/web-development.html" style="color:#4c5fd5;">Web Development</a>
+            </p>
         </div>
     </footer>
     <script src="../js/navigation.js"></script>
@@ -287,6 +338,15 @@
     
     <!-- Animations Toggle -->
     <script>
+        // Last updated footer date
+        (function(){
+            var el = document.getElementById('last-updated');
+            if (!el) return;
+            var d = new Date(document.lastModified);
+            var formatted = d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
+            el.textContent = 'Last updated: ' + formatted;
+        })();
+
         // Animations toggle functionality
         const animationsToggle = document.getElementById('toggle-animations');
         if (animationsToggle) {

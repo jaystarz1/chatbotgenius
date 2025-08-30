@@ -1107,14 +1107,20 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-links">
-                <a href="/">Home</a>
-                <a href="/web-development/">Web Development</a>
-                <a href="/ai-insights.html">AI Insights</a>
-                <a href="/books.html">Books</a>
-                <a href="tel:343-597-5646">343-597-5646</a>
-            </div>
-            <p>&copy; 2024 The Chatbot Genius. Ottawa, Canada.</p>
+            <p>&copy; 2025 The Chatbot Genius | Ottawa, ON | <a href="tel:3435975646">343-597-5646</a></p>
+            <p>
+                <a href="../">Web Development</a> | 
+                <a href="../demos/showcase.html">View Demos</a> | 
+                <a href="../../">Main Site</a>
+            </p>
+            <p id="last-updated" style="margin-top: 8px; color: #999;">Last updated: </p>
+            <p style="margin-top: 8px;">
+                Explore: 
+                <a href="../../books.html" style="color:#f9c74f;">Books</a> ·
+                <a href="../../blog.html" style="color:#f9c74f;">Blog</a> ·
+                <a href="../../projects.html" style="color:#f9c74f;">Projects</a> ·
+                <a href="../" style="color:#f9c74f;">Web Development</a>
+            </p>
         </div>
     </footer>
 
@@ -1143,6 +1149,16 @@
                 item.classList.toggle('active');
             });
         });
+    </script>
+
+    <script>
+      (function(){
+        var el = document.getElementById('last-updated');
+        if (!el) return;
+        var d = new Date(document.lastModified);
+        var formatted = d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
+        el.textContent = 'Last updated: ' + formatted;
+      })();
     </script>
 </body>
 </html>

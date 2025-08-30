@@ -185,24 +185,110 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Web Development Ottawa",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "The Chatbot Genius",
-        "url": "https://thechatbotgenius.com"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Ottawa"
-      },
-      "description": "Professional web development services in Ottawa. AI-powered websites delivered in 5 business days.",
-      "offers": {
-        "@type": "AggregateOffer",
-        "priceCurrency": "CAD",
-        "lowPrice": "297",
-        "highPrice": "997"
-      }
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://thechatbotgenius.com/#organization",
+          "name": "The Chatbot Genius",
+          "url": "https://thechatbotgenius.com",
+          "telephone": "343-597-5646",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Ottawa",
+            "addressRegion": "ON",
+            "addressCountry": "CA"
+          }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://thechatbotgenius.com/web-development.html#service",
+          "name": "Web Development Ottawa - AI-Powered Websites",
+          "provider": {
+            "@id": "https://thechatbotgenius.com/#organization"
+          },
+          "serviceType": "Web Development",
+          "areaServed": [
+            {
+              "@type": "City",
+              "name": "Ottawa"
+            },
+            {
+              "@type": "Country",
+              "name": "Canada"
+            }
+          ],
+          "description": "Professional web development services in Ottawa. AI-powered websites delivered in 5 business days with modern design and responsive layouts.",
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Event Page",
+              "price": "297",
+              "priceCurrency": "CAD",
+              "description": "Single-page event website with countdown timer and RSVP"
+            },
+            {
+              "@type": "Offer",
+              "name": "Landing Page",
+              "price": "497",
+              "priceCurrency": "CAD",
+              "description": "Professional landing page with lead capture and analytics"
+            },
+            {
+              "@type": "Offer",
+              "name": "Standard Package",
+              "price": "697",
+              "priceCurrency": "CAD",
+              "description": "5-page business website with contact forms and SEO"
+            },
+            {
+              "@type": "Offer",
+              "name": "Complete Package",
+              "price": "997",
+              "priceCurrency": "CAD",
+              "description": "10-page website with blog, advanced features, and training"
+            }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Web Development Services",
+            "itemListElement": [
+              {
+                "@type": "Service",
+                "name": "Event Websites",
+                "description": "Wedding, birthday, and corporate event pages"
+              },
+              {
+                "@type": "Service",
+                "name": "Business Websites",
+                "description": "Professional sites for small and medium businesses"
+              },
+              {
+                "@type": "Service",
+                "name": "Landing Pages",
+                "description": "High-converting pages for marketing campaigns"
+              },
+              {
+                "@type": "Service",
+                "name": "AI Integration",
+                "description": "ChatGPT and AI-powered features"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://thechatbotgenius.com/web-development.html",
+          "url": "https://thechatbotgenius.com/web-development.html",
+          "name": "Web Development Services Ottawa | AI-Powered Websites",
+          "description": "Professional web development in Ottawa. Get your website built in 5 days with AI-powered design. Starting at $297.",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://thechatbotgenius.com/#website",
+            "name": "The Chatbot Genius",
+            "url": "https://thechatbotgenius.com"
+          }
+        }
+      ]
     }
     </script>
 </head>
@@ -938,6 +1024,14 @@
         <div class="container">
             <div class="footer-bottom">
                 <p>&copy; 2025 The Chatbot Genius. All rights reserved. | <a href="/" style="color: white;">Home</a> | <a href="/web-development" style="color: white;">Web Development</a></p>
+                <p id="last-updated" style="margin-top: 8px; color: rgba(255,255,255,0.85);">Last updated: </p>
+                <p style="margin-top: 8px; color: rgba(255,255,255,0.9);">
+                    Explore: 
+                    <a href="/books.html" style="color:#f9c74f;">Books</a> ·
+                    <a href="/blog.html" style="color:#f9c74f;">Blog</a> ·
+                    <a href="/projects.html" style="color:#f9c74f;">Projects</a> ·
+                    <a href="/web-development.html" style="color:#f9c74f;">Web Development</a>
+                </p>
             </div>
         </div>
     </footer>
@@ -1060,6 +1154,15 @@
     </script>
     
     <script src="/js/navigation.js"></script>
+    <script>
+      (function(){
+        var el = document.getElementById('last-updated');
+        if (!el) return;
+        var d = new Date(document.lastModified);
+        var formatted = d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
+        el.textContent = 'Last updated: ' + formatted;
+      })();
+    </script>
     <style>
         /* summary-card styles now in css/03-components/cards.css */
     </style>

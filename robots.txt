@@ -11,3 +11,6 @@ Allow: /
 # Block specific crawlers if needed
 User-agent: UnwantedBot
 Disallow: /
+
+# Sitemap location
+Sitemap: https://thechatbotgenius.com/sitemap.xml

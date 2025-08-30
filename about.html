@@ -40,6 +40,7 @@
       gtag('js', new Date());
       gtag('config', 'G-R76R0B7J9B');
     </script>
+    <script src="/js/last-updated.js"></script>
     <!-- External CSS Files - Using relative paths for local testing -->
     <link rel="stylesheet" href="css/01-settings/variables.css">
     <link rel="stylesheet" href="css/02-base/reset.css">
@@ -248,7 +249,7 @@
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
             <p>Building the future of conversational AI, one chatbot at a time.</p>
-            <p style="margin-top: 8px; color: #999;">Last updated: August 30, 2025</p>
+            <p id="last-updated" style="margin-top: 8px; color: #999;">Last updated: </p>
             <p style="margin-top: 8px;">
                 Explore: 
                 <a href="/books.html" class="nav-link" style="color:#4c5fd5;">Books</a> ·
@@ -342,6 +343,15 @@
         }
         /* summary-card styles now in css/03-components/cards.css */
     </style>
+    <script>
+      (function(){
+        var el = document.getElementById('last-updated');
+        if (!el) return;
+        var d = new Date(document.lastModified);
+        var formatted = d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
+        el.textContent = 'Last updated: ' + formatted;
+      })();
+    </script>
     <!-- Universal Share Button -->
     <script src="/js/share-button.js"></script></body>
 </html>

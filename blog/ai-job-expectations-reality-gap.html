@@ -145,6 +145,49 @@
             color: #155724;
         }
     </style>
+    
+    <!-- Schema.org Article Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "The AI Jobs Expectation Gap: Workers Think 30% Job Loss is Coming, But It's Already Here",
+        "description": "Workers expect AI to replace 20-30% of jobs, but Stanford data shows it's already happening. Entry-level workers face 13% job decline while 300 million jobs globally are at risk. Explore the reality gap between expectations and actual AI impact.",
+        "datePublished": "2025-08-29",
+        "dateModified": "2025-08-30",
+        "author": {
+            "@type": "Person",
+            "name": "Jay Tarzwell",
+            "url": "https://thechatbotgenius.com/about.html",
+            "sameAs": [
+                "https://linkedin.com/in/jaysontarzwell",
+                "https://github.com/jaytarzwell"
+            ]
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "The Chatbot Genius",
+            "url": "https://thechatbotgenius.com",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://thechatbotgenius.com/favicon.svg"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://thechatbotgenius.com/blog/ai-job-expectations-reality-gap.html"
+        },
+        "image": "https://thechatbotgenius.com/blog/images/ai-job-expectations-reality-gap-ai-2025-08-29T15-11-49.png",
+        "keywords": "AI job displacement, GenAI impact, Stanford AI study, Goldman Sachs 300 million jobs, AI automation statistics, entry-level jobs AI, Indeed Hiring Lab, AI expectations vs reality",
+        "articleSection": "AI & Employment",
+        "inLanguage": "en-CA",
+        "isPartOf": {
+            "@type": "Blog",
+            "name": "The Chatbot Genius Blog",
+            "url": "https://thechatbotgenius.com/blog.html"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Top Banner -->
@@ -479,6 +522,14 @@
         <div class="container">
             <p>&copy; 2025 The Chatbot Genius. All rights reserved.</p>
             <p>Building the future of conversational AI, one chatbot at a time.</p>
+            <p id="last-updated" style="margin-top: 8px; color: #999;">Last updated: </p>
+            <p style="margin-top: 8px;">
+                Explore: 
+                <a href="/books.html" style="color:#4c5fd5;">Books</a> ·
+                <a href="/blog.html" style="color:#4c5fd5;">Blog</a> ·
+                <a href="/projects.html" style="color:#4c5fd5;">Projects</a> ·
+                <a href="/web-development.html" style="color:#4c5fd5;">Web Development</a>
+            </p>
         </div>
     </footer>
     <script src="../js/navigation.js"></script>
@@ -489,6 +540,15 @@
     
     <!-- Animations Toggle -->
     <script>
+        // Last updated footer date
+        (function(){
+            var el = document.getElementById('last-updated');
+            if (!el) return;
+            var d = new Date(document.lastModified);
+            var formatted = d.toLocaleDateString('en-CA',{year:'numeric',month:'long',day:'numeric'});
+            el.textContent = 'Last updated: ' + formatted;
+        })();
+
         // Animations toggle functionality
         const animationsToggle = document.getElementById('toggle-animations');
         if (animationsToggle) {
