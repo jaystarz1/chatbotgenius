@@ -362,7 +362,7 @@
                     <span></span>
                 </button>
                 <nav class="nav-menu" id="nav-links" role="navigation">
-                    <a href="/" class="nav-link">Home</a>
+                    <a href="/" class="nav-link home-link">Home</a>
                     <a href="/about.html" class="nav-link">About</a>
                     <a href="/books.html" class="nav-link">Books</a>
                     <a href="/blog.html" class="nav-link">Blog</a>
@@ -381,8 +381,8 @@
                     </div>
                     <a href="/ai-news.html" class="nav-link">AI News</a>
                     <a href="/#contact" class="nav-link">Contact</a>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
-                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Animations Off</button>
                 </nav>
             </div>
         </div>
@@ -1167,7 +1167,7 @@
         // Apply initial state
         if (!animationsEnabled) {
             document.body.classList.add('no-animations');
-            animationsToggle.textContent = 'Turn on animations';
+            animationsToggle.textContent = 'Animations On';
         }
         
         // Toggle animations
@@ -1177,7 +1177,7 @@
             if (isEnabled) {
                 document.body.classList.add('no-animations');
                 localStorage.setItem('animationsEnabled', 'false');
-                this.textContent = 'Turn on animations';
+                this.textContent = 'Animations On';
                 
                 // Stop carousel animation too
                 if (window.blogCarousel) {
@@ -1190,7 +1190,7 @@
             } else {
                 document.body.classList.remove('no-animations');
                 localStorage.setItem('animationsEnabled', 'true');
-                this.textContent = 'Turn off animations';
+                this.textContent = 'Animations Off';
                 
                 // Resume carousel animation
                 if (window.blogCarousel) {

@@ -157,3 +157,18 @@
     color: var(--primary-dark);
     padding-left: 25px;
 }
+
+/* Home Link Responsive Visibility */
+/* Hide Home link on desktop since logo already links to home */
+@media (min-width: 769px) {
+    .nav-link.home-link {
+        display: none !important;
+    }
+}
+
+/* Show Home link on mobile for better UX */
+@media (max-width: 768px) {
+    .nav-link.home-link {
+        display: block;
+    }
+}
