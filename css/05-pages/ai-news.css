@@ -116,10 +116,6 @@
     margin: 0;
 }
 
-/* Services Dropdown - Remove if exists */
-.nav-dropdown {
-    display: none !important;
-}
 
 /* Mobile responsive for daily digest */
 @media (max-width: 768px) {
