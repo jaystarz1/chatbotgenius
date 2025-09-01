@@ -1,0 +1,452 @@
+/* ===================================
+   Training Page Specific Styles - The Chatbot Genius
+   =================================== */
+
+/* Hero Section */
+.hero-training {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: white;
+    padding: 100px 0 80px;
+    text-align: center;
+}
+
+.hero-training h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: white;
+}
+
+.hero-training .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    opacity: 0.95;
+}
+
+.hero-training p {
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* Training Approach Section */
+.training-approach {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.approach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.approach-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.approach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.approach-card h3 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.approach-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Training Formats Section */
+.training-formats {
+    padding: 80px 0;
+    background: white;
+}
+
+.formats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.format-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--border-radius-xl);
+    padding: 40px 30px;
+    text-align: center;
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.format-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--accent-gold);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+}
+
+.format-card:hover::before {
+    transform: scaleX(1);
+}
+
+.format-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-5px);
+}
+
+.format-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.format-card h3 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.format-card ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+}
+
+.format-card li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+}
+
+.format-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: bold;
+}
+
+/* Framework Section */
+.framework-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: white;
+    text-align: center;
+}
+
+.framework-section h2 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.framework-box {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--border-radius-xl);
+    padding: 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.framework-box h3 {
+    color: var(--accent-gold);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.framework-box p {
+    color: white;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* No-Code Section */
+.nocode-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.platform-card {
+    background: white;
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.platform-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-5px);
+}
+
+.platform-header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.platform-header h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.platform-content {
+    padding: 30px;
+}
+
+.platform-content h4 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.platform-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.platform-content li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    border-bottom: 1px solid #eee;
+}
+
+.platform-content li::before {
+    content: '🚀';
+    position: absolute;
+    left: 0;
+}
+
+/* Learning Outcomes */
+.outcomes-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.outcome-item {
+    padding: 20px;
+    border-left: 4px solid var(--accent-gold);
+    background: var(--bg-light);
+    border-radius: var(--border-radius-md);
+}
+
+.outcome-item h4 {
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+/* Video Section */
+.video-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.video-container {
+    max-width: 900px;
+    margin: 50px auto;
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Location Section */
+.location-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.location-card {
+    text-align: center;
+    padding: 40px;
+    border-radius: var(--border-radius-xl);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 2px solid var(--primary-blue);
+}
+
+.location-card h3 {
+    color: var(--primary-dark);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.location-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-cta-primary {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 15px 40px;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all var(--transition-base);
+    display: inline-block;
+}
+
+.btn-cta-primary:hover {
+    background: var(--accent-orange);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-cta-secondary {
+    background: transparent;
+    color: white;
+    padding: 15px 40px;
+    border: 2px solid white;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all var(--transition-base);
+    display: inline-block;
+}
+
+.btn-cta-secondary:hover {
+    background: white;
+    color: var(--primary-dark);
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-training h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-training .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .formats-grid,
+    .platforms-grid,
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-cta-primary,
+    .btn-cta-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}

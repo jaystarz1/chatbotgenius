@@ -70,6 +70,20 @@
             transition: none !important;
         }
         
+        /* Demo card hover effects */
+        .demo-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
         /* Skip Navigation Link - Accessibility */
         .skip-nav {
             position: absolute;
@@ -390,33 +404,65 @@
             </p>
             
             <!-- Demo Preview Cards -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto 40px;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto 40px;">
                 <!-- Wedding Card -->
-                <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 25px; text-align: center; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">💕</div>
-                    <h3 style="color: white; margin-bottom: 10px;">Wedding</h3>
-                    <p style="opacity: 0.9; font-size: 0.95rem;">Elegant wedding sites with RSVP</p>
+                <div class="demo-card">
+                    <img src="/images/demo-wedding-venue.jpg" alt="Elegant wedding reception venue with decorated tables" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 10px;">💕</div>
+                        <h3 style="color: #1a1f71; margin-bottom: 10px;">Wedding</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Elegant wedding sites with RSVP</p>
+                    </div>
                 </div>
                 
                 <!-- Birthday Card -->
-                <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 25px; text-align: center; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🎂</div>
-                    <h3 style="color: white; margin-bottom: 10px;">Birthday</h3>
-                    <p style="opacity: 0.9; font-size: 0.95rem;">Fun party invitation pages</p>
+                <div class="demo-card">
+                    <img src="/images/demo-birthday-party.jpg" alt="Colorful birthday party celebration with decorations" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 10px;">🎂</div>
+                        <h3 style="color: #1a1f71; margin-bottom: 10px;">Birthday</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Fun party invitation pages</p>
+                    </div>
                 </div>
                 
                 <!-- Corporate Card -->
-                <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 25px; text-align: center; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">🏢</div>
-                    <h3 style="color: white; margin-bottom: 10px;">Corporate</h3>
-                    <p style="opacity: 0.9; font-size: 0.95rem;">Professional event registration</p>
+                <div class="demo-card">
+                    <img src="/images/demo-corporate-event.jpg" alt="Professional corporate conference venue" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 10px;">🏢</div>
+                        <h3 style="color: #1a1f71; margin-bottom: 10px;">Corporate</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Professional event registration</p>
+                    </div>
                 </div>
                 
-                <!-- More Card -->
-                <div style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 25px; text-align: center; backdrop-filter: blur(10px);">
-                    <div style="font-size: 3rem; margin-bottom: 15px;">✨</div>
-                    <h3 style="color: white; margin-bottom: 10px;">More</h3>
-                    <p style="opacity: 0.9; font-size: 0.95rem;">Fundraisers, garage sales & more</p>
+                <!-- Anniversary Card -->
+                <div class="demo-card">
+                    <img src="/images/demo-anniversary-party.jpg" alt="Elegant anniversary celebration in upscale venue" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 10px;">🥂</div>
+                        <h3 style="color: #1a1f71; margin-bottom: 10px;">Anniversary</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Milestone celebration pages</p>
+                    </div>
+                </div>
+                
+                <!-- Fundraiser Card -->
+                <div class="demo-card">
+                    <img src="/images/demo-fundraiser-gala.jpg" alt="Upscale charity gala event" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 10px;">🎗️</div>
+                        <h3 style="color: #1a1f71; margin-bottom: 10px;">Fundraiser</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Charity events & galas</p>
+                    </div>
+                </div>
+                
+                <!-- Garage Sale Card -->
+                <div class="demo-card">
+                    <img src="/images/demo-garage-sale.jpg" alt="Neighborhood garage sale with various items" style="width: 100%; height: 200px; object-fit: cover;">
+                    <div style="padding: 20px; text-align: center;">
+                        <div style="font-size: 2.5rem; margin-bottom: 10px;">🏷️</div>
+                        <h3 style="color: #1a1f71; margin-bottom: 10px;">Garage Sale</h3>
+                        <p style="color: #666; font-size: 0.95rem;">Community sale events</p>
+                    </div>
                 </div>
             </div>
             
