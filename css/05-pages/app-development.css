@@ -1,0 +1,656 @@
+/* ===================================
+   App Development Page Specific Styles - The Chatbot Genius
+   =================================== */
+
+/* Hero Section */
+.hero-apps {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: white;
+    padding: 100px 0 80px;
+    text-align: center;
+}
+
+.hero-apps h1 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: white;
+    line-height: 1.2;
+}
+
+.hero-apps .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    opacity: 0.95;
+}
+
+.hero-apps p {
+    font-size: 1.2rem;
+    color: white;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+/* At a Glance Section */
+.at-glance-section {
+    padding: 24px 0;
+    background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
+}
+
+.summary-card {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius-xl);
+    padding: 30px;
+    border: 1px solid rgba(249, 199, 79, 0.3);
+}
+
+.summary-title {
+    color: var(--accent-gold);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.summary-list {
+    text-align: left;
+    display: inline-block;
+    padding-left: 20px;
+    color: white;
+    list-style: none;
+    padding: 0;
+}
+
+.summary-list li {
+    padding: 8px 0;
+    padding-left: 30px;
+    position: relative;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.summary-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Security Section */
+.security-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.security-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.security-header h2 {
+    color: var(--primary-dark);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.security-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.security-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: var(--border-radius-xl);
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.security-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.security-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.security-card h3 {
+    color: var(--primary-dark);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.security-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.security-card li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--text-light);
+}
+
+.security-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: bold;
+}
+
+/* Local LLM Box */
+.local-llm-box {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    border-radius: var(--border-radius-xl);
+    padding: 40px;
+    color: white;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.local-llm-box h3 {
+    color: var(--accent-gold);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.local-llm-box p {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    opacity: 0.95;
+}
+
+/* Problems Section */
+.problems-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.problem-card {
+    background: white;
+    border-left: 4px solid var(--accent-gold);
+    padding: 30px;
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.problem-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+}
+
+.problem-quote {
+    font-style: italic;
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.problem-solution {
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+/* Capability Showcase */
+.showcase-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.showcase-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.showcase-card {
+    background: white;
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-base);
+}
+
+.showcase-card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+}
+
+.showcase-header-card {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    padding: 30px;
+    text-align: center;
+}
+
+.showcase-header-card h3 {
+    color: white;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.showcase-type {
+    color: var(--accent-gold);
+    font-size: 1rem;
+}
+
+.showcase-content {
+    padding: 30px;
+}
+
+.showcase-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    font-weight: bold;
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+/* Process Section */
+.process-section {
+    padding: 80px 0;
+    background: var(--bg-light);
+}
+
+.process-timeline {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 60px;
+    bottom: -40px;
+    width: 2px;
+    background: var(--primary-blue);
+    opacity: 0.3;
+}
+
+.step-number {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-right: 30px;
+}
+
+.step-content h3 {
+    color: var(--primary-dark);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.step-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.step-details {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.step-details li {
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+    color: var(--text-light);
+}
+
+.step-details li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary-blue);
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.pricing-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: white;
+    border: 2px solid var(--primary-blue);
+    border-radius: var(--border-radius-xl);
+    padding: 40px 30px;
+    text-align: center;
+    transition: all var(--transition-base);
+    position: relative;
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--accent-gold);
+}
+
+.pricing-card.featured {
+    border-color: var(--accent-gold);
+}
+
+.pricing-card.featured::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.pricing-title {
+    font-size: 1.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.pricing-price {
+    font-size: 2.5rem;
+    color: var(--primary-blue);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pricing-subtitle {
+    color: var(--text-light);
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--text-dark);
+    border-bottom: 1px solid #eee;
+}
+
+.pricing-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent-gold);
+    font-weight: bold;
+}
+
+/* Support Plans */
+.support-plans {
+    margin-top: 60px;
+}
+
+.support-plans h3 {
+    text-align: center;
+    color: var(--primary-dark);
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.support-card {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: var(--border-radius-lg);
+    padding: 30px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+}
+
+.support-price {
+    font-size: 1.8rem;
+    color: var(--primary-dark);
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.support-name {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.support-features {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-section h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-cta-primary {
+    background: var(--accent-gold);
+    color: var(--primary-dark);
+    padding: 15px 40px;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all var(--transition-base);
+    display: inline-block;
+}
+
+.btn-cta-primary:hover {
+    background: var(--accent-orange);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-cta-secondary {
+    background: transparent;
+    color: white;
+    padding: 15px 40px;
+    border: 2px solid white;
+    border-radius: var(--border-radius-md);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all var(--transition-base);
+    display: inline-block;
+}
+
+.btn-cta-secondary:hover {
+    background: white;
+    color: var(--primary-dark);
+}
+
+/* ROI Calculator */
+.roi-box {
+    background: white;
+    border-radius: var(--border-radius-xl);
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.roi-box h3 {
+    color: var(--primary-dark);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.roi-example {
+    background: var(--bg-light);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.roi-line {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.roi-line:last-child {
+    border-bottom: none;
+    font-weight: bold;
+    color: var(--accent-gold);
+    font-size: 1.2rem;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 2px solid var(--primary-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-apps h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-apps .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .security-grid,
+    .showcase-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    
+    .process-step:not(:last-child)::after {
+        left: 29px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-cta-primary,
+    .btn-cta-secondary {
+        width: 100%;
+        max-width: 300px;
+    }
+}
