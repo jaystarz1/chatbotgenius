@@ -265,8 +265,8 @@
                         </div>
                     </div>                    <a href="../ai-news.html" class="nav-link">AI News</a>
                     <a href="../#contact" class="nav-link">Contact</a>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="background: #f9c74f; color: #1a1f71; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600;">Book a Call</a>
-                    <button id="toggle-animations" class="btn btn-secondary" style="padding: 8px 20px; border-radius: 5px; background: transparent; color: white; border: 1px solid white; cursor: pointer;">Turn off animations</button>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Animations Off</button>
                 </nav>
             </div>
         </div>
@@ -593,7 +593,7 @@
             // Apply initial state
             if (!animationsEnabled) {
                 document.body.classList.add('no-animations');
-                animationsToggle.textContent = 'Turn on animations';
+                animationsToggle.textContent = 'Animations On';
             }
             
             // Toggle animations
@@ -603,11 +603,11 @@
                 if (isEnabled) {
                     document.body.classList.add('no-animations');
                     localStorage.setItem('animationsEnabled', 'false');
-                    this.textContent = 'Turn on animations';
+                    this.textContent = 'Animations On';
                 } else {
                     document.body.classList.remove('no-animations');
                     localStorage.setItem('animationsEnabled', 'true');
-                    this.textContent = 'Turn off animations';
+                    this.textContent = 'Animations Off';
                 }
             });
         }
