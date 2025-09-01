@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "Why 95% of Enterprise AI Fails: The Bottom-Up Revolution",
+        excerpt: "MIT's shocking report shows 95% of enterprise AI pilots fail. The problem isn't AI—it's top-down implementation. Learn why bottom-up adoption and 'grey AI' are the keys to success.",
+        extendedExcerpt: "A bombshell MIT study reveals that 95% of enterprise AI pilots fail to deliver measurable business value after $30-40 billion in investments. But while executives bemoan failed initiatives, their employees are already successfully using 'grey AI' tools daily. The solution isn't another million-dollar pilot program—it's recognizing and harnessing the bottom-up AI revolution already happening in your organization.",
+        date: "September 2025",
+        image: "blog/images/why-95-percent-ai-fails-bottom-up-wins-ai-2025-09-01T16-04-56.png",
+        imageAlt: "Dramatic comic-style illustration showing the contrast between failed top-down AI and successful bottom-up adoption",
+        url: "blog/why-95-percent-ai-fails-bottom-up-wins.html",
+        sortDate: new Date("2025-09-01"),
+        readingTime: "12 min read"
+    },
+    {
         title: "How to Optimize Your Website for AI Search: A Complete Guide to LLM-Friendly Web Design",
         excerpt: "Learn how to optimize your website for AI search engines and LLMs. Comprehensive guide covering technical setup, schema markup, content structure, and future-proofing strategies.",
         extendedExcerpt: "Artificial intelligence has fundamentally transformed how people search for and discover information online. This comprehensive guide explores how to make your website highly visible to AI crawlers and large language models (LLMs) while still appealing to human users. Learn the essential technical foundations, semantic HTML structures, schema markup strategies, and content optimization techniques that will position your site as a go-to resource for AI-driven search.",
