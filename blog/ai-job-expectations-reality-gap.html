@@ -144,7 +144,32 @@
             border-left: 4px solid #28a745;
             color: #155724;
         }
-    </style>
+        
+        /* Services Dropdown */
+        .nav-dropdown {
+            position: relative;
+            z-index: 9999;
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-menu {
+            display: block !important;
+            z-index: 10000;
+        }
+        
+        .nav-dropdown-menu {
+            z-index: 10000 !important;
+            position: absolute !important;
+        }
+        
+        .nav-dropdown-menu a:hover {
+            background: #f8f9fa;
+            color: #1a1f71 !important;
+            padding-left: 25px !important;
+        }
+        
+        .nav-dropdown-toggle:hover {
+            color: #f9c74f;
+        }    </style>
     
     <!-- Schema.org Article Structured Data -->
     <script type="application/ld+json">
@@ -223,15 +248,25 @@
                     <span></span>
                 </button>
                 <nav class="nav-menu" id="nav-links" role="navigation">
-                    <a href="../" class="nav-link home-link">Home</a>
                     <a href="../about.html" class="nav-link">About</a>
                     <a href="../books.html" class="nav-link">Books</a>
                     <a href="../blog.html" class="nav-link">Blog</a>
                     <a href="../projects.html" class="nav-link">Projects</a>
-                    <a href="../ai-news.html" class="nav-link">AI News</a>
+                    <div class="nav-dropdown" style="position: relative; display: inline-block;">
+                        <a href="#" class="nav-dropdown-toggle" onclick="return false;" style="display: flex; align-items: center; gap: 5px; color: white; text-decoration: none;">
+                            Services
+                        </a>
+                        <div class="nav-dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; background: white; min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); border-radius: 8px; margin-top: 10px; z-index: 10000;">
+                            <a href="../web-development.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">Website Development</a>
+                            <a href="../web-development/demos/showcase.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">Demo Websites Gallery</a>
+                            <a href="../services/training.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">AI Training & Workshops</a>
+                            <a href="../services/consulting.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">AI Consulting</a>
+                            <a href="../services/app-development.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block;">Custom App Development</a>
+                        </div>
+                    </div>                    <a href="../ai-news.html" class="nav-link">AI News</a>
                     <a href="../#contact" class="nav-link">Contact</a>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book a Call</a>
-                    <button id="toggle-animations" class="btn btn-secondary">Turn off animations</button>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="background: #f9c74f; color: #1a1f71; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600;">Book a Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary" style="padding: 8px 20px; border-radius: 5px; background: transparent; color: white; border: 1px solid white; cursor: pointer;">Turn off animations</button>
                 </nav>
             </div>
         </div>
