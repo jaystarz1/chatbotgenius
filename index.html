@@ -671,7 +671,7 @@
                     <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px;">Transform your verbal ideas into polished written content with AI</p>
                     
                     <p style="font-size: 1.1rem; margin-bottom: 10px;"><span aria-hidden="true">📧</span> <a href="mailto:jay@barkerhrs.com" style="color: #4c5fd5;">jay@barkerhrs.com</a></p>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px;" aria-label="Book your free 30-minute consultation - opens in new window">
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-primary" target="_blank" style="font-size: 1.1rem; padding: 15px 40px; color: white; background: #4c5fd5; text-decoration: none; border-radius: 5px; display: inline-block;" aria-label="Book your free 30-minute consultation - opens in new window">
                         <span aria-hidden="true">📅</span> Book Your Free 30-Minute Consultation
                     </a>
                     
@@ -1158,9 +1158,14 @@
                 localStorage.setItem('animationsEnabled', 'false');
                 this.textContent = 'Animations On';
                 
-                // Stop carousel animation too
+                // Stop carousel animation
                 if (window.blogCarousel) {
                     window.blogCarousel.handleAnimationToggle(false);
+                }
+                
+                // Stop spotlight rotation
+                if (window.spotlightControls) {
+                    window.spotlightControls.stop();
                 }
                 
                 // Stop tagline rotation
@@ -1174,6 +1179,11 @@
                 // Resume carousel animation
                 if (window.blogCarousel) {
                     window.blogCarousel.handleAnimationToggle(true);
+                }
+                
+                // Resume spotlight rotation
+                if (window.spotlightControls) {
+                    window.spotlightControls.start();
                 }
                 
                 // Resume tagline rotation
