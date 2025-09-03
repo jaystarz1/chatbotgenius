@@ -1045,6 +1045,18 @@
     </div>
     
     <script>
+        // Mobile menu toggle functionality
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-links');
+        
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('show');
+                const isExpanded = navMenu.classList.contains('show');
+                this.setAttribute('aria-expanded', isExpanded);
+            });
+        }
+        
         // Show floating CTA after scrolling
         window.addEventListener('scroll', function() {
             const floatingCTA = document.getElementById('floatingCTA');
@@ -1063,7 +1075,7 @@
             // Apply initial state
             if (!animationsEnabled) {
                 document.body.classList.add('no-animations');
-                animationsToggle.textContent = 'Turn on animations';
+                animationsToggle.textContent = 'Animations On';
             }
             
             // Toggle animations
@@ -1073,11 +1085,11 @@
                 if (isEnabled) {
                     document.body.classList.add('no-animations');
                     localStorage.setItem('animationsEnabled', 'false');
-                    this.textContent = 'Turn on animations';
+                    this.textContent = 'Animations On';
                 } else {
                     document.body.classList.remove('no-animations');
                     localStorage.setItem('animationsEnabled', 'true');
-                    this.textContent = 'Turn off animations';
+                    this.textContent = 'Animations Off';
                 }
             });
         }
