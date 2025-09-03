@@ -11,6 +11,16 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     
+    <!-- Modular CSS Architecture - Same as index.html -->
+    <link rel="stylesheet" href="/css/01-settings/variables.css">
+    <link rel="stylesheet" href="/css/02-base/reset.css">
+    <link rel="stylesheet" href="/css/02-base/typography.css">
+    <link rel="stylesheet" href="/css/03-components/top-banner.css">
+    <link rel="stylesheet" href="/css/03-components/navigation.css">
+    <link rel="stylesheet" href="/css/03-components/buttons.css">
+    <link rel="stylesheet" href="/css/04-layouts/container.css">
+    <link rel="stylesheet" href="/css/06-utilities/responsive.css">
+    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R76R0B7J9B"></script>
     <script>
@@ -33,83 +43,15 @@
             color: #333;
         }
         
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Container and Top Banner styles removed - using modular CSS from index.html */
+        
+        /* Minimal inline CSS - matching index.html exactly */
+        .no-animations * {
+            animation: none !important;
+            transition: none !important;
         }
         
-        /* Top Banner */
-        .top-banner {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 8px 0;
-            font-size: 0.9rem;
-            color: white;
-            text-align: center;
-        }
-        
-        .banner-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .banner-separator {
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        /* Main Navigation */
-        .navbar {
-            background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1001;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-        
-        .logo {
-            font-size: 2rem;
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: #f9c74f;
-        }
-        
-        /* Services Dropdown */
+        /* Services Dropdown - CRITICAL for functionality */
         .nav-dropdown:hover .nav-dropdown-menu {
             display: block !important;
         }
@@ -120,65 +62,8 @@
             padding-left: 25px !important;
         }
         
-        .nav-dropdown-toggle {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
         .nav-dropdown-toggle:hover {
             color: #f9c74f;
-        }
-        
-        /* Animation toggle */
-        .no-animations * {
-            animation: none !important;
-            transition: none !important;
-        }
-        
-        /* Mobile menu toggle button */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 30px;
-            height: 24px;
-            position: relative;
-        }
-        
-        .mobile-menu-toggle span {
-            display: block;
-            width: 100%;
-            height: 3px;
-            background: white;
-            margin-bottom: 5px;
-            transition: all 0.3s;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: linear-gradient(135deg, #1a1f71 0%, #4c5fd5 100%);
-                flex-direction: column;
-                padding: 20px;
-                gap: 10px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-menu.show {
-                display: flex;
-            }
         }
         
         /* Breadcrumb Navigation */
@@ -223,7 +108,7 @@
             padding: 10px 0;
             position: sticky;
             top: 70px;
-            z-index: 1000;
+            z-index: 999; /* Lowered to be below navigation dropdown */
         }
 
         .web-dev-menu {
@@ -526,24 +411,7 @@
             font-weight: 600;
         }
         
-        /* Button styles for navigation */
-        .btn-book {
-            background: #f9c74f;
-            color: #1a1f71;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .btn-secondary {
-            padding: 8px 20px;
-            border-radius: 5px;
-            background: transparent;
-            color: white;
-            border: 1px solid white;
-            cursor: pointer;
-        }
+        /* Button styles removed - using modular CSS from index.html */
         
         /* Related Services Section */
         .related-services {
@@ -731,7 +599,7 @@
         </div>
     </div>
 
-    <!-- Main Navigation -->
+    <!-- Navigation -->
     <nav class="navbar" aria-label="Main navigation">
         <div class="container">
             <div class="nav-content">
@@ -754,7 +622,7 @@
                         <a href="#" class="nav-dropdown-toggle" onclick="return false;" style="display: flex; align-items: center; gap: 5px;">
                             Services
                         </a>
-                        <div class="nav-dropdown-menu" style="display: none; position: absolute; top: 100%; left: 0; background: white; min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); border-radius: 8px; margin-top: 10px; z-index: 10000;">
+                        <div class="nav-dropdown-menu" style="position: absolute; top: 100%; left: 0; background: white; min-width: 250px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); border-radius: 8px; margin-top: 10px; z-index: 1000;">
                             <a href="/web-development.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">Website Development</a>
                             <a href="/web-development/demos/showcase.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">Demo Websites Gallery</a>
                             <a href="/services/training.html" style="color: #333; padding: 12px 20px; text-decoration: none; display: block; border-bottom: 1px solid #eee;">AI Training & Workshops</a>
@@ -764,8 +632,8 @@
                     </div>
                     <a href="/ai-news.html" class="nav-link">AI News</a>
                     <a href="/#contact" class="nav-link">Contact</a>
-                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book" style="background: #ff8c42; color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 600;">Book Call</a>
-                    <button id="toggle-animations" class="btn btn-secondary" style="padding: 8px 20px; border-radius: 5px; background: transparent; color: white; border: 1px solid white; cursor: pointer;">Animations Off</button>
+                    <a href="https://calendly.com/jay-barkerhrs/30min" class="btn btn-book">Book Call</a>
+                    <button id="toggle-animations" class="btn btn-secondary">Animations Off</button>
                 </nav>
             </div>
         </div>
