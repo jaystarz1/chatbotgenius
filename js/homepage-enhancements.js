@@ -480,13 +480,34 @@ function initializeHeroSpotlight() {
     });
     
     // Auto-rotate if animations enabled
+    let spotlightInterval = null;
     const animationsEnabled = localStorage.getItem('animationsEnabled') !== 'false';
-    if (animationsEnabled) {
-        setInterval(() => {
+    
+    function startSpotlightRotation() {
+        if (spotlightInterval) clearInterval(spotlightInterval);
+        spotlightInterval = setInterval(() => {
             currentSpotlight = (currentSpotlight + 1) % totalSpotlights;
             updateSpotlight();
         }, 10000); // 10 seconds per slide
     }
+    
+    function stopSpotlightRotation() {
+        if (spotlightInterval) {
+            clearInterval(spotlightInterval);
+            spotlightInterval = null;
+        }
+    }
+    
+    // Start rotation if animations enabled
+    if (animationsEnabled) {
+        startSpotlightRotation();
+    }
+    
+    // Make functions available globally for animations toggle
+    window.spotlightControls = {
+        start: startSpotlightRotation,
+        stop: stopSpotlightRotation
+    };
 }
 
 // Content Ticker

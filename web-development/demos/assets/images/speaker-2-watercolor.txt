@@ -1,0 +1,6 @@
+<!-- Placeholder for: speaker-2-watercolor.jpg
+Prompt: Watercolor portrait of professional businessman, Caucasian, gray hair, friendly expression, dark suit, artistic corporate portrait, soft brush strokes
+Dimensions: 400x400
+Category: corporate
+Style: Soft watercolor, artistic, non-photorealistic
+-->

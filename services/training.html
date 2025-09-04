@@ -122,6 +122,69 @@
     }
     </script>
     
+    <!-- UGO University Workshop Reviews Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "AI Training Workshop - UGO University Partnership",
+      "description": "Practical AI training workshops delivered globally through UGO University",
+      "provider": {
+        "@type": "Organization",
+        "name": "UGO University",
+        "partner": {
+          "@type": "Person",
+          "name": "Jay Tarzwell"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.41",
+        "bestRating": "5",
+        "ratingCount": "68",
+        "reviewCount": "68"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Gift"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "AI is a tool, not a replacement for humans. This training completely changed my perspective on how to work with AI."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Saman"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "I learned about the best AI tools, how to use them, and what is the right method to use AI effectively."
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Agatha"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "How AI is relevant to our future - this training opened my eyes to possibilities I never imagined."
+        }
+      ]
+    }
+    </script>
+    
     <style>
         /* Minimal inline CSS - animations toggle and accessibility only */
         .no-animations * {
@@ -491,6 +554,83 @@
             </div>
         </section>
 
+        <!-- Global Impact Section - UGO University Partnership -->
+        <section class="global-impact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Proven Global Training Impact</h2>
+                    <p>Real results from our partnership with UGO University - transforming lives through AI education worldwide</p>
+                </div>
+                
+                <!-- Performance Metrics Grid -->
+                <div class="impact-metrics">
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="88.2">0%</div>
+                        <div class="metric-label">Overall Workshop Satisfaction</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="91.2">0%</div>
+                        <div class="metric-label">Workforce Relevance Rating</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="72.1">0%</div>
+                        <div class="metric-label">Want Advanced Training</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" data-target="68" data-suffix="+">0</div>
+                        <div class="metric-label">Global Participants Trained</div>
+                    </div>
+                </div>
+                
+                <!-- Testimonials Section -->
+                <div class="testimonials-container">
+                    <h3>What Participants Are Saying</h3>
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card">
+                            <div class="quote-mark">"</div>
+                            <p class="testimonial-text">AI is a tool, not a replacement for humans. This training completely changed my perspective on how to work with AI.</p>
+                            <p class="testimonial-author">— Gift</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="quote-mark">"</div>
+                            <p class="testimonial-text">I learned about the best AI tools, how to use them, and what is the right method to use AI effectively.</p>
+                            <p class="testimonial-author">— Saman</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="quote-mark">"</div>
+                            <p class="testimonial-text">How AI is relevant to our future - this training opened my eyes to possibilities I never imagined.</p>
+                            <p class="testimonial-author">— Agatha</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="quote-mark">"</div>
+                            <p class="testimonial-text">I have to use AI in a generative way for me and not otherwise. The practical approach made all the difference.</p>
+                            <p class="testimonial-author">— Consolatha</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="quote-mark">"</div>
+                            <p class="testimonial-text">How to ask questions using AI - it's all about the conversation, not the technology.</p>
+                            <p class="testimonial-author">— Sebastiana</p>
+                        </div>
+                        
+                        <div class="testimonial-card">
+                            <div class="quote-mark">"</div>
+                            <p class="testimonial-text">AI can help facilitate learning for students in ways we're just beginning to explore.</p>
+                            <p class="testimonial-author">— Maria</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-footer">
+                    <p><strong>Workshop Period:</strong> June 2025 - December 2025 | <strong>Partnership:</strong> UGO University Global Education Initiative</p>
+                    <p style="margin-top: 10px;">These results demonstrate the transformative power of practical AI education across diverse global communities.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Books Section -->
         <section class="outcomes-section">
             <div class="container">
@@ -536,6 +676,54 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Metrics Count-Up Animation -->
+    <script>
+        // Count-up animation for metrics
+        function animateMetrics() {
+            const metrics = document.querySelectorAll('.metric-value');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                        const target = parseFloat(entry.target.dataset.target);
+                        const suffix = entry.target.dataset.suffix || '%';
+                        const duration = 2000; // 2 seconds
+                        const start = 0;
+                        const startTime = performance.now();
+                        
+                        function updateCount(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            
+                            // Easing function for smooth animation
+                            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                            const current = start + (target - start) * easeOutQuart;
+                            
+                            if (suffix === '%') {
+                                entry.target.textContent = current.toFixed(1) + suffix;
+                            } else {
+                                entry.target.textContent = Math.floor(current) + suffix;
+                            }
+                            
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                entry.target.classList.add('animated');
+                            }
+                        }
+                        
+                        requestAnimationFrame(updateCount);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            metrics.forEach(metric => observer.observe(metric));
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', animateMetrics);
+    </script>
     
     <!-- Animations toggle functionality -->
     <script>

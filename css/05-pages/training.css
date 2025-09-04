@@ -423,6 +423,173 @@
     margin: 0 auto;
 }
 
+/* Global Impact Section - UGO University */
+.global-impact-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.global-impact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-gold) 0%, var(--accent-orange) 50%, var(--accent-gold) 100%);
+}
+
+/* Impact Metrics */
+.impact-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.metric-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent-gold);
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.metric-card:hover::before {
+    transform: scaleX(1);
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+}
+
+.metric-value {
+    font-size: 3rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+    transition: color var(--transition-base);
+}
+
+.metric-card:hover .metric-value {
+    color: var(--primary-blue);
+}
+
+.metric-label {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* Testimonials Container */
+.testimonials-container {
+    margin-top: 60px;
+}
+
+.testimonials-container h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    margin-bottom: 40px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--accent-gold);
+    position: relative;
+    transition: all var(--transition-base);
+}
+
+.testimonial-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(5px);
+}
+
+.quote-mark {
+    font-size: 4rem;
+    color: var(--accent-gold);
+    opacity: 0.3;
+    line-height: 1;
+    margin-bottom: -10px;
+    font-family: Georgia, serif;
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-size: 1rem;
+    color: var(--primary-dark);
+    font-weight: var(--font-weight-semibold);
+    text-align: right;
+}
+
+/* Impact Footer */
+.impact-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid #e0e0e0;
+}
+
+.impact-footer p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.impact-footer strong {
+    color: var(--primary-dark);
+}
+
+/* Animations for metrics */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.metric-value.animated {
+    animation: countUp 0.5s ease-out forwards;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-training h1 {
@@ -448,5 +615,46 @@
     .btn-cta-secondary {
         width: 100%;
         max-width: 300px;
+    }
+    
+    /* Global Impact Section Mobile */
+    .impact-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .metric-value {
+        font-size: 2rem;
+    }
+    
+    .metric-label {
+        font-size: 0.9rem;
+    }
+    
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .testimonial-card {
+        padding: 20px;
+    }
+    
+    .quote-mark {
+        font-size: 3rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .impact-metrics {
+        grid-template-columns: 1fr;
+    }
+    
+    .metric-card {
+        padding: 20px 15px;
     }
 }

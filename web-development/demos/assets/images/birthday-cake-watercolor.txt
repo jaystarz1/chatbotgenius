@@ -1,0 +1,6 @@
+<!-- Placeholder for: birthday-cake-watercolor.jpg
+Prompt: Soft watercolor painting of an elegant birthday cake with lit number 30 candles, pastel pink and gold colors, delicate brush strokes, dreamy artistic style, white background with subtle color bleeds
+Dimensions: 400x400
+Category: birthday
+Style: Soft watercolor, artistic, non-photorealistic
+-->
