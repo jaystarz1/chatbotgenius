@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1f71;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0d33;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Venetian blinds shadow effect -->
+    <pattern id="blinds" x="0" y="0" width="100" height="10" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="100" height="5" fill="#000" opacity="0.3"/>
+    </pattern>
+    
+    <!-- Dramatic spotlight -->
+    <radialGradient id="spotlight" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#f9c74f;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#f9c74f;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#f9c74f;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+  
+  <!-- Film noir venetian blinds -->
+  <rect width="1200" height="630" fill="url(#blinds)" opacity="0.5"/>
+  
+  <!-- Dramatic spotlight effect -->
+  <ellipse cx="360" cy="200" rx="400" ry="300" fill="url(#spotlight)"/>
+  
+  <!-- World map silhouette in background -->
+  <g opacity="0.1">
+    <path d="M200 300 Q300 250 400 300 T600 280 Q700 320 800 300 T1000 320" 
+          fill="none" stroke="#f9c74f" stroke-width="2"/>
+    <circle cx="300" cy="280" r="30" fill="#f9c74f"/>
+    <circle cx="500" cy="290" r="25" fill="#f9c74f"/>
+    <circle cx="700" cy="310" r="35" fill="#f9c74f"/>
+    <circle cx="900" cy="300" r="28" fill="#f9c74f"/>
+  </g>
+  
+  <!-- Main dramatic scene: Detective desk with translation documents -->
+  
+  <!-- Desk surface (dramatic angle) -->
+  <path d="M100 400 L1100 380 L1150 550 L50 580 Z" 
+        fill="#2a2a2a" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- English document (left side) -->
+  <g transform="rotate(-10 300 420)">
+    <rect x="200" y="350" width="200" height="280" fill="#fff" stroke="#333" stroke-width="2"/>
+    <rect x="220" y="370" width="160" height="8" fill="#333"/>
+    <rect x="220" y="390" width="140" height="6" fill="#666"/>
+    <rect x="220" y="405" width="150" height="6" fill="#666"/>
+    <rect x="220" y="420" width="130" height="6" fill="#666"/>
+    <!-- English flag indicator -->
+    <rect x="220" y="450" width="40" height="25" fill="#012169"/>
+    <path d="M220 450 L260 475 M260 450 L220 475" stroke="#fff" stroke-width="3"/>
+    <path d="M220 450 L260 475 M260 450 L220 475" stroke="#c8102e" stroke-width="2"/>
+    <text x="270" y="470" font-family="Arial" font-size="14" font-weight="bold" fill="#333">EN</text>
+  </g>
+  
+  <!-- French document (right side) -->
+  <g transform="rotate(8 800 420)">
+    <rect x="700" y="340" width="200" height="280" fill="#fff" stroke="#333" stroke-width="2"/>
+    <rect x="720" y="360" width="160" height="8" fill="#333"/>
+    <rect x="720" y="380" width="140" height="6" fill="#666"/>
+    <rect x="720" y="395" width="150" height="6" fill="#666"/>
+    <rect x="720" y="410" width="130" height="6" fill="#666"/>
+    <!-- French flag indicator -->
+    <rect x="720" y="440" width="13" height="25" fill="#002395"/>
+    <rect x="733" y="440" width="14" height="25" fill="#fff"/>
+    <rect x="747" y="440" width="13" height="25" fill="#ed2939"/>
+    <text x="770" y="460" font-family="Arial" font-size="14" font-weight="bold" fill="#333">FR</text>
+  </g>
+  
+  <!-- Translation arrow (dramatic, glowing) -->
+  <g>
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+        <feMerge>
+          <feMergeNode in="coloredBlur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+    <path d="M450 450 Q600 400 750 440" 
+          fill="none" stroke="#f9c74f" stroke-width="4" 
+          filter="url(#glow)" opacity="0.9"/>
+    <polygon points="750,440 735,435 740,450" fill="#f9c74f" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Magnifying glass (detective element) -->
+  <g transform="rotate(15 550 350)">
+    <circle cx="550" cy="300" r="50" fill="none" stroke="#4a4a4a" stroke-width="8"/>
+    <circle cx="550" cy="300" r="45" fill="#fff" opacity="0.2"/>
+    <line x1="590" y1="340" x2="630" y2="380" stroke="#4a4a4a" stroke-width="8"/>
+    <!-- Google Translate icon inside magnifying glass -->
+    <text x="535" y="310" font-family="Arial" font-size="32" fill="#4285f4">G</text>
+    <text x="525" y="310" font-family="Arial" font-size="20" fill="#ea4335">译</text>
+  </g>
+  
+  <!-- Code snippets floating (dramatic shadows) -->
+  <g opacity="0.7">
+    <rect x="50" y="150" width="180" height="100" fill="#1a1f3a" stroke="#f9c74f" stroke-width="1"/>
+    <text x="60" y="175" font-family="Courier" font-size="12" fill="#4fc3f7">&lt;script&gt;</text>
+    <text x="60" y="195" font-family="Courier" font-size="12" fill="#a5d6a7">translate</text>
+    <text x="60" y="215" font-family="Courier" font-size="12" fill="#4fc3f7">&lt;/script&gt;</text>
+  </g>
+  
+  <g opacity="0.7">
+    <rect x="950" y="180" width="200" height="100" fill="#1a1f3a" stroke="#f9c74f" stroke-width="1"/>
+    <text x="960" y="205" font-family="Courier" font-size="12" fill="#4fc3f7">changeLanguage</text>
+    <text x="960" y="225" font-family="Courier" font-size="12" fill="#ffb74d">('fr')</text>
+  </g>
+  
+  <!-- Title text (dramatic, vintage style) -->
+  <g>
+    <!-- Shadow -->
+    <text x="602" y="102" font-family="Georgia, serif" font-size="48" font-weight="bold" 
+          fill="#000" opacity="0.3">BILINGUAL WEBSITES</text>
+    <!-- Main title -->
+    <text x="600" y="100" font-family="Georgia, serif" font-size="48" font-weight="bold" 
+          fill="#f9c74f" text-anchor="middle">BILINGUAL WEBSITES</text>
+    
+    <!-- Subtitle shadow -->
+    <text x="602" y="142" font-family="Arial, sans-serif" font-size="24" 
+          fill="#000" opacity="0.3" text-anchor="middle">The Google Translate Method</text>
+    <!-- Subtitle -->
+    <text x="600" y="140" font-family="Arial, sans-serif" font-size="24" 
+          fill="#fff" text-anchor="middle">The Google Translate Method</text>
+  </g>
+  
+  <!-- Film noir style smoke/atmosphere -->
+  <ellipse cx="300" cy="500" rx="150" ry="40" fill="#fff" opacity="0.05"/>
+  <ellipse cx="900" cy="480" rx="120" ry="35" fill="#fff" opacity="0.05"/>
+  
+  <!-- Corner vignette for that noir feel -->
+  <rect width="1200" height="630" fill="none" stroke="#000" stroke-width="100" opacity="0.2"
+        style="stroke-dasharray: 0 1300; stroke-dashoffset: -50"/>
+</svg>

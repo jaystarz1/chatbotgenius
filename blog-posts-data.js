@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "Building Bilingual Websites with Google Translate: A Complete Implementation Guide",
+        excerpt: "Learn how to build multilingual websites using Google Translate API with custom UI. Complete guide with code examples, Claude Code prompts, and implementation strategies.",
+        extendedExcerpt: "Transform your website into a multilingual platform in under 90 minutes using Google Translate's widget API with a custom interface. This comprehensive guide walks you through building a professional bilingual website with automatic translation, persistent language preferences, and elegant custom UI - all achievable using Claude Code without manual coding.",
+        date: "September 2025",
+        image: "blog/images/building-bilingual-websites-google-translate-ai-2025-09-04T03-41-09.png",
+        imageAlt: "Dramatic comic-style illustration of multilingual website development",
+        url: "blog/building-bilingual-websites-google-translate.html",
+        sortDate: new Date("2025-09-04"),
+        readingTime: "18 min read"
+    },
+    {
         title: "Why 95% of Enterprise AI Fails: The Bottom-Up Revolution",
         excerpt: "MIT's shocking report shows 95% of enterprise AI pilots fail. The problem isn't AI—it's top-down implementation. Learn why bottom-up adoption and 'grey AI' are the keys to success.",
         extendedExcerpt: "A bombshell MIT study reveals that 95% of enterprise AI pilots fail to deliver measurable business value after $30-40 billion in investments. But while executives bemoan failed initiatives, their employees are already successfully using 'grey AI' tools daily. The solution isn't another million-dollar pilot program—it's recognizing and harnessing the bottom-up AI revolution already happening in your organization.",
