@@ -4,11 +4,11 @@ const blogPostsData = [
         title: "How the AI Boom Is Leaving Traditional Consultants Behind",
         excerpt: "The shocking truth: 70-85% of AI projects fail while Big Four firms charge $3,000/hour. Discover how boutique firms are winning the AI revolution.",
         extendedExcerpt: "Major consulting firms are failing at AI transformation despite billion-dollar investments. With 70-85% of AI initiatives failing and executives from Fortune 500 companies openly criticizing McKinsey's $3,000/hour fees, the consulting industry faces an existential crisis. Learn why boutique firms deliver better results at 40-60% lower cost and how the traditional pyramid model is collapsing under AI disruption.",
-        date: "January 2025",
+        date: "September 2025",
         image: "blog/images/ai-boom-leaving-consultants-behind-ai-2025-09-10T13-52-47.png",
         imageAlt: "1960s pulp detective novel style illustration of office scene with dramatic tension",
         url: "blog/ai-boom-leaving-consultants-behind.html",
-        sortDate: new Date("2025-01-28"),
+        sortDate: new Date("2025-09-10"),
         readingTime: "15 min read"
     },
     {
