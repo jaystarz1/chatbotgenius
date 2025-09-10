@@ -85,14 +85,27 @@ The website uses a centralized data file (`blog-posts-data.js`) that:
 ### File Structure
 ```
 /blog/
-├── your-post-name.html     # Individual blog post
+├── your-post-name.html           # Individual blog post
 ├── images/
-│   └── your-post-header.svg   # Header image (1200x630px)
+│   └── your-post-header.png      # Header image (1200x630px, AI-generated)
+├── drafts/                       # Research and draft materials
+│   └── your-post-name/
+│       ├── blog_research.md      # Research notes from Blog-Researcher agent
+│       ├── blog_dev_notes.md     # Development notes from Blog-Dev-Editor
+│       ├── blog_edit.md          # Final edits from Blog-Editor
+│       └── publication_checklist.md  # Pre/post publication checklist
 └── (other posts...)
 
-/blog-posts-data.js         # Centralized blog data
-/blog.html                  # Blog listing page (auto-generated from data)
+/blog-posts-data.js               # Centralized blog data
+/blog.html                        # Blog listing page (auto-generated from data)
 ```
+
+### Blog Draft Organization
+Starting January 2025, all blog post research and draft materials are stored in subfolders:
+- Each blog post has a corresponding `/blog/drafts/[post-name]/` folder
+- Contains all research notes, edits, and development materials
+- Keeps the main blog folder clean while preserving the creation process
+- Useful for future reference and content updates
 
 ## Adding a New Blog Post
 

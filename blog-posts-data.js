@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "How the AI Boom Is Leaving Traditional Consultants Behind",
+        excerpt: "The shocking truth: 70-85% of AI projects fail while Big Four firms charge $3,000/hour. Discover how boutique firms are winning the AI revolution.",
+        extendedExcerpt: "Major consulting firms are failing at AI transformation despite billion-dollar investments. With 70-85% of AI initiatives failing and executives from Fortune 500 companies openly criticizing McKinsey's $3,000/hour fees, the consulting industry faces an existential crisis. Learn why boutique firms deliver better results at 40-60% lower cost and how the traditional pyramid model is collapsing under AI disruption.",
+        date: "January 2025",
+        image: "blog/images/ai-boom-leaving-consultants-behind-ai-2025-09-10T13-52-47.png",
+        imageAlt: "1960s pulp detective novel style illustration of office scene with dramatic tension",
+        url: "blog/ai-boom-leaving-consultants-behind.html",
+        sortDate: new Date("2025-01-28"),
+        readingTime: "15 min read"
+    },
+    {
         title: "Building Bilingual Websites with Google Translate: A Complete Implementation Guide",
         excerpt: "Learn how to build multilingual websites using Google Translate API with custom UI. Complete guide with code examples, Claude Code prompts, and implementation strategies.",
         extendedExcerpt: "Transform your website into a multilingual platform in under 90 minutes using Google Translate's widget API with a custom interface. This comprehensive guide walks you through building a professional bilingual website with automatic translation, persistent language preferences, and elegant custom UI - all achievable using Claude Code without manual coding.",
