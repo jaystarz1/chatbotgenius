@@ -103,46 +103,66 @@ async function extractBlogContent(filePath) {
 function generateImagePrompt(blogData, style = 'comic') {
     const { title, description, context } = blogData;
     
-    // Extract the core theme/subject from the title
-    let theme = 'business mystery';
-    if (title.toLowerCase().includes('ai')) {
-        if (title.toLowerCase().includes('shame') || title.toLowerCase().includes('hide')) {
-            theme = 'executive in shadow hiding something';
-        } else if (title.toLowerCase().includes('job') || title.toLowerCase().includes('work')) {
-            theme = 'office workers looking worried';
-        } else if (title.toLowerCase().includes('drive') || title.toLowerCase().includes('taco')) {
-            theme = 'chaotic fast food restaurant';
-        }
-    }
-    
-    // Sanitize title for safety
-    const cleanTitle = title
-        .replace(/threat|crisis|problem|failure|gap|risk|danger|fiasco|disaster|wrong/gi, 'challenge')
-        .replace(/stupid|fucking|shit|damn|hell/gi, '')
-        .substring(0, 60);
+    // Analyze content for theme detection
+    const titleLower = title.toLowerCase();
+    const contentLower = (title + ' ' + description + ' ' + context).toLowerCase();
     
     // Build a DRAMATIC COMIC prompt
-    let prompt = `1960s pulp detective novel cover illustration. `;
+    let prompt = `1960s pulp detective novel illustration. `;
     
-    // Add specific scene based on content
-    if (title.toLowerCase().includes('shame') || title.toLowerCase().includes('hide')) {
-        prompt += `Businessman in suit looking over shoulder nervously in dark office. `;
-        prompt += `Dramatic shadows, venetian blind lighting. `;
-    } else if (title.toLowerCase().includes('workforce') || title.toLowerCase().includes('prepared')) {
-        prompt += `Group of office workers looking up at giant computer screen with concern. `;
-        prompt += `Dramatic perspective, film noir lighting. `;
-    } else if (title.toLowerCase().includes('expectation') || title.toLowerCase().includes('reality')) {
-        prompt += `Split scene showing optimistic vision vs harsh reality. `;
-        prompt += `Dramatic contrast, noir style. `;
+    // Scene selection based on blog theme - "scene of the crime" style
+    if (contentLower.includes('consulting') || contentLower.includes('consultant') || contentLower.includes('mckinsey')) {
+        // Boardroom aftermath scene
+        prompt += `Abandoned boardroom with overturned leather chairs around mahogany table. `;
+        prompt += `Scattered papers and documents like evidence at a crime scene. `;
+        prompt += `Single overhead light creating dramatic shadows, dust particles in air. `;
+    } else if (contentLower.includes('shame') || contentLower.includes('hide') || contentLower.includes('secret')) {
+        // Shadow figure scene
+        prompt += `Silhouette of figure in fedora hat standing in doorway, face obscured by shadow. `;
+        prompt += `Long dramatic shadow cast across empty room with single desk. `;
+        prompt += `Film noir style backlighting, mysterious atmosphere. `;
+    } else if (contentLower.includes('workforce') || contentLower.includes('employee') || contentLower.includes('team')) {
+        // Empty office mystery
+        prompt += `Deserted office floor with rows of empty desks, one desk lamp still on. `;
+        prompt += `Abandoned briefcase open on desk with papers spilling out. `;
+        prompt += `Late evening light through tall windows casting long shadows. `;
+    } else if (contentLower.includes('training') || contentLower.includes('education') || contentLower.includes('learn')) {
+        // Abandoned classroom scene
+        prompt += `Empty classroom with equations on chalkboard, chairs knocked over. `;
+        prompt += `Dust motes visible in shaft of light from single window. `;
+        prompt += `Books scattered on floor like clues at investigation scene. `;
+    } else if (contentLower.includes('fail') || contentLower.includes('crisis') || contentLower.includes('problem')) {
+        // Evidence board investigation
+        prompt += `Detective's evidence board covered with photos, documents, and red string connecting clues. `;
+        prompt += `Magnifying glass on desk examining crucial document. `;
+        prompt += `Single desk lamp creating dramatic pool of light in dark room. `;
+    } else if (contentLower.includes('data') || contentLower.includes('analysis') || contentLower.includes('research')) {
+        // Detective desk with clues
+        prompt += `Detective's desk covered with manila folders, photographs, and typed reports. `;
+        prompt += `Vintage typewriter with half-typed page still in it. `;
+        prompt += `Overhead fan casting rotating shadows, cigarette smoke in air. `;
+    } else if (contentLower.includes('implement') || contentLower.includes('build') || contentLower.includes('deploy')) {
+        // Factory investigation scene
+        prompt += `Abandoned factory floor with broken machinery and scattered tools. `;
+        prompt += `Single spotlight illuminating evidence on concrete floor. `;
+        prompt += `Industrial windows casting geometric shadows, dust and debris visible. `;
+    } else if (contentLower.includes('money') || contentLower.includes('cost') || contentLower.includes('budget')) {
+        // Financial crime scene
+        prompt += `Scattered money and financial documents on marble floor. `;
+        prompt += `Open vault door in background with papers trailing out. `;
+        prompt += `Dramatic lighting from above creating stark shadows. `;
     } else {
-        prompt += `Office scene with dramatic tension and mystery. `;
-        prompt += `Film noir lighting through venetian blinds. `;
+        // Default mysterious documents scene
+        prompt += `Magnifying glass examining mysterious documents on wooden desk. `;
+        prompt += `Vintage camera and notepad nearby, cigarette burning in ashtray. `;
+        prompt += `Venetian blind shadows creating film noir pattern across scene. `;
     }
     
-    prompt += `Style: 1960s comic book art, bold colors, dramatic angles. `;
-    prompt += `Color palette: deep blues, gold yellows, high contrast. `;
-    prompt += `Pulp fiction aesthetic, vintage poster style. `;
-    prompt += `Title text: "${cleanTitle.substring(0, 30)}" in bold retro font. `;
+    // Consistent style elements
+    prompt += `Style: 1960s pulp detective comic book art, dramatic angles, high contrast. `;
+    prompt += `Color palette: deep midnight blues, amber yellows, crimson reds, noir blacks. `;
+    prompt += `Atmosphere: mysterious, investigative, crime scene photography aesthetic. `;
+    prompt += `No text, no words, no lettering, no titles. Pure visual storytelling. `;
     prompt += `Aspect ratio 16:9.`;
     
     return prompt;
