@@ -1,6 +1,17 @@
 // Blog posts data - Add new posts to the beginning of this array
 const blogPostsData = [
     {
+        title: "The Enterprise AI Paradox: Why Augmentation Beats Replacement",
+        excerpt: "Why enterprise AI is failing: The disconnect between personal AI adoption (70%) and workplace usage (30%) reveals the need for augmentation-first strategies.",
+        extendedExcerpt: "New research shows a striking paradox: while 70% of people use generative AI personally, only 30% use it at work. Meanwhile, enterprise AI implementations are failing at alarming rates, with only 28% of sales leaders seeing any revenue improvement. The solution isn't more AI—it's a fundamental shift from replacement to augmentation strategies that leverage your employees' existing AI expertise.",
+        date: "September 2025",
+        image: "blog/images/enterprise-ai-paradox.svg",
+        imageAlt: "Dramatic 1960s detective novel style illustration of enterprise AI implementation challenges",
+        url: "blog/enterprise-ai-adoption-augmentation-not-replacement.html",
+        sortDate: new Date("2025-09-19"),
+        readingTime: "10 min read"
+    },
+    {
         title: "How the AI Boom Is Leaving Traditional Consultants Behind",
         excerpt: "The shocking truth: 70-85% of AI projects fail while Big Four firms charge $3,000/hour. Discover how boutique firms are winning the AI revolution.",
         extendedExcerpt: "Major consulting firms are failing at AI transformation despite billion-dollar investments. With 70-85% of AI initiatives failing and executives from Fortune 500 companies openly criticizing McKinsey's $3,000/hour fees, the consulting industry faces an existential crisis. Learn why boutique firms deliver better results at 40-60% lower cost and how the traditional pyramid model is collapsing under AI disruption.",
