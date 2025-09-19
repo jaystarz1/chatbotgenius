@@ -5,7 +5,7 @@ const blogPostsData = [
         excerpt: "Why enterprise AI is failing: The disconnect between personal AI adoption (70%) and workplace usage (30%) reveals the need for augmentation-first strategies.",
         extendedExcerpt: "New research shows a striking paradox: while 70% of people use generative AI personally, only 30% use it at work. Meanwhile, enterprise AI implementations are failing at alarming rates, with only 28% of sales leaders seeing any revenue improvement. The solution isn't more AI—it's a fundamental shift from replacement to augmentation strategies that leverage your employees' existing AI expertise.",
         date: "September 2025",
-        image: "blog/images/enterprise-ai-paradox.svg",
+        image: "blog/images/enterprise-ai-adoption-augmentation-not-replacement-ai-2025-09-19T13-57-53.png",
         imageAlt: "Dramatic 1960s detective novel style illustration of enterprise AI implementation challenges",
         url: "blog/enterprise-ai-adoption-augmentation-not-replacement.html",
         sortDate: new Date("2025-09-19"),
